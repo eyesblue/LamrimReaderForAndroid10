@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LamrimReaderForAndroid10.iml" filepath="$PROJECT_DIR$/LamrimReaderForAndroid10.iml" group="LamrimReaderForAndroid10" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="LamrimReaderForAndroid10/app" />
+      <module fileurl="file://$PROJECT_DIR$/colorPickerView/colorPickerView.iml" filepath="$PROJECT_DIR$/colorPickerView/colorPickerView.iml" group="LamrimReaderForAndroid10/colorPickerView" />
+      <module fileurl="file://$PROJECT_DIR$/newQuickAction/newQuickAction.iml" filepath="$PROJECT_DIR$/newQuickAction/newQuickAction.iml" group="LamrimReaderForAndroid10/newQuickAction" />
+      <module fileurl="file://$PROJECT_DIR$/robotoCalendarLibrary/robotoCalendarLibrary.iml" filepath="$PROJECT_DIR$/robotoCalendarLibrary/robotoCalendarLibrary.iml" group="LamrimReaderForAndroid10/robotoCalendarLibrary" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,2 @@
+include ':app', ':robotoCalendarLibrary', ':colorPickerView', ':newQuickAction'
+rootProject.name='LamrimReaderForAndroid10'

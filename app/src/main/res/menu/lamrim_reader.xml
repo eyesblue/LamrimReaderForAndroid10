@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@mipmap/ic_menu_down"
+        android:title="Item"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menuSpeech"
+                android:icon="@mipmap/ic_speech"
+                android:title="@string/menuStrSelectSpeech"
+                app:showAsAction="ifRoom|withText" />
+            <item
+                android:icon="@mipmap/ic_region"
+                android:title="區段">
+            <menu>
+                <item
+                    android:id="@+id/menuRegPlay"
+                    android:icon="@mipmap/ic_region_play"
+                    android:title="@string/menuStrPlayRegionRec"
+                    app:showAsAction="ifRoom|withText" />
+                <item
+                    android:id="@+id/menuRegRec"
+                    android:icon="@mipmap/ic_region"
+                    android:title="@string/menuStrSetRecord"
+                    app:showAsAction="ifRoom|withText" />
+            </menu>
+            </item>
+            <item
+                android:id="@+id/menuRender"
+                android:icon="@mipmap/ic_render_mode"
+                android:title="@string/menuStrRenderMode"
+                app:showAsAction="ifRoom|withText" />
+            <item
+                android:id="@+id/menuAbout"
+                android:icon="@mipmap/ic_info"
+                android:title="@string/menuAbout"
+                app:showAsAction="ifRoom|withText" />
+            <item
+                android:id="@+id/menuExit"
+                android:icon="@mipmap/ic_exit_app"
+                android:title="@string/exitApp"
+                app:showAsAction="ifRoom|withText" />
+        </menu>
+    </item>
+</menu>

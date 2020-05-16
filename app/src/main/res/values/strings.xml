@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Temp tag -->
+    <string name="checkSubtitleV20141127">checkSubtitleV20141127</string>
+
+    <!-- Runtime options -->
+    <string name="runtimeStateFile">runtime</string>
+    <string name="speechModeRecordFile">speechMode</string>
+    <string name="regionPlayModeRecordFile">regionMode</string>
+    <string name="GLModeRecordFile">GLMode</string>
+    <string name="filePathRoot">lamrimreader</string>
+    <string name="subtitleSearchCache">subtitleSearchCache.ser</string>
+
+    <integer name="isInit">0</integer>
+
+    <string name="isAllowNetAccess">false</string>
+    <string name="isShowNetAccessWarn">true</string>
+    <string name="isUseThirdDir">useThirdDir</string>
+    <string name="userSpecifySpeechDir">userSpecifySpeechDir</string>
+    <string name="isDarkThemeKey">isDarkTheme</string>
+    <string name="isShowInfoTextViewKey">isShowInfoTextView</string>
+    <string name="playModeKey">playMode</string>
+    <string name="fontKey">fontKey</string>
+    <integer name="defFontProp">0</integer>
+    <integer name="bktFontProp">1</integer>
+
+    <!-- Default Value -->
+    <integer name="screenOnTime">300000</integer>
+    <string name="versionCheckUrl">http://lamrimreader.eyes-blue.com/appresources/publish/notifier.json</string>
+    <integer name="textMaxSize">200</integer>
+    <integer name="textMinSize">12</integer>
+    <integer name="theorySmallTextSizePercent">90</integer>
+    <string name="reloadLastState">載回進度</string>
+
+    <!--  <color name="theoryTextDefColor">#FFFFFF</color>
+    <color name="theoryNumTextColor">#0000CC</color>
+    <color name="theoryDotTextColor">#835930</color>
+    <color name="theoryBoldColor">#006600</color> -->
+
+    <integer name="subtitleMonInterval">100</integer>
+    <integer name="downloadBufferSize">16384</integer>
+
+    <string name="mediaCheckSumWhileDownload">true</string>
+
+    <integer name="MEDIA_TYPE">0</integer>
+    <integer name="SUBTITLE_TYPE">1</integer>
+    <integer name="THEORY_TYPE">2</integer>
+
+    <string name="downloadTmpPostfix">.dltmp</string>
+    <string name="audioDirName">Audio</string>
+    <string name="subtitleDirName">Subtitle</string>
+    <string name="theoryDirName">Theory</string>
+    <string name="globalLamrimDirName">GlobalLamrim</string>
+    <!-- <string name="defMediaType">MP3</string> -->
+    <string name="defSubtitleType">SRT</string>
+    <string name="defTheoryType">TXT</string>
+    <string name="regionRecordFile">RegionRecord</string>
+    <bool name="isShareWithREST">false</bool>
+    <string name="regionRecordColumeName">records</string>
+    <string name="globalLamrimScheduleFile">GlobalLamrimSchedule</string>
+    <string name="globalLamrimScheduleFileFormat">CSV</string>
+
+
+    <!-- For Global Lamrim -->
+    <string name="globalLamrim">全球廣論</string>
+    <string name="globalLamrimShortName">全廣</string>
+    <string name="title_activity_calendar">全球廣論進度</string>
+    <string name="downloadSchedule">更新進度</string>
+    <string name="localGlobalLamrimScheduleFileNotFound">開啟全廣進度錯誤，請重新下載！</string>
+    <string name="localGlobalLamrimScheduleFileReadErr">全廣進度讀取錯誤，請重新下載！</string>
+    <string name="localGlobalLamrimScheduleFileRangeFmtErr">讀取全廣進度範圍標記錯誤，請重新下載！</string>
+    <string name="localGlobalLamrimScheduleFileDateFmtErr">全廣進度日期格式錯誤，請重新下載！</string>
+    <string name="localGlobalLamrimScheduleFileDataErr">全廣進度記錄錯誤: </string>
+    <string name="localGlobalLamrimScheduleFileDecodeErr">全廣進度讀取時發生封裝錯誤，請重新下載！ </string>
+    <string name="markRegionFail">論文大區塊標記失敗。</string>
+
+
+    <!-- For render image -->
+    <string name="renderImgFgPathKey">renderImage</string>
+    <string name="renderImgBgColorKey">renderImgBgColor</string>
+    <string name="renderImgScaleKey">renderImgScaleType</string>
+    <string name="isShowModeSwBtnKey">isShowModeSwBtn</string>
+    <string name="subtitleFgColorKey">subtitleFgColor</string>
+    <string name="subtitleBgColorKey">subtitleBgColor</string>
+    <string name="subtitleAlphaKey">subtitleAlpha</string>
+
+
+    <!-- For Option Panel -->
+    <string name="bookFontSize">論文</string>
+    <string name="subtitleFontSize">字幕</string>
+    <string name="bookFontSizeKey">BookFontSize</string>
+    <string name="subtitleFontSizeKey">SubtitleFontSize</string>
+    <string name="setupFontSizeStr">設定字型大小</string>
+    <string name="setupTextSizeSample">廣論</string>
+    <string name="selectFont">字型選擇</string>
+    <string name="bookContent">論文</string>
+
+    <!-- For LamrimReaderActivity -->
+    <!-- Change Log -->
+    <string name="background_color">black</string>
+    <string name="msgNewVerHasRes">新版本已發佈</string>
+    <string name="msgUpdateNow">立即更新</string>
+    <string name="msgRemindMe">稍後通知我</string>
+    <string name="msgSkipTheVer">忽略此版本</string>
+    <string name="updateWebPage">http://lamrimreader.eyes-blue.com/</string>
+
+    <string name="app_name">廣論App</string>
+    <string name="menuOptions">選項</string>
+    <string name="menuStrSelectSpeech">選擇音檔</string>
+    <string name="menuStrGlobalLamrim">全球廣論</string>
+    <string name="menuStrSetRecord">記錄區段</string>
+    <string name="menuStrTextSize">設定字體</string>
+    <string name="menuStrSavePlayRegion">儲存區段</string>
+    <string name="menuStrPlayRegionRec">區段播放</string>
+    <string name="menuStrRenderMode">公播模式</string>
+    <string name="menuStrPlayRegionRecShortName">區段</string>
+    <!-- <string name="menuStrOpenProjectWeb">計劃網頁</string> -->
+    <string name="menuAbout">關於</string>
+    <string name="exitApp">關閉</string>
+
+    <!-- About Activity Dialog -->
+    <string name="version">版本</string>
+    <string name="resNum">版號</string>
+    <string name="OSver">系統版本</string>
+    <string name="aboutMsg">　　為了跟上安卓系統的更新，新的廣論App也被迫放棄對舊版本的支援，若您的裝置是舊版的，您可以到「計畫網頁」尋找舊版本的廣論App，末學會把上一個世代最後的穩定版本放在網站供大家下載安裝。</string>
+    <string name="contactAuther">聯繫作者</string>
+    <string name="web">網頁</string>
+    <string name="projectWebText">計畫網頁</string>
+    <string name="projectWebUrl">計畫網頁：http://lamrimreader.eyes-blue.com/\n開發歷程：http://tw.lamrimreader.eyes-blue.com/</string>
+
+    <string name="dlgNotGrantStorageYet">未取得存取檔案授權</string>
+    <string name="dlgHintGrantStroage">您未同意廣論App存取檔案，廣論App從網路上下載音檔後無法正常儲存，也無法正常播放，若您在拒絕授權的同時點選不再詢問，您必須重新安裝廣論App，系統才會再顯示詢問授權對話框。</string>
+    <string name="noSubtitleDesc">無字幕</string>
+    <string name="selectIndexFromMenuDesc">請從選單選擇章節或錄音</string>
+    <string name="soundInUseError">音效裝置被其他軟體佔用中</string>
+    <string name="newMediaTarget">NewMediaTarget</string>
+    <string name="newMediaPlayPosition">NewMediaPlayPosition</string>
+    <string name="dlgHintShowMpController">請點選此處顯示撥放選單</string>
+    <string name="dlgHintLoadMediaBeforeSwitchToReadingMode">尚未載入音檔，無法切換到閱讀模式！</string>
+    <string name="dlgHintMpControllerNoSubtitle">尚無字幕，請點選此處顯示撥放選單</string>
+    <string name="dlgFailLoadSubtitle">字幕載入失敗，請重新嘗試。</string>
+    <string name="subtitleNotComp">%1$s字幕似乎不完整，請嘗試重新下載此字幕(選擇音檔 -> 長按%1$s -> 更新)。</string>
+    <string name="errRestorePlayStateFailLakeAudio">%1$s音檔不存在，無法載回最後狀態</string>
+    <string name="errPlayFailLakeAudio">%1$s音檔不存在，無法載入語音資料</string>
+    <string name="errPlayFailLakeAudioAndCancel">%1$s音檔不存在，取消播放</string>
+    <string name="errWhileReleasePlayer">釋放撥放器時發生狀態錯誤!</string>
+    <string name="msgMediaPlayerUnknowErr">多媒體播放器發生未知的錯誤，請重新嘗試。</string>
+    <string name="msgMediaPlayerServerDie">系統中的多媒體播放服務已關閉，請重新嘗試。</string>
+    <string name="msgMediaPlayerErrorIO">多媒體播放器無法讀取檔案(輸出入錯誤)，請重新嘗試。</string>
+    <string name="msgMediaPlayerMalformed">多媒體檔案格式錯誤，請重新嘗試。</string>
+    <string name="msgMediaPlayerUnsupported">不支援的多媒體容器格式</string>
+    <string name="msgMediaPlayerTimeOut">系統中的多媒體播放服務逾時，請重新嘗試。</string>
+    <string name="msgCreateMediaPlayer">多媒體播放器重建中</string>
+    <string name="msgFailReadAudioFIle">讀取音檔失敗，請重新嘗試。</string>
+    <string name="errUnknowPlayerState">播放器狀態不明，無法判斷目前播放的音檔，請重新載入音檔。</string>
+    <string name="errPlayerRecycled">播放器已被系統回收，請重新載入。!</string>
+    <string name="errIAEwhileSetPlayerSrc">開啟語音檔時發生參數錯誤!</string>
+    <string name="errSEwhileSetPlayerSrc">開啟語音檔時發生安全性錯誤!</string>
+    <string name="errISEwhileSetPlayerSrc">開啟語音檔時發生撥放器狀態錯誤!</string>
+    <string name="errIOEwhileSetPlayerSrc">無法正常讀取音檔，請檢查音檔是否損毀，請試著重新下載[%1$s]音檔。</string>
+    <string name="errISEwhilePrepPlayer">準備語音檔時發生撥放器狀態錯誤!</string>
+    <string name="errIOEwhilePrepPlayer">準備語音檔時發生輸出入錯誤!</string>
+    <string name="errＷhilePlayMedia">播放媒體時發生錯誤，請重新載入！</string>
+    <string name="errPlayFailArgErr">偵測到錯誤參數，停止載入，請重新嘗試。</string>
+    <string name="errPlayFailAudioNotFound">音檔不存在或無法存取。</string>
+    <string name="errOpenAssetMedia">您的裝置無法播放自帶的音檔，請回報作者您的機型與操作流程。</string>
+    <string name="playFinishNext">本卷播放結束，請由播放面板點選下一卷繼續閱讀。</string>
+    <string name="playFinish">播放結束</string>
+    <string name="errLakeBrowser">您的裝置上未安裝任何可供使用的網頁瀏覽元件，無法開啟網頁。</string>
+    <string name="errOpenPicFail">您所選擇的檔案損毀或無法讀取。</string>
+    <string name="inputTitleHint">請輸入標題！</string>
+    <string name="recSecFirst">沒有區段記錄，請先記錄區段。</string>
+    <string name="errReadRecordFile">讀取檔案時發生錯誤，無法讀取區段記錄！</string>
+    <string name="errSyncRecordFile">"同步檔案時發生錯誤，找不到檔案！</string>
+
+    <string name="dlgRegLamrimStart">廣論起始位置: 頁數</string>
+    <string name="dlgRegLamrimEnd">廣論結束位置: 頁數</string>
+    <string name="dlgRegLineNum">行數</string>
+    <string name="dlgRegStartTime">開始時間：</string>
+    <string name="dlgRegEndTime">結束時間：</string>
+    <string name="regionRecordListViewPage">regionListPage</string>
+    <string name="regionRecordListViewPageShift">regionListPageShift</string>
+    <string name="lastSearchLamrimKey">lastSearchLamrimWords</string>
+    <string name="searchFromNet">從網路</string>
+    <bool name="searchFromNetwork">true</bool>
+    <string name="searchFromKey">searchFrom</string>
+    <string name="lastSearchTimeKey">lastNetworkSearchTime</string>
+    <integer name="netSearchInterval">1500</integer>
+    <string name="searchHost">http://lamrim-search-service.eyes-blue.com/</string>
+    <string name="msgSearch">搜尋</string>
+    <string name="loadingData">讀取資料</string>
+    <string name="loadingSubtitles">字幕檔案讀取中，請稍候！</string>
+    <string name="errLoadCatchFail">載入快取失敗，請點選[選單] -> [選擇音檔] -> [儲存維護]後再嘗試一次。</string>
+    <string name="msgSearchNotFound">尋無字串。</string>
+    <string name="searchSummary">"共%1$s筆紀錄, 載入耗時%2$s, 搜尋耗時%3$s秒"</string>
+    <string name="msgSearchStrLenMustMoreThen2">搜尋字串太短，至少2個字</string>
+    <string name="msgSearchSendingReq">網路查詢</string>
+    <string name="msgPlsWait">查詢中，請稍候 …</string>
+    <string name="msgUTF8EncodeUnsupport">您的系統不支援UTF-8編碼，無法送出查詢。</string>
+    <string name="msgSendReqIOErr">無法連接搜尋伺服器，請檢查您的網路連線是否正常。</string>
+    <string name="msgJsonParseErr">解讀伺服器回傳的資料時發生錯誤，請重新嘗試。</string>
+    <string name="errFailToSwitchAudio">音檔不存在，無法自動切換至該位置，請先下載%1$s的檔案資源。</string>
+    <string name="dlgBgPlayMode">背景播放模式</string>
+    <string name="msgBgPlayDesc">即將關閉廣論App並切換到背景播放模式，在此模式下您可以關閉銀幕聆聽，您確定嗎？\n\n目前播放位置：</string>
+    <string name="errNoMediaPlayer">無播放器錯誤</string>
+    <string name="msgInstallPlayerFirst">您的系統中沒有內建可以播放音樂的App，請自行安裝音樂播放器，按確定開啟商城安裝建議的播放器。</string>
+    <string name="recommandMusicPlayerPkg">com.ushareit.listenit</string>
+
+    <integer name="subtitleScrollTouchBtnHeightPercentDp">3</integer>
+    <integer name="subtitleScrollTouchBtnWidthPercentDp">10</integer>
+
+    <string name="menuTitle">功能選單</string>
+    <string name="leaveRenderMode">離開公播模式</string>
+    <string name="normalMenu">一般選單</string>
+    <string name="settingMenu">設定選單</string>
+    <string name="picsExtOpt">選擇擴展方式</string>
+    <string name="msgWarring">警告</string>
+    <string name="msgLongPressShowMenu">此模式畫面上沒有選單按鍵！\n必須透過"按住圖片"才能叫出選單。\n重開廣論App後會回到正常模式。</string>
+    <string name="msgSelectPic">請選擇圖片檔案</string>
+    <string name="msgAlphaOpt">請輸選擇透明度</string>
+    <string-array name="SettingsMenuItem">
+        <item>顯示/隱藏模式切換鍵</item>
+        <item>選擇圖片</item>
+        <item>圖片擴展方式</item>
+        <item>圖片背景顏色</item>
+        <item>字幕顏色</item>
+        <item>字幕背景顏色</item>
+        <item>字幕背景透明度</item>
+        <item>回到原始設定</item>
+    </string-array>
+
+    <string-array name="PicsMenuItem">
+        <item>等比擴展填滿置中</item>
+        <item>等比擴展全圖顯示置中</item>
+        <item>不按比例完全擴展</item>
+        <item>等比縮放置上</item>
+        <item>等比縮放置中</item>
+        <item>等比縮放置底</item>
+        <item>不縮放置中</item>
+        <item>向量</item>
+    </string-array>
+
+
+    <!-- For Speech Menu -->
+    <string name="remoteSrcIndexKey">remoteSrcIndex</string>
+    <string name="dlgMsgDlNotComplete">媒體檔案  %1$s 尚未下載完成，是否再次下載？</string>
+    <string name="file">檔案</string>
+    <string name="dlgTitleDownloadFail">下載失敗</string>
+    <string name="dlgDescDownloadFail">下載失敗，請檢查您的網路連線是否正常。</string>
+    <string name="msgSelectThread">請選擇同時下載連線數(越多越快，網路越壅塞):</string>
+    <string name="btnDownloadAll">全部下載</string>
+    <string name="btnCancle">取消下載</string>
+    <string name="dlgResDownload">廣論資源下載</string>
+    <string name="errStorageNotReady">儲存空間不足或無法使用儲存裝置，請檢查您的儲存裝置是否正常，或磁碟已被電腦連線所獨佔！</string>
+    <string name="typeAudio">音檔</string>
+    <string name="typeSubtitle">字幕</string>
+    <string name="msgDownloadList">下載列表：</string>
+    <string name="msgLamrimDownloadList">廣論App資源下載"</string>
+    <string name="dlgStopDownload">停止下載</string>
+
+    <string-array name="remoteSite">
+        <item>http://lamrimreader.eyes-blue.com/appresources/</item>
+    </string-array>
+
+    <!--- Storage Manage Activity -->
+    <string name="intStorage">內部儲存空間</string>
+    <string name="extStorage">外部儲存空間</string>
+    <string name="available">可使用</string>
+    <string name="inUse">已使用</string>
+    <string name="moveToHere">移動到此</string>
+    <string name="lbDel">刪除</string>
+    <string name="specifyOtherFolder">指定其它音檔目錄</string>
+    <string name="doNotUse">不使用</string>
+    <string name="userSpecify">使用者指定</string>
+    <string name="selectFolder">選擇音檔位置：</string>
+    <string name="moveIntExtToHere">移動「外部」與「內部」儲存空間的音檔到此指定目錄</string>
+    <string name="beAware">提醒您：</string>
+    <string name="userSpecifDesc">※當您指定音檔位置後，此位置將成為主要的儲存區域，但該區域中的檔案將不會被自動刪除。\n※若該區域無法使用(如拔除記憶卡)時，將會自動使用內部儲存空間，您可以使用「維護檔案」來刪除內部儲存空間中的冗餘檔案。\n※App無法偵測指定位置的磁碟剩餘空間，請確認該區域有足夠的空間儲存音檔。</string>
+    <string name="lbDefStorePath">預設檔案存放位置(長按選取複製)</string>
+    <string name="lbExtStorePath">外部音檔：</string>
+    <string name="lbIntStorePath">內部音檔：</string>
+
+
+    <!-- FileSysManager -->
+    <string name="dlgMoveFile">移動檔案</string>
+    <string name="dlgSureMoveFile">您確定要移動檔案嗎？</string>
+    <string name="dlgSureMoveAllAudioFile">您要將所有的音檔移動到您所指定的位置嗎？</string>
+    <string name="errMoveFile">"搬移檔案時發生錯誤: 來源: %1$s, 目的地: %2$s</string>
+    <string name="errWriteFile">使用者指定目錄錯誤或無寫入權限，無法移動檔案。</string>
+    <string name="dlgMoveFileTitle">檔案移動</string>
+    <string name="dlgMoveFileMsg">背景移動中，請檢視通知列以瞭解進度，移動過程中請勿執行其他操作。</string>
+    <string name="msgNoDelWarring">移除廣論App時，系統不會刪除此處的檔案，您必須要自行刪除此指定目錄中的檔案，您確定要移動檔案嗎？</string>
+    <string name="msgExternalStorage">外部儲存空間</string>
+    <string name="msgInternalStorage">內部儲存空間</string>
+    <string name="msgSelectFolder">請選擇存放目錄</string>
+    <string name="msgNoDownload">無法自動補檔警告</string>
+    <string name="msgNoDownloadDesc">您的所選擇的目錄廣論App沒有寫入權限，無法自動補檔，所有新的下載仍會寫入到預設的內部或外部儲存區域。</string>
+    <string name="msgFolderErr">目錄錯誤</string>
+    <string name="msgFolderErrDesc">使用者指定路徑不可為空！請重新選擇。</string>
+    <string name="msgNotFolder">您所指定的儲存位置為已存在的檔案而非目錄！請重新選擇。</string>
+    <string name="msgCantCreateFolder">您所指定的儲存目錄無法建立！請重新選擇。</string>
+    <string name="msgPermErr">權限錯誤</string>
+    <string name="msgPermErrDesc">您所指定的儲存目錄無讀取權限！請重新選擇。</string>
+    <string name="msgFileMoving">搬移中，請稍候...</string>
+    <string name="msgFileMoveFail">檔案搬移失敗</string>
+    <string name="msgMoveFileFinish">檔案搬移完成</string>
+    <string name="msgMoveFileSummary">共搬移 %1$s 個檔案，耗時 %2$s 秒。</string>
+    <string name="msgMoveFromTo">"移動 %1$s 到 %2$s</string>
+
+    <integer name="reservSpacePercent">10</integer>
+    <integer name="subtitleReservSizeK">102400</integer>
+    <string name="noExtSpace">無外部空間</string>
+
+    <!-- Dialogs -->
+    <string name="dlgSureStopDownload">您要停止下載嗎？</string>
+    <string name="dlgLoadingHard">努力載入中 ...</string>
+    <string name="dlgTitleConnecting">連線中</string>
+    <string name="dlgDescConnecting">取得 %1$s %2$s資訊中 ...</string>
+    <string name="dlgTitleDownloading">下載資源</string>
+    <string name="dlgDescDownloading">%1$s %2$s下載中，請稍候...</string>
+    <string name="dlgDescPrepareSubtitle">字幕準備中，請稍候...</string>
+    <string name="dlgDescPrepareSpeech">音檔準備中，請稍候...</string>
+    <string name="dlgOk">確定</string>
+    <string name="dlgCancel">取消</string>
+    <string name="dlgAllow">允許</string>
+    <string name="dlgDisallow">禁止</string>
+    <string name="dlgDontShowThisWarnDesc">不再顯示此警告</string>
+    <string name="dlgNetAccessTitle">網路存取</string>
+    <string name="dlgNetAccessMsg">即將存取網路資源，視您目前所在的網路環境，可能造成額外的網路費用，確定下載資源嗎？</string>
+    <string name="dlgExitTitle">關閉程式</string>
+    <string name="dlgExitMsg">即將關閉程式，您確定離開嗎？</string>
+    <string name="dlgManageSrcPlay">播放</string>
+    <string name="dlgManageSrcUpdate">更新</string>
+    <string name="dlgManageSrcDel">刪除</string>
+    <string name="dlgManageSrcDL">下載</string>
+    <string name="dlgDelWarnTitle">刪除%1$s</string>
+    <string name="dlgDelWarnMsg">%1$s即將被刪除，您確定要刪除%1$s嗎？</string>
+    <string name="dlgDelFile">刪除檔案</string>
+    <string name="dlgDeling">刪除中，請稍候...</string>
+    <string name="dlgTitleMaintaining">維護檔案</string>
+    <string name="dlgMsgMaintaining">維護檔案中，請稍候...</string>
+    <string name="title_activity_storage_manage">儲存管理</string>
+    <string name="action_settings">Settings</string>
+    <string name="dlgInputError">輸入錯誤</string>
+    <string name="dlgInputNotFill">資料輸入不完全。</string>
+    <string name="record">紀錄</string>
+    <string name="dlgNoRecord">無區段記錄</string>
+    <string name="dlgHintRecord">請在載入音檔後，移動播放位置到要標記的地方，再點選「記錄區段」紀錄並儲存區段。</string>
+    <string name="dlgNotLoadAudioYet">未載入音檔</string>
+    <string name="dlgUntitle">未知標題</string>
+    <string name="dlgHintLoadAudio">請先從右上角點選圓形的選單圖示，再點選「選擇音檔」，最後選擇您要標記的音檔。</string>
+    <string name="dlgSavePositionAs">將目前播放位置設定為</string>
+    <string name="noData">無資料</string>
+    <string name="dlgOnlyAcceptNearAudio">只能標記相鄰的音檔</string>
+    <string name="dlgNumberFormatError">數字欄位錯誤，請檢查輸入內容。</string>
+    <string name="dlgEndPageGreaterThenStart">結束頁小於起始頁。</string>
+    <string name="dlgEndLineGreaterThenStart">結束行數小於起始行數。</string>
+    <string name="dlgLineNumOverPageCount">輸入的行數超過該頁的行數。</string>
+    <string name="dlgPageNumOverPageCount">輸入的頁數超過廣論總頁數。</string>
+    <string name="dlgRecordTheoryIndex">廣論 %1$d 頁  %2$d 行 ~ %3$d 頁 %4$d 行</string>
+    <string name="shareRegion">區段分享</string>
+    <string name="msgShareTitle">廣論App專用連結(點擊以廣論App播放內容)：\n</string>
+    <string name="msgHintClickLink">若上面的連結無法啟動，請點下面的連結啟動：\n</string>
+
+    <!-- For file selector -->
+    <string name="location">位置</string>
+
+    <string name="cant_read_folder">無法讀取目錄</string>
+    <string name="nnew">新增</string>
+    <string name="select">確定</string>
+    <string name="choiceDrive">選擇裝置</string>
+    <string name="folderCreated">目錄已建立</string>
+    <string name="freeSpace">可用空間</string>
+    <string name="newFolder">開新目錄</string>
+    <string name="emptyTextFieldErr">請輸入資料夾名稱</string>
+    <string name="folderNameHint">資料夾名稱</string>
+    <string name="folderErrorToastText">錯誤目錄</string>
+    <string name="file_name">檔名:</string>
+    <string name="cancel">取消</string>
+    <string name="create">儲存</string>
+    <string name="no_data">無資料</string>
+
+    <string name="err">錯誤</string>
+    <string name="title_activity_file_dialog">FileDialogActivity</string>
+
+    <!-- For ChangeLog -->
+    <string name="changelog_full_title">修正記錄</string>
+    <string name="changelog_title">What\'s New</string>
+    <string name="changelog_ok_button">確定</string>
+    <string name="changelog_show_full">更多...</string>
+    <string name="title_activity_intent">IntentActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="digOptSetRegionStart">開始位置</string>
+    <string name="dlgOptSetRegionEnd">結束位置</string>
+
+    <string name="lamrimCmdUri">http://lamrimreader-cmd.eyes-blue.com/</string>
+    <string name="firebase_deeplink_host">xe74n.app.goo.gl</string>
+</resources>

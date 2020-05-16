@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="430dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/regionRowTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:text="Title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/recListPopID" />
+
+    <TextView
+        android:id="@+id/theoryIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeRegion"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:text="廣論 ? 頁 ? 行 ~ ? 頁 ? 行"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/theoryIndex"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:text="Small Text"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <TextView
+        android:id="@+id/timeRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regionRowTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+        android:text="000A    00&quot;0&apos; ~ 000A    00&quot;0&apos;"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="56dp"
+        android:layout_height="52dp"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="false"
+        android:src="@mipmap/ic_delete"
+        android:background="#00000000"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="56dp"
+        android:layout_height="52dp"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="false"
+        android:src="@mipmap/ic_edit"
+        android:background="#00000000"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/deleteButton"
+        android:layout_toStartOf="@+id/deleteButton" />
+
+    <ImageButton
+        android:id="@+id/shareButton"
+        android:layout_width="56dp"
+        android:layout_height="52dp"
+        android:background="#00000000"
+        android:src="@drawable/share_icon"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/editButton"
+        android:layout_toStartOf="@+id/editButton" />
+
+</RelativeLayout>

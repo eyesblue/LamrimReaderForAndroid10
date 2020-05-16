@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "469967435870",
+    "firebase_url": "https://lamrimreader-54d3e.firebaseio.com",
+    "project_id": "lamrimreader-54d3e",
+    "storage_bucket": "lamrimreader-54d3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469967435870:android:e6d09eeabb12f597",
+        "android_client_info": {
+          "package_name": "eyes.blue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469967435870-us0n26haomrev52a1s31bp0ica5fnomn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eyes.blue",
+            "certificate_hash": "6f8e15bd938382e8e6e6a5e456844e84e835b059"
+          }
+        },
+        {
+          "client_id": "469967435870-qmccfupdjs099gbnf67a1cgkkuhknetg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "eyes.blue",
+            "certificate_hash": "14d40d68891001da30b40fb4ef20235b2a9aa16e"
+          }
+        },
+        {
+          "client_id": "469967435870-hmkgi8kub76ang39vmdle5uj44dpqgo3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3MyxSOU-j3fNi6-YBMQwWib4BXdfLiFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469967435870-hmkgi8kub76ang39vmdle5uj44dpqgo3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

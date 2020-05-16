@@ -1,0 +1,4 @@
+#Tue May 12 20:17:28 CST 2020
+base.0=C\:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\dex\\release\\shrunkDex\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

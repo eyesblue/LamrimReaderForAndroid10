@@ -1,0 +1,164 @@
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:29
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:128
+-keep class androidx.core.content.FileProvider { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:166
+-keep class com.crashlytics.android.CrashlyticsInitProvider { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:223
+-keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:236
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:230
+-keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:198
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:213
+-keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:203
+-keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:209
+-keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:142
+-keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:183
+-keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:175
+-keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:192
+-keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:60
+-keep class eyes.blue.AboutActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:74
+-keep class eyes.blue.CalendarActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:111
+-keep class eyes.blue.DownloadAllService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:68
+-keep class eyes.blue.DownloadAllServiceHandler { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:64
+-keep class eyes.blue.FileDialogActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:78
+-keep class eyes.blue.IntentActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:37
+-keep class eyes.blue.LamrimReaderActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:118
+-keep class eyes.blue.MediaPlayerController$RemoteControlReceiver { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:114
+-keep class eyes.blue.MoveFileService { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:48
+-keep class eyes.blue.SpeechMenuActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:56
+-keep class eyes.blue.StorageManageActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\packaged_res\release\layout\dialog_color_picker.xml:42
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\packaged_res\release\layout\preference_preview_layout.xml:1
+-keep class afzkl.development.colorpickerview.view.ColorPanelView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\packaged_res\release\layout\dialog_color_picker.xml:26
+-keep class afzkl.development.colorpickerview.view.ColorPickerView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_button_bar_material.xml:43
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_material.xml:52
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_title_material.xml:57
+-keep class android.widget.Space { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_select_dialog_material.xml:23
+-keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_action_menu_item_layout.xml:17
+-keep class androidx.appcompat.view.menu.ActionMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_expanded_menu_layout.xml:17
+-keep class androidx.appcompat.view.menu.ExpandedMenuView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_cascading_menu_item_layout.xml:20
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_list_menu_item_layout.xml:17
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_popup_menu_item_layout.xml:17
+-keep class androidx.appcompat.view.menu.ListMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_toolbar.xml:27
+-keep class androidx.appcompat.widget.ActionBarContainer { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_action_mode_bar.xml:19
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_toolbar.xml:43
+-keep class androidx.appcompat.widget.ActionBarContextView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_toolbar.xml:17
+-keep class androidx.appcompat.widget.ActionBarOverlayLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_action_menu_layout.xml:17
+-keep class androidx.appcompat.widget.ActionMenuView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_activity_chooser_view.xml:19
+-keep class androidx.appcompat.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_material.xml:18
+-keep class androidx.appcompat.widget.AlertDialogLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_button_bar_material.xml:26
+-keep class androidx.appcompat.widget.ButtonBarLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_content_include.xml:19
+-keep class androidx.appcompat.widget.ContentFrameLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_title_material.xml:45
+-keep class androidx.appcompat.widget.DialogTitle { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_simple_overlay_action_mode.xml:23
+-keep class androidx.appcompat.widget.FitWindowsFrameLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_dialog_title_material.xml:22
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_simple.xml:17
+-keep class androidx.appcompat.widget.FitWindowsLinearLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_search_view.xml:75
+-keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_toolbar.xml:36
+-keep class androidx.appcompat.widget.Toolbar { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_simple.xml:25
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_simple_overlay_action_mode.xml:32
+-keep class androidx.appcompat.widget.ViewStubCompat { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_bottom_sheet_dialog.xml:26
+-keep class androidx.coordinatorlayout.widget.CoordinatorLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_material.xml:41
+-keep class androidx.core.widget.NestedScrollView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\res\layout\activity_calendar.xml:29
+-keep class com.disegnator.robotocalendar.RobotoCalendarView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\5bdd6cb15adc83afc50e712b063ec44b\jetified-storage-chooser-2.0.4.4\res\layout\custom_storage_list.xml:158
+-keep class com.google.android.material.floatingactionbutton.FloatingActionButton { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_bottom_navigation_item.xml:27
+-keep class com.google.android.material.internal.BaselineLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_text_input_password_icon.xml:18
+-keep class com.google.android.material.internal.CheckableImageButton { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_navigation_item.xml:17
+-keep class com.google.android.material.internal.NavigationMenuItemView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_navigation_menu.xml:17
+-keep class com.google.android.material.internal.NavigationMenuView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_layout_snackbar.xml:18
+-keep class com.google.android.material.snackbar.Snackbar$SnackbarLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_layout_snackbar_include.xml:18
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\res\layout\design_layout_snackbar_include_material.xml:18
+-keep class com.google.android.material.snackbar.SnackbarContentLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\res\layout\theory_page_view.xml:12
+-keep class eyes.blue.TheoryPageView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\res\layout\main.xml:12
+-keep class eyes.blue.modified.MyHorizontalScrollView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\res\layout\main.xml:21
+-keep class eyes.blue.modified.MyListView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\res\layout\media_controller.xml:99
+-keep class eyes.blue.modified.RegionableSeekBar { <init>(...); }
+
