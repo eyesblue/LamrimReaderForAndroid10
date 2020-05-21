@@ -40,14 +40,6 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import net.londatiga.android.ActionItem;
 import net.londatiga.android.QuickAction;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -135,10 +127,10 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		};
 
 		final QuickAction fileReadyQAction = new QuickAction(this);
-		fileReadyQAction.addActionItem(new ActionItem(PLAY, getString(R.string.dlgManageSrcPlay), getResources().getDrawable(R.mipmap.ic_media_play)));
-		fileReadyQAction.addActionItem(new ActionItem(UPDATE, getString(R.string.dlgManageSrcUpdate), getResources().getDrawable(R.mipmap.ic_update)));
-		fileReadyQAction.addActionItem(new ActionItem(DELETE, getString(R.string.dlgManageSrcDel), getResources().getDrawable(R.mipmap.ic_delete)));
-		fileReadyQAction.addActionItem(new ActionItem(CANCEL, getString(R.string.dlgCancel), getResources().getDrawable(R.mipmap.ic_return)));
+		fileReadyQAction.addActionItem(new ActionItem(PLAY, getString(R.string.dlgManageSrcPlay), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_media_play)));
+		fileReadyQAction.addActionItem(new ActionItem(UPDATE, getString(R.string.dlgManageSrcUpdate), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_update)));
+		fileReadyQAction.addActionItem(new ActionItem(DELETE, getString(R.string.dlgManageSrcDel), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_delete)));
+		fileReadyQAction.addActionItem(new ActionItem(CANCEL, getString(R.string.dlgCancel), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_return)));
 	
 		fileReadyQAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
 			@Override
@@ -181,8 +173,8 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		});
 
 		final QuickAction fileNotReadyQAction = new QuickAction(this);
-		fileNotReadyQAction.addActionItem(new ActionItem(DOWNLOAD, getString(R.string.dlgManageSrcDL), getResources().getDrawable(R.mipmap.ic_download)));
-		fileNotReadyQAction.addActionItem(new ActionItem(CANCEL, getString(R.string.dlgCancel), getResources().getDrawable(R.mipmap.ic_return)));
+		fileNotReadyQAction.addActionItem(new ActionItem(DOWNLOAD, getString(R.string.dlgManageSrcDL), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_download)));
+		fileNotReadyQAction.addActionItem(new ActionItem(CANCEL, getString(R.string.dlgCancel), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_return)));
 		fileNotReadyQAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
 			@Override
 			public void onItemClick(QuickAction quickAction, int pos, int actionId) {
@@ -197,7 +189,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 		final QuickAction downloadAllRemoteSelect = new QuickAction(this);
 		for(int i=0;i<Util.getRemoteSource(this).length;i++)
-			downloadAllRemoteSelect.addActionItem(new ActionItem(i, Util.getRemoteSource(this)[i].getName(), getResources().getDrawable(R.mipmap.ic_global_lamrim)));
+			downloadAllRemoteSelect.addActionItem(new ActionItem(i, Util.getRemoteSource(this)[i].getName(), ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.mipmap.ic_global_lamrim)));
 
 		downloadAllRemoteSelect.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
 			@Override
@@ -208,12 +200,12 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			}});
 
 
-		String infos[]=getResources().getStringArray(R.array.desc);
+		String[] infos =getResources().getStringArray(R.array.desc);
 		descs=new String[infos.length];
 		subjects=new String[infos.length];
 		rangeDescs=new String[infos.length];
 		for(int i=0;i<infos.length;i++){
-	//		Log.d(getClass().getName(),"Desc: "+infos[i]);
+	//		Crashlytics.log(Log.DEBUG, logTag,"Desc: "+infos[i]);
 			String[] sep=infos[i].split("-");
 			descs[i]=sep[0];
 			if(sep.length>1)subjects[i]=sep[1];
@@ -237,15 +229,15 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		speechList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-				Log.d("SpeechMenuActivity","User click position "+position);
+				Crashlytics.log(Log.DEBUG, logTag,"User click position "+position);
 				if(fireLock())return;
 
 				if(fsm.isFilesReady(position)){
-					Log.d("SpeechMenuActivity","File exist, return play.");
+					Crashlytics.log(Log.DEBUG, logTag,"File exist, return play.");
 					resultAndPlay(position);
 				}
 				else {
-					Log.d("SpeechMenuActivity","File not exist, start download.");
+					Crashlytics.log(Log.DEBUG, logTag,"File not exist, start download.");
 					downloadSrc(position);
 				}
 				//AnalyticsApplication.sendEvent("ui_action", "SpeechMenuActivity", "select_item_"+SpeechData.getSubtitleName(position));
@@ -322,7 +314,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		
 		int[] resource =b.getIntArray("index");
 		if(resource == null || resource.length<=0){
-			Crashlytics.log(Log.ERROR, logTag, "Start SpeechMenuActivity with download command, but no media index extras, skip download.");
+			Crashlytics.log(Log.DEBUG, logTag, "Start SpeechMenuActivity with download command, but no media index extras, skip download.");
 			return;
 		}
 		downloadSrc(resource);
@@ -381,7 +373,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 		String menuStr=item.getTitle().toString();
 		if(menuStr.startsWith(getString(R.string.reloadLastState))){
-			Log.d(getClass().getName(),"User click reload last state button.");
+			Crashlytics.log(Log.DEBUG, logTag,"User click reload last state button.");
 			Intent playWindow = new Intent();
 			playWindow.putExtra("reloadLastState", true);
 			setResult(Activity.RESULT_OK, playWindow);
@@ -392,7 +384,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	}
 	
 	private void resultAndPlay(int position){
-		Log.d(getClass().getName(),"Speech menu "+position+"th item clicked.");
+		Crashlytics.log(Log.DEBUG, logTag,"Speech menu "+position+"th item clicked.");
 		Intent playWindow = new Intent();
 		playWindow.putExtra("index", position);
 		setResult(Activity.RESULT_OK, playWindow);
@@ -427,7 +419,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 	// 從頭掃描一次確認音檔是否存在
 	private void refreshFlags(final int start,final int end,final boolean isRefreshView){
-		Log.d(getClass().getName(), "Refresh flags: start="+start+", end="+end);
+		Crashlytics.log(Log.DEBUG, logTag, "Refresh flags: start="+start+", end="+end);
 		Thread t=new Thread(new Runnable(){
 			@Override
 			public void run() {
@@ -459,7 +451,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	}
 	
 	private void downloadSrc(final int... index){
-		Log.d("SpeechMenuActivity", "downloadSrc been call.");
+		Crashlytics.log(Log.DEBUG, logTag, "downloadSrc been call.");
 		for(int i=0;i<index.length;i++){
 			File mediaFile=fsm.getLocalMediaFile(index[i]);
 		
@@ -490,7 +482,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	public void checkNetAccessPermission(final Runnable task){
 		boolean isShowNetAccessWarn=runtime.getBoolean(getString(R.string.isShowNetAccessWarn), true);
 		boolean isAllowAccessNet=runtime.getBoolean(getString(R.string.isAllowNetAccess), false);
-		Log.d(this.getClass().getName(),"ShowNetAccessWarn: "+isShowNetAccessWarn+", isAllowNetAccess: "+isAllowAccessNet);
+		Crashlytics.log(Log.DEBUG,this.getClass().getName(),"ShowNetAccessWarn: "+isShowNetAccessWarn+", isAllowNetAccess: "+isAllowAccessNet);
 		if(isShowNetAccessWarn ||(!isShowNetAccessWarn && !isAllowAccessNet)){
 			rootView.post(new Runnable() {
 				public void run() {
@@ -520,7 +512,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		builder.setMessage(getString(R.string.dlgNetAccessMsg));
 		builder.setPositiveButton(getString(R.string.dlgAllow), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				Log.d(getClass().getName(),"Check box check status: "+dontShowAgain.isChecked());
+				Crashlytics.log(Log.DEBUG, logTag,"Check box check status: "+dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isShowNetAccessWarn), !dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isAllowNetAccess), true);
 				editor.commit();
@@ -532,7 +524,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		});
 		builder.setNegativeButton(getString(R.string.dlgDisallow), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				Log.d(getClass().getName(),"Check box check status: "+dontShowAgain.isChecked());
+				Crashlytics.log(Log.DEBUG, logTag,"Check box check status: "+dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isShowNetAccessWarn), !dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isAllowNetAccess), false);
 				editor.commit();
@@ -579,14 +571,14 @@ public class SpeechMenuActivity extends AppCompatActivity {
 						NumberPicker np = (NumberPicker) v;
 						count = np.getValue();
 
-						Log.d(getClass().getName(),	"Start download all service with thread count "	+ count);
+						Crashlytics.log(Log.DEBUG, logTag,	"Start download all service with thread count "	+ count);
 
 						try{
 							dialog.dismiss();
 						}catch(Exception e){e.printStackTrace();}
 						Intent intent = new Intent(SpeechMenuActivity.this,	DownloadAllService.class);
 						intent.putExtra("threadCount", count);
-						Log.d(getClass().getName(),	"Start download all service.");
+						Crashlytics.log(Log.DEBUG, logTag,	"Start download all service.");
 						startService(intent);
 //						if (wakeLock.isHeld())wakeLock.release();
 					}
@@ -633,14 +625,14 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	
 	private boolean fireLock(){
 		if(fireLockKey){
-			Log.d(getClass().getName(),"Fire locked");
+			Crashlytics.log(Log.DEBUG, logTag,"Fire locked");
 			return true;
 		}
 		fireLockKey=true;
 		synchronized(fireLocker){
 			fireLocker.notify();
 		}
-		Log.d(getClass().getName(),"Fire released, lock it!");
+		Crashlytics.log(Log.DEBUG, logTag,"Fire released, lock it!");
 		return false;
 	}
 	
@@ -656,7 +648,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {e.printStackTrace();}
-					Log.d(getClass().getName(),"Fire locker release the lock.");
+					Crashlytics.log(Log.DEBUG, logTag,"Fire locker release the lock.");
 					fireLockKey=false;
 
 			}
@@ -687,7 +679,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 						public void onClick(View arg0) {
 							synchronized(btnDownloadAll){
 								Intent intent = new Intent(SpeechMenuActivity.this, DownloadAllService.class);
-								Log.d(getClass().getName(),"Stop download all service.");
+								Crashlytics.log(Log.DEBUG, logTag,"Stop download all service.");
 								stopService(intent);
 								//NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 								//mNotificationManager.cancel(DownloadAllService.notificationId);
@@ -718,7 +710,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		public void onReceive(Context context, Intent intent) {
 			String action=intent.getStringExtra("action");
 			if(action.equalsIgnoreCase("start") || action.equalsIgnoreCase("stop")){
-				Log.d("ServiceReceiver", "Receive broadcast message: service "+action);
+				Crashlytics.log(Log.DEBUG,"ServiceReceiver", "Receive broadcast message: service "+action);
 				updateDownloadAllBtn();
 			}
 			else if(action.equalsIgnoreCase("download")){
@@ -729,13 +721,13 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				}
 				
 				boolean isSuccess=intent.getBooleanExtra("isSuccess", false);
-				Log.d("SpeechMenuActivity","broadcast receive index "+index+" download "+isSuccess);
+				Crashlytics.log(Log.DEBUG, logTag,"broadcast receive index "+index+" download "+isSuccess);
 				
 				/* It should update the background of item of speechList, but I havn't not find a good way to do it.*/
 				if(isSuccess)updateUi(index, false);
 			}
 			else if(action.equalsIgnoreCase("terminate")){
-				Log.d("ServiceReceiver", "Receive broadcast message: service "+action);
+				Crashlytics.log(Log.DEBUG,"ServiceReceiver", "Receive broadcast message: service "+action);
 				buttonUpdater.cancel();
 				updateDownloadAllBtn();
 			}
@@ -757,12 +749,12 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				if(pd.isShowing())pd.dismiss();
 				
 				if(downloader!=null && !downloader.isCancelled()){
-					Log.d(getClass().getName(),"The download procedure been cancel.");
+					Crashlytics.log(Log.DEBUG, logTag,"The download procedure been cancel.");
 					downloader.stopRun();
 //					if(wakeLock.isHeld())wakeLock.release();
 				}
 				if(isCallFromDownloadCmd){
-					Log.d(getClass().getName(),"The download is start by download command, return caller activity now.");
+					Crashlytics.log(Log.DEBUG, logTag,"The download is start by download command, return caller activity now.");
 					isCallFromDownloadCmd=false;
 					setResult(RESULT_CANCELED);
 					buttonUpdater.cancel();
@@ -776,7 +768,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	*/
 	
 	private AlertDialog getDownloadAgainDialog(final int ... index){
-		Log.d(getClass().getName(), "There is download fail, show download again dialog.");
+		Crashlytics.log(Log.DEBUG, logTag, "There is download fail, show download again dialog.");
 		String msg=String.format(getString(R.string.dlgMsgDlNotComplete), SpeechData.getNameId(index[0]));
 		final AlertDialog.Builder dialog = new AlertDialog.Builder(SpeechMenuActivity.this);
 		dialog.setTitle(msg); 
@@ -837,7 +829,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 			while (!cancelled && System.currentTimeMillis()< activeTime) {
 				synchronized (btnDownloadAll) {
-					Log.d(getClass().getName(), "Button updater awake");
+					Crashlytics.log(Log.DEBUG, logTag, "Button updater awake");
 					updateDownloadAllBtn();
 
 					try {
@@ -847,7 +839,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 					}
 				}
 			}
-			Log.d(getClass().getName(), "Button updater terminate");
+			Crashlytics.log(Log.DEBUG, logTag, "Button updater terminate");
 			return;
 		}
 	}
@@ -866,21 +858,21 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		public View getView(final int position, View convertView, ViewGroup parent) {
 			View row = convertView;
 			if (row == null) {
-//				Log.d(getClass().getName(), "row=null, construct it.");
+//				Crashlytics.log(Log.DEBUG, logTag, "row=null, construct it.");
 				LayoutInflater inflater = getLayoutInflater();
 				row = inflater.inflate(R.layout.speech_row, parent, false);
 			}
 
-//			Log.d(getClass().getName(), "Set "+SpeechData.getNameId(position)+": is speech exist: "+speechFlags[position]+", is subtitle exist: "+subtitleFlags[position]);
+//			Crashlytics.log(Log.DEBUG, logTag, "Set "+SpeechData.getNameId(position)+": is speech exist: "+speechFlags[position]+", is subtitle exist: "+subtitleFlags[position]);
 			TextView title = (TextView) row.findViewById(R.id.title);
 			TextView subject = (TextView) row.findViewById(R.id.subject);
 			TextView speechDesc = (TextView) row.findViewById(R.id.speechDesc);
 			TextView rangeDesc = (TextView) row.findViewById(R.id.rangeDesc);
 
 			if(speechFlags[position])
-				ApiLevelAdaptor.setBackground(row,getResources().getDrawable(R.drawable.speech_menu_item_e));
+				ApiLevelAdaptor.setBackground(row, ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.drawable.speech_menu_item_e));
 			else
-				ApiLevelAdaptor.setBackground(row,getResources().getDrawable(R.drawable.speech_menu_item_d));
+				ApiLevelAdaptor.setBackground(row, ApiLevelAdaptor.getDrawable(SpeechMenuActivity.this, R.drawable.speech_menu_item_d));
 
 			title.setText(SpeechData.getNameId(position));
 			subject.setText(subjects[position]);
@@ -916,7 +908,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				try{
 					mediaExist=mediaFile.exists();
 				}catch(NullPointerException npe){
-					Log.d(getClass().getName(),"The storage media has not usable, skip.");
+					Crashlytics.log(Log.DEBUG, logTag,"The storage media has not usable, skip.");
 					Util.showErrorToast(SpeechMenuActivity.this, getString(R.string.errStorageNotReady));
 					Crashlytics.log(Log.DEBUG, logTag, "The storage media has not usable, skip.");
 					Crashlytics.logException(npe);
@@ -925,8 +917,8 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				}
 				
 				if(!mediaExist) {
-					showProgDialog(i);
-					Log.d(getClass().getName(),"*********** Download file ***********");
+					showProgDialog(tasks[i]);
+					Crashlytics.log(Log.DEBUG, logTag,"*********** Download file ***********");
 					mediaExist = HttpDownloader.download(SpeechMenuActivity.this,rs.getMediaFileAddress(tasks[i]), mediaFile.getAbsolutePath(), dpListener);
 					dismissProgDialog();
 				}
@@ -947,7 +939,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				return;
 			}
 
-			Log.d("SpeechMenuActivity","The download has failure, show download again dialog.");
+			Crashlytics.log(Log.DEBUG, logTag,"The download has failure, show download again dialog.");
 			if(!isCallFromDownloadCmd)
 				rootView.post(new Runnable(){
 					@Override
@@ -965,17 +957,16 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		}
 
 		AlertDialog progDialog=null;
-		private void showProgDialog(final int mediaIndex){
+		private void showProgDialog(final int targetIndex){
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-
+					Crashlytics.log(Log.DEBUG, logTag,"Show single download dialog for "+SpeechData.getNameId(targetIndex));
 					downloadProg=new ProgressBar(SpeechMenuActivity.this,null, android.R.attr.progressBarStyleHorizontal); // The view must recreate or [The specified child already has a parent.] must happen.
 					progDialog = new AlertDialog.Builder(SpeechMenuActivity.this)
 							.setTitle(getString(R.string.dlgResDownload))
-							.setMessage(String.format(getString(R.string.dlgDescDownloading),SpeechData.getNameId(mediaIndex), getString(R.string.typeAudio)))
+							.setMessage(String.format(getString(R.string.dlgDescDownloading),SpeechData.getNameId(targetIndex), getString(R.string.typeAudio)))
 							.setView(downloadProg)
-
 							.setNegativeButton(getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int whichButton) {
 									HttpDownloader.stopRun();
@@ -983,6 +974,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 								}
 							})
 							.create();
+
 					progDialog.show();
 				}
 			});
@@ -992,7 +984,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					Log.d(getClass().getName(),"*********** Dismiss damn progress bar ***********");
+					Crashlytics.log(Log.DEBUG, logTag,"*********** Dismiss damn progress bar ***********");
 					if(progDialog.isShowing())
 						progDialog.dismiss();
 				}
@@ -1001,7 +993,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		/*
 		private boolean download(String url, String outputPath, final int mediaIndex,	final int type) {
 			pd.setProgress(0);
-			Log.d(getClass().getName(), "Download file from " + url);
+			Crashlytics.log(Log.DEBUG, logTag, "Download file from " + url);
 			File tmpFile = new File(outputPath + getString(R.string.downloadTmpPostfix));
 			long startTime = System.currentTimeMillis(), respWaitStartTime;
 
@@ -1015,7 +1007,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			HttpResponse response = null;
 			int respCode = -1;
 			if (isCancelled) {
-				Log.d(getClass().getName(),
+				Crashlytics.log(Log.DEBUG, logTag,
 						"User canceled, download procedure skip!");
 				return false;
 			}
@@ -1053,7 +1045,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 			if (isCancelled) {
 				httpclient.getConnectionManager().shutdown();
-				Log.d(getClass().getName(),
+				Crashlytics.log(Log.DEBUG, logTag,
 						"User canceled, download procedure skip!");
 				return false;
 			}
@@ -1081,7 +1073,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			}
 
 			if (isCancelled) {
-				Log.d(getClass().getName(),
+				Crashlytics.log(Log.DEBUG, logTag,
 						"User canceled, download procedure skip!");
 				try {
 					is.close();
@@ -1100,7 +1092,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			try {
 				fos = new FileOutputStream(tmpFile);
 			} catch (FileNotFoundException e1) {
-				Log.d(getClass().getName(),
+				Crashlytics.log(Log.DEBUG, logTag,
 						"File Not Found Exception happen while create output temp file ["
 								+ tmpFile.getName() + "] !");
 				httpclient.getConnectionManager().shutdown();
@@ -1127,7 +1119,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 					e.printStackTrace();
 				}
 				tmpFile.delete();
-				Log.d(getClass().getName(),
+				Crashlytics.log(Log.DEBUG, logTag,
 						"User canceled, download procedure skip!");
 				return false;
 			}
@@ -1147,7 +1139,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 			try {
 				byte[] buf = new byte[bufLen];
-				Log.d(getClass().getName(), Thread.currentThread().getName()
+				Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName()
 						+ ": Start read stream from remote site, is="
 						+ ((is == null) ? "NULL" : "exist") + ", buf="
 						+ ((buf == null) ? "NULL" : "exist"));
@@ -1171,7 +1163,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 							e.printStackTrace();
 						}
 						tmpFile.delete();
-						Log.d(getClass().getName(),
+						Crashlytics.log(Log.DEBUG, logTag,
 								"User canceled, download procedure skip!");
 						return false;
 					}
@@ -1193,7 +1185,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				}
 				tmpFile.delete();
 				e.printStackTrace();
-				Log.d(getClass().getName(), Thread.currentThread().getName()
+				Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName()
 						+ ": IOException happen while download media.");
 				return false;
 			}
@@ -1207,7 +1199,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			// rename the protected file name to correct file name
 			tmpFile.renameTo(new File(outputPath));
 			httpclient.getConnectionManager().shutdown();
-			Log.d(getClass().getName(), Thread.currentThread().getName() + ": Download finish, return true.");
+			Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName() + ": Download finish, return true.");
 			return true;
 		}
 		*/

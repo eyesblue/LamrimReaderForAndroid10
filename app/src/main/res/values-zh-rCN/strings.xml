@@ -123,9 +123,9 @@
     <string name="version">版本</string>
     <string name="resNum">版号</string>
     <string name="OSver">系统版本</string>
-    <string name="aboutMsg"></string>
+    <string name="locale">位置</string>
+    <string name="aboutMsg">　　为了跟上安卓系统的更新，新的广论App也被迫放弃对旧版本的支援，若您的装置是旧版的，您可以到「计画网页」寻找旧版本的广论App，末学会把上一个世代最后的稳定版本放在网站供大家下载安装。 </string>
     <string name="contactAuther">联繫作者</string>
-    <string name="contectFmt"><a href="mailto:eyesblue@eyes-blue.com?subject=order list;body=\n\n\n\n%1$s: %2$s, %3$s: %4$d\n%5$s: %6$s">%7$s：%8$s</a></string>
     <string name="web">网页</string>
     <string name="projectWebText">计画网页</string>
     <string name="projectWebUrl">http://lamrimreader.eyes-blue.com/</string>

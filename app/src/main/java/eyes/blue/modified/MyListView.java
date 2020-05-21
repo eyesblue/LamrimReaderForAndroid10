@@ -25,6 +25,7 @@ import com.crashlytics.android.Crashlytics;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import eyes.blue.ApiLevelAdaptor;
 import eyes.blue.R;
 import eyes.blue.TheoryData;
 import eyes.blue.TheoryPageView;
@@ -667,7 +668,6 @@ public class MyListView extends ListView {
 			super(context, resource, objects);
 		}
 		
-		@SuppressLint("NewApi")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View row = convertView;
@@ -690,11 +690,8 @@ public class MyListView extends ListView {
 					textColor= R.color.lightTheoryTextColor;
 				}
 
-				if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) 
-					row.setBackgroundDrawable(getResources().getDrawable(background));
-				else 
-					row.setBackground(getResources().getDrawable(background));
-				pNum.setTextColor(context.getResources().getColor(textColor));
+				row.setBackground(ApiLevelAdaptor.getDrawable(context, background));
+				pNum.setTextColor(ApiLevelAdaptor.getColor(context, textColor));
 				pNum.setTypeface(Util.getFont(context, runtime));
 			}
 

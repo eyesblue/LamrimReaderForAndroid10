@@ -267,7 +267,7 @@ public class DownloadAllService extends IntentService {
 		
 		private void runTask(){
 			
-	    	String locale = DownloadAllService.this.getResources().getConfiguration().locale.getCountry();
+	    	//String locale = DownloadAllService.this.getResources().getConfiguration().locale.getCountry();
 	    	RemoteSource rs = Util.getRemoteSource(DownloadAllService.this)[0];
 
 	    	int downloadingIndex=-1;

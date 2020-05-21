@@ -23,6 +23,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
+
 import es.disegnator.R;
 
 /**
@@ -94,13 +98,16 @@ public class RobotoCalendarView extends LinearLayout {
 	private void getAttributes(Context context, AttributeSet attrs) {
 		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RobotoCalendarView, 0, 0);
 		//monthTitleColor = typedArray.getColor(R.styleable.RobotoCalendarView_monthTitleColor, R.color.monthTitleColor);
-		monthTitleColor = getResources().getColor(R.color.monthTitleColor);
+		//monthTitleColor = getResources().getColor(R.color.monthTitleColor);
+		monthTitleColor = ContextCompat.getColor(context, R.color.monthTitleColor);
 		monthTitleFont = typedArray.getInt(R.styleable.RobotoCalendarView_monthTitleFont, R.string.monthTitleFont);
 		//dayOfWeekColor = typedArray.getColor(R.styleable.RobotoCalendarView_dayOfWeekColor, R.color.dayOfWeekColor);
-		dayOfWeekColor = getResources().getColor(R.color.dayOfWeekColor);
+		//dayOfWeekColor = getResources().getColor(R.color.dayOfWeekColor);
+		dayOfWeekColor = ContextCompat.getColor(context, R.color.dayOfWeekColor);
 		dayOfWeekFont = typedArray.getInt(R.styleable.RobotoCalendarView_dayOfWeekFont, R.string.dayOfWeekFont);
 		//dayOfMonthColor = typedArray.getColor(R.styleable.RobotoCalendarView_dayOfMonthColor, R.color.dayOfMonthColor);
-		dayOfMonthColor = getResources().getColor(R.color.dayOfMonthColor);
+		//dayOfMonthColor = getResources().getColor(R.color.dayOfMonthColor);
+		dayOfMonthColor = ContextCompat.getColor(context, R.color.dayOfMonthColor);
 		dayOfMonthFont = typedArray.getInt(R.styleable.RobotoCalendarView_dayOfMonthFont, R.string.dayOfMonthFont);
 		typedArray.recycle();
 	}
@@ -150,7 +157,9 @@ public class RobotoCalendarView extends LinearLayout {
 
 	private void initializeComponentBehavior() {
 		// Initialize calendar for current month
-		Locale locale = context.getResources().getConfiguration().locale;
+		//Locale locale = context.getResources().getConfiguration().locale;
+		Locale locale = getLocale();
+
 		Calendar currentCalendar = Calendar.getInstance(locale);
 		initializeCalendar(currentCalendar);
 	}
@@ -163,7 +172,8 @@ public class RobotoCalendarView extends LinearLayout {
 	private void initializeTitleLayout() {
 		// Apply styles
 		String font = getResources().getString(monthTitleFont);
-		int color = getResources().getColor(monthTitleColor);
+		//int color = getResources().getColor(monthTitleColor);
+		int color = ContextCompat.getColor(context, R.color.monthTitleColor);
 		dateTitle.setTextColor(color);
 
 		String dateText = new DateFormatSymbols(locale).getMonths()[currentCalendar.get(Calendar.MONTH)].toString();
@@ -176,7 +186,8 @@ public class RobotoCalendarView extends LinearLayout {
 
 		// Apply styles
 		String font = getResources().getString(dayOfWeekFont);
-		int color = getResources().getColor(dayOfWeekColor);
+		//int color = getResources().getColor(dayOfWeekColor);
+		int color = ContextCompat.getColor(context, R.color.dayOfWeekColor);
 
 		TextView dayOfWeek;
 		String dayOfTheWeekString;
@@ -200,7 +211,9 @@ public class RobotoCalendarView extends LinearLayout {
 
 		// Apply styles
 		String font = getResources().getString(dayOfMonthFont);
-		int color = getResources().getColor(dayOfMonthColor);
+		//int color = getResources().getColor(dayOfMonthColor);
+		int color = ContextCompat.getColor(context, R.color.dayOfMonthColor);
+
 		TextView dayOfMonthText;
 		ImageView dayOfMonthImage;
 		ViewGroup dayOfMonthContainer;
@@ -375,7 +388,8 @@ public class RobotoCalendarView extends LinearLayout {
 	public void initializeCalendar(Calendar currentCalendar) {
 
 		this.currentCalendar = currentCalendar;
-		locale = context.getResources().getConfiguration().locale;
+		//locale = context.getResources().getConfiguration().locale;
+		Locale locale = getLocale();
 
 		// Set date title
 		initializeTitleLayout();
@@ -391,12 +405,16 @@ public class RobotoCalendarView extends LinearLayout {
 	}
 
 	public void markDayAsCurrentDay(Date currentDate) {
-		Locale locale = context.getResources().getConfiguration().locale;
+		//Locale locale = context.getResources().getConfiguration().locale;
+		Locale locale = getLocale();
+
 		Calendar currentCalendar = Calendar.getInstance(locale);
 		currentCalendar.setTime(currentDate);
 		TextView dayOfMonth = getDayOfMonthText(currentCalendar);
 
-		dayOfMonth.setTextColor(context.getResources().getColor(R.color.currentDayOfMonthColor));
+		//dayOfMonth.setTextColor(context.getResources().getColor(R.color.currentDayOfMonthColor));
+		dayOfMonth.setTextColor(ContextCompat.getColor(context, R.color.currentDayOfMonthColor));
+		;
 	}
 
 	public void markDayAsSelectedDay(Date currentDate) {
@@ -404,7 +422,8 @@ public class RobotoCalendarView extends LinearLayout {
 		// Clear previous marks
 		clearDayOfMonthContainerBackground();
 
-		Locale locale = context.getResources().getConfiguration().locale;
+		//Locale locale = context.getResources().getConfiguration().locale;
+		Locale locale = getLocale();
 		Calendar currentCalendar = Calendar.getInstance(locale);
 		currentCalendar.setTime(currentDate);
 		ViewGroup dayOfMonthContainer = getDayOfMonthContainer(currentCalendar);
@@ -412,7 +431,8 @@ public class RobotoCalendarView extends LinearLayout {
 	}
 
 	public void markDayWithStyle(int style, Date currentDate) {
-		Locale locale = context.getResources().getConfiguration().locale;
+		//Locale locale = context.getResources().getConfiguration().locale;
+		Locale locale = getLocale();
 		Calendar currentCalendar = Calendar.getInstance(locale);
 		currentCalendar.setTime(currentDate);
 		ImageView dayOfMonthImage = getDayOfMonthImage(currentCalendar);
@@ -421,6 +441,14 @@ public class RobotoCalendarView extends LinearLayout {
 		dayOfMonthImage.setVisibility(View.VISIBLE);
 		dayOfMonthImage.setImageDrawable(null);
 		dayOfMonthImage.setBackgroundResource(style);
+	}
+
+	private Locale getLocale(){
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			return getResources().getConfiguration().getLocales().get(0);
+		} else {
+			return getResources().getConfiguration().locale;
+		}
 	}
 
 }

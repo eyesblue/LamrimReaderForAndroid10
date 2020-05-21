@@ -1,5 +1,6 @@
 package eyes.blue;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -8,11 +9,17 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.Html;
+import android.view.Display;
 import android.view.View;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+
+import java.util.Locale;
 
 import static eyes.blue.DownloadAllService.notificationId;
 
@@ -39,7 +46,7 @@ public class ApiLevelAdaptor {
             mNotificationManager.createNotificationChannel(notificationChannel);
 
             // Creates an explicit intent for an Activity in your app
-            ComponentName c=new ComponentName(context, DownloadAllServiceHandler.class);
+            ComponentName c = new ComponentName(context, DownloadAllServiceHandler.class);
             Intent intent = new Intent();
             intent.setComponent(c);
 
@@ -64,15 +71,13 @@ public class ApiLevelAdaptor {
 
 
             mNotificationManager.notify(notificationId, notification);
-        }
-
-        else {
+        } else {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle(title)
                     .setContentText(contentText);
             // Creates an explicit intent for an Activity in your app
-            ComponentName c=new ComponentName(context, DownloadAllServiceHandler.class);
+            ComponentName c = new ComponentName(context, DownloadAllServiceHandler.class);
             Intent intent = new Intent();
             intent.setComponent(c);
 
@@ -97,21 +102,47 @@ public class ApiLevelAdaptor {
         }
     }
 
-    public static void removeNotification(Context context){
+    public static Point getScreenRes(Activity a){
+            Display display = a.getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            return size;
+    }
+
+    public static void removeNotification(Context context) {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.cancel(notificationId);
     }
 
-    public static void setBackground(Context c, View v, int resId){
-        if (Build.VERSION.SDK_INT >= 16)
-            v.setBackground(c.getResources().getDrawable(resId));
-        else
-            v.setBackgroundDrawable(c.getResources().getDrawable(resId));
+
+    public static void setBackground(Context c, View v, int resId) {
+            v.setBackground(getDrawable(c, resId));
     }
-    public static void setBackground(View v, Drawable d){
-        if (Build.VERSION.SDK_INT >= 16)
+
+    public static void setBackground(View v, Drawable d) {
             v.setBackground(d);
+    }
+
+    @SuppressWarnings("deprecation")
+    public static android.text.Spanned fromHtml(String str) {
+        if(Build.VERSION.SDK_INT >=24)
+            return Html.fromHtml(str, Html.FROM_HTML_MODE_LEGACY); // for 24 api and more
         else
-            v.setBackgroundDrawable(d);
+            return Html.fromHtml(str); // or for older api
+    }
+
+    @SuppressWarnings("deprecation")
+    public static Locale getLocale(Context c){
+        if(Build.VERSION.SDK_INT >= 24)
+            return c.getResources().getConfiguration().getLocales().get(0);
+        else return c.getResources().getConfiguration().locale;
+    }
+
+    public static int getColor(Context context, int resId){
+        return ContextCompat.getColor(context, resId);
+    }
+
+    public static Drawable getDrawable(Context context, int resId){
+        return ContextCompat.getDrawable(context, resId);
     }
 }

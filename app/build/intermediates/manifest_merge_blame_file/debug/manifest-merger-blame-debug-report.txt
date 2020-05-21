@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="eyes.blue"
-4    android:versionCode="208"
-5    android:versionName="1.6.1" >
+4    android:versionCode="211"
+5    android:versionName="1.6.5" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="16"
@@ -45,18 +45,18 @@
 24
 25    <!-- Required by older versions of Google Play services to create IID tokens -->
 26    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-26-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:26:5-82
-26-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:26:22-79
+26-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:26:5-82
+26-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:26:22-79
 27    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-27-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:26:5-110
-27-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:26:22-107
+27-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:26:5-110
+27-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:26:22-107
 28
 29    <application
 29-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:19:5-135:19
 30        android:allowBackup="true"
 30-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:20:9-35
 31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-31-->[androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6335ff40473a1ed71755b6e711fe9aa4\core-1.2.0\AndroidManifest.xml:24:18-86
+31-->[androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cde5758e037d484eeb5705a5ca9f8b12\core-1.2.0\AndroidManifest.xml:24:18-86
 32        android:debuggable="true"
 33        android:icon="@mipmap/ic_launcher"
 33-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:21:9-43
@@ -276,181 +276,179 @@
 142-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:134:13-69
 143
 144        <service
-144-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a4024aad60db0ebc4acb8a3c1972d98\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:13:9-19:19
+144-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:13:9-19:19
 145            android:name="com.google.firebase.components.ComponentDiscoveryService"
-145-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a4024aad60db0ebc4acb8a3c1972d98\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:14:13-84
+145-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:14:13-84
 146            android:directBootAware="true"
-146-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a36d576a5148aa194d180e39c0389ee7\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+146-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
 147            android:exported="false" >
-147-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a4024aad60db0ebc4acb8a3c1972d98\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:15:13-37
+147-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:15:13-37
 148            <meta-data
-148-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a4024aad60db0ebc4acb8a3c1972d98\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:16:13-18:85
+148-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:16:13-18:85
 149                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
-149-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a4024aad60db0ebc4acb8a3c1972d98\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:17:17-115
+149-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:17:17-115
 150                android:value="com.google.firebase.components.ComponentRegistrar" />
-150-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a4024aad60db0ebc4acb8a3c1972d98\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:18:17-82
+150-->[com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:18:17-82
 151            <meta-data
-151-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:38:13-40:85
+151-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:38:13-40:85
 152                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-152-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:39:17-119
+152-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:39:17-119
 153                android:value="com.google.firebase.components.ComponentRegistrar" />
-153-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:40:17-82
+153-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:40:17-82
 154            <meta-data
-154-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b6254caa65353b866ccd13eef7036365\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:30:13-32:85
-155                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-155-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b6254caa65353b866ccd13eef7036365\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:31:17-139
+154-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
+155                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+155-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
 156                android:value="com.google.firebase.components.ComponentRegistrar" />
-156-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b6254caa65353b866ccd13eef7036365\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:32:17-82
+156-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
 157            <meta-data
-157-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:32:13-34:85
-158                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-158-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:33:17-96
+157-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:30:13-32:85
+158                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+158-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:31:17-139
 159                android:value="com.google.firebase.components.ComponentRegistrar" />
-159-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:34:17-82
+159-->[com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:32:17-82
 160            <meta-data
-160-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ed82e92239138c266d933a0d76446f03\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
-161                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-161-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ed82e92239138c266d933a0d76446f03\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
+160-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:32:13-34:85
+161                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+161-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:33:17-96
 162                android:value="com.google.firebase.components.ComponentRegistrar" />
-162-->[com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ed82e92239138c266d933a0d76446f03\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
+162-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:34:17-82
 163            <meta-data
-163-->[com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cc430ff8f6b6c089f0291f24001595ec\jetified-firebase-installations-16.3.0\AndroidManifest.xml:17:13-19:85
+163-->[com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:17:13-19:85
 164                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-164-->[com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cc430ff8f6b6c089f0291f24001595ec\jetified-firebase-installations-16.3.0\AndroidManifest.xml:18:17-127
+164-->[com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:18:17-127
 165                android:value="com.google.firebase.components.ComponentRegistrar" />
-165-->[com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cc430ff8f6b6c089f0291f24001595ec\jetified-firebase-installations-16.3.0\AndroidManifest.xml:19:17-82
+165-->[com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:19:17-82
 166        </service>
 167
 168        <provider
-168-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d5da78b679a9cb61fe613a42583a3d01\jetified-crashlytics-2.10.1\AndroidManifest.xml:19:9-23:38
+168-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:19:9-23:38
 169            android:name="com.crashlytics.android.CrashlyticsInitProvider"
-169-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d5da78b679a9cb61fe613a42583a3d01\jetified-crashlytics-2.10.1\AndroidManifest.xml:20:13-75
+169-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:20:13-75
 170            android:authorities="eyes.blue.crashlyticsinitprovider"
-170-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d5da78b679a9cb61fe613a42583a3d01\jetified-crashlytics-2.10.1\AndroidManifest.xml:21:13-75
+170-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:21:13-75
 171            android:exported="false"
-171-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d5da78b679a9cb61fe613a42583a3d01\jetified-crashlytics-2.10.1\AndroidManifest.xml:22:13-37
+171-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:22:13-37
 172            android:initOrder="90" />
-172-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d5da78b679a9cb61fe613a42583a3d01\jetified-crashlytics-2.10.1\AndroidManifest.xml:23:13-35
+172-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:23:13-35
 173        <!--
 174             FirebaseMessagingService performs security checks at runtime,
 175             but set to not exported to explicitly avoid allowing another app to call it.
 176        -->
 177        <service
-177-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:28:9-34:19
+177-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:28:9-34:19
 178            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-178-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:29:13-82
+178-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:29:13-82
 179            android:exported="false" >
-179-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:30:13-37
+179-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:30:13-37
 180            <intent-filter android:priority="-500" >
-180-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:31:13-33:29
-180-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:31:28-51
+180-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:31:13-33:29
+180-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:31:28-51
 181                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-181-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:32:17-78
-181-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ffe3927d088d1b99e16be0a1b67ae216\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:32:25-75
+181-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:32:17-78
+181-->[com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:32:25-75
 182            </intent-filter>
 183        </service>
-184
-185        <receiver
-185-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:37:9-44:20
-186            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-186-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:38:13-78
-187            android:exported="true"
-187-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:39:13-36
-188            android:permission="com.google.android.c2dm.permission.SEND" >
-188-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:40:13-73
-189            <intent-filter>
-189-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:41:13-43:29
-190                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-190-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:42:17-81
-190-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\68de243ea02ebc5d9ebaf08fa2a84d6e\jetified-firebase-iid-20.1.7\AndroidManifest.xml:42:25-78
-191            </intent-filter>
-192        </receiver>
-193
-194        <provider
-194-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a36d576a5148aa194d180e39c0389ee7\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
-195            android:name="com.google.firebase.provider.FirebaseInitProvider"
-195-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a36d576a5148aa194d180e39c0389ee7\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
-196            android:authorities="eyes.blue.firebaseinitprovider"
-196-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a36d576a5148aa194d180e39c0389ee7\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
-197            android:exported="false"
-197-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a36d576a5148aa194d180e39c0389ee7\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
-198            android:initOrder="100" />
-198-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a36d576a5148aa194d180e39c0389ee7\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
-199
-200        <activity
-200-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6ab3cd50fbe852a2d9a42371ce3bdef2\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-201            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-201-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6ab3cd50fbe852a2d9a42371ce3bdef2\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-202            android:exported="false"
-202-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6ab3cd50fbe852a2d9a42371ce3bdef2\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-203            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-203-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6ab3cd50fbe852a2d9a42371ce3bdef2\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-204
-205        <receiver
-205-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:29:9-33:20
-206            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-206-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:30:13-85
-207            android:enabled="true"
-207-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:31:13-35
-208            android:exported="false" >
-208-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:32:13-37
-209        </receiver>
-210
-211        <service
-211-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:35:9-38:40
-212            android:name="com.google.android.gms.measurement.AppMeasurementService"
-212-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:36:13-84
-213            android:enabled="true"
-213-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:37:13-35
-214            android:exported="false" />
-214-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:38:13-37
-215        <service
-215-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:39:9-43:72
-216            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-216-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:40:13-87
-217            android:enabled="true"
-217-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:41:13-35
-218            android:exported="false"
-218-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:42:13-37
-219            android:permission="android.permission.BIND_JOB_SERVICE" />
-219-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cf3c5e3b95eaa28b3a3a7fb6e925a687\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:43:13-69
-220
-221        <meta-data
-221-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a26d93204c809aa4f40598e19301774\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-222            android:name="com.google.android.gms.version"
-222-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a26d93204c809aa4f40598e19301774\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-223            android:value="@integer/google_play_services_version" />
-223-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a26d93204c809aa4f40598e19301774\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-224
-225        <service
-225-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f4438abab7956e26d2afd2eb2a2b79e\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:29:9-35:19
-226            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-226-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f4438abab7956e26d2afd2eb2a2b79e\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:30:13-103
-227            android:exported="false" >
-227-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f4438abab7956e26d2afd2eb2a2b79e\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:31:13-37
-228            <meta-data
-228-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f4438abab7956e26d2afd2eb2a2b79e\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:32:13-34:39
-229                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-229-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f4438abab7956e26d2afd2eb2a2b79e\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:33:17-94
-230                android:value="cct" />
-230-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f4438abab7956e26d2afd2eb2a2b79e\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:34:17-36
-231        </service>
-232        <service
-232-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:26:9-30:19
-233            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-233-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:27:13-117
-234            android:exported="false"
-234-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:28:13-37
-235            android:permission="android.permission.BIND_JOB_SERVICE" >
-235-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:29:13-69
-236        </service>
-237
-238        <receiver
-238-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:32:9-34:40
-239            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-239-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:33:13-132
-240            android:exported="false" />
-240-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa1169a7eb8397aa5ceea6163fc964de\jetified-transport-runtime-2.2.1\AndroidManifest.xml:34:13-37
-241    </application>
-242
-243</manifest>
+184        <service
+184-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:29:9-35:19
+185            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+185-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:30:13-103
+186            android:exported="false" >
+186-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:31:13-37
+187            <meta-data
+187-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:32:13-34:39
+188                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+188-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:33:17-94
+189                android:value="cct" />
+189-->[com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:34:17-36
+190        </service>
+191        <service
+191-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:26:9-30:19
+192            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+192-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:27:13-117
+193            android:exported="false"
+193-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:28:13-37
+194            android:permission="android.permission.BIND_JOB_SERVICE" >
+194-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:29:13-69
+195        </service>
+196
+197        <receiver
+197-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:32:9-34:40
+198            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+198-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:33:13-132
+199            android:exported="false" />
+199-->[com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:34:13-37
+200        <receiver
+200-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:37:9-44:20
+201            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+201-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:38:13-78
+202            android:exported="true"
+202-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:39:13-36
+203            android:permission="com.google.android.c2dm.permission.SEND" >
+203-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:40:13-73
+204            <intent-filter>
+204-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:41:13-43:29
+205                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+205-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:42:17-81
+205-->[com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:42:25-78
+206            </intent-filter>
+207        </receiver>
+208
+209        <provider
+209-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+210            android:name="com.google.firebase.provider.FirebaseInitProvider"
+210-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+211            android:authorities="eyes.blue.firebaseinitprovider"
+211-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+212            android:exported="false"
+212-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+213            android:initOrder="100" />
+213-->[com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+214
+215        <activity
+215-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0589b1be8a6eb697c3822f11885bdbe2\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+216            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+216-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0589b1be8a6eb697c3822f11885bdbe2\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+217            android:exported="false"
+217-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0589b1be8a6eb697c3822f11885bdbe2\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+218            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+218-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0589b1be8a6eb697c3822f11885bdbe2\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+219
+220        <receiver
+220-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:29:9-33:20
+221            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+221-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:30:13-85
+222            android:enabled="true"
+222-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:31:13-35
+223            android:exported="false" >
+223-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:32:13-37
+224        </receiver>
+225
+226        <service
+226-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:35:9-38:40
+227            android:name="com.google.android.gms.measurement.AppMeasurementService"
+227-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:36:13-84
+228            android:enabled="true"
+228-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:37:13-35
+229            android:exported="false" />
+229-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:38:13-37
+230        <service
+230-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:39:9-43:72
+231            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+231-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:40:13-87
+232            android:enabled="true"
+232-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:41:13-35
+233            android:exported="false"
+233-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:42:13-37
+234            android:permission="android.permission.BIND_JOB_SERVICE" />
+234-->[com.google.android.gms:play-services-measurement:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4d681870a9e4df95460f290a6d16e6e2\jetified-play-services-measurement-17.4.1\AndroidManifest.xml:43:13-69
+235
+236        <meta-data
+236-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+237            android:name="com.google.android.gms.version"
+237-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+238            android:value="@integer/google_play_services_version" />
+238-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+239    </application>
+240
+241</manifest>

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
@@ -41,7 +42,6 @@ public class FileSysManager {
     Context context = null;
     //        static String[] remoteSite=null;
     static ArrayList<RemoteSource> remoteResources = new ArrayList<RemoteSource>();
-    static DiskSpaceFullListener diskFullListener = null;
 
     DownloadListener downloadListener = null;
     static String srcRoot[] = new String[2];
@@ -521,18 +521,30 @@ public class FileSysManager {
 
     public long getTotalMemory(int locate) {
         if (statFs[locate] == null) return 0;
-        return ((long) statFs[locate].getBlockCount() * (long) statFs[locate].getBlockSize());
+        if(Build.VERSION.SDK_INT >= 18)
+            return (statFs[locate].getBlockCountLong() * statFs[locate].getBlockSizeLong());
+        else
+            return ((long) statFs[locate].getBlockCount() * (long) statFs[locate].getBlockSize());
     }
 
     public long getFreeMemory(int locate) {
         if (statFs[locate] == null) return 0;
-        return ((long) statFs[locate].getAvailableBlocks() * (long) statFs[locate].getBlockSize());
+        //((long) statFs[locate].getAvailableBlocks() * (long) statFs[locate].getBlockSize());
+        if(Build.VERSION.SDK_INT >= 18)
+            return ( statFs[locate].getAvailableBlocksLong() * statFs[locate].getBlockSizeLong());
+        else
+            return ((long) statFs[locate].getAvailableBlocks() * (long) statFs[locate].getBlockSize());
     }
 
     public int getGlobalUsage(int locate) {
         if (statFs[locate] == null) return 0;
         double result = statFs[locate].getAvailableBlocks();
-        result /= statFs[locate].getBlockCount();
+        long account;
+        if(Build.VERSION.SDK_INT >= 18)
+            account=statFs[locate].getBlockCountLong();
+        else
+            account=statFs[locate].getBlockCount();
+        result /= account;
         return (int) (result * 100);
     }
 
@@ -553,10 +565,6 @@ public class FileSysManager {
 
     public String getSrcRootPath(int dir) {
         return srcRoot[dir];
-    }
-
-    public void setDiskSpaceFullListener(DiskSpaceFullListener dsfl) {
-        this.diskFullListener = dsfl;
     }
 
     public boolean isFilesReady(int id) {
@@ -584,11 +592,5 @@ public class FileSysManager {
         for (int i = 0; i < list.size(); i++)
             ia[i] = list.get(i);
         return ia;
-    }
-
-
-    class DiskSpaceFullListener {
-        public void diskSpaceFull() {
-        }
     }
 }

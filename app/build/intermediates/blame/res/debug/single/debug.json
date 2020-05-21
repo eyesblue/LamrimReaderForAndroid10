@@ -104,10 +104,6 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_book.png"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_view.xml.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\notification_view.xml"
-    },
-    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_file_dialog.xml.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\activity_file_dialog.xml"
     },

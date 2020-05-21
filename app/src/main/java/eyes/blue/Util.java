@@ -662,7 +662,8 @@ public class Util {
 
     public static String simpToTradChar(Context c, String str) {
         // Check is the system is simply
-        String locale = c.getResources().getConfiguration().locale.getCountry();
+        //String locale = c.getResources().getConfiguration().locale.getCountry();
+        String locale = ApiLevelAdaptor.getLocale(c).getCountry();
         if(!locale.contains("CN")) // 非簡體中文系統，不轉換。
             return str;
 
@@ -705,8 +706,8 @@ public class Util {
     }
 
     public static RemoteSource[] getRemoteSource(Context ctx){
-        String locale = ctx.getResources().getConfiguration().locale.getCountry();
-
+        //String locale = ctx.getResources().getConfiguration().locale.getCountry();
+        String locale = ApiLevelAdaptor.getLocale(ctx).getCountry();
         //Util.showInfoToast((Activity)ctx, "Locale: "+locale);
         if(locale.contains("CN")){
             Crashlytics.log(Log.DEBUG, logTag,"**** Downlaod resource from VULTR site ****");

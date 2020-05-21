@@ -123,6 +123,7 @@
     <string name="version">版本</string>
     <string name="resNum">版號</string>
     <string name="OSver">系統版本</string>
+    <string name="locale">位置</string>
     <string name="aboutMsg">　　為了跟上安卓系統的更新，新的廣論App也被迫放棄對舊版本的支援，若您的裝置是舊版的，您可以到「計畫網頁」尋找舊版本的廣論App，末學會把上一個世代最後的穩定版本放在網站供大家下載安裝。</string>
     <string name="contactAuther">聯繫作者</string>
     <string name="web">網頁</string>

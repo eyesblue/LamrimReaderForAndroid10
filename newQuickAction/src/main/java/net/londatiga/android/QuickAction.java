@@ -217,7 +217,8 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		int rootWidth 		= mRootView.getMeasuredWidth();
 		int rootHeight 		= mRootView.getMeasuredHeight();
 
-		int screenWidth 	= mWindowManager.getDefaultDisplay().getWidth();
+		//int screenWidth 	= mWindowManager.getDefaultDisplay().getWidth();
+		int screenWidth 	= mContext.getResources().getDisplayMetrics().widthPixels;
 		//int screenHeight 	= mWindowManager.getDefaultDisplay().getHeight();
 
 		int xPos 			= (screenWidth - rootWidth) / 2;

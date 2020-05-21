@@ -16,6 +16,7 @@ INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimRead
 INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-137:12
 INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-137:12
 MERGED from [com.github.codekidX:storage-chooser:2.0.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\5bdd6cb15adc83afc50e712b063ec44b\jetified-storage-chooser-2.0.4.4\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.preference:preference:1.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\213a6babae075ddfcee9aad7ab7a0fec\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
@@ -27,14 +28,20 @@ MERGED from [com.google.firebase:firebase-analytics:17.4.1] C:\Users\eyesblue\.g
 MERGED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:17:1-44:12
 MERGED from [:colorPickerView] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\library_manifest\release\AndroidManifest.xml:17:1-41:12
 MERGED from [:newQuickAction] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\newQuickAction\build\intermediates\library_manifest\release\AndroidManifest.xml:11:1-46:12
-MERGED from [androidx.recyclerview:recyclerview:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e86d76b29c70d93af1ac750d615c8f55\recyclerview-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17454f838a9a3fb8705ed44ba7344e62\legacy-support-core-ui-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\371bb77d1ddceff13b0d781e901f0e6b\recyclerview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fde258a1cca64e8a69b97028e9a58d0d\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\72ad68c615f403375100cbad36bef856\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30ee9166f4ac829c4fcb264b6d8a2016\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\71d53aca8f993fb5fb3184ac41334e68\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:15:1-34:12
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:17:1-47:12
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:15:1-34:12
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:2:1-23:12
 MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:15:1-39:12
+MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9644f628b050aa5320019ec4d0c7fc82\jetified-firebase-components-16.0.0\AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.firebase:firebase-encoders-json:16.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\393a652966ff1fc8e9dca063cbb43b62\jetified-firebase-encoders-json-16.1.0\AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c63b55ae18e5a06adc5005f2c9136ca5\jetified-firebase-installations-interop-16.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f1b891e3ad28b903839777742f09d394\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0589b1be8a6eb697c3822f11885bdbe2\jetified-play-services-base-17.0.0\AndroidManifest.xml:17:1-29:12
@@ -48,38 +55,33 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.4.1] C:
 MERGED from [com.google.android.gms:play-services-measurement-base:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9cd719cc5c49bbb238198d75ce367d4b\jetified-play-services-measurement-base-17.4.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\373af170b34a51f51fdc476708252189\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\48db89f771a5f9d84ec7bc5d044c4619\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30ee9166f4ac829c4fcb264b6d8a2016\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\71d53aca8f993fb5fb3184ac41334e68\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:15:1-38:12
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:15:1-41:12
-MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9644f628b050aa5320019ec4d0c7fc82\jetified-firebase-components-16.0.0\AndroidManifest.xml:15:1-23:12
-MERGED from [com.google.firebase:firebase-encoders-json:16.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\393a652966ff1fc8e9dca063cbb43b62\jetified-firebase-encoders-json-16.1.0\AndroidManifest.xml:15:1-23:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\695fa9177788bc35a34011974eac8f31\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\305c40cc4b1148a55a403dffea2d2798\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06aea791991adf5c8d8747fd21d9bbaf\loader-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.activity:activity:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f26e158497b23bd99eda5bbacdbfc63\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.2.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6b817adc0b052bf21f81d37c7cc165ce\fragment-1.2.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a818321f413058a91b4df5d81b0b300a\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06fb3a104c0d7b5dffcee459fbc7a002\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7c3429d5170732d6b5868b380731ca77\coordinatorlayout-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\63252567f72885b4f16a857803292314\slidingpanelayout-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\695fa9177788bc35a34011974eac8f31\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7f33e9dfc5192ba19a02eb0e35769335\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\433eb1836660eee6281b535784723d7b\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\da8e59fe326322ee92efa945b9264408\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\305c40cc4b1148a55a403dffea2d2798\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6421d1077a0925abb569387c18bf917b\transition-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fb01f20fb233ab8d65c2c530e02d1545\swiperefreshlayout-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0cf1f0f368e1744497ab80fdcff7b087\asynclayoutinflater-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06aea791991adf5c8d8747fd21d9bbaf\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55878a2f84cfa6ad35907ffde2144a63\jetified-activity-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c5581fd8dbd3f9181d39db0a0c531e59\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e9d4dc834ac8cc6f014815bd7be7e2fe\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cde5758e037d484eeb5705a5ca9f8b12\core-1.2.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c24e7b87b5fb9db73c907d4c21e61780\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.cardview:cardview:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3379d6bd8e68f9134298e1238325fb6c\cardview-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\70c9477eaad5d4a481328c170ef2a259\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\10435fd66f5969321588c2e90872cbc5\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d73b33819ffe36babcbd1e4ee2916736\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f94b615d80f0e121987362b40c4d84d7\jetified-lifecycle-viewmodel-savedstate-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cc16b1b631595953348e5bd9b9d59886\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\93857d522c798caf461530cd7467dbc0\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\caa02e5b7b162bb5c9412cc0885343e5\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b36cca7759f9dcec140a06f8fe49a108\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c4b2b022c300aed4aeef092678a30ad7\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\61b6f31cddc1731726203284acf3431b\lifecycle-runtime-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d73b33819ffe36babcbd1e4ee2916736\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c459bffe056292cd9618e3ba09fde209\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f59a4176bb993832958fee25133cd963\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\8b9076ab1f3f2fa7b7681b6710d6f0bc\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0be88e5c0b07d08c46ee6ad19ce47fb0\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b9cbde7953e62431f596714fea1e27e4\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6c9286bd9d09df9d3947c1695df23de9\jetified-transport-api-2.2.0\AndroidManifest.xml:15:1-22:12
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.7.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4b870ed2ae603252d3f39937eeedad99\jetified-crashlytics-core-2.7.0\AndroidManifest.xml:45:1-56:12
 MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b78c17016b1e7582184a8b60b845a7ad\jetified-beta-1.2.10\AndroidManifest.xml:2:1-13:12
@@ -114,6 +116,8 @@ MERGED from [com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\
 MERGED from [com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:10:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:16:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\40348e94700049f4a479abf3fa41a170\jetified-crashlytics-2.10.1\AndroidManifest.xml:16:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:26:5-67
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:23:5-67
@@ -126,8 +130,6 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:17.4.1] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a4c6a7f05688c3bb2d8b51f6988a3105\jetified-play-services-measurement-impl-17.4.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fa0f5ce43daca77c83586d6a351eea49\jetified-play-services-measurement-sdk-api-17.4.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fa0f5ce43daca77c83586d6a351eea49\jetified-play-services-measurement-sdk-api-17.4.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:26:5-67
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:26:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.7.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4b870ed2ae603252d3f39937eeedad99\jetified-crashlytics-core-2.7.0\AndroidManifest.xml:52:5-67
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.7.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4b870ed2ae603252d3f39937eeedad99\jetified-crashlytics-core-2.7.0\AndroidManifest.xml:52:5-67
 MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b78c17016b1e7582184a8b60b845a7ad\jetified-beta-1.2.10\AndroidManifest.xml:9:5-67
@@ -140,6 +142,10 @@ MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\eyesblue\.gradle\cache
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:9:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:25:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:22:5-79
@@ -152,10 +158,6 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:17.4.1] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-impl:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a4c6a7f05688c3bb2d8b51f6988a3105\jetified-play-services-measurement-impl-17.4.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fa0f5ce43daca77c83586d6a351eea49\jetified-play-services-measurement-sdk-api-17.4.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fa0f5ce43daca77c83586d6a351eea49\jetified-play-services-measurement-sdk-api-17.4.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:25:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:25:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:10:22-76
 uses-permission#android.permission.WAKE_LOCK
@@ -208,12 +210,16 @@ MERGED from [com.google.firebase:firebase-analytics:17.4.1] C:\Users\eyesblue\.g
 MERGED from [com.google.firebase:firebase-analytics:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\5dc952f1cdd4d3ec0eb47d00eca12f7d\jetified-firebase-analytics-17.4.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:22:5-42:19
 MERGED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:22:5-42:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:25:5-39:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:25:5-39:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:28:5-45:19
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:28:5-45:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:13:5-21:19
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:13:5-21:19
 MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:25:5-37:19
@@ -240,10 +246,6 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\User
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\373af170b34a51f51fdc476708252189\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:28:5-36:19
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:25:5-39:19
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:25:5-39:19
 MERGED from [androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cde5758e037d484eeb5705a5ca9f8b12\core-1.2.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cde5758e037d484eeb5705a5ca9f8b12\core-1.2.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c24e7b87b5fb9db73c907d4c21e61780\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
@@ -412,6 +414,8 @@ INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimRead
 INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 MERGED from [com.github.codekidX:storage-chooser:2.0.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\5bdd6cb15adc83afc50e712b063ec44b\jetified-storage-chooser-2.0.4.4\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.codekidX:storage-chooser:2.0.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\5bdd6cb15adc83afc50e712b063ec44b\jetified-storage-chooser-2.0.4.4\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.preference:preference:1.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\bd3d20d61bc4e8a02001ce8f70a6b2ed\material-1.0.0-beta01\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -434,22 +438,34 @@ MERGED from [:colorPickerView] C:\Users\eyesblue\Dropbox\Android_projects\Lamrim
 MERGED from [:colorPickerView] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\library_manifest\release\AndroidManifest.xml:37:5-39:41
 MERGED from [:newQuickAction] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\newQuickAction\build\intermediates\library_manifest\release\AndroidManifest.xml:42:5-44:41
 MERGED from [:newQuickAction] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\newQuickAction\build\intermediates\library_manifest\release\AndroidManifest.xml:42:5-44:41
-MERGED from [androidx.recyclerview:recyclerview:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e86d76b29c70d93af1ac750d615c8f55\recyclerview-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e86d76b29c70d93af1ac750d615c8f55\recyclerview-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17454f838a9a3fb8705ed44ba7344e62\legacy-support-core-ui-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17454f838a9a3fb8705ed44ba7344e62\legacy-support-core-ui-1.0.0-beta01\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\371bb77d1ddceff13b0d781e901f0e6b\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\371bb77d1ddceff13b0d781e901f0e6b\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fde258a1cca64e8a69b97028e9a58d0d\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fde258a1cca64e8a69b97028e9a58d0d\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\72ad68c615f403375100cbad36bef856\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\72ad68c615f403375100cbad36bef856\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30ee9166f4ac829c4fcb264b6d8a2016\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30ee9166f4ac829c4fcb264b6d8a2016\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\71d53aca8f993fb5fb3184ac41334e68\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\71d53aca8f993fb5fb3184ac41334e68\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9644f628b050aa5320019ec4d0c7fc82\jetified-firebase-components-16.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9644f628b050aa5320019ec4d0c7fc82\jetified-firebase-components-16.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:16.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\393a652966ff1fc8e9dca063cbb43b62\jetified-firebase-encoders-json-16.1.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-encoders-json:16.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\393a652966ff1fc8e9dca063cbb43b62\jetified-firebase-encoders-json-16.1.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c63b55ae18e5a06adc5005f2c9136ca5\jetified-firebase-installations-interop-16.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-installations-interop:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c63b55ae18e5a06adc5005f2c9136ca5\jetified-firebase-installations-interop-16.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f1b891e3ad28b903839777742f09d394\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:5:5-44
@@ -476,56 +492,42 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\User
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\373af170b34a51f51fdc476708252189\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\48db89f771a5f9d84ec7bc5d044c4619\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\48db89f771a5f9d84ec7bc5d044c4619\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30ee9166f4ac829c4fcb264b6d8a2016\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30ee9166f4ac829c4fcb264b6d8a2016\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\71d53aca8f993fb5fb3184ac41334e68\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\71d53aca8f993fb5fb3184ac41334e68\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9644f628b050aa5320019ec4d0c7fc82\jetified-firebase-components-16.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\9644f628b050aa5320019ec4d0c7fc82\jetified-firebase-components-16.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-encoders-json:16.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\393a652966ff1fc8e9dca063cbb43b62\jetified-firebase-encoders-json-16.1.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-encoders-json:16.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\393a652966ff1fc8e9dca063cbb43b62\jetified-firebase-encoders-json-16.1.0\AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\695fa9177788bc35a34011974eac8f31\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\695fa9177788bc35a34011974eac8f31\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\305c40cc4b1148a55a403dffea2d2798\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\305c40cc4b1148a55a403dffea2d2798\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06aea791991adf5c8d8747fd21d9bbaf\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06aea791991adf5c8d8747fd21d9bbaf\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f26e158497b23bd99eda5bbacdbfc63\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2f26e158497b23bd99eda5bbacdbfc63\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6b817adc0b052bf21f81d37c7cc165ce\fragment-1.2.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.2.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6b817adc0b052bf21f81d37c7cc165ce\fragment-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a818321f413058a91b4df5d81b0b300a\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\a818321f413058a91b4df5d81b0b300a\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06fb3a104c0d7b5dffcee459fbc7a002\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06fb3a104c0d7b5dffcee459fbc7a002\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7c3429d5170732d6b5868b380731ca77\coordinatorlayout-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7c3429d5170732d6b5868b380731ca77\coordinatorlayout-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\63252567f72885b4f16a857803292314\slidingpanelayout-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\63252567f72885b4f16a857803292314\slidingpanelayout-1.0.0-beta01\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\695fa9177788bc35a34011974eac8f31\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\695fa9177788bc35a34011974eac8f31\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7f33e9dfc5192ba19a02eb0e35769335\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7f33e9dfc5192ba19a02eb0e35769335\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\433eb1836660eee6281b535784723d7b\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\433eb1836660eee6281b535784723d7b\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\da8e59fe326322ee92efa945b9264408\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\da8e59fe326322ee92efa945b9264408\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\305c40cc4b1148a55a403dffea2d2798\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\305c40cc4b1148a55a403dffea2d2798\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6421d1077a0925abb569387c18bf917b\transition-1.0.0-beta01\AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6421d1077a0925abb569387c18bf917b\transition-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fb01f20fb233ab8d65c2c530e02d1545\swiperefreshlayout-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\fb01f20fb233ab8d65c2c530e02d1545\swiperefreshlayout-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0cf1f0f368e1744497ab80fdcff7b087\asynclayoutinflater-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0cf1f0f368e1744497ab80fdcff7b087\asynclayoutinflater-1.0.0-beta01\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06aea791991adf5c8d8747fd21d9bbaf\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\06aea791991adf5c8d8747fd21d9bbaf\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55878a2f84cfa6ad35907ffde2144a63\jetified-activity-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55878a2f84cfa6ad35907ffde2144a63\jetified-activity-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c5581fd8dbd3f9181d39db0a0c531e59\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c5581fd8dbd3f9181d39db0a0c531e59\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e9d4dc834ac8cc6f014815bd7be7e2fe\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e9d4dc834ac8cc6f014815bd7be7e2fe\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cde5758e037d484eeb5705a5ca9f8b12\core-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cde5758e037d484eeb5705a5ca9f8b12\core-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c24e7b87b5fb9db73c907d4c21e61780\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c24e7b87b5fb9db73c907d4c21e61780\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3379d6bd8e68f9134298e1238325fb6c\cardview-1.0.0-beta01\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3379d6bd8e68f9134298e1238325fb6c\cardview-1.0.0-beta01\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\70c9477eaad5d4a481328c170ef2a259\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\70c9477eaad5d4a481328c170ef2a259\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\10435fd66f5969321588c2e90872cbc5\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\10435fd66f5969321588c2e90872cbc5\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d73b33819ffe36babcbd1e4ee2916736\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d73b33819ffe36babcbd1e4ee2916736\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f94b615d80f0e121987362b40c4d84d7\jetified-lifecycle-viewmodel-savedstate-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f94b615d80f0e121987362b40c4d84d7\jetified-lifecycle-viewmodel-savedstate-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cc16b1b631595953348e5bd9b9d59886\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\cc16b1b631595953348e5bd9b9d59886\lifecycle-viewmodel-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\93857d522c798caf461530cd7467dbc0\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\93857d522c798caf461530cd7467dbc0\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\caa02e5b7b162bb5c9412cc0885343e5\documentfile-1.0.0\AndroidManifest.xml:20:5-44
@@ -534,12 +536,16 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b36cca7759f9dcec140a06f8fe49a108\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c4b2b022c300aed4aeef092678a30ad7\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c4b2b022c300aed4aeef092678a30ad7\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\61b6f31cddc1731726203284acf3431b\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\61b6f31cddc1731726203284acf3431b\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d73b33819ffe36babcbd1e4ee2916736\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d73b33819ffe36babcbd1e4ee2916736\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c459bffe056292cd9618e3ba09fde209\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\c459bffe056292cd9618e3ba09fde209\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f59a4176bb993832958fee25133cd963\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f59a4176bb993832958fee25133cd963\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\8b9076ab1f3f2fa7b7681b6710d6f0bc\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\8b9076ab1f3f2fa7b7681b6710d6f0bc\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0be88e5c0b07d08c46ee6ad19ce47fb0\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\0be88e5c0b07d08c46ee6ad19ce47fb0\lifecycle-livedata-core-2.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b9cbde7953e62431f596714fea1e27e4\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\b9cbde7953e62431f596714fea1e27e4\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6c9286bd9d09df9d3947c1695df23de9\jetified-transport-api-2.2.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\6c9286bd9d09df9d3947c1695df23de9\jetified-transport-api-2.2.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.7.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\4b870ed2ae603252d3f39937eeedad99\jetified-crashlytics-core-2.7.0\AndroidManifest.xml:50:5-43
@@ -572,12 +578,12 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [com.google.firebase:firebase-crashlytics:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d300256546405c1fdfe2d4e5fa1107fc\jetified-firebase-crashlytics-17.0.0\AndroidManifest.xml:13:9-19:19
 MERGED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:35:9-41:19
 MERGED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:35:9-41:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
+MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
-MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:14:9-20:19
 MERGED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:14:9-20:19
 MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e1abfe030fffc677b63e22a657d20d2f\jetified-firebase-common-19.3.0\AndroidManifest.xml:32:9-36:35
@@ -626,6 +632,40 @@ ADDED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gr
 		ADDED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:40:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-messaging:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d1fe5034aa600ea5a3c042801fb658c6\jetified-firebase-messaging-20.1.7\AndroidManifest.xml:39:17-119
+meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
+ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
+service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:36:9-38:40
+MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:36:9-38:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:31:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:30:13-103
+meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
+ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:32:13-34:39
+	android:value
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:34:17-36
+	android:name
+		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:33:17-94
+service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:26:9-30:19
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:28:13-37
+	android:permission
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:29:13-69
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:27:13-117
+receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
+ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:32:9-34:40
+	android:exported
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:33:13-132
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
 ADDED from [com.google.android.gms:play-services-measurement-api:17.4.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3a4c7bed738b63134980a39877d9f890\jetified-play-services-measurement-api-17.4.1\AndroidManifest.xml:30:13-32:85
 	android:value
@@ -656,12 +696,6 @@ action#com.google.android.c2dm.intent.RECEIVE
 ADDED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:42:17-81
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:20.1.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\07368dba6e2247fce9b2a6fa2c832f19\jetified-firebase-iid-20.1.7\AndroidManifest.xml:42:25-78
-meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
-ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:28:13-30:85
-	android:value
-		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:30:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\902427b50a7a2b415c5e37257a4c599e\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:29:17-115
 meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar
 ADDED from [com.google.firebase:firebase-installations:16.3.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e860794e2218d766263e0646fc9cd68a\jetified-firebase-installations-16.3.0\AndroidManifest.xml:17:13-19:85
 	android:value
@@ -724,31 +758,3 @@ ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesb
 		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\d9771dec5a59aace58e3c0f1fe3db313\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
-ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:36:9-38:40
-MERGED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:36:9-38:40
-	android:exported
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:31:13-37
-	android:name
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:30:13-103
-meta-data#backend:com.google.android.datatransport.cct.CctBackendFactory
-ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:32:13-34:39
-	android:value
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:34:17-36
-	android:name
-		ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ca8e16d520a6716e0132a94654bf9fcd\jetified-transport-backend-cct-2.2.1\AndroidManifest.xml:33:17-94
-service#com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService
-ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:26:9-30:19
-	android:exported
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:28:13-37
-	android:permission
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:29:13-69
-	android:name
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:27:13-117
-receiver#com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver
-ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:32:9-34:40
-	android:exported
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:34:13-37
-	android:name
-		ADDED from [com.google.android.datatransport:transport-runtime:2.2.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\3413120397b1c15a6a2bd99cbf0ca1b7\jetified-transport-runtime-2.2.1\AndroidManifest.xml:33:13-132

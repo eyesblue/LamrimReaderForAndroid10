@@ -12,6 +12,8 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener; 
 import android.widget.PopupWindow;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * QuickAction demo activity. 
  * 
@@ -54,9 +56,12 @@ public class Example2Activity extends Activity {
         adapter.setData(data);
         mList.setAdapter(adapter);
         
-        ActionItem addItem 		= new ActionItem(ID_ADD, "Add", getResources().getDrawable(R.drawable.ic_add));
-		ActionItem acceptItem 	= new ActionItem(ID_ACCEPT, "Accept", getResources().getDrawable(R.drawable.ic_accept));
-        ActionItem uploadItem 	= new ActionItem(ID_UPLOAD, "Upload", getResources().getDrawable(R.drawable.ic_up));
+        //ActionItem addItem 		= new ActionItem(ID_ADD, "Add", getResources().getDrawable(R.drawable.ic_add));
+		ActionItem addItem 		= new ActionItem(ID_ADD, "Add", ContextCompat.getDrawable(Example2Activity.this, R.drawable.ic_add));
+        //ActionItem acceptItem 	= new ActionItem(ID_ACCEPT, "Accept", getResources().getDrawable(R.drawable.ic_accept));
+		ActionItem acceptItem 	= new ActionItem(ID_ACCEPT, "Accept", ContextCompat.getDrawable(Example2Activity.this, R.drawable.ic_add));
+        //ActionItem uploadItem 	= new ActionItem(ID_UPLOAD, "Upload", getResources().getDrawable(R.drawable.ic_up));
+		ActionItem uploadItem 	= new ActionItem(ID_UPLOAD, "Upload", ContextCompat.getDrawable(Example2Activity.this, R.drawable.ic_add));
 		
 		final QuickAction mQuickAction 	= new QuickAction(this);
 		

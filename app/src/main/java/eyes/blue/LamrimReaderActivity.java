@@ -285,12 +285,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
             e3.printStackTrace();
         }
 
-        try {
-            getWindowManager().getDefaultDisplay().getSize(screenDim);
-        } catch (NoSuchMethodError ignore) { // Older device
-            screenDim.x = getWindowManager().getDefaultDisplay().getWidth();
-            screenDim.y = getWindowManager().getDefaultDisplay().getHeight();
-        }
+        getWindowManager().getDefaultDisplay().getSize(screenDim);
+
         // The value will get portrait but not landscape value sometimes,
         // exchange it if happen.
         if (screenDim.x < screenDim.y)
@@ -602,7 +598,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             textSize.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //textSize.setBackgroundColor(getResources().getColor(R.color.themeLightColor));
+                    //textSize.setBackgroundColor(ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.themeLightColor));
                     //if (Build.VERSION.SDK_INT >= 16) textSize.setBackground(getResources().getDrawable(R.drawable.speech_menu_item_e));
                     //else textSize.setBackgroundDrawable(getResources().getDrawable(R.drawable.speech_menu_item_e));
                     textSize.setSelected(true);
@@ -785,7 +781,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         });
 
         bookView = (MyListView) findViewById(R.id.bookPageGrid);
-//		bookView.setFadeColor(getResources().getColor(R.color.defSubtitleBGcolor));
+//		bookView.setFadeColor(ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleBGcolor));
 //		int defTheoryTextSize = getResources().getInteger(R.integer.defFontSize);
         final int theoryTextSize = runtime.getInt(getString(R.string.bookFontSizeKey), textDefSize);
         bookView.setTextSize(theoryTextSize);
@@ -1198,7 +1194,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                         try {
                                             // *************** Bug here **************
                                             // Here will happen error while readingModeSEindex array under construct, but access fire by user at above line.
-                                            str.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.subtitleRedingModeHilightColor)),
+                                            str.setSpan(new ForegroundColorSpan(ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.subtitleRedingModeHilightColor)),
                                                     readingModeSEindex[index][0],
                                                     readingModeSEindex[index][1],
                                                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -1242,7 +1238,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                         try {
                                             // *************** Bug here **************
                                             // Here will happen error while readingModeSEindex array under construct, but access fire by user at above line.
-                                            str.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.subtitleRedingModeHilightColor)),
+                                            str.setSpan(new ForegroundColorSpan(ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.subtitleRedingModeHilightColor)),
                                                     readingModeSEindex[index][0], readingModeSEindex[index][1], Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                                             subtitleView.setText(str);
                                         } catch (Exception e) {
@@ -1863,26 +1859,32 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
             case R.id.menuSpeech:
+                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "SELECT_SPEECH");
                 startSpeechMenuActivity();
                 break;
             case R.id.menuRegRec:
+                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "REGION_RECORD");
                 if (mediaIndex == -1)
                     BaseDialogs.showSimpleErrorDialog(this, getString(R.string.dlgNotLoadAudioYet), getString(R.string.dlgHintLoadAudio));
                 else
                     showOnRegionOptionDialog(mediaIndex, mpController.getCurrentPosition());
                 break;
             case R.id.menuRegPlay:
+                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "REGION_PLAY");
                 if (RegionRecord.records.size() > 0) showRecordListPopupMenu();
                 else
                     BaseDialogs.showSimpleErrorDialog(this, getString(R.string.dlgNoRecord), getString(R.string.dlgHintRecord));
                 break;
             case R.id.menuRender:
+                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "RENDER_MODE");
                 switchMainView();
                 break;
             case R.id.menuAbout:
+                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "SHOW_ABOUT");
                 showAboutDialog();
                 break;
             case R.id.menuExit:
+                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "EXIT_APP");
                 onBackPressed();
                 break;
         }
@@ -1911,7 +1913,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         }
          */
 
-        Crashlytics.log(Log.DEBUG, logTag,"**** Into Options selected, select item=" + item.getItemId() + " ****");
+
         return true;
     }
     /*
@@ -2881,7 +2883,6 @@ public class LamrimReaderActivity extends AppCompatActivity {
         final CheckBox searchFrom = (CheckBox) searchView.findViewById(R.id.searchFrom);
         final ListView subtitleSearchList = (ListView) searchView.findViewById(R.id.listView);
         final SearchListener onSearchLamrimListener = new SearchListener(searchLastBtn, searchNextBtn, searchInput);
-        final String locale = getResources().getConfiguration().locale.getCountry();
 
         final Runnable swToSearchLamrim = new Runnable() {
             @Override
@@ -3100,7 +3101,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
         int StatusBarHeight = rectgle.top;
         int contentViewTop = window.findViewById(Window.ID_ANDROID_CONTENT).getTop();
         int titleBarHeight = contentViewTop - StatusBarHeight;
-        int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
+        //int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
+        int screenHeight = ApiLevelAdaptor.getScreenRes(LamrimReaderActivity.this).y;
         int subtitleViewHeight = ((TextView) findViewById(R.id.subtitleView)).getHeight();
         // int listViewHeight=screenHeight-titleBarHeight-subtitleViewHeight;
         int listViewHeight = screenHeight - contentViewTop;
@@ -3407,8 +3409,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
         renderView.setImageResource(R.drawable.master);
         renderView.setScaleType(scaleType[0]);
         renderView.setBackgroundColor(0);
-        subtitleView.setTextColor(getResources().getColor(R.color.defSubtitleFGcolor));
-        subtitleView.setBackgroundColor(getResources().getColor(R.color.defSubtitleBGcolor));
+        subtitleView.setTextColor(ApiLevelAdaptor.getColor(LamrimReaderActivity.this,R.color.defSubtitleFGcolor));
+        subtitleView.setBackgroundColor(ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleBGcolor));
         modeSwBtn.setVisibility(View.VISIBLE);
 
         runtimeEditor.remove(getString(R.string.isShowModeSwBtnKey));
@@ -3455,12 +3457,9 @@ public class LamrimReaderActivity extends AppCompatActivity {
         if (renderView.getVisibility() == View.VISIBLE) {
             renderView.setVisibility(View.GONE);
             bookView.setVisibility(View.VISIBLE);
-            subtitleView.setTextColor(getResources().getColor(R.color.defSubtitleFGcolor));
-            //subtitleView.setBackgroundColor(getResources().getColor(R.color.defSubtitleBGcolor));
-            if (Build.VERSION.SDK_INT >= 16)
-                subtitleView.setBackground(getResources().getDrawable(R.drawable.subtitle_background));
-            else
-                subtitleView.setBackgroundDrawable(getResources().getDrawable(R.drawable.subtitle_background));
+            subtitleView.setTextColor(ApiLevelAdaptor.getColor(LamrimReaderActivity.this,R.color.defSubtitleFGcolor));
+            //subtitleView.setBackgroundColor(ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleBGcolor));
+            subtitleView.setBackground(ApiLevelAdaptor.getDrawable(LamrimReaderActivity.this, R.drawable.subtitle_background));
 
             modeSwBtn.setVisibility(View.VISIBLE);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
@@ -3471,10 +3470,12 @@ public class LamrimReaderActivity extends AppCompatActivity {
             renderView.setVisibility(View.VISIBLE);
             bookView.setVisibility(View.GONE);
             int alpha = runtime.getInt(getString(R.string.subtitleAlphaKey), 255) << 24 & 0xFF000000;
-            int color = runtime.getInt(getString(R.string.subtitleBgColorKey), getResources().getColor(R.color.defSubtitleBGcolor)) & 0x00FFFFFF;
+            //int color = runtime.getInt(getString(R.string.subtitleBgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleBGcolor)) & 0x00FFFFFF;
+            int color = runtime.getInt(getString(R.string.subtitleBgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this,R.color.defSubtitleBGcolor)) & 0x00FFFFFF;
             Crashlytics.log(Log.DEBUG, logTag, "Load alpha of subitlte: " + alpha);
             int bgColor = alpha | color;
-            subtitleView.setTextColor(runtime.getInt(getString(R.string.subtitleFgColorKey), getResources().getColor(R.color.defSubtitleFGcolor)));
+            //subtitleView.setTextColor(runtime.getInt(getString(R.string.subtitleFgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleFGcolor)));
+            subtitleView.setTextColor(runtime.getInt(getString(R.string.subtitleFgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleFGcolor)));
             subtitleView.setBackgroundColor(bgColor);
             boolean isShowModeSwBtn = runtime.getBoolean(getString(R.string.isShowModeSwBtnKey), true);
             if (isShowModeSwBtn) modeSwBtn.setVisibility(View.VISIBLE);
@@ -3733,7 +3734,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 serial.setText(str);
 
                 str = new SpannableString(subtitle.text);
-                int textColor = getResources().getColor(R.color.subtitleRedingModeHilightColor);
+                //int textColor = ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.subtitleRedingModeHilightColor);
+                int textColor = ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.subtitleRedingModeHilightColor);
                 str.setSpan(new ForegroundColorSpan(textColor), index, index + remLen, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
                 text.setText(str);
 

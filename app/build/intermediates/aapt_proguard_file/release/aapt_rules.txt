@@ -4,27 +4,27 @@
 -keep class androidx.core.content.FileProvider { <init>(); }
 # Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:166
 -keep class com.crashlytics.android.CrashlyticsInitProvider { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:223
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:182
 -keep class com.google.android.datatransport.runtime.backends.TransportBackendDiscovery { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:236
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:195
 -keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:230
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:189
 -keep class com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:198
--keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
 # Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:213
+-keep class com.google.android.gms.common.api.GoogleApiActivity { <init>(); }
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:228
 -keep class com.google.android.gms.measurement.AppMeasurementJobService { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:203
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:218
 -keep class com.google.android.gms.measurement.AppMeasurementReceiver { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:209
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:224
 -keep class com.google.android.gms.measurement.AppMeasurementService { <init>(); }
 # Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:142
 -keep class com.google.firebase.components.ComponentDiscoveryService { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:183
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:198
 -keep class com.google.firebase.iid.FirebaseInstanceIdReceiver { <init>(); }
 # Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:175
 -keep class com.google.firebase.messaging.FirebaseMessagingService { <init>(); }
-# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:192
+# Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:207
 -keep class com.google.firebase.provider.FirebaseInitProvider { <init>(); }
 # Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\build\intermediates\merged_manifests\release\AndroidManifest.xml:60
 -keep class eyes.blue.AboutActivity { <init>(); }
@@ -112,6 +112,9 @@
 # Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_search_view.xml:75
 -keep class androidx.appcompat.widget.SearchView$SearchAutoComplete { <init>(...); }
 
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\preference_widget_switch_compat.xml:20
+-keep class androidx.appcompat.widget.SwitchCompat { <init>(...); }
+
 # Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_screen_toolbar.xml:36
 -keep class androidx.appcompat.widget.Toolbar { <init>(...); }
 
@@ -124,6 +127,18 @@
 
 # Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\17019ef468b42ed80399ff4ca839ef9b\appcompat-1.1.0\res\layout\abc_alert_dialog_material.xml:41
 -keep class androidx.core.widget.NestedScrollView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\preference_widget_seekbar.xml:70
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\preference_widget_seekbar_material.xml:77
+-keep class androidx.preference.UnPressableLinearLayout { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\image_frame.xml:33
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\preference.xml:32
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\preference_dropdown.xml:39
+-keep class androidx.preference.internal.PreferenceImageView { <init>(...); }
+
+# Referenced at C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\158f736aec0d423bde148ff1f43f44e3\preference-1.1.1\res\layout\preference_recyclerview.xml:18
+-keep class androidx.recyclerview.widget.RecyclerView { <init>(...); }
 
 # Referenced at C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\res\layout\activity_calendar.xml:29
 -keep class com.disegnator.robotocalendar.RobotoCalendarView { <init>(...); }

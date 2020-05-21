@@ -69,21 +69,21 @@ public class TheoryPageView extends TextView {
 		if (version >= 23) {
 			textColor = ((isDarkTheme)? ContextCompat.getColor(context, R.color.darkTheoryTextColor): ContextCompat.getColor(context, R.color.lightTheoryTextColor));
 			// There is no background color for light theme.
-			//bgColor = ((isDarkTheme)?-1:context.getResources().getColor(R.color.lightTheoryBgColor));
+			//bgColor = ((isDarkTheme)?-1:ApiLevelAdaptor.getColor(context, R.color.lightTheoryBgColor));
 			numTextColor = ((isDarkTheme)? ContextCompat.getColor(context, R.color.darkTheoryNumTextColor): ContextCompat.getColor(context, R.color.lightTheoryNumTextColor));
 			dotTextColor = ((isDarkTheme)? ContextCompat.getColor(context, R.color.darkTheoryDotTextColor): ContextCompat.getColor(context, R.color.lightTheoryDotTextColor));
 			boldColor = ((isDarkTheme)? ContextCompat.getColor(context, R.color.darkTheoryBoldColor): ContextCompat.getColor(context, R.color.lightTheoryBoldColor));
 			highColorLine = ((isDarkTheme)? ContextCompat.getColor(context, R.color.darkTheoryHighColorLine): ContextCompat.getColor(context, R.color.lightTheoryHighColorLine));
 			highColorWord = ((isDarkTheme)? ContextCompat.getColor(context, R.color.darkTheoryHighColorWord): ContextCompat.getColor(context, R.color.lightTheoryHighColorWord));
 		} else {
-			textColor = ((isDarkTheme)?context.getResources().getColor(R.color.darkTheoryTextColor):context.getResources().getColor(R.color.lightTheoryTextColor));
+			textColor = ((isDarkTheme)?ApiLevelAdaptor.getColor(context, R.color.darkTheoryTextColor):ApiLevelAdaptor.getColor(context, R.color.lightTheoryTextColor));
 			// There is no background color for light theme.
-			//bgColor = ((isDarkTheme)?-1:context.getResources().getColor(R.color.lightTheoryBgColor));
-			numTextColor = ((isDarkTheme)?context.getResources().getColor(R.color.darkTheoryNumTextColor):context.getResources().getColor(R.color.lightTheoryNumTextColor));
-			dotTextColor = ((isDarkTheme)?context.getResources().getColor(R.color.darkTheoryDotTextColor):context.getResources().getColor(R.color.lightTheoryDotTextColor));
-			boldColor = ((isDarkTheme)?context.getResources().getColor(R.color.darkTheoryBoldColor):context.getResources().getColor(R.color.lightTheoryBoldColor));
-			highColorLine = ((isDarkTheme)?context.getResources().getColor(R.color.darkTheoryHighColorLine):context.getResources().getColor(R.color.lightTheoryHighColorLine));
-			highColorWord = ((isDarkTheme)?context.getResources().getColor(R.color.darkTheoryHighColorWord):context.getResources().getColor(R.color.lightTheoryHighColorWord));
+			//bgColor = ((isDarkTheme)?-1:ApiLevelAdaptor.getColor(context, R.color.lightTheoryBgColor));
+			numTextColor = ((isDarkTheme)?ApiLevelAdaptor.getColor(context, R.color.darkTheoryNumTextColor):ApiLevelAdaptor.getColor(context, R.color.lightTheoryNumTextColor));
+			dotTextColor = ((isDarkTheme)?ApiLevelAdaptor.getColor(context, R.color.darkTheoryDotTextColor):ApiLevelAdaptor.getColor(context, R.color.lightTheoryDotTextColor));
+			boldColor = ((isDarkTheme)?ApiLevelAdaptor.getColor(context, R.color.darkTheoryBoldColor):ApiLevelAdaptor.getColor(context, R.color.lightTheoryBoldColor));
+			highColorLine = ((isDarkTheme)?ApiLevelAdaptor.getColor(context, R.color.darkTheoryHighColorLine):ApiLevelAdaptor.getColor(context, R.color.lightTheoryHighColorLine));
+			highColorWord = ((isDarkTheme)?ApiLevelAdaptor.getColor(context, R.color.darkTheoryHighColorWord):ApiLevelAdaptor.getColor(context, R.color.lightTheoryHighColorWord));
 		}
 	}
 
