@@ -9,8 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -23,11 +21,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.text.Html;
+import android.os.RemoteException;
+import android.support.v4.media.MediaBrowserCompat;
+import android.support.v4.media.session.MediaControllerCompat;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
@@ -76,11 +76,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.core.view.GestureDetectorCompat;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.crashlytics.android.Crashlytics;
+
+import eyes.blue.bgmusicplayer.MainActivity;
 import io.fabric.sdk.android.Fabric;
 
 import org.json.JSONArray;
@@ -501,9 +502,80 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 }
             });
         }
+
+
         final ImageButton playBgm = (ImageButton) actionBarControlPanel.findViewById(R.id.playBgm);
         if(playBgm!=null)
             playBgm.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "PLAY_SPEECH_BACKGROUND");
+
+                    int position = -1;
+                    if (mediaIndex < 0 || mpController == null || !mpController.isPlayerReady() || (position = mpController.getCurrentPosition()) < 0) {
+                        BaseDialogs.showSimpleErrorDialog(LamrimReaderActivity.this, getString(R.string.errUnknowPlayerState));
+                        return;
+                    }
+
+                    BaseDialogs.showDialog(LamrimReaderActivity.this, getString(R.string.dlgBgPlayMode), getString(R.string.msgBgPlayDesc) + SpeechData.getNameId(mediaIndex) + " - " + Util.getMsToHMS(position, "分", "秒", false), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    saveRuntime();
+                                    //Intent intent = new Intent(LamrimReaderActivity.this, BgPlayerActivity.class);
+
+                                    Intent intent = new Intent(LamrimReaderActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    /*
+                                    Intent intent = new Intent(LamrimReaderActivity.this,BackgroundAudioService.class);
+                                    intent.putExtra("CMD","PLAY");
+                                    intent.putExtra("MEDIA_INDEX",0);
+                                    intent.putExtra("SEEK_TIME",0);
+                                    startService(intent);
+*/
+                                    /*
+                                    // Only for start music ...
+                                    mMediaBrowserCompat = new MediaBrowserCompat(LamrimReaderActivity.this, new ComponentName(LamrimReaderActivity.this, BackgroundAudioService.class), mMediaBrowserCompatConnectionCallback, getIntent().getExtras());
+                                    mMediaBrowserCompat.connect();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            MediaControllerCompat.getMediaController(LamrimReaderActivity.this).getTransportControls().play();
+                                            mCurrentState = STATE_PLAYING;
+                                            mMediaBrowserCompat.disconnect();
+                                            //finish();
+                                        }
+                                    }, 1000);
+                                    */
+                                }
+                            },
+                            new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int val) {
+                            dialog.dismiss();
+                        }
+                    }, true);
+
+                    /*
+                    mPlayPauseToggleButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if( bgMediaPlayerState == STATE_PAUSED ) {
+                                MediaControllerCompat.getMediaController(LamrimReaderActivity.this).getTransportControls().play();
+
+                                bgMediaPlayerState = STATE_PLAYING;
+                            } else {
+                                if( MediaControllerCompat.getMediaController(LamrimReaderActivity.this).getPlaybackState().getState() == PlaybackStateCompat.STATE_PLAYING ) {
+                                    MediaControllerCompat.getMediaController(LamrimReaderActivity.this).getTransportControls().pause();
+                                }
+
+                                bgMediaPlayerState = STATE_PAUSED;
+                            }
+                        }
+                    });
+                    */
+                }});
+
+/*            playBgm.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "PLAY_SPEECH_BACKGROUND");
@@ -565,7 +637,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                 }
             });
-
+*/
         final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -1842,7 +1914,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             }
 
         String gid = (String) item.getTitle();
-        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.MENU_CLICK, ((gid.length() == 0) ? "MENU_BUTTON" : gid) + "_PRESSED");
+        Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, ((gid.length() == 0) ? "MENU_BUTTON" : gid));
 
 		/*  // Always show enabled menu item now.
 		if (item.equals(rootMenuItem)) {
@@ -1859,32 +1931,26 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
             case R.id.menuSpeech:
-                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "SELECT_SPEECH");
                 startSpeechMenuActivity();
                 break;
             case R.id.menuRegRec:
-                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "REGION_RECORD");
                 if (mediaIndex == -1)
                     BaseDialogs.showSimpleErrorDialog(this, getString(R.string.dlgNotLoadAudioYet), getString(R.string.dlgHintLoadAudio));
                 else
                     showOnRegionOptionDialog(mediaIndex, mpController.getCurrentPosition());
                 break;
             case R.id.menuRegPlay:
-                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "REGION_PLAY");
                 if (RegionRecord.records.size() > 0) showRecordListPopupMenu();
                 else
                     BaseDialogs.showSimpleErrorDialog(this, getString(R.string.dlgNoRecord), getString(R.string.dlgHintRecord));
                 break;
             case R.id.menuRender:
-                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "RENDER_MODE");
                 switchMainView();
                 break;
             case R.id.menuAbout:
-                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "SHOW_ABOUT");
                 showAboutDialog();
                 break;
             case R.id.menuExit:
-                Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, "EXIT_APP");
                 onBackPressed();
                 break;
         }
@@ -3934,6 +4000,63 @@ public class LamrimReaderActivity extends AppCompatActivity {
         ((View) mpController.getControllerView().findViewById(R.id.prev)).setVisibility(((prevBtnVisiable) ? View.VISIBLE : View.GONE));
         ((View) mpController.getControllerView().findViewById(R.id.next)).setVisibility(((nextBtnVisiable) ? View.VISIBLE : View.GONE));
     }
+
+    /* For Background Music Player --- Start --- */
+    private MediaBrowserCompat mMediaBrowserCompat;
+    private MediaControllerCompat mMediaControllerCompat;
+    private static final int STATE_PAUSED = 0;
+    private static final int STATE_PLAYING = 1;
+    private int mCurrentState;
+    private MediaBrowserCompat.ConnectionCallback mMediaBrowserCompatConnectionCallback = new MediaBrowserCompat.ConnectionCallback() {
+
+        @Override
+        public void onConnected() {
+            super.onConnected();
+            try {
+                mMediaControllerCompat = new MediaControllerCompat(LamrimReaderActivity.this, mMediaBrowserCompat.getSessionToken());
+                mMediaControllerCompat.registerCallback(mMediaControllerCompatCallback);
+
+                //setSupportMediaController(mMediaControllerCompat);
+                MediaControllerCompat.setMediaController(LamrimReaderActivity.this, mMediaControllerCompat);
+                //getSupportMediaController().getTransportControls().playFromMediaId(String.valueOf(R.raw.warner_tautz_off_broadway), null);
+                MediaControllerCompat.getMediaController(LamrimReaderActivity.this).getTransportControls().playFromMediaId(String.valueOf(R.raw.warner_tautz_off_broadway), null);
+            } catch( RemoteException e ) {
+
+            }
+        }
+    };
+
+    private MediaControllerCompat.Callback mMediaControllerCompatCallback = new MediaControllerCompat.Callback() {
+
+        @Override
+        public void onPlaybackStateChanged(PlaybackStateCompat state) {
+            super.onPlaybackStateChanged(state);
+            if( state == null ) {
+                return;
+            }
+
+            switch( state.getState() ) {
+                case PlaybackStateCompat.STATE_PLAYING: {
+                    Log.d(logTag, "onPlaybackStateChanged: get STATE_PLAYING event");
+                    mCurrentState = STATE_PLAYING;
+                    break;
+                }
+                case PlaybackStateCompat.STATE_PAUSED: {
+                    Log.d(logTag, "onPlaybackStateChanged: get STATE_PAUSED event");
+                    mCurrentState = STATE_PAUSED;
+                    break;
+                }
+                case PlaybackStateCompat.STATE_SKIPPING_TO_NEXT:{
+                    Log.d(logTag, "onPlaybackStateChanged: get STATE_SKIPPING_TO_NEXT event");
+                    break;}
+                case PlaybackStateCompat.STATE_SKIPPING_TO_PREVIOUS:{
+                    Log.d(logTag, "onPlaybackStateChanged: get STATE_SKIPPING_TO_NEXT event");
+                    break;}
+            }
+        }
+    };
+
+    /* For Background Music Player --- End --- */
 
     public interface PrevNextListener {
         public OnClickListener getPrevPageListener();

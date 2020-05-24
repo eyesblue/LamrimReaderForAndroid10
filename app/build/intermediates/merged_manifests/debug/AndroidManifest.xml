@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eyes.blue"
-    android:versionCode="211"
-    android:versionName="1.6.5" >
+    android:versionCode="212"
+    android:versionName="1.6.6" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <supports-screens android:anyDensity="true" />
 
@@ -122,6 +123,38 @@
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
+
+        <!-- For background music player (Start) -->
+        <service android:name="eyes.blue.musicplayer.BackgroundAudioService" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="androidx.media.session.MediaButtonReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 僅測試用 -->
+        <activity
+            android:name="eyes.blue.musicplayer.BgPlayerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="eyes.blue.bgmusicplayer.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" />
+
+        <service android:name="eyes.blue.bgmusicplayer.PlaybackService" />
+        <service android:name="eyes.blue.bgmusicplayer.NotificationIntentService" />
+        <!-- For background music player (End) -->
+
+
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -176,6 +209,7 @@
         -->
         <service
             android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:directBootAware="true"
             android:exported="false" >
             <intent-filter android:priority="-500" >
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

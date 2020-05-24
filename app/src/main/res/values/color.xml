@@ -35,4 +35,8 @@
     <color name="recListPopID">#BF00BC</color>
 
     <color name="gray">#ffff0000</color>
+
+    <!-- For bg music player -->
+    <color name="DrawerLayoutBackground">#ffeeeeee</color>
+    <color name="DrawerLayoutHighlighted">#ffaaaa</color>
 </resources>

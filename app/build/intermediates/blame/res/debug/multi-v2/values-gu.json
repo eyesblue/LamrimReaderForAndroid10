@@ -4,6 +4,23 @@
             "outputFile": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gu\\values-gu.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\b6f2ad43643cbf0bd7565e28d2d6b4d5\\jetified-firebase-messaging-20.2.0\\res\\values-gu\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "99",
+                        "endOffsets": "306"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "5611",
+                        "endColumns": "103",
+                        "endOffsets": "5710"
+                    }
+                },
+                {
                     "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\cde5758e037d484eeb5705a5ca9f8b12\\core-1.2.0\\res\\values-gu\\values-gu.xml",
                     "from": {
                         "startLines": "2",
@@ -35,23 +52,6 @@
                         "startOffsets": "3928",
                         "endColumns": "205",
                         "endOffsets": "4129"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\d1fe5034aa600ea5a3c042801fb658c6\\jetified-firebase-messaging-20.1.7\\res\\values-gu\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "207",
-                        "endColumns": "99",
-                        "endOffsets": "306"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "5611",
-                        "endColumns": "103",
-                        "endOffsets": "5710"
                     }
                 },
                 {

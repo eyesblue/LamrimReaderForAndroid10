@@ -4,23 +4,6 @@
             "outputFile": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rTW\\values-zh-rTW.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\d1fe5034aa600ea5a3c042801fb658c6\\jetified-firebase-messaging-20.1.7\\res\\values-zh-rTW\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "211",
-                        "endColumns": "96",
-                        "endOffsets": "307"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "5126",
-                        "endColumns": "100",
-                        "endOffsets": "5222"
-                    }
-                },
-                {
                     "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\cde5758e037d484eeb5705a5ca9f8b12\\core-1.2.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
                     "from": {
                         "startLines": "2",
@@ -86,6 +69,23 @@
                         "startOffsets": "2671,2774,2934,3051,3155,3321,3439,3569,3855,4024,4127,4287,4404,4565,4703,4789,4876",
                         "endColumns": "102,159,116,103,165,117,129,123,168,102,159,116,160,137,85,86,102",
                         "endOffsets": "2769,2929,3046,3150,3316,3434,3564,3688,4019,4122,4282,4399,4560,4698,4784,4871,4974"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\b6f2ad43643cbf0bd7565e28d2d6b4d5\\jetified-firebase-messaging-20.2.0\\res\\values-zh-rTW\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "211",
+                        "endColumns": "96",
+                        "endOffsets": "307"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "5126",
+                        "endColumns": "100",
+                        "endOffsets": "5222"
                     }
                 },
                 {

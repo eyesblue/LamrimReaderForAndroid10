@@ -136,6 +136,10 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_search_next_p.png"
     },
     {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_bgmusic_player_activity.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\bgmusic_player_activity.xml"
+    },
+    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_exit_app.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_exit_app.png"
     },
@@ -226,6 +230,10 @@
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_save_d.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_save_d.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_bgmusic_player_folder_listview_elements.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\bgmusic_player_folder_listview_elements.xml"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_search_next.png.flat",
@@ -388,6 +396,10 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_folder.png"
     },
     {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\raw_warner_tautz_off_broadway.mp3.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\raw\\warner_tautz_off_broadway.mp3"
+    },
+    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_folder.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_folder.png"
     },
@@ -418,6 +430,10 @@
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_media_previous_d.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_media_previous_d.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_music_player.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\music_player.xml"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_pin_green.png.flat",
@@ -540,6 +556,10 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\drawable\\speech_menu_item_e.xml"
     },
     {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\menu_bgmusic_player_mainactivity_menu.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\menu\\bgmusic_player_mainactivity_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_error.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_error.png"
     },
@@ -650,6 +670,10 @@
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_search_last_p.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_search_last_p.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_bgmusic_player_folder_listview_elements_constraint.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\bgmusic_player_folder_listview_elements_constraint.xml"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_net_access_warn_dialog.xml.flat",
@@ -886,6 +910,10 @@
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_search_next.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_search_next.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\layout_bgmusic_player_notification_layout.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\bgmusic_player_notification_layout.xml"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_volume.png.flat",

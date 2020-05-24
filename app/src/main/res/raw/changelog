@@ -23,8 +23,8 @@
   	<div class='title'><p><a href="http://www.facebook.com/lamrimreader">執行問題反應區</a></p></div>
   	<div class='title'><p><a href="http://lamrimreader.eyes-blue.com/">計畫首頁</a></p></div>
 
-$211
-% Version 1.6.5
+$212
+% Version 1.6.6
   _ 2020-5-22
   * 修正單一下載對話框無法正確顯示音檔名稱問題。
   * 設定proguard保留行數資訊，以利除錯。
