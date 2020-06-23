@@ -2,7 +2,9 @@ package eyes.blue;
 
 import android.content.Context;
 import android.util.Log;
+
 import com.crashlytics.android.Crashlytics;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,28 +45,28 @@ public class HttpDownloader {
             */
             conn=connFollowRedirect(url);
             if (conn.getResponseCode() != 200){
-                conn.disconnect();
+                if(conn!=null)conn.disconnect();
                 Crashlytics.log(Log.ERROR, HttpDownloader.class.getName(), "Http connection return "+conn.getResponseCode()+", connection failure.");
                 Log.d( HttpDownloader.class.getName(), "Http connection return "+conn.getResponseCode()+", connection failure.");
                 return false;
             }
         }catch(MalformedURLException mue){
             mue.printStackTrace();
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             return false;
         }catch (ProtocolException pe){
             pe.printStackTrace();
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             return false;
         }catch(IOException ioe){
             ioe.printStackTrace();
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             return false;
         }
 
         if(cancelled){
             Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"User canceled, download procedure skip!");
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             return false;
         }
 
@@ -75,12 +77,12 @@ public class HttpDownloader {
             is = conn.getInputStream();
         } catch (IllegalStateException e2) {
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             tmpFile.delete();
             e2.printStackTrace();
             return false;
         } catch (IOException e2) {
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             tmpFile.delete();
             e2.printStackTrace();
             return false;
@@ -89,7 +91,7 @@ public class HttpDownloader {
         if(cancelled){
             Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"User canceled, download procedure skip!");
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             tmpFile.delete();
             return false;
         }
@@ -100,7 +102,7 @@ public class HttpDownloader {
             fos=new FileOutputStream(tmpFile);
         } catch (FileNotFoundException e1) {
             Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"File Not Found Exception happen while create output temp file ["+tmpFile.getName()+"] !");
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
             tmpFile.delete();
             e1.printStackTrace();
@@ -108,7 +110,7 @@ public class HttpDownloader {
         }
 
         if(cancelled){
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
             try {   fos.close();    } catch (IOException e) {e.printStackTrace();}
             tmpFile.delete();
@@ -136,9 +138,9 @@ public class HttpDownloader {
             is.close();
             fos.flush();
             fos.close();
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
         } catch (IOException e) {
-            conn.disconnect();
+            if(conn!=null)conn.disconnect();
             try {   is.close();     } catch (IOException e2) {e2.printStackTrace();}
             try {   fos.close();    } catch (IOException e2) {e2.printStackTrace();}
             tmpFile.delete();

@@ -31,11 +31,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
 
-import com.crashlytics.android.Crashlytics;
-
 import java.io.File;
 import java.util.ArrayList;
 import com.codekidlabs.storagechooser.*;
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 
@@ -301,7 +300,7 @@ public class StorageManageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {dialog.dismiss();}};
 
-                BaseDialogs.showDialog(StorageManageActivity.this, getString(R.string.dlgMoveFileTitle), getString(R.string.msgNoDelWarring), new DialogInterface.OnClickListener(){
+                BaseDialogs.showDialog(StorageManageActivity.this, getString(R.string.dlgMoveFileTitle), getString(R.string.msgNoDelWarring),null, new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (!isPermissionPass())
@@ -427,6 +426,7 @@ public class StorageManageActivity extends AppCompatActivity {
                                     StorageManageActivity.this,
                                     getString(R.string.msgNoDownload),
                                     getString(R.string.msgNoDownloadDesc),
+                                    null,
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

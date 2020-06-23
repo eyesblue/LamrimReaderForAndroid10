@@ -203,7 +203,6 @@
     <string name="msgJsonParseErr">解读伺服器回传的资料时发生错误，请重新尝试。</string>
     <string name="errFailToSwitchAudio">音档不存在，无法自动切换至该位置，请先下载%1$s的档案资源。</string>
     <string name="dlgBgPlayMode">背景播放模式</string>
-    <string name="msgBgPlayDesc">即将关闭广论App并切换到背景播放模式，在此模式下您可以关闭银幕聆听，您确定吗？\n\n目前播放位置：</string>
     <string name="errNoMediaPlayer">无播放器错误</string>
     <string name="msgInstallPlayerFirst">您的系统中没有内建可以播放音乐的App，请自行安装音乐播放器，按确定开启商城安装建议的播放器。</string>
     <string name="recommandMusicPlayerPkg">com.ushareit.listenit</string>
@@ -391,6 +390,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="digOptSetRegionStart">开始位置</string>
     <string name="dlgOptSetRegionEnd">结束位置</string>
+
+    <!-- For BG media player -->
+    <string name="single_repeat">重复播放%s</string>
+    <string name="all_repeat">播放全部音档</string>
 
     <string name="lamrimCmdUri">http://lamrimreader-cmd.eyes-blue.com/</string>
     <string name="firebase_deeplink_host">xe74n.app.goo.gl</string>

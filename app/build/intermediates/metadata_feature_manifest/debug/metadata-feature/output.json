@@ -1,1 +1,24 @@
-[{"outputType":{"type":"METADATA_FEATURE_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":212,"versionName":"1.6.6","enabled":true,"outputFile":"app-debug.apk","fullName":"debug","baseName":"debug","dirName":""},"path":"AndroidManifest.xml","properties":{}}]
+{
+  "version": 1,
+  "applicationId": "eyes.blue",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "METADATA_FEATURE_MANIFEST"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 214,
+        "versionName": "1.6.8",
+        "outputFile": "app-debug.apk",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {}
+    }
+  ]
+}

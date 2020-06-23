@@ -18,8 +18,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
-import android.support.v4.media.MediaBrowserCompat;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -706,27 +704,6 @@ public class Util {
             String trans=sb.toString();
             //Util.showInfoToast(c, "轉換為 "+trans+", spend: "+(System.currentTimeMillis()-startTime));
             return trans;
-    }
-
-    public static MediaBrowserCompat.ConnectionCallback getCallback(final Activity c, final MediaBrowserCompat mMediaBrowserCompat){
-       return new MediaBrowserCompat.ConnectionCallback() {
-            @Override
-            public void onConnected() {
-                super.onConnected();
-                try {
-                    MediaControllerCompat mMediaControllerCompat = new MediaControllerCompat(c, mMediaBrowserCompat.getSessionToken());
-                    //mMediaControllerCompat.registerCallback(mMediaControllerCompatCallback);
-                    mMediaControllerCompat.registerCallback(new MediaControllerCompat.Callback(){});
-
-                    //setSupportMediaController(mMediaControllerCompat);
-                    MediaControllerCompat.setMediaController(c, mMediaControllerCompat);
-                    //getSupportMediaController().getTransportControls().playFromMediaId(String.valueOf(R.raw.warner_tautz_off_broadway), null);
-                    MediaControllerCompat.getMediaController(c).getTransportControls().playFromMediaId(String.valueOf(R.raw.warner_tautz_off_broadway), null);
-                } catch( RemoteException e ) {
-                    e.printStackTrace();
-                }
-            }
-        };
     }
 
     public static RemoteSource[] getRemoteSource(Context ctx){

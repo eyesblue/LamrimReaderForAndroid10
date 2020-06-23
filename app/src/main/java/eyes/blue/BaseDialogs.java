@@ -156,13 +156,14 @@ public class BaseDialogs {
 		String title=String.format(context.getString(R.string.dlgDelWarnTitle),target);
 		String msg=String.format(context.getString(R.string.dlgDelWarnMsg),target);
 
-		showDialog(context, title, msg, positiveListener, null, true);
+		showDialog(context, title, msg, null, positiveListener, null, true);
 	}
 
-	public static void showDialog(Context context, String title, String msg, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener, boolean cancelOnTouchOutside){
+	public static AlertDialog showDialog(Context context, String title, String msg, View v, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener, boolean cancelOnTouchOutside){
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle(title);
 		builder.setMessage(msg);
+		if(v!=null)builder.setView(v);
 
 		if(positiveListener!=null)
 			builder.setPositiveButton(context.getString(R.string.dlgOk), positiveListener);
@@ -173,6 +174,7 @@ public class BaseDialogs {
 		AlertDialog dialog=builder.create();
 		dialog.setCanceledOnTouchOutside(cancelOnTouchOutside);
 		dialog.show();
+		return dialog;
 	}
 	
 	public static void showSimpleErrorDialog(final Activity activity, final String msg){

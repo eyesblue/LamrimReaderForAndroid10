@@ -22,9 +22,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.RemoteException;
-import android.support.v4.media.MediaBrowserCompat;
-import android.support.v4.media.session.MediaControllerCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
+import com.crashlytics.android.Crashlytics;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -79,10 +77,9 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GestureDetectorCompat;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.crashlytics.android.Crashlytics;
 
 import eyes.blue.bgmusicplayer.MainActivity;
-import io.fabric.sdk.android.Fabric;
+import eyes.blue.bgmusicplayer.PlaybackService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,6 +107,7 @@ import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 import afzkl.development.colorpickerview.view.ColorPickerView;
 import eyes.blue.modified.MyListView;
 import eyes.blue.modified.OnDoubleTapEventListener;
+import io.fabric.sdk.android.Fabric;
 
 import static eyes.blue.MediaPlayerController.MP_PREPARED;
 
@@ -151,7 +149,6 @@ public class LamrimReaderActivity extends AppCompatActivity {
     MediaPlayerController mpController;
     //	private PowerManager powerManager = null;
     private PowerManager.WakeLock wakeLock = null;
-    static int screenOnTime = 0;
     MyListView bookView = null;
     ImageView renderView = null;
     TextView subtitleView = null;
@@ -182,7 +179,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
     ImageButton search = null;
 
     int[][] readingModeSEindex = null;
-    String readingModeAllSubtitle = null;
+    String readingModeAllSubtitle = null, actionBarTitle = "", regionStartInfo, regionEndInfo;
+    public static String wakeLockTag="LamrimReader";
     static Point screenDim = new Point();
     static Button modeSwBtn = null;
     GlRecord glRecord = null;
@@ -192,8 +190,6 @@ public class LamrimReaderActivity extends AppCompatActivity {
     int theoryHighlightRegion[] = new int[4];//{startPage, startLine, endPage, endLine}
     int[][] GLamrimSect = new int[2][3];
     int GLamrimSectIndex = -1;
-    String actionBarTitle = "";
-    String regionStartInfo, regionEndInfo;
 
     PrevNextListener prevNextListener = null;
     final int[] regionSet = {-1, -1, -1, -1};
@@ -234,9 +230,13 @@ public class LamrimReaderActivity extends AppCompatActivity {
         Crashlytics.log(Log.DEBUG, logTag, "set content view finish");
         Crashlytics.log(Log.DEBUG, logTag,"=====================set content view finish===================");
 
+        // 檢查是否背景仍在播放，若有則停止背景播放服務
+        Crashlytics.log(Log.DEBUG, logTag,"Main UI start, stop Background player if exist.");
+        Intent serviceIntent = new Intent(this, PlaybackService.class);
+        stopService(serviceIntent);
+
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, "LamrimReader");
-        screenOnTime = getResources().getInteger(R.integer.screenOnTime);
+        wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, wakeLockTag);
 
         fsm = new FileSysManager(this);
         fsm.checkFileStructure();
@@ -517,14 +517,16 @@ public class LamrimReaderActivity extends AppCompatActivity {
                         return;
                     }
 
-                    BaseDialogs.showDialog(LamrimReaderActivity.this, getString(R.string.dlgBgPlayMode), getString(R.string.msgBgPlayDesc) + SpeechData.getNameId(mediaIndex) + " - " + Util.getMsToHMS(position, "分", "秒", false), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    saveRuntime();
-                                    //Intent intent = new Intent(LamrimReaderActivity.this, BgPlayerActivity.class);
+                    saveRuntime();
+                    //Intent intent = new Intent(LamrimReaderActivity.this, BgPlayerActivity.class);
 
-                                    Intent intent = new Intent(LamrimReaderActivity.this, MainActivity.class);
-                                    startActivity(intent);
+                    Intent intent = new Intent(LamrimReaderActivity.this, MainActivity.class);
+                    intent.putExtra("MEDIA_INDEX", (mediaIndex==-1)?0:mediaIndex);
+                    intent.putExtra("TIME_POSITION", position);
+
+                    if (wakeLock.isHeld()) wakeLock.release();
+                    mpController.quitAudioFocus();
+                    startActivity(intent);
                                     /*
                                     Intent intent = new Intent(LamrimReaderActivity.this,BackgroundAudioService.class);
                                     intent.putExtra("CMD","PLAY");
@@ -546,14 +548,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                         }
                                     }, 1000);
                                     */
-                                }
-                            },
-                            new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int val) {
-                            dialog.dismiss();
-                        }
-                    }, true);
+
 
                     /*
                     mPlayPauseToggleButton.setOnClickListener(new View.OnClickListener() {
@@ -971,7 +966,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 //		Crashlytics.log(Log.DEBUG, logTag,"Into dispatchTouchEvent() of activity.");
         if (wakeLock.isHeld()) wakeLock.release();
         if (!wakeLock.isHeld()) {
-            wakeLock.acquire(screenOnTime);
+            wakeLock.acquire(getResources().getInteger(R.integer.screenOnTime));
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -1507,11 +1502,10 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     @Override
                     public void onComplatePlay() {
                         Crashlytics.log(Log.DEBUG, logTag, "Show Title bar.");
-//						showTitle();
                         if (GLamrimSectIndex == 0 && GLamrimSect[1][0] != -1)
                             Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.playFinishNext));
-                        else Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.playFinish));
-//						if (wakeLock.isHeld())wakeLock.release();
+                        //else Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.playFinish));
+
                     }
                 });
 
@@ -1904,7 +1898,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             if (ContextCompat.checkSelfPermission(LamrimReaderActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
                 //BaseDialogs.showSimpleErrorDialog(LamrimReaderActivity.this, getString(R.string.dlgNotGrantStorageYet), getString(R.string.dlgHintGrantStroage));
-                BaseDialogs.showDialog(LamrimReaderActivity.this, getString(R.string.dlgNotGrantStorageYet), getString(R.string.dlgHintGrantStroage), new DialogInterface.OnClickListener(){
+                BaseDialogs.showDialog(LamrimReaderActivity.this, getString(R.string.dlgNotGrantStorageYet), getString(R.string.dlgHintGrantStroage), null, new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int val) {
                         ActivityCompat.requestPermissions(LamrimReaderActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_ACCESS_PERMISSION_REQUEST);
@@ -4000,63 +3994,6 @@ public class LamrimReaderActivity extends AppCompatActivity {
         ((View) mpController.getControllerView().findViewById(R.id.prev)).setVisibility(((prevBtnVisiable) ? View.VISIBLE : View.GONE));
         ((View) mpController.getControllerView().findViewById(R.id.next)).setVisibility(((nextBtnVisiable) ? View.VISIBLE : View.GONE));
     }
-
-    /* For Background Music Player --- Start --- */
-    private MediaBrowserCompat mMediaBrowserCompat;
-    private MediaControllerCompat mMediaControllerCompat;
-    private static final int STATE_PAUSED = 0;
-    private static final int STATE_PLAYING = 1;
-    private int mCurrentState;
-    private MediaBrowserCompat.ConnectionCallback mMediaBrowserCompatConnectionCallback = new MediaBrowserCompat.ConnectionCallback() {
-
-        @Override
-        public void onConnected() {
-            super.onConnected();
-            try {
-                mMediaControllerCompat = new MediaControllerCompat(LamrimReaderActivity.this, mMediaBrowserCompat.getSessionToken());
-                mMediaControllerCompat.registerCallback(mMediaControllerCompatCallback);
-
-                //setSupportMediaController(mMediaControllerCompat);
-                MediaControllerCompat.setMediaController(LamrimReaderActivity.this, mMediaControllerCompat);
-                //getSupportMediaController().getTransportControls().playFromMediaId(String.valueOf(R.raw.warner_tautz_off_broadway), null);
-                MediaControllerCompat.getMediaController(LamrimReaderActivity.this).getTransportControls().playFromMediaId(String.valueOf(R.raw.warner_tautz_off_broadway), null);
-            } catch( RemoteException e ) {
-
-            }
-        }
-    };
-
-    private MediaControllerCompat.Callback mMediaControllerCompatCallback = new MediaControllerCompat.Callback() {
-
-        @Override
-        public void onPlaybackStateChanged(PlaybackStateCompat state) {
-            super.onPlaybackStateChanged(state);
-            if( state == null ) {
-                return;
-            }
-
-            switch( state.getState() ) {
-                case PlaybackStateCompat.STATE_PLAYING: {
-                    Log.d(logTag, "onPlaybackStateChanged: get STATE_PLAYING event");
-                    mCurrentState = STATE_PLAYING;
-                    break;
-                }
-                case PlaybackStateCompat.STATE_PAUSED: {
-                    Log.d(logTag, "onPlaybackStateChanged: get STATE_PAUSED event");
-                    mCurrentState = STATE_PAUSED;
-                    break;
-                }
-                case PlaybackStateCompat.STATE_SKIPPING_TO_NEXT:{
-                    Log.d(logTag, "onPlaybackStateChanged: get STATE_SKIPPING_TO_NEXT event");
-                    break;}
-                case PlaybackStateCompat.STATE_SKIPPING_TO_PREVIOUS:{
-                    Log.d(logTag, "onPlaybackStateChanged: get STATE_SKIPPING_TO_NEXT event");
-                    break;}
-            }
-        }
-    };
-
-    /* For Background Music Player --- End --- */
 
     public interface PrevNextListener {
         public OnClickListener getPrevPageListener();

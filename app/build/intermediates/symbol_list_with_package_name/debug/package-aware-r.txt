@@ -1589,7 +1589,6 @@ id expanded_menu
 id extAppUseage
 id extFree
 id extSpeechPathInfo
-id fav_buttons_container
 id fdButtonCancel
 id fdButtonCreate
 id fdButtonNew
@@ -1661,12 +1660,12 @@ id listMode
 id listView
 id list_item
 id listview
-id mainactivity_duration_pos_textview
-id mainactivity_ff_button
+id mainactivity_current_pos_textview
+id mainactivity_duration_textview
+id mainactivity_next_button
 id mainactivity_play_button
-id mainactivity_rew_button
+id mainactivity_prev_button
 id mainactivity_seekbar
-id mainactivity_songname_textview
 id mainmenu_menuitem_favourite
 id mainmenu_menuitem_quit
 id mainmenu_menuitem_repeat
@@ -1692,7 +1691,6 @@ id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiple_selection_done_fab
 id multiply
-id navList
 id navigation_header_container
 id never
 id new_folder_button_holder
@@ -1986,8 +1984,8 @@ layout activity_file_dialog
 layout activity_file_dialog_row
 layout bgmusic_player_activity
 layout bgmusic_player_folder_listview_elements
-layout bgmusic_player_folder_listview_elements_constraint
 layout bgmusic_player_notification_layout
+layout bgmusic_player_notification_layout16
 layout calendar_actionbar_control_panel
 layout custom_dialog
 layout custom_storage_list
@@ -2118,6 +2116,8 @@ mipmap ic_options
 mipmap ic_pin_blue
 mipmap ic_pin_green
 mipmap ic_play_bgm
+mipmap ic_play_next
+mipmap ic_play_repeat
 mipmap ic_project_web
 mipmap ic_region
 mipmap ic_region_d
@@ -2157,14 +2157,13 @@ string DIVIDER
 string FILES_TO_PLAY
 string GLModeRecordFile
 string NORMAL_START_INTENT_ACTION
-string NOTIFICATION_ACTION_FF
+string NOTIFICATION_ACTION_NEXT
 string NOTIFICATION_ACTION_PAUSEPLAY
+string NOTIFICATION_ACTION_PREV
 string NOTIFICATION_ACTION_QUIT
-string NOTIFICATION_ACTION_REWIND
 string OSver
 string SHARED_FAV_DIRS
 string SHARED_IS_ONE_SONG_REPEATING
-string SHARED_LAST_DIR
 string SHARED_LAST_SONGS_ARRAY
 string SHARED_LAST_SONGS_INDEX
 string SHARED_MAINKEY
@@ -2197,6 +2196,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string aboutMsg
 string action_settings
+string all_repeat
 string app_name
 string appbar_scrolling_view_behavior
 string audioDirName
@@ -2420,7 +2420,6 @@ string monthTitleFont
 string moveIntExtToHere
 string moveToHere
 string msgAlphaOpt
-string msgBgPlayDesc
 string msgCantCreateFolder
 string msgCreateMediaPlayer
 string msgDownloadList
@@ -2519,6 +2518,7 @@ string settingMenu
 string setupFontSizeStr
 string setupTextSizeSample
 string shareRegion
+string single_repeat
 string soundInUseError
 string specifyOtherFolder
 string speechModeRecordFile

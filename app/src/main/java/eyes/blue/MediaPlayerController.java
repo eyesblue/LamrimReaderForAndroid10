@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.File;
@@ -47,7 +48,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	AudioManager audioManager=null;
 	Activity activity=null;
 	RegionableSeekBar seekBar=null;
-	String logTag=getClass().getName();
+	static String logTag= MediaControllerView.MediaPlayerControl.class.getSimpleName();
 	FileSysManager fsm=null;
 	MediaPlayer mediaPlayer=null;
 	MediaControllerView mediaController=null;
@@ -126,7 +127,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
 				@Override
 				public boolean onError(MediaPlayer arg0, int what, int extra) {
-					Log.d(logTag, "Error happen while play media");
+					Crashlytics.log(Log.DEBUG,logTag, "Error happen while play media");
 					changedListener.onPlayerError();
 					
 					String whatStr = "", extraStr = "";
@@ -165,7 +166,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				     *      but the MediaPlayer control panel still try to get information from the media player.
 				     * */
 				    if(what!=-38){
-						Log.e(logTag, "MediaPlayer_Error: mpState="+mpStateStr[mpState]+", what="+whatStr+"("+what+"), extra="+extraStr+"("+extra+")", new Exception());
+						Crashlytics.log(Log.ERROR,logTag, "MediaPlayer_Error: mpState="+mpStateStr[mpState]+", what="+whatStr+"("+what+"), extra="+extraStr+"("+extra+")");
 					}
 					return false;
 				}
@@ -173,7 +174,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 		// Fix the player bug of Android 4.4
 //		mediaPlayer.setWakeMode(activity, PowerManager.FULL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE);
-		
+
 		//mediaPlayer.setScreenOnWhilePlaying(true); // use it if we use surface view.
 			mediaPlayer.setWakeMode(activity, PowerManager.FULL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE);
 			mpState=MP_IDLE;
@@ -181,10 +182,10 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	}
 
 	private void onPlayComplete(MediaPlayer mp){
-		Log.d(logTag,"Media player play completion! release WakeLock.");
-//		if(wakeLock.isHeld()){Log.d(logTag,"Player paused, release wakeLock.");wakeLock.release();}
+		Crashlytics.log(Log.DEBUG,logTag,"Media player play completion! release WakeLock.");
+//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
 			synchronized(playingIndexKey){
-				Log.d(logTag,"Set mpState to MP_COMPLETE.");
+				Crashlytics.log(Log.DEBUG,logTag,"Set mpState to MP_COMPLETE.");
 				mpState=MP_COMPLETE;
 				//pause();
 				if(subtitleTimer!=null){
@@ -193,13 +194,13 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			/*
 			 * While user drag the seek bar indicator over end of media control view, there are 2 situation we don't want:
 			 * 1. The MediaPlayer will stop play and reset the MediaPlay.currentPosition() to 0, then play media from 0ms in next play.
-			 * 2. While many seek event fired shortly, The SeekBar don't flash UI to last seek point, it cause the indicator look like jump back to random position, this is the bug of SeekBar. 
+			 * 2. While many seek event fired shortly, The SeekBar don't flash UI to last seek point, it cause the indicator look like jump back to random position, this is the bug of SeekBar.
 			 * */
 					int subIndex=subtitle[subtitle.length-1].startTimeMs;
 					if(isRegionPlay())subIndex=regionEndMs;
 					seekTo(subIndex);
 				}
-				Log.d(getClass().getName(),"Call changedListener.onComplatePlay()");
+				Crashlytics.log(Log.DEBUG,logTag,"Call changedListener.onComplatePlay()");
 				changedListener.onComplatePlay();
 			}
 	}
@@ -214,33 +215,33 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	public void pause() {
 		if(subtitleTimer!=null)subtitleTimer.cancel(false);
 		subtitleTimer=null;
-		
+
 		synchronized(mediaPlayerKey){
 			if(mediaPlayer==null || mpState < MP_PREPARED)return;
 			mpState=MP_PAUSE;
 			mediaPlayer.pause();
 		}
-		
-//		if(wakeLock.isHeld()){Log.d(logTag,"Player paused, release wakeLock.");wakeLock.release();}
+
+//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
 		changedListener.onPause();
 	}
-	
+
 	/*
 	 * Same as function of MediaPlayer and maintain the state of MediaPlayer.
 	 * */
 	public synchronized void seekTo(int pos) {
-		Log.d(logTag,Thread.currentThread().getName()+" SeekTo function: seek to position: "+pos+", duration="+mediaPlayer.getDuration());
+		Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+" SeekTo function: seek to position: "+pos+", duration="+mediaPlayer.getDuration());
 		if(mediaPlayer==null)return;
 		if(mpState<MP_PREPARED)return;
-		
+
 		if(subtitle==null){
 			synchronized(mediaPlayerKey){
-//				Log.d(logTag,"real set position to "+pos);
+//				Crashlytics.log(Log.DEBUG,logTag,"real set position to "+pos);
 				mediaPlayer.seekTo(pos);
 			}
 			return;
 		}
-		
+
 		// Check is the seek position over the start or end region.
 		int index=Util.subtitleBSearch(subtitle, pos);
 		if(index<0)index=0;
@@ -257,18 +258,18 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		}
 
 		synchronized(mediaPlayerKey){
-//			Log.d(logTag,Thread.currentThread().getName()+" Perform mediaPlayer.seekTo(pos) to "+pos);
+//			Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+" Perform mediaPlayer.seekTo(pos) to "+pos);
 			mediaPlayer.seekTo(pos);
 		}
-		
+
 		synchronized(playingIndexKey){
 			playingIndex=index;
 			changedListener.onSeek(playingIndex, subtitle[playingIndex]);
 			changedListener.onSubtitleChanged(playingIndex, subtitle[playingIndex]);
-//			Log.d(logTag,"real set position to "+subtitle[playingIndex].startTimeMs);
-		}			
+//			Crashlytics.log(Log.DEBUG,logTag,"real set position to "+subtitle[playingIndex].startTimeMs);
+		}
 	}
-	
+
 	/*
 	 * Same as function of MediaPlayer and maintain the state of MediaPlayer. create new subtitleTimer for subtitle changed event.
 	 * */
@@ -277,7 +278,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		// Not tested.
 //		if(!powerManager.isScreenOn())return;
 		if(mediaPlayer==null)return;
-		
+
 		if(mediaPlayer.getCurrentPosition() == mediaPlayer.getDuration()){
 			onPlayComplete(mediaPlayer);
 			return;
@@ -290,14 +291,14 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			try{
 				mediaPlayer.start();
 				mpState=MP_PLAYING;
-				
+
 				if(subtitleTimer!=null){
 					subtitleTimer.cancel(false);
 					subtitleTimer=null;
 				}
-				
+
 				if(subtitle!=null){
-					Log.d(getClass().getName(),"The subtitle exist, prepare subtitle timer.");
+					Crashlytics.log(Log.DEBUG,logTag,"The subtitle exist, prepare subtitle timer.");
 					subtitleTimer = new SubtitleTimer();
 					subtitleTimer.start();
 				}
@@ -305,28 +306,28 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 					mediaPlayer.seekTo(subtitle[playingIndex].startTimeMs);
 				/*
 				 * While user drag the seek bar over end of media control view, the control view hide and reset the
-				 * MediaPlayer.currentPosition() to 0, it seems control by MediaPlayer, reset it to regionStartMs here. 
+				 * MediaPlayer.currentPosition() to 0, it seems control by MediaPlayer, reset it to regionStartMs here.
 				 * */
 				if(isRegionPlay() && mediaPlayer.getCurrentPosition() < regionStartMs){
-					Log.d(getClass().getName(),"Reset the play start position to region start MS.");
+					Crashlytics.log(Log.DEBUG,logTag,"Reset the play start position to region start MS.");
 					mediaPlayer.seekTo(regionStartMs);
 //					changedListener.startRegionPlay();
 				}
-//				if(!wakeLock.isHeld()){Log.d(logTag,"Play media and Lock screen.");wakeLock.acquire();}
+//				if(!wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Play media and Lock screen.");wakeLock.acquire();}
 			}catch(Exception e){
 				// Stop the subtitle timer if start failure.
 				if(subtitleTimer!=null){
 					subtitleTimer.cancel(false);
 					subtitleTimer=null;
 				}
-				
+
 				changedListener.onPlayerError();
 				e.printStackTrace();
-				Log.e(logTag, "Media player error in start(), mpState="+mpStateStr[mpState]+".", e);
+				Crashlytics.log(Log.ERROR,logTag, "Media player error in start(), mpState="+mpStateStr[mpState]+": " +e.getMessage());
 			}
 		}
 	}
-	
+
 	/*
 	 * The reader get content from local drive, always return 0;
 	 * */
@@ -340,14 +341,14 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		 * Here will throw NullPointerException while player control panel try to read current position after reset.
 		 * */
 		if(mpState == MP_IDLE || mediaPlayer == null)return 0;
-		
+
 		synchronized(mediaPlayerKey){
 			try{
 				return mediaPlayer.getCurrentPosition();
 			}catch(Exception e){
 				changedListener.onPlayerError();
 				e.printStackTrace();
-				Log.e(logTag, "Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+".", e);
+				Crashlytics.log(Log.ERROR,logTag, "Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 			return 0;
 			}
 		}
@@ -364,7 +365,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}catch(Exception e){
 				changedListener.onPlayerError();
 				e.printStackTrace();
-				Log.e(logTag, "Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+".", e);
+				Crashlytics.log(Log.ERROR,logTag, "Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 				return 0;
 			}
 		}
@@ -381,7 +382,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.e(logTag, "Media player error in isPlaying(), mpState="+mpStateStr[mpState]+".", e);
+			Crashlytics.log(Log.ERROR,logTag, "Media player error in isPlaying(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 			return false;
 		}
 	}
@@ -389,7 +390,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	 * Always return true.
 	 * */
 	public boolean canPause() {return true;}
-	
+
 	/*
 	 * Always return true.
 	 * */
@@ -398,31 +399,31 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	 * Always return true.
 	 * */
 	public boolean canSeekForward() {return true;}
-	
+
 	@Override
 	public boolean isFullScreen() {
-		Log.d(getClass().getName(),"isFullScreen been called.");
+		Crashlytics.log(Log.DEBUG,logTag,"isFullScreen been called.");
 		return false;
 	}
 
 	@Override
 	public void toggleFullScreen() {
-		Log.d(getClass().getName(),"toggleFullScreen been called.");
+		Crashlytics.log(Log.DEBUG,logTag,"toggleFullScreen been called.");
 	}
-	
+
 	public void	setOnRegionClick(OnClickListener listener){
 		mediaController.setOnRegionListener(listener);
 	}
-	
+
 	public void setOnPinClick(OnClickListener listener){
 		mediaController.setOnPinListener(listener);
     }
-	
+
 // =================================================================
-	
+
 	// sometimes large memory objects may get lost.
 	public boolean isPlayerReady(){
-		Log.d(logTag,"mediaplayer="+mediaPlayer+", state="+MP_PREPARED);
+		Crashlytics.log(Log.DEBUG,logTag,"mediaplayer="+mediaPlayer+", state="+MP_PREPARED);
 		return (mediaPlayer!=null && mpState>=MP_PREPARED);
 	}
 	/*
@@ -432,22 +433,22 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		// If already reset, skip it avoid the state exception(reset after reset).
 		synchronized(mediaPlayerKey){
 			if(mpState == MP_IDLE){
-				Log.d(getClass().getName(),"Get reset after reset command, skip this reset command.");
+				Crashlytics.log(Log.DEBUG,logTag,"Get reset after reset command, skip this reset command.");
 				return;
 			}
 			if(mpState == MP_INITING){
-				Log.e(logTag, "Detected reset media at loading file stage, skip reset, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer, new Exception());
+				Crashlytics.log(Log.ERROR,logTag, "Detected reset media at loading file stage, skip reset, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer);
 				return;
 			}
 		}
-		
+
 		if(subtitleTimer!=null){
 			subtitleTimer.cancel(false);
 			subtitleTimer=null;
 		}
-		
+
 		synchronized(mediaPlayerKey){
-			Log.d("","============ Reset MediaPlayer ===============");
+			Crashlytics.log(Log.DEBUG,logTag,"============ Reset MediaPlayer ===============");
 			try{
 				mediaPlayer.reset();
 				mpState=MP_IDLE;
@@ -456,13 +457,13 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}catch(Exception e){
 				e.printStackTrace();
 				changedListener.onPlayerError();
-				Log.e(logTag, "Media player error in reset(), mpState="+mpStateStr[mpState]+".", e);
+				Crashlytics.log(Log.ERROR,logTag, "Media player error in reset(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 			}
 		}
 		synchronized(playingIndexKey){
 			playingIndex=0;
 		}
-		
+
 /*		SeekBar sb=(SeekBar) mediaController.findViewById(R.id.mediacontroller_progress);
 		if(sb!=null){
 			sb.setProgress(0);
@@ -471,7 +472,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 */
 		// Can't update seekbar on this stage, because there is no information of duration, seekbar can't be create. put in onPrepared.
 		//updateSeekBar();
-//		if(wakeLock.isHeld()){Log.d(logTag,"Player paused, release wakeLock.");wakeLock.release();}
+//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
 	}
 	/*
 	 * Same as function of MediaPlayer and maintain the state of MediaPlayer and release the subtitleTimer.
@@ -481,22 +482,27 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		subtitleTimer=null;
 			synchronized(mediaPlayerKey){
 				if(mediaPlayer==null)return;
-				Log.d("","============ Release MediaPlayer ===============");
+				Crashlytics.log(Log.DEBUG,logTag,"============ Release MediaPlayer ===============");
 				mediaPlayer.reset();
 				mediaPlayer.release();
 				mediaPlayer=null;
 				mpState=MP_IDLE;
 			}
 		if(audioManager != null && remoteControlReceiver != null)audioManager.unregisterMediaButtonEventReceiver(remoteControlReceiver);
-		if(audioManager != null && audioFocusChangeListener != null)audioManager.abandonAudioFocus(audioFocusChangeListener);
-		
-//		if(wakeLock.isHeld()){Log.d(logTag,"Player paused, release wakeLock.");wakeLock.release();}
+		if(audioManager != null && audioFocusChangeListener != null)quitAudioFocus();
+
+//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
 	}
-	
+
+	public void quitAudioFocus(){
+		Crashlytics.log(Log.DEBUG,logTag,"Quit Audio Focus.");
+		if(audioManager != null && audioFocusChangeListener != null)audioManager.abandonAudioFocus(audioFocusChangeListener);
+	}
+
 	public void finish(){
 		release();
 	}
-	
+
 	/*
 	 * Return is the subtitle ready.
 	 * */
@@ -508,7 +514,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	 * */
 	public void setDataSource(final Context context,final int index) throws IllegalArgumentException, SecurityException, IllegalStateException, IOException{
 		if(!fsm.isFilesReady(index)){
-			Log.d(getClass().getName(),"setDataSource: The speech file not exist, skip!!!");
+			Crashlytics.log(Log.DEBUG,logTag,"setDataSource: The speech file not exist, skip!!!");
 			Util.showErrorToast(activity, String.format(activity.getString(R.string.errPlayFailLakeAudioAndCancel), SpeechData.getSubtitleName(index)));
 			return;
 		}
@@ -518,17 +524,17 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			loadingMedia=index;
 		}
 
-		Log.d(getClass().getName(),"The subtitle file exist, prepare the subtitle elements.");
+		Crashlytics.log(Log.DEBUG,logTag,"The subtitle file exist, prepare the subtitle elements.");
 		subtitle = Util.loadSubtitle(context, index);
 //		if(subtitle.length==0)subtitle=null;
 		final File speechFile=fsm.getLocalMediaFile(index);// 若檔案在Asset中直接存取
 
 		synchronized(mediaPlayerKey){
-			Log.d(logTag,"Set media player data source in stage: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
+			Crashlytics.log(Log.DEBUG,logTag,"Set media player data source in stage: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
 			if(mpState != MP_IDLE)reset();
 			mpState=MP_INITING;
 			if(mediaPlayer==null){
-				Log.e(logTag, "Media player error in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M", new NullPointerException());
+				Crashlytics.log(Log.ERROR,logTag, "Media player is NULL in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M.");
 				Util.showInfoToast(activity, activity.getString(R.string.msgCreateMediaPlayer));
 				createMediaPlayer();
 			}
@@ -540,28 +546,28 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				}
 
 				if (android.os.Build.VERSION.SDK_INT >= 16) {
-					Log.d(logTag, "Build version (" + android.os.Build.VERSION.SDK_INT + ") over 16, set media with " + speechFile.getAbsolutePath());
+					Crashlytics.log(Log.DEBUG,logTag, "Build version (" + android.os.Build.VERSION.SDK_INT + ") over 16, set media with " + speechFile.getAbsolutePath());
 					String src = speechFile.getAbsolutePath();
 					mediaPlayer.setDataSource(src);
 				} else {
-					Log.d(logTag, "Build version (" + android.os.Build.VERSION.SDK_INT + ") under 16, set media with " + Uri.fromFile(speechFile));
+					Crashlytics.log(Log.DEBUG,logTag, "Build version (" + android.os.Build.VERSION.SDK_INT + ") under 16, set media with " + Uri.fromFile(speechFile));
 					Uri srcUri = Uri.fromFile(speechFile);
 					mediaPlayer.setDataSource(context, srcUri);
 				}
 			} catch (IllegalArgumentException iae) {
-				Log.e(logTag, "SetDataSource in an invalid state, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString(), iae);
+				Crashlytics.log(Log.ERROR,logTag, "SetDataSource in an invalid state, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString()+": "+ iae.getMessage());
 				if (!setDataSrcByFD(context, speechFile)) {
 					createMediaPlayer();
 					return;
 				}
 			} catch (IOException ioe) {
-				Log.e(logTag, "Can't setDataSource by normal way, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString(), ioe);
+				Crashlytics.log(Log.ERROR,logTag, "Can't setDataSource by normal way, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString()+": "+ ioe.getMessage());
 				if (!setDataSrcByFD(context, speechFile)) {
 					createMediaPlayer();
 					return;
 				}
 			} catch (Exception e) {
-				Log.e(logTag, "Error happen in SetDataSource(), mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString(), e);
+				Crashlytics.log(Log.ERROR,logTag, "Error happen in SetDataSource(), mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString() +": "+ e.getMessage());
 				Util.showErrorToast(activity, activity.getString(R.string.msgFailReadAudioFIle));
 				createMediaPlayer();
 				return;
@@ -571,7 +577,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 		}
 	}
-	
+
 	private boolean setDataSrcByFD(Context context, File speechFile)throws IllegalArgumentException, IOException{
 		FileInputStream fis = new FileInputStream(speechFile);
 		boolean hasErr=false;
@@ -582,22 +588,22 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			hasErr=true;
 			e=iae;
 		}
-		
+
 		if(!hasErr)return true;
 //		String errStr="無法正常讀取音檔，請檢查音檔是否損毀，請試著重新下載此音檔，若確定非上述問題，請回報開發者您的機型無法正常播放音檔。";
 //		Util.showErrorToast(activity, anchorView, errStr);
-		Log.e(logTag, "Can't setDataSource by FileDescriptor way, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer+", context="+context+", speechFile="+speechFile+", is speech file exist="+((speechFile!=null)?speechFile.exists():"speechFile is null.")+", Uri="+Uri.fromFile(speechFile).toString(), e);
+		Crashlytics.log(Log.ERROR,logTag, "Can't setDataSource by FileDescriptor way, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer+", context="+context+", speechFile="+speechFile+", is speech file exist="+((speechFile!=null)?speechFile.exists():"speechFile is null.")+", Uri="+Uri.fromFile(speechFile).toString()+": "+ e.getMessage());
 		return false;
 	}
 
 	private void loadAssetMedia(int index)throws Exception{
 		AssetFileDescriptor afd=fsm.getAssetMediaFile(index);
 
-		Log.d(logTag,"Load media from Assets folder: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
+		Crashlytics.log(Log.DEBUG,logTag,"Load media from Assets folder: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
 		if(mpState != MP_IDLE)reset();
 		mpState=MP_INITING;
 		if(mediaPlayer==null){
-			Log.e(logTag, "Media player error in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M", new NullPointerException());
+			Crashlytics.log(Log.ERROR,logTag, "Media player is NULL in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M");
 			Util.showInfoToast(activity, activity.getString(R.string.msgCreateMediaPlayer));
 			createMediaPlayer();
 		}
@@ -621,7 +627,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return loadingMedia;
 		}
 	}
-	
+
 	/*
 	 * Return the stage of MediaPlayer to avoid error.
 	 * */
@@ -630,7 +636,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return mpState;
 		}
 	}
-	
+
 	/*
 	 * The system will release MediaPlayer while resource low, the function create MediaPlayer object and seek to playPosition.
 	 * */
@@ -649,19 +655,19 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	synchronized public void showControllerView(Activity activity) {
 	//synchronized public void showMediaPlayerController(Activity rootView) {
 		if (activity.isFinishing()) {
-			Log.d(logTag,"The activity not prepare yet, skip show media controller.");
+			Crashlytics.log(Log.DEBUG,logTag,"The activity not prepare yet, skip show media controller.");
 			return;
 		}
 		if (mediaPlayer == null) {
-			Log.d(logTag,"The media player is null, skip show controller.");
+			Crashlytics.log(Log.DEBUG,logTag,"The media player is null, skip show controller.");
 			return;
 		}
-		
+
 		if(mpState<MP_PREPARED){
-			Log.d(logTag,"The media player loading source skip show controller.");
+			Crashlytics.log(Log.DEBUG,logTag,"The media player loading source skip show controller.");
 			return;
 		}
-		
+
 /*		if(isPlayRegion=true &&	regionStartMs!=-1 && regionEndMs!=-1){
 			ImageButton ibp= (ImageButton)mediaController.findViewById(R.id.prev);
 			ibp.setImageResource(R.drawable.ic_media_rew);
@@ -669,7 +675,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			ibn.setImageResource(R.drawable.ic_media_ff);
 			updateSeekBar();
 		}*/
-		
+
 		Util.getRootView(activity).post(new Runnable() {
 			public void run() {
 //				mediaController.setAnchorView(anchorView);
@@ -679,29 +685,29 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}
 		});
 	}
-	
+
 	public void hideMediaPlayerController(){
 //		if(mediaController.isShowing())
 			mediaController.hide();
-			
+
 	}
-	
+
 /*	public void refreshSeekBar(){
 		Util.getRootView(activity).post(new Runnable() {
 			public void run() {
-				Log.d(getClass().getName(),"==========================Refeesh control panel.======================");
+				Crashlytics.log(Log.DEBUG,logTag,"==========================Refeesh control panel.======================");
 				mediaController.show(500);
 				updateSeekBar();
 //				mediaController.hide();
 			}
 		});
 	}
-*/	
+*/
 	// ================================ Functions for region play ================================
-	
+
 	public void rewToLastSubtitle(){
 		if(subtitle==null){
-			Log.d(getClass().getName(),"Rew Click: subtitle is null");
+			Crashlytics.log(Log.DEBUG,logTag,"Rew Click: subtitle is null");
 			int pos = mediaPlayer.getCurrentPosition();
             pos -= 5000; // milliseconds
             if(pos<0)pos=0;
@@ -710,7 +716,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return;
 		}
 		synchronized(playingIndexKey){
-			Log.d(getClass().getName(),"Rew Click: playingIndex = "+playingIndex);
+			Crashlytics.log(Log.DEBUG,logTag,"Rew Click: playingIndex = "+playingIndex);
 			int currentIndex=playingIndex-1;
 			if(currentIndex>=subtitle.length)
 				currentIndex=subtitle.length-1;
@@ -720,7 +726,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		}
 		reflashProgressView();
 	}
-	
+
 	public void fwToNextSubtitle(){
 		if(subtitle==null){
 			int pos = mediaPlayer.getCurrentPosition();
@@ -732,7 +738,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return;
 		}
 		synchronized(playingIndexKey){
-			Log.d(getClass().getName(),"Fw Click: playingIndex = "+playingIndex);
+			Crashlytics.log(Log.DEBUG,logTag,"Fw Click: playingIndex = "+playingIndex);
 			int currentIndex=playingIndex+1;
 			if(currentIndex>=subtitle.length)
 				currentIndex=subtitle.length-1;
@@ -742,11 +748,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		}
 		reflashProgressView();
 	}
-	
+
 	public void reflashProgressView(){
 		mediaController.setProgress();
 	}
-/*	
+/*
 	public static Bitmap getNinepatch(int id,int x, int y, Context context){
 		//id is a resource id for a valid ninepatch
 
@@ -765,80 +771,80 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 	/*
 	 * The function can't been call while mpState < MP_PREPARED, because the MediaPlayer.getDuration() will throw IllegalStateException.
-	 * 
+	 *
 	boolean firstTimeCallUpdateSeekBar = true;
 	private void updateSeekBar(){
 		SeekBar sb=(SeekBar) mediaController.findViewById(R.id.mediacontroller_progress);
 		LayerDrawable layer = (LayerDrawable) sb.getProgressDrawable();
 		Drawable drawableFg = (Drawable)layer.findDrawableByLayerId(android.R.id.progress);
 		Drawable drawableBg = (Drawable)layer.findDrawableByLayerId(android.R.id.background);
-		
-		Log.d(logTag,"There are "+layer.getNumberOfLayers()+" layer in SeekBar object, forground: "+drawableFg+", background: "+drawableBg);
-		
+
+		Crashlytics.log(Log.DEBUG,logTag,"There are "+layer.getNumberOfLayers()+" layer in SeekBar object, forground: "+drawableFg+", background: "+drawableBg);
+
 		Rect fgBound=drawableFg.copyBounds();
 		Rect bgBound=drawableBg.copyBounds();
-		
+
 		// The view never draw, skip draw.
 		if(fgBound.height()==0){
-			Log.d(logTag,"The seekbar not layouted, skip");
+			Crashlytics.log(Log.DEBUG,logTag,"The seekbar not layouted, skip");
 			return ;
 		}
-		
+
 		if(mpState<MP_PREPARED){
-			Log.d(logTag,"updateSeekBar: The player not set data yet, skip.");
+			Crashlytics.log(Log.DEBUG,logTag,"updateSeekBar: The player not set data yet, skip.");
 			return;
 		}
-		
-		Log.d(logTag,"forgound: bound.right="+fgBound.right+", bound.left="+fgBound.left+", bound.top="+fgBound.top+", bound.botton="+fgBound.bottom+", IntrinsicWidth="+drawableFg.getIntrinsicWidth()+",IntrinsicHeight= "+drawableFg.getIntrinsicHeight()+", rect.height="+fgBound.height()+", rect.width="+fgBound.width());
-		Log.d(logTag,"backgound: bound.right="+bgBound.right+", drawableFg.getIntrinsicWidth="+drawableBg.getIntrinsicWidth());
+
+		Crashlytics.log(Log.DEBUG,logTag,"forgound: bound.right="+fgBound.right+", bound.left="+fgBound.left+", bound.top="+fgBound.top+", bound.botton="+fgBound.bottom+", IntrinsicWidth="+drawableFg.getIntrinsicWidth()+",IntrinsicHeight= "+drawableFg.getIntrinsicHeight()+", rect.height="+fgBound.height()+", rect.width="+fgBound.width());
+		Crashlytics.log(Log.DEBUG,logTag,"backgound: bound.right="+bgBound.right+", drawableFg.getIntrinsicWidth="+drawableBg.getIntrinsicWidth());
 		// Release the segment select.
 		if(regionStartMs==-1 && regionEndMs==-1 ){
-			Log.d(logTag,"Release the region select mode.");
+			Crashlytics.log(Log.DEBUG,logTag,"Release the region select mode.");
 			Bitmap seekBarFgBmap = getNinepatch(R.drawable.scrubber_primary_holo, fgBound.width(), fgBound.height(), activity);
 			BitmapDrawable fgDrawable = new BitmapDrawable(activity.getResources(), seekBarFgBmap);
 			ClipDrawable progress = new ClipDrawable(fgDrawable, Gravity.AXIS_PULL_BEFORE, ClipDrawable.HORIZONTAL);
 			progress.setBounds(fgBound);
 			layer.setDrawableByLayerId(android.R.id.progress, progress);
-			
+
 			Bitmap seekBarBgBmap = getNinepatch(R.drawable.scrubber_track_holo_dark, bgBound.width(), bgBound.height(), activity);
 			BitmapDrawable bgDrawable = new BitmapDrawable(activity.getResources(), seekBarBgBmap);
 			InsetDrawable background=  new InsetDrawable(bgDrawable,0);
 			background.setBounds(bgBound);
 			layer.setDrawableByLayerId(android.R.id.background, background);
-			
+
 			sb.postInvalidate();
 			int value=sb.getProgress();
 			sb.setProgress(0);
 			sb.setProgress(value);
 			return;
 		}
-		
-		Log.d(logTag,"Debug: drawableFg: "+drawableFg+", copyBounds(): "+ drawableFg.copyBounds()+", getIntrinsicWidth: "+drawableFg.getIntrinsicWidth());
-		
+
+		Crashlytics.log(Log.DEBUG,logTag,"Debug: drawableFg: "+drawableFg+", copyBounds(): "+ drawableFg.copyBounds()+", getIntrinsicWidth: "+drawableFg.getIntrinsicWidth());
+
 		//int seekBarStartPosition=Math.round ((regionStartMs==-1)?fgBound.left:(float)regionStartMs/mediaPlayer.getDuration()*fgBound.width());
 		int seekBarStartPosition=Math.round ((regionStartMs==-1)?fgBound.left:(float)regionStartMs/mediaPlayer.getDuration()*fgBound.width());
 		// Add one pixel avoid while enableEnd = enableStart, there will throw exception while copy pixel.
 		int seekBarEndPosition=Math.round (((regionEndMs==-1)?bgBound.right:(float)regionEndMs/mediaPlayer.getDuration()*bgBound.width())+1);
-		Log.d(logTag,"Set start pixel and end pixel: regionStartMs="+regionStartMs+", seekBarStartPosition="+seekBarStartPosition+", regionEndMs="+regionEndMs+", seekBarEndPosition="+seekBarEndPosition);
-		
-		
-		Log.d(logTag,"Create forground rec: width="+(seekBarEndPosition-seekBarStartPosition)+", height="+fgBound.bottom);
+		Crashlytics.log(Log.DEBUG,logTag,"Set start pixel and end pixel: regionStartMs="+regionStartMs+", seekBarStartPosition="+seekBarStartPosition+", regionEndMs="+regionEndMs+", seekBarEndPosition="+seekBarEndPosition);
+
+
+		Crashlytics.log(Log.DEBUG,logTag,"Create forground rec: width="+(seekBarEndPosition-seekBarStartPosition)+", height="+fgBound.bottom);
 		//fgBmap=getNinepatch(R.drawable.scrubber_primary_holo, seekBarEndPosition-seekBarStartPosition,fgBound.bottom, activity);
 		Bitmap fgBmap=getNinepatch(R.drawable.scrubber_primary_segment_mode, bgBound.width(), bgBound.height(), activity);
-		Log.d(logTag,"Create background rec: width="+bgBound.right+", height="+bgBound.bottom);
+		Crashlytics.log(Log.DEBUG,logTag,"Create background rec: width="+bgBound.right+", height="+bgBound.bottom);
 		Bitmap bgBmap=getNinepatch(R.drawable.scrubber_track_holo_dark, bgBound.width(), bgBound.height(), activity);
-		
+
 		//fgBmap.setDensity()
 //		Canvas fgCanvas=new Canvas(fgBmap);
 		Canvas bgCanvas=new Canvas(bgBmap);
 
-		
-		Log.d(logTag,"Copy forground rect to background: x1="+seekBarStartPosition+", y1="+ bgBound.top+", x2="+ seekBarEndPosition+", y2="+ bgBound.bottom);
+
+		Crashlytics.log(Log.DEBUG,logTag,"Copy forground rect to background: x1="+seekBarStartPosition+", y1="+ bgBound.top+", x2="+ seekBarEndPosition+", y2="+ bgBound.bottom);
 		//Rect src = new Rect(0, 0, fgBmap.getWidth(), fgBmap.getHeight());
 //		int len=seekBarEndPosition-seekBarStartPosition;
 //		int h=fgBound.height();
 //		int[] colors=new int[len*h];
-		
+
 //		fgBmap.getPixels(colors, 0, len, seekBarStartPosition, 0, len, h);
 //		      getPixels (int[] pixels, int offset, int stride, int x, int y, int width, int height)
 //		bgBmap.setPixels(colors, 0, len, seekBarStartPosition, 0, len, h);
@@ -849,14 +855,14 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 //		bgCanvas.setDensity(Bitmap.DENSITY_NONE);
 //		fgBmap.setDensity(Bitmap.DENSITY_NONE);
 		bgCanvas.drawBitmap(fgBmap, dst, dst, null);
-		
+
 		Drawable drawable = new BitmapDrawable(activity.getResources(), bgBmap);
 		ClipDrawable progress = new ClipDrawable(drawable, Gravity.AXIS_PULL_BEFORE, ClipDrawable.HORIZONTAL);
 		InsetDrawable background=  new InsetDrawable(drawable,0);
-		
+
 		progress.setBounds(fgBound);
 		background.setBounds(bgBound);
-		
+
 		LayerDrawable mylayer = new LayerDrawable(new Drawable[]{background,progress});
 		mylayer.setId(0, android.R.id.background);
 		mylayer.setId(1, android.R.id.progress);
@@ -870,18 +876,18 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		int value=sb.getProgress();
 		sb.setProgress(0);
 		sb.setProgress(value);
-		
+
 		// Avoid the seekbar bug.
 		if(firstTimeCallUpdateSeekBar){
 			firstTimeCallUpdateSeekBar=false;
 			updateSeekBar();
 		}
 	}
-*/	
+*/
 	public void setPrevNextListeners(OnClickListener prev, OnClickListener next){
 		mediaController.setPrevNextListeners(prev, next);
 	}
-	
+
 	public void setPlayRegionStartMs(int startMs){
 		// Clear region start time.
 		if(startMs<0){
@@ -900,7 +906,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		synchronized(playingIndexKey){
 			regionStartMs=subtitle[subIndex].startTimeMs;
 		}
-		
+
 		seekBar.setRegionStart(regionStartMs, mediaPlayer.getDuration());
 		seekBar.postInvalidate();
 	}
@@ -926,29 +932,29 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		seekBar.setRegionEnd(regionEndMs, mediaPlayer.getDuration());
 		seekBar.postInvalidate();
 	}
-	
+
 	public void setPlayRegion(int startTimeMs,int endTimeMs){
 		setPlayRegionEndMs(endTimeMs);
 		setPlayRegionStartMs(startTimeMs);
 
 //		seekBar.setRegionMode(startTimeMs, endTimeMs, mediaPlayer.getDuration());
-		Log.d(logTag," Set play region: isPlayRegion="+isRegionPlay()+", start="+regionStartMs+", end="+regionEndMs);
+		Crashlytics.log(Log.DEBUG,logTag," Set play region: isPlayRegion="+isRegionPlay()+", start="+regionStartMs+", end="+regionEndMs);
 	}
-	
+
 	public void desetPlayRegion(){
-		Log.d(logTag,"Deset play region");
+		Crashlytics.log(Log.DEBUG,logTag,"Deset play region");
 		regionStartMs=-1;
 		regionEndMs=-1;
 		seekBar.disableRegionMode();
 		seekBar.postInvalidate();
 	}
-	
+
 //	public boolean isPlayRegion(){return (mpState==MP_PLAYING && canPlayRegion());}
 	public boolean isRegionPlay(){
-//		Log.d(getClass().getName(),Thread.currentThread().getName()+": Region start="+regionStartMs+", end="+regionEndMs);
+//		Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+": Region start="+regionStartMs+", end="+regionEndMs);
 		return (regionStartMs>=0 && regionEndMs >=0);
 	}
-	
+
 	public int getRegionStartPosition(){
 		return regionStartMs;
 	}
@@ -963,11 +969,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	public int getSubtitleIndex(int time){
 		return Util.subtitleBSearch(subtitle, time);
 	}
-	
+
 	public ViewGroup getControllerView(){
 		return mediaController.getControllerView();
 	}
-	
+
 	private int timeMsToSubtitleIndex(int timeMs){
 		int subIndex = Util.subtitleBSearch(subtitle, timeMs);
 		if(subIndex<0)subIndex=0;
@@ -975,7 +981,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	}
 
 	// ===========================================================================================
-	
+
 /*	private void showToastMsg(final String s){
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
@@ -984,17 +990,17 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}
 		});
 	}
-*/	
+*/
 	final protected OnPreparedListener onPreparedListener = new OnPreparedListener() {
 		public void onPrepared(MediaPlayer mp) {
-			Log.d(getClass().getName(), "**** Into onPreparedListener of MediaPlayer ****");
+			Crashlytics.log(Log.DEBUG,logTag, "**** Into onPreparedListener of MediaPlayer ****");
 			synchronized(mediaPlayerKey){
 				mpState = MP_PREPARED;
 			}
-			
+
 			audioManager = (AudioManager) activity.getSystemService(Context.AUDIO_SERVICE);
 			int result = audioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
-			
+
 			// could not get audio focus.
 			if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 ///				activity.setSubtitleViewText(activity.getResources().getString(R.string.soundInUseError));
@@ -1005,15 +1011,15 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			remoteControlReceiver=new ComponentName(activity,RemoteControlReceiver.class.getName());
 			audioManager.registerMediaButtonEventReceiver(remoteControlReceiver);
 
-			Log.d(logTag, "Prepare data");
+			Crashlytics.log(Log.DEBUG,logTag, "Prepare data");
 			changedListener.onMediaPrepared();
 
 			loadingMedia=-1;
-			Log.d(getClass().getName(),"**** Leave onPreparedListener of MediaPlayer ****");
+			Crashlytics.log(Log.DEBUG,logTag,"**** Leave onPreparedListener of MediaPlayer ****");
 		}
 	};
-	
-	
+
+
 	final protected OnAudioFocusChangeListener audioFocusChangeListener = new OnAudioFocusChangeListener() {
 		int lastState=-1;
 		@Override
@@ -1021,29 +1027,21 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			switch (focusChange) {
 			// Gaint the audio device
 			case AudioManager.AUDIOFOCUS_GAIN:
-				/*if (getCurrentPosition() > 0)
-					try {
-						start();
-					} catch (IllegalStateException e) {
-						e.printStackTrace();
-					}
-				*/
-				// mpController.start();
-				Log.d(getClass().getName(),"Got audio focus.");
+				Crashlytics.log(Log.DEBUG,logTag,"Got audio focus.");
 				if(lastState == MP_PLAYING && mediaPlayer != null){
-					Log.d(getClass().getName(),"Last state is PLAYING before lost audio focus, continue play.");
+					Crashlytics.log(Log.DEBUG,logTag,"Last state is PLAYING before lost audio focus, continue play.");
 					start();
 				}
 				lastState=-1;
 				break;
 			// lost audio focus long time, release resource here.
 			case AudioManager.AUDIOFOCUS_LOSS:
-				Log.d("onAudioFocusChange",	"Loss of audio focus of unknown duration.");
+				Crashlytics.log(Log.DEBUG,"onAudioFocusChange",	"Loss of audio focus forever, pause play.");
 				try {
 					pause();
 					//release();
 				} catch (IllegalStateException e) {
-					Log.e(logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS.", e);
+					Crashlytics.log(Log.ERROR,logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS."+": "+ e.getMessage());
 					e.printStackTrace();
 				}
 				// mpController.stopSubtitleTimer();
@@ -1052,35 +1050,34 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			// You must stop all audio playback, but you can keep your resources
 			// because you will probably get focus back shortly
 			case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-				Log.d("onAudioFocusChange",	"temporarily lost audio focus, but should receive it back shortly.");
+				Crashlytics.log(Log.DEBUG,"onAudioFocusChange",	"temporarily lost audio focus, but should receive it back shortly.");
 				try {
 					lastState=getMediaPlayerState();
 					pause();
 				} catch (IllegalStateException e) {
-					Log.e(logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT.", e);
+					Crashlytics.log(Log.ERROR,logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT."+": "+ e.getMessage());
 					e.printStackTrace();
 				}
 				// mpController.stopSubtitleTimer();
 				break;
 			// You have temporarily lost audio focus, but you are allowed to
 			// continue to play audio quietly (at a low volume) instead of
-			// killing
-			// audio completely.
+			// killing audio completely.
 			case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-				Log.d("onAudioFocusChange",	"temporarily lost audio focus, but you are allowed to continue to play audio quietly.");
+				Crashlytics.log(Log.DEBUG,"onAudioFocusChange",	"temporarily lost audio focus, but you are allowed to continue to play audio quietly.");
 				try {
 					lastState=getMediaPlayerState();
 					pause();
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
-					Log.e(logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK.", e);
+					Crashlytics.log(Log.ERROR,logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK."+": "+ e.getMessage());
 				}
 				// mpController.stopSubtitleTimer();
 				break;
 			}
 		}
 	};
-	
+
 	static MediaPlayerController mpController=null;
 	static public class RemoteControlReceiver extends BroadcastReceiver {
 		static int key_actionDown=-1;
@@ -1089,33 +1086,33 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	    	if(mpController==null)return;
 	    	// If the key is not group of ACTION_MEDIA_BUTTON skip.
 	    	if (!Intent.ACTION_MEDIA_BUTTON.equals(intent.getAction())) return;
-	    	
-	    	Log.d(getClass().getName(),"Get a Receive Brocast key event: The state of MediaPlayer is "+mpController.getMediaPlayerState());
+
+	    	Crashlytics.log(Log.DEBUG,logTag,"Get a Receive Brocast key event: The state of MediaPlayer is "+mpController.getMediaPlayerState());
 	    	KeyEvent event = (KeyEvent)intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
 	        KeyEvent Xevent = (KeyEvent)intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
-	        
+
 	        if(event == null || Xevent == null){
 				Log.e(getClass().getName(), "MediaPlayerRemoteController get key event but event is null.", new NullPointerException());
 	        	return;
 	        }
-	        
+
 	        // If the event is key down, record the code to key_actionDown then skip.
 		    if(Xevent.getAction() == KeyEvent.ACTION_DOWN){
-		    	Log.d(getClass().getName(),"Receive Brocast: get "+event.getKeyCode()+" key down.");
+		    	Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get "+event.getKeyCode()+" key down.");
 		    	key_actionDown=event.getKeyCode();
 		    	return;
 		    }
-		    
+
 		    // If there is a key up event but there is no the key down before, skip.
 		    if(Xevent.getAction() == KeyEvent.ACTION_UP && event.getKeyCode() != key_actionDown)return;
-		    Log.d(getClass().getName(),"Receive Brocast: get "+event.getKeyCode()+" key up.");
+		    Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get "+event.getKeyCode()+" key up.");
 	            if (event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_PLAY) {
-	                Log.d(getClass().getName(),"Receive Brocast: get MEDIA_PLAY key.");
+	                Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_PLAY key.");
 	                mpController.start();
 	                return;
 	            }
 	            else if (KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE == event.getKeyCode() || event.getKeyCode() == KeyEvent.KEYCODE_HEADSETHOOK) {
-	                Log.d(getClass().getName(),"Receive Brocast: get MEDIA_PLAY_PAUSE key.");
+	                Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_PLAY_PAUSE key.");
 	            	if(mpController.getMediaPlayerState()==MP_PLAYING){
 	            		mpController.pause();
 	            		return;
@@ -1123,24 +1120,24 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	            		mpController.start();
 	            		return;
 	                }
-	            	Log.d(getClass().getName(),"The MediaPlayer not stay in can PLAY/PAUSE state.");
+	            	Crashlytics.log(Log.DEBUG,logTag,"The MediaPlayer not stay in can PLAY/PAUSE state.");
 	            }
 	            else if(KeyEvent.KEYCODE_MEDIA_PREVIOUS == event.getKeyCode()) {
-	            	Log.d(getClass().getName(),"Receive Brocast: get MEDIA_PREVIOUS key.");
+	            	Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_PREVIOUS key.");
             		mpController.fwToNextSubtitle();
             		mpController.reflashProgressView();
 	            	return;
 	            }
 	            else if(KeyEvent.KEYCODE_MEDIA_NEXT == event.getKeyCode()) {
-	            	Log.d(getClass().getName(),"Receive Brocast: get MEDIA_NEXT key.");
+	            	Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_NEXT key.");
             		mpController.rewToLastSubtitle();
             		mpController.reflashProgressView();
 	            	return;
 	            }
-	            Log.d(getClass().getName(),"Unknow MEDIA_KEY: "+event.getKeyCode());
+	            Crashlytics.log(Log.DEBUG,logTag,"Unknow MEDIA_KEY: "+event.getKeyCode());
 	    }
 	}
-	
+
 /*	private class SubtitleTimer extends AsyncTask<SubtitleElement, Void, Void> {
 		protected Void doInBackground(SubtitleElement... se) {
 			String logTag="SubtitleTimer";
@@ -1148,50 +1145,50 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			int monInterval=activity.getResources().getInteger(R.integer.subtitleMonInterval);
 			while(true){
 				if(isCancelled()){
-					Log.d(logTag,"Exit nomaly.");
+					Crashlytics.log(Log.DEBUG,logTag,"Exit nomaly.");
 					return null;	// playArrayIndex not last one
 				}
 				try{
-//					Log.d(getClass().getName(),"Subtitle index miss, search the index.");
+//					Crashlytics.log(Log.DEBUG,logTag,"Subtitle index miss, search the index.");
 					synchronized(playingIndexKey){
 						/*
 						 * While user drag the seek bar indicator over end of media control view, the MediaPlayer will complete play,
 						 * if there isn't check mpState, that will cause the indicator of SeekBar jump back to random position.
-						 * 
+						 *
 						if(mpState == MP_COMPLETE){
-							Log.d(logTag,"SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
+							Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
 							return null;
 						}
-//						Log.d(logTag,"SubtitleTimer: the mpState is not MP_COMPLETE.");
+//						Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: the mpState is not MP_COMPLETE.");
 						playPoint=mediaPlayer.getCurrentPosition();
                         playArrayIndex=Util.subtitleBSearch(se, playPoint);
-                       
-                        //Log.d(logTag,"check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
+
+                        //Crashlytics.log(Log.DEBUG,logTag,"check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
                         // Play region function has set, and over the region, stop play.
                         //if(isRegionPlay() && playPoint > regionEndMs){
                         if(regionEndMs > 0 && playPoint > regionEndMs){
-                                Log.d(logTag,"Stop Play: play point="+playPoint+", regionEndMs="+regionEndMs);
+                                Crashlytics.log(Log.DEBUG,logTag,"Stop Play: play point="+playPoint+", regionEndMs="+regionEndMs);
                                 pause();
                                 changedListener.onComplatePlay();
                                 return null;
                         }
-                       
+
                         if(playingIndex!=playArrayIndex){
                                 playingIndex=playArrayIndex;
                                 if(playArrayIndex!=-1)changedListener.onSubtitleChanged(playArrayIndex, subtitle[playArrayIndex]);
                         }
-//                        Log.d(logTag,"SubtitleTimer: release playingIndexKey.");
+//                        Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: release playingIndexKey.");
 					}
 					// The last of subtitle has reached.
 					//if(playArrayIndex==se.length-1)return null;
-					
+
 					if(isCancelled()){
-						Log.d(logTag,"Exit nomaly.");
+						Crashlytics.log(Log.DEBUG,logTag,"Exit nomaly.");
 						return null;
 					}
-					
+
 					Thread.sleep(monInterval);
-					
+
 					}catch(IllegalStateException e) {
 						e.printStackTrace();
 						AnalyticsApplication.sendException("SubtitleTimer_EXCEPTION: mpState="+mpState+", playPoint="+playPoint+", playArrayIndex="+playArrayIndex+", regionEndMs="+regionEndMs, e, true);
@@ -1208,7 +1205,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				}
 		}
 	}
-*/	
+*/
 
 	private class SubtitleTimer extends Thread{
 		boolean isCanceled=false;
@@ -1218,11 +1215,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		public void cancel(boolean dontCare){
 			isCanceled=true;
 		}
-		
+
 		private boolean isCancelled(){
 			return isCanceled;
 		}
-		
+
 		@Override
 		public void run(){
 			String logTag = "SubtitleTimer";
@@ -1231,11 +1228,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 					R.integer.subtitleMonInterval);
 			while (true) {
 				if (isCancelled()) {
-					Log.d(logTag, "Exit nomaly.");
+					Crashlytics.log(Log.DEBUG,logTag, "Exit nomaly.");
 					return; // playArrayIndex not last one
 				}
 				try {
-					// Log.d(getClass().getName(),"Subtitle index miss, search the index.");
+					// Crashlytics.log(Log.DEBUG,logTag,"Subtitle index miss, search the index.");
 					synchronized (playingIndexKey) {
 						/*
 						 * While user drag the seek bar indicator over end of
@@ -1245,26 +1242,26 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 						 * position.
 						 */
 						if (mpState == MP_COMPLETE) {
-							Log.d(logTag, "SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
+							Crashlytics.log(Log.DEBUG,logTag, "SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
 							return;
 						}
-						// Log.d(logTag,"SubtitleTimer: the mpState is not MP_COMPLETE.");
+						// Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: the mpState is not MP_COMPLETE.");
 						playPoint = mediaPlayer.getCurrentPosition();
 						playArrayIndex = Util.subtitleBSearch(subtitle, playPoint);
 
-						// Log.d(logTag,"check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
+						// Crashlytics.log(Log.DEBUG,logTag,"check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
 						// Play region function has set, and over the region,
 						// stop play.
 						// if(isRegionPlay() && playPoint > regionEndMs){
 						if (regionEndMs > 0 && playPoint > regionEndMs) {
-							Log.d(logTag, "Stop Play: play point=" + playPoint
+							Crashlytics.log(Log.DEBUG,logTag, "Stop Play: play point=" + playPoint
 									+ ", regionEndMs=" + regionEndMs);
 							pause();
 							changedListener.onComplatePlay();
 							return;
 						}
 
-						//Log.d(logTag,"Current position: "+Util.getMsToHMS(playPoint)+", subtitle: "+subtitle[playArrayIndex].text);
+						//Crashlytics.log(Log.DEBUG,logTag,"Current position: "+Util.getMsToHMS(playPoint)+", subtitle: "+subtitle[playArrayIndex].text);
 						if (playingIndex != playArrayIndex) {
 							playingIndex = playArrayIndex;
 							if (playArrayIndex != -1)
@@ -1272,7 +1269,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 										playArrayIndex,
 										subtitle[playArrayIndex]);
 						}
-						// Log.d(logTag,"SubtitleTimer: release playingIndexKey.");
+						// Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: release playingIndexKey.");
 					}
 					// The last of subtitle has reached.
 					// if(playArrayIndex==se.length-1)return null;
@@ -1280,7 +1277,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 					LamrimReaderActivity.setInfoText(playPoint);
 
 					if (isCancelled()) {
-						Log.d(logTag, "Exit nomaly.");
+						Crashlytics.log(Log.DEBUG,logTag, "Exit nomaly.");
 						return;
 					}
 
@@ -1288,15 +1285,15 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
-					Log.e(logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs, e);
+					Crashlytics.log(Log.ERROR, logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
 					return;
 				} catch (InterruptedException e) {
 					// e.printStackTrace();
-					Log.e(logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs, e);
+					Crashlytics.log(Log.ERROR,logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
 					return;
 				} catch (Exception e) {
 					// e.printStackTrace();
-					Log.e(logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs, e);
+					Crashlytics.log(Log.ERROR,logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
 					return;
 				}
 			}

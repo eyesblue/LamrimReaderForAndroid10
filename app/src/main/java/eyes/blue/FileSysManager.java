@@ -178,7 +178,7 @@ public class FileSysManager {
             specFile = new File(userSpecDir + File.separator + SpeechData.name[i]);
             // Test is exist and readable.
             if (specFile.exists() && specFile.canRead()) {
-                Crashlytics.log(Log.DEBUG,logTag, Thread.currentThread().getName() + ": the media file exist in user specification location: " + specFile.getAbsolutePath());
+                //Crashlytics.log(Log.DEBUG,logTag, Thread.currentThread().getName() + ": the media file exist in user specification location: " + specFile.getAbsolutePath());
                 return specFile;
             }
         }

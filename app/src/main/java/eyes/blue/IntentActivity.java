@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
 import java.util.List;
 
 /*

@@ -1,24 +1,14 @@
 package eyes.blue;
 
 import android.app.Activity;
-import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.URLSpan;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.common.api.Api;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
-import org.w3c.dom.Text;
 
 import java.util.Locale;
 

@@ -102,6 +102,7 @@ public class ApiLevelAdaptor {
         }
     }
 
+
     public static Point getScreenRes(Activity a){
             Display display = a.getWindowManager().getDefaultDisplay();
             Point size = new Point();

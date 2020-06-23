@@ -203,7 +203,6 @@
     <string name="msgJsonParseErr">解讀伺服器回傳的資料時發生錯誤，請重新嘗試。</string>
     <string name="errFailToSwitchAudio">音檔不存在，無法自動切換至該位置，請先下載%1$s的檔案資源。</string>
     <string name="dlgBgPlayMode">背景播放模式</string>
-    <string name="msgBgPlayDesc">即將關閉廣論App並切換到背景播放模式，在此模式下您可以關閉銀幕聆聽，您確定嗎？\n\n目前播放位置：</string>
     <string name="errNoMediaPlayer">無播放器錯誤</string>
     <string name="msgInstallPlayerFirst">您的系統中沒有內建可以播放音樂的App，請自行安裝音樂播放器，按確定開啟商城安裝建議的播放器。</string>
     <string name="recommandMusicPlayerPkg">com.ushareit.listenit</string>
@@ -397,7 +396,7 @@
 
     <!-- For BG media player -->
     <string name="SHARED_MAINKEY">com.example.szantog.shared_main_key</string>
-    <string name="SHARED_LAST_DIR">com.example.szantog.shared_last_dir</string>
+    <!-- <string name="SHARED_LAST_DIR">com.example.szantog.shared_last_dir</string> -->
     <string name="SHARED_FAV_DIRS">com.example.szantog.shared_fav_dirs</string>
     <string name="SHARED_LAST_SONGS_ARRAY">com.example.szantog.shared_last_songs_array</string>
     <string name="SHARED_LAST_SONGS_INDEX">com.example.szantog.shared_last_songs_index</string>
@@ -406,9 +405,11 @@
     <string name="FILES_TO_PLAY">com.example.szantog.files_to_play</string>
     <string name="NORMAL_START_INTENT_ACTION">com.example.szantog.normal.start.intent.action</string>
     <string name="NOTIFICATION_ACTION_PAUSEPLAY">com.example.szantog.notification_action_pauseplay</string>
-    <string name="NOTIFICATION_ACTION_REWIND">com.example.szantog.notification_action_rewind</string>
-    <string name="NOTIFICATION_ACTION_FF">com.example.szantog.notification_action_ff</string>
+    <string name="NOTIFICATION_ACTION_PREV">com.example.szantog.notification_action_rewind</string>
+    <string name="NOTIFICATION_ACTION_NEXT">com.example.szantog.notification_action_ff</string>
     <string name="NOTIFICATION_ACTION_QUIT">com.example.szantog.notification_action_quit</string>
+    <string name="single_repeat">重複播放%s</string>
+    <string name="all_repeat">播放全部音檔</string>
 
 
     <string name="lamrimCmdUri">http://lamrimreader-cmd.eyes-blue.com/</string>
