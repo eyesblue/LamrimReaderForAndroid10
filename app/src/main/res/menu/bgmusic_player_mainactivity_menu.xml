@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mainmenu_menuitem_favourite"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Kedvenc"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/mainmenu_menuitem_repeat"
+        android:icon="@mipmap/ic_play_next"
+        android:title="Ismétlés"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/mainmenu_menuitem_quit"
+        android:icon="@mipmap/ic_play_next"
+        android:title="關閉背景播放"
+        android:visible="false"
+        app:showAsAction="always|withText" />
+
+</menu>

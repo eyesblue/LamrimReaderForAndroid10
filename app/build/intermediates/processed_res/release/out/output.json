@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "applicationId": "eyes.blue",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "PROCESSED_RES"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 214,
+        "versionName": "1.6.8",
+        "outputFile": "app-release.apk",
+        "fullName": "release",
+        "baseName": "release",
+        "dirName": ""
+      },
+      "path": "resources-release.ap_",
+      "properties": {
+        "packageId": "eyes.blue",
+        "split": "",
+        "minSdkVersion": "16"
+      }
+    }
+  ]
+}
