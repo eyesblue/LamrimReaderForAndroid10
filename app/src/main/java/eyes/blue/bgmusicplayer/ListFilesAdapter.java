@@ -64,7 +64,7 @@ public class ListFilesAdapter extends BaseAdapter {
         }else
             view.setBackgroundColor(Color.argb(255,250,250,250));
         imageView.setImageResource(android.R.drawable.ic_media_play);
-        textView.setText(SpeechData.getNameId(i)+" - "+context.getResources().getStringArray(R.array.desc)[i]);
+        textView.setText(SpeechData.getNameId(items.get(i))+" - "+context.getResources().getStringArray(R.array.desc)[items.get(i)]);
         /*
         if (items.get(i).getType() == FileItem.IS_FILE) {
             imageView.setImageResource(android.R.drawable.ic_media_play);

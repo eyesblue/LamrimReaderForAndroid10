@@ -1573,7 +1573,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 if (cl.firstRun())
                     cl.getLogDialog().show();
             }
-        },250);
+        },400);
 
 
 
@@ -2676,7 +2676,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                                         SubtitleSearchIndex ssi = subtitleSearchResult.get(pos);
                                         // =================== Check are files ready ====================
-                                        if (!fsm.isFilesReady(mediaIndex)) {
+                                        if (!fsm.isFilesReady(ssi.mediaIndex)) {
                                             Util.showErrorToast(LamrimReaderActivity.this, String.format(getString(R.string.errFailToSwitchAudio), SpeechData.getSubtitleName(ssi.mediaIndex)));
                                             return;
                                         }

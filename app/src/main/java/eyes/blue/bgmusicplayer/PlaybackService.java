@@ -39,6 +39,9 @@ import eyes.blue.SpeechData;
 import eyes.blue.Util;
 
 public class PlaybackService extends Service implements MediaPlayer.OnCompletionListener {
+    public final int REQ_AUDIO_FOCUS_FAIL =1;
+    public final int DISK_SPACE_NOT_ENOUGH =2;
+    public final int CREATE_MEDIA_PLAYER_FAIL =3;
 
     public interface PlaybackListener {
         void onSeekUpdate(String filename, int currentPosition, int duration);
@@ -147,7 +150,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             channel.enableVibration(true);
             notificationManager.createNotificationChannel(channel);
             notification.setChannelId(channel.getId());
-            notification.setStyle(new Notification.BigTextStyle().bigText("longText"));
+            notification.setStyle(new Notification.BigTextStyle().bigText(getString(R.string.bgplayer_notification_long_text)));
         }
         notification.setContent(notificationView);
         notification.setSmallIcon(android.R.drawable.ic_media_pause);
@@ -239,7 +242,9 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             int index=preferences.getInt("MEDIA_INDEX", 0);
             int pos=preferences.getInt("PLAY_TIME", 0);
             currentFilePosition = index;
-            playLamrimIndex(context,index,pos);
+
+            if(playLamrimIndex(context,index,pos)!=0)return START_STICKY;
+
         }
         if (notification != null) {
             startForeground(NOTIFICATION_ID, notification.build());
@@ -295,7 +300,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         //unregisterReceiver(telephonyStateManager);
     }
 
-    private void playLamrimIndex(Context c, int index, int timePos) {
+    private int playLamrimIndex(Context c, int index, int timePos) {
         currentFilePosition=index;
         Crashlytics.log(Log.DEBUG, logTag,"Play Lamim Index: "+index+", time: "+MainActivity.formatDuration(timePos));
         if (mediaPlayer != null) {
@@ -304,21 +309,32 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             mediaPlayer.reset();
             mediaPlayer.release();
         }
-        if (listener != null) {
-            listener.onCurrentFilePositionChanged(index);
-        }
 
-        if(!requestAudioFocus())
-            return;
+        if(!requestAudioFocus()) {
+            Toast.makeText(context, "音效裝置佔用中，向系統取得播放音效失敗！", Toast.LENGTH_LONG).show();
+            return 1;   // 要求 Audio Focus 失敗。
+        }
 
         mediaPlayer = null;
         final File mediaFile=new FileSysManager(c).getLocalMediaFile(index);
+        if(mediaFile==null) {
+            Toast.makeText(context, "檔案不存在且儲存空間不足！", Toast.LENGTH_LONG).show();
+            return 2;   // 檔案不存在，且磁碟空間不足。
+        }
         mediaPlayer = MediaPlayer.create(this, Uri.fromFile(mediaFile));
+        if(mediaPlayer == null){
+            Toast.makeText(context, "無法開啟播放器，"+SpeechData.getSubtitleName(index)+"音檔可能已損毀！", Toast.LENGTH_LONG).show();
+            return 3;   // 當檔案壞掉時可能會發生。
+        }
         //mediaPlayer = MediaPlayer.create(this, Uri.parse(filesToPlay2.get(currentFilePosition).getPath()));
         mediaPlayer.setOnPreparedListener(getOnPreparedListener(timePos)); // My Code
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.start();
         transferPlaybackState(true);
+
+        if (listener != null) {
+            listener.onCurrentFilePositionChanged(index);
+        }
 
         notification.setSmallIcon(android.R.drawable.ic_media_play);
         notificationView.setTextViewText(R.id.title, SpeechData.getSubtitleName(index));
@@ -341,8 +357,8 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         Crashlytics.log(Log.DEBUG,logTag, "Start Update UI Thread.");
         myUpdateInfoThread = new MyUpdateInfoRunnable();
         myUpdateInfoThread.start();
+        return 0;
     }
-
 
     /* My code.*/
     private MediaPlayer.OnPreparedListener getOnPreparedListener(final int timePos) {
@@ -439,9 +455,9 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
 
         if(diff<lastPrevBtnDelayTime)
             playPrevMedia();
-        else
-            playLamrimIndex(PlaybackService.this, currentFilePosition, 0);
-
+        else {
+            if(playLamrimIndex(PlaybackService.this, currentFilePosition, 0)!=0) return;
+        }
         updateMediaInfoUI();
     }
 
@@ -485,7 +501,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             currentFilePosition=index;
         }
 
-        playLamrimIndex(PlaybackService.this, currentFilePosition, 0);
+        if(playLamrimIndex(PlaybackService.this, currentFilePosition, 0)!=0)return;
         updateMediaInfoUI();
     }
 
@@ -521,6 +537,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             if(index==SpeechData.name.length)
                 index=0;
             File file=fsm.getLocalMediaFile(index);
+            if(file==null)continue;
             Crashlytics.log(Log.DEBUG, logTag, "Check: "+SpeechData.getSubtitleName(index)+((file.exists())?" exist.":" not exist."));
             if(file.exists())return index;
         }
@@ -530,7 +547,12 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     private void updateMediaInfoUI() {
         if (listener != null && mediaPlayer != null) {
             //Log.d(logTag, "Update info for "+SpeechData.getSubtitleName(currentFilePosition)+" "+ Util.getMsToHMS(mediaPlayer.getCurrentPosition()));
-            listener.onSeekUpdate(SpeechData.getSubtitleName(currentFilePosition)+" - "+getResources().getStringArray(R.array.desc)[currentFilePosition], mediaPlayer.getCurrentPosition(), mediaPlayer.getDuration());
+            try {
+                listener.onSeekUpdate(SpeechData.getSubtitleName(currentFilePosition) + " - " + getResources().getStringArray(R.array.desc)[currentFilePosition], mediaPlayer.getCurrentPosition(), mediaPlayer.getDuration());
+            }catch(NullPointerException npe){
+                npe.printStackTrace();
+                Crashlytics.log(Log.ERROR, logTag,"NullPointerException happen while update UI for media information.");
+            }
         }
     }
 

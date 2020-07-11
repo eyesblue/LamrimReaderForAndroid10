@@ -29,6 +29,7 @@ import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
@@ -154,7 +155,14 @@ public class SpeechMenuActivity extends AppCompatActivity {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							File f=fsm.getLocalMediaFile(manageItemIndex);
-							if(f!=null && !fsm.isFromUserSpecifyDir(f))f.delete();
+							if(f!=null && fsm.isFromUserSpecifyDir(f)){
+								Toast.makeText(SpeechMenuActivity.this,"此檔案位於使用者指定位置，不可刪除！",Toast.LENGTH_LONG).show();
+								return;
+							}
+							if(f!=null && !f.delete()) {
+								Toast.makeText(SpeechMenuActivity.this, "刪除失敗！", Toast.LENGTH_LONG).show();
+								return;
+							}
 							updateUi(manageItemIndex,true);
                             Crashlytics.setString("ButtonClick", "QuickActionMenuDelete");
 						}};
@@ -982,7 +990,9 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				public void run() {
 					Crashlytics.log(Log.DEBUG, logTag,"*********** Dismiss damn progress bar ***********");
 					if(progDialog.isShowing())
-						progDialog.dismiss();
+						try {
+							progDialog.dismiss();
+						}catch(Exception e){e.printStackTrace();}	// 此處可能在視窗已經離開Activity後才關閉 progress dialog造成 not attached to window manager 錯誤，直接忽略。
 				}
 			});
 		}

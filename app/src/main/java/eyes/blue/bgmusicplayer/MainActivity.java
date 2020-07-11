@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
     private Menu optMenu;
     String logTag=getClass().getName();
 
-    private ArrayList<Integer> currentDirItems = new ArrayList<>();
+    private final ArrayList<Integer> currentDirItems = new ArrayList<>();
     private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
@@ -309,6 +309,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
         sb.setMax(SpeechData.name.length);
         sb.setProgress(0);
         final AlertDialog dialog=BaseDialogs.showDialog(MainActivity.this,"掃描中","檔案掃描中...",sb,null,null,false);
+        dialog.show();
 
         Runnable r=new Runnable() {
             private void setProg(final int i){
@@ -320,30 +321,39 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
                 int mediaIndex = intent.getIntExtra("MEDIA_INDEX", 0);
                 int listIndex=-1;
                 for(int i=0;i<320;i++) {
+                    final int prog=i;
                     //Crashlytics(Log.DEBUG, logTag, getClass().getName(), "Check is file exist: "+ SpeechData.getSubtitleName(i));
                     File f = fsm.getLocalMediaFile(i);
-                    if (f.exists()){
-                        currentDirItems.add(i);
+                    if (f!=null && f.exists()){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Crashlytics.log(Log.DEBUG,logTag,"Add "+SpeechData.getSubtitleName(prog)+"("+prog+") to media list of BgPlayer UI.");
+                                currentDirItems.add(prog);
+                            }});
+
                         if(i==mediaIndex)
                             listIndex=i;
                     }
-                    setProg(i);
-                    final int prog=i;
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            setProg(prog);
                             dialog.setMessage("檔案掃描中... "+prog+"/320");
-                        }
-                    });
+                        }});
                 }
 
                 final int index=listIndex;
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        dialog.dismiss();
-                        adapter.setSelectedIndex(index);
+                        try {
+                            dialog.dismiss();
+                        }catch(Exception e){ e.printStackTrace();}  // 此處可能在視窗已經離開Activity後才關閉 progress dialog造成 not attached to window manager 錯誤，直接忽略。
+
                         adapter.notifyDataSetChanged();
+                        adapter.setSelectedIndex(index);
 
                         if(index!=-1){
                             Crashlytics.log(Log.DEBUG, logTag, "=======>Move ListView to index "+SpeechData.getSubtitleName(index));

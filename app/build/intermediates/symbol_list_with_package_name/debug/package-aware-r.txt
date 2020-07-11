@@ -2152,7 +2152,6 @@ mipmap scrubber_primary_segment_mode
 mipmap scrubber_secondary_holo
 mipmap scrubber_track_holo_dark
 raw changelog
-raw warner_tautz_off_broadway
 string DIVIDER
 string FILES_TO_PLAY
 string GLModeRecordFile
@@ -2203,6 +2202,7 @@ string audioDirName
 string available
 string background_color
 string beAware
+string bgplayer_notification_long_text
 string bookContent
 string bookFontSize
 string bookFontSizeKey

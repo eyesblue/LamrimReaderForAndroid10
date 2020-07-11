@@ -230,7 +230,6 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	 * Same as function of MediaPlayer and maintain the state of MediaPlayer.
 	 * */
 	public synchronized void seekTo(int pos) {
-		Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+" SeekTo function: seek to position: "+pos+", duration="+mediaPlayer.getDuration());
 		if(mediaPlayer==null)return;
 		if(mpState<MP_PREPARED)return;
 
@@ -242,6 +241,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return;
 		}
 
+		Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+" SeekTo function: seek to position: "+pos+", duration="+mediaPlayer.getDuration());
 		// Check is the seek position over the start or end region.
 		int index=Util.subtitleBSearch(subtitle, pos);
 		if(index<0)index=0;
