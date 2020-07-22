@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eyes.blue"
     android:targetSandboxVersion="2"
-    android:versionCode="215"
-    android:versionName="1.6.9" >
+    android:versionCode="216"
+    android:versionName="1.6.10" >
 
     <uses-sdk
         android:minSdkVersion="16"

@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:132:9-140:20
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:131:9-139:20
 	android:grantUriPermissions
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:136:13-47
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:135:13-47
 	android:authorities
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:134:13-60
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:133:13-60
 	android:exported
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:135:13-37
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:134:13-37
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:133:13-62
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:132:13-62
 manifest
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
 MERGED from [com.github.codekidX:storage-chooser:2.0.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6d112e282723c9e1bf421c845e30cd7\jetified-storage-chooser-2.0.4.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.preference:preference:1.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\434b7761682acb6a64d6786d465e6f5d\preference-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa01be74cca420248ddf952bd5f9e76b\material-1.0.0-beta01\AndroidManifest.xml:17:1-24:12
@@ -25,7 +25,7 @@ MERGED from [:robotoCalendarLibrary] C:\Users\eyesblue\Dropbox\Android_projects\
 MERGED from [com.google.firebase:firebase-core:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\90ecbb6c2a3eaf0d82611d41038b4270\jetified-firebase-core-17.4.4\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:2:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2c67dc0e80c7035ecc9b01180e8e7332\jetified-firebase-analytics-17.4.4\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:17:1-45:12
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:17:1-45:12
 MERGED from [androidx.media:media:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ba32234f629b342ad036e1d6ed2c8530\media-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [:colorPickerView] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\library_manifest\release\AndroidManifest.xml:17:1-41:12
 MERGED from [:newQuickAction] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\newQuickAction\build\intermediates\library_manifest\release\AndroidManifest.xml:11:1-46:12
@@ -34,7 +34,7 @@ MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\eyesblue\.gr
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\346a8cd24ea2388e5ae73b60cb85f4db\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\347f16ac0ae4ecc5470f4ed98e2c183d\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\863365d5bff689697517d420813a617d\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:17:1-47:12
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:17:1-47:12
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0d4a4fa6032fb93853eb64ac05f98a3\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:15:1-34:12
 MERGED from [com.google.firebase:firebase-installations:16.3.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30fb89b8f61db1ad728804753e7fbcf4\jetified-firebase-installations-16.3.2\AndroidManifest.xml:2:1-23:12
@@ -88,20 +88,20 @@ MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\eyesblue\.gradle\
 MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\7a7845f2d7932732ddc4a6aa152875f6\jetified-answers-1.4.7\AndroidManifest.xml:2:1-13:12
 MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\91fc513414454e69bb2f22011332c45f\jetified-fabric-1.4.8\AndroidManifest.xml:22:1-33:12
 MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\75716d708da402429b8195fee0dd8541\jetified-transport-api-2.2.0\AndroidManifest.xml:15:1-22:12
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
-INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
+INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
 	package
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:3:5-24
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-147:12
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:1-146:12
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:2:11-69
@@ -117,8 +117,8 @@ MERGED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.
 MERGED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\53dcc8dfb9f242179dbeecdc7b5b2357\jetified-crashlytics-2.10.1\AndroidManifest.xml:16:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:10:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:10:5-67
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-installations:16.3.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30fb89b8f61db1ad728804753e7fbcf4\jetified-firebase-installations-16.3.2\AndroidManifest.xml:11:5-67
@@ -143,8 +143,8 @@ MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\eyesblue\.gradle\cache
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:9:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:10:5-79
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:16.3.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\30fb89b8f61db1ad728804753e7fbcf4\jetified-firebase-installations-16.3.2\AndroidManifest.xml:10:5-79
@@ -163,8 +163,8 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.3] C:\Users\
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:10:22-76
 uses-permission#android.permission.WAKE_LOCK
 ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:11:5-68
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:24:5-68
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e8c64f69bc1e782d7d5eb1a6b11438f9\jetified-play-services-measurement-17.4.4\AndroidManifest.xml:25:5-68
@@ -200,7 +200,7 @@ ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderF
 	android:anyDensity
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:18:23-48
 application
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:20:5-145:19
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:20:5-144:19
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa01be74cca420248ddf952bd5f9e76b\material-1.0.0-beta01\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\aa01be74cca420248ddf952bd5f9e76b\material-1.0.0-beta01\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\35e78871f9ec799fad617f11d91258c9\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
@@ -213,10 +213,10 @@ MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\
 MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:12:5-20:19
 MERGED from [com.google.firebase:firebase-analytics:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2c67dc0e80c7035ecc9b01180e8e7332\jetified-firebase-analytics-17.4.4\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2c67dc0e80c7035ecc9b01180e8e7332\jetified-firebase-analytics-17.4.4\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:22:5-43:19
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:22:5-43:19
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:28:5-45:19
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:22:5-43:19
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:22:5-43:19
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:28:5-45:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0d4a4fa6032fb93853eb64ac05f98a3\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:24:5-32:19
@@ -350,7 +350,7 @@ ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderF
 	android:name
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:68:13-45
 activity#eyes.blue.IntentActivity
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:71:9-102:20
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:71:9-101:20
 	android:screenOrientation
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:74:13-50
 	android:configChanges
@@ -358,77 +358,77 @@ ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderF
 	android:name
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:72:13-43
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:lamrimreader-cmd.eyes-blue.com+data:host:xe74n.app.goo.gl+data:pathPrefix:/+data:scheme:http+data:scheme:https+data:scheme:lamrim
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:75:13-87:29
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:75:13-86:29
 action#android.intent.action.VIEW
 ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:76:17-69
 	android:name
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:76:25-66
 category#android.intent.category.DEFAULT
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:17-76
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:77:17-76
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:27-73
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:77:27-73
 category#android.intent.category.BROWSABLE
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:79:17-78
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:17-78
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:79:27-75
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:27-75
 data
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
 	android:host
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:84:23-68
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:83:23-68
 	android:scheme
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:23-44
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:23-44
 	android:pathPattern
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:96:23-53
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-53
 	android:mimeType
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-45
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:94:23-45
 	android:pathPrefix
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:86:23-45
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:85:23-45
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:*+data:mimeType:*/*+data:pathPattern:.*\\..*\\..*\\..*\\.lrs+data:pathPattern:.*\\..*\\..*\\.lrs+data:pathPattern:.*\\..*\\.lrs+data:pathPattern:.*\\.lrs+data:scheme:file
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:88:13-101:29
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:87:13-100:29
 service#eyes.blue.DownloadAllService
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:104:9-106:40
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:103:9-105:40
 	android:exported
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:106:13-37
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:105:13-37
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:105:13-47
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:104:13-47
 service#eyes.blue.MoveFileService
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:107:9-109:40
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:106:9-108:40
 	android:exported
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:109:13-37
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:108:13-37
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:108:13-44
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:107:13-44
 receiver#eyes.blue.MediaPlayerController$RemoteControlReceiver
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:111:9-115:20
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:110:9-114:20
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:111:19-78
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:110:19-78
 intent-filter#action:name:android.intent.action.MEDIA_BUTTON
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:112:13-114:29
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:111:13-113:29
 action#android.intent.action.MEDIA_BUTTON
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:113:17-77
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:112:17-77
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:113:25-74
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:112:25-74
 activity#eyes.blue.bgmusicplayer.MainActivity
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:118:9-121:53
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:117:9-120:53
 	android:screenOrientation
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:121:13-50
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:120:13-50
 	android:configChanges
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:120:13-63
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:119:13-63
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:119:13-64
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:118:13-64
 service#eyes.blue.bgmusicplayer.PlaybackService
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:9-66
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:122:9-66
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:18-63
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:122:18-63
 service#eyes.blue.bgmusicplayer.NotificationIntentService
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:124:9-76
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:9-76
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:124:18-73
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:18-73
 meta-data#io.fabric.ApiKey
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:142:9-144:72
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:141:9-143:72
 	android:value
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:144:13-69
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:143:13-69
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:143:13-44
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:142:13-44
 uses-sdk
 INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
@@ -453,8 +453,8 @@ MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\
 MERGED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-analytics:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2c67dc0e80c7035ecc9b01180e8e7332\jetified-firebase-analytics-17.4.4\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2c67dc0e80c7035ecc9b01180e8e7332\jetified-firebase-analytics-17.4.4\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ba32234f629b342ad036e1d6ed2c8530\media-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.media:media:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\ba32234f629b342ad036e1d6ed2c8530\media-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [:colorPickerView] C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\colorPickerView\build\intermediates\library_manifest\release\AndroidManifest.xml:37:5-39:41
@@ -471,8 +471,8 @@ MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gr
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\347f16ac0ae4ecc5470f4ed98e2c183d\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\863365d5bff689697517d420813a617d\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\863365d5bff689697517d420813a617d\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0d4a4fa6032fb93853eb64ac05f98a3\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:19:5-21:41
@@ -592,11 +592,11 @@ INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimRead
 		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:137:13-139:58
+ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:136:13-138:58
 	android:resource
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:139:17-55
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:138:17-55
 	android:name
-		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:138:17-67
+		ADDED from C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:137:17-67
 provider#com.crashlytics.android.CrashlyticsInitProvider
 ADDED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\53dcc8dfb9f242179dbeecdc7b5b2357\jetified-crashlytics-2.10.1\AndroidManifest.xml:19:9-23:38
 	android:authorities
@@ -609,10 +609,10 @@ ADDED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.g
 		ADDED from [com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\53dcc8dfb9f242179dbeecdc7b5b2357\jetified-crashlytics-2.10.1\AndroidManifest.xml:20:13-75
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:13:9-19:19
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:36:9-42:19
-MERGED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:36:9-42:19
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:36:9-42:19
+MERGED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:36:9-42:19
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-datatransport:17.0.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0d4a4fa6032fb93853eb64ac05f98a3\jetified-firebase-datatransport-17.0.3\AndroidManifest.xml:25:9-31:19
@@ -636,51 +636,51 @@ ADDED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.
 	android:name
 		ADDED from [com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:17:17-115
 service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:28:9-35:19
+ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:28:9-35:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:31:13-37
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:31:13-37
 	android:directBootAware
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:30:13-43
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:30:13-43
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:29:13-82
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:29:13-82
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:32:13-34:29
+ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:32:13-34:29
 	android:priority
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:32:28-51
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:32:28-51
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:33:17-78
+ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:33:17-78
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:33:25-75
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:33:25-75
 meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
-ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:39:13-41:85
+ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:39:13-41:85
 	android:value
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:41:17-82
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:41:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:40:17-119
+		ADDED from [com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:40:17-119
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:26:5-82
+ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:26:5-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:26:22-79
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:26:22-79
 meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
-ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:32:13-34:85
+ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:32:13-34:85
 	android:value
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:34:17-82
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:34:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:33:17-96
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:33:17-96
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:37:9-44:20
+ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:37:9-44:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:39:13-36
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:39:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:40:13-73
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:40:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:38:13-78
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:38:13-78
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:41:13-43:29
+ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:41:13-43:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:42:17-81
+ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:42:17-81
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:42:25-78
+		ADDED from [com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:42:25-78
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
 ADDED from [com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:30:13-32:85
 	android:value

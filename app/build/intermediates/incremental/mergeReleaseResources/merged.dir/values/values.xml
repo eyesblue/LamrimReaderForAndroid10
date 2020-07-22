@@ -1448,7 +1448,7 @@
     <string name="choiceDrive">選擇裝置</string>
     <string name="choose_external_storage">Choose External Storage</string>
     <string name="choose_storage">Choose Storage</string>
-    <string name="com.crashlytics.android.build_id" ns2:ignore="UnusedResources,TypographyDashes" translatable="false">aa99561094df41068a52439d90ee6a42</string>
+    <string name="com.crashlytics.android.build_id" ns2:ignore="UnusedResources,TypographyDashes" translatable="false">3b49411c4b8446ad8784c8e963d6ce52</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
     <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>

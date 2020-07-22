@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="eyes.blue"
-4    android:versionCode="215"
-5    android:versionName="1.6.9" >
+4    android:versionCode="216"
+5    android:versionName="1.6.10" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="16"
@@ -48,14 +48,14 @@
 25
 26    <!-- Required by older versions of Google Play services to create IID tokens -->
 27    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-27-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:26:5-82
-27-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:26:22-79
+27-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:26:5-82
+27-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:26:22-79
 28    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 28-->[com.google.android.gms:play-services-measurement:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e8c64f69bc1e782d7d5eb1a6b11438f9\jetified-play-services-measurement-17.4.4\AndroidManifest.xml:26:5-110
 28-->[com.google.android.gms:play-services-measurement:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e8c64f69bc1e782d7d5eb1a6b11438f9\jetified-play-services-measurement-17.4.4\AndroidManifest.xml:26:22-107
 29
 30    <application
-30-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:20:5-145:19
+30-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:20:5-144:19
 31        android:allowBackup="true"
 31-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:21:9-35
 32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -148,7 +148,7 @@
 78            android:screenOrientation="landscape" />
 78-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:70:13-50
 79        <activity
-79-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:71:9-102:20
+79-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:71:9-101:20
 80            android:name="eyes.blue.IntentActivity"
 80-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:72:13-43
 81            android:configChanges="orientation|keyboardHidden"
@@ -156,114 +156,114 @@
 82            android:screenOrientation="landscape" >
 82-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:74:13-50
 83            <intent-filter>
-83-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:75:13-87:29
+83-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:75:13-86:29
 84                <action android:name="android.intent.action.VIEW" />
 84-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:76:17-69
 84-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:76:25-66
 85
 86                <category android:name="android.intent.category.DEFAULT" />
-86-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:17-76
-86-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:27-73
+86-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:77:17-76
+86-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:77:27-73
 87                <category android:name="android.intent.category.BROWSABLE" />
-87-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:79:17-78
-87-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:79:27-75
+87-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:17-78
+87-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:27-75
 88
 89                <data android:scheme="http" />
-89-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-89-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:23-44
+89-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+89-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:23-44
 90                <data android:scheme="https" />
-90-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-90-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:23-44
+90-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+90-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:23-44
 91                <data android:scheme="lamrim" />
-91-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-91-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:23-44
+91-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+91-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:23-44
 92                <data android:host="lamrimreader-cmd.eyes-blue.com" />
-92-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-92-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:84:23-68
+92-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+92-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:83:23-68
 93                <data android:host="xe74n.app.goo.gl" />
-93-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-93-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:84:23-68
+93-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+93-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:83:23-68
 94                <data android:pathPrefix="/" />
-94-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-94-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:86:23-45
+94-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+94-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:85:23-45
 95            </intent-filter>
 96            <intent-filter>
-96-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:88:13-101:29
+96-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:87:13-100:29
 97                <action android:name="android.intent.action.VIEW" />
 97-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:76:17-69
 97-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:76:25-66
 98
 99                <category android:name="android.intent.category.DEFAULT" />
-99-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:17-76
-99-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:27-73
+99-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:77:17-76
+99-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:77:27-73
 100                <category android:name="android.intent.category.BROWSABLE" />
-100-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:79:17-78
-100-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:79:27-75
+100-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:17-78
+100-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:78:27-75
 101
 102                <data android:scheme="file" />
-102-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-102-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:23-44
+102-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+102-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:23-44
 103                <data android:mimeType="*/*" />
-103-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-103-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-45
+103-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+103-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:94:23-45
 104                <data android:pathPattern=".*\\.lrs" />
-104-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-104-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:96:23-53
+104-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+104-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-53
 105                <data android:pathPattern=".*\\..*\\.lrs" />
-105-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-105-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:96:23-53
+105-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+105-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-53
 106                <data android:pathPattern=".*\\..*\\..*\\.lrs" />
-106-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-106-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:96:23-53
+106-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+106-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-53
 107                <data android:pathPattern=".*\\..*\\..*\\..*\\.lrs" />
-107-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-107-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:96:23-53
+107-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+107-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:95:23-53
 108                <data android:host="*" />
-108-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:81:17-47
-108-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:84:23-68
+108-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:80:17-47
+108-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:83:23-68
 109            </intent-filter>
 110        </activity>
 111
 112        <service
-112-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:104:9-106:40
+112-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:103:9-105:40
 113            android:name="eyes.blue.DownloadAllService"
-113-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:105:13-47
+113-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:104:13-47
 114            android:exported="false" />
-114-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:106:13-37
+114-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:105:13-37
 115        <service
-115-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:107:9-109:40
+115-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:106:9-108:40
 116            android:name="eyes.blue.MoveFileService"
-116-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:108:13-44
+116-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:107:13-44
 117            android:exported="false" />
-117-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:109:13-37
+117-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:108:13-37
 118
 119        <receiver android:name="eyes.blue.MediaPlayerController$RemoteControlReceiver" >
-119-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:111:9-115:20
-119-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:111:19-78
+119-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:110:9-114:20
+119-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:110:19-78
 120            <intent-filter>
-120-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:112:13-114:29
+120-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:111:13-113:29
 121                <action android:name="android.intent.action.MEDIA_BUTTON" />
-121-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:113:17-77
-121-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:113:25-74
+121-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:112:17-77
+121-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:112:25-74
 122            </intent-filter>
 123        </receiver>
 124
 125        <!-- For background music player (Start) -->
 126        <activity
-126-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:118:9-121:53
+126-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:117:9-120:53
 127            android:name="eyes.blue.bgmusicplayer.MainActivity"
-127-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:119:13-64
+127-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:118:13-64
 128            android:configChanges="orientation|keyboardHidden"
-128-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:120:13-63
+128-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:119:13-63
 129            android:screenOrientation="landscape" />
-129-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:121:13-50
+129-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:120:13-50
 130
 131        <service android:name="eyes.blue.bgmusicplayer.PlaybackService" />
-131-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:9-66
-131-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:18-63
+131-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:122:9-66
+131-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:122:18-63
 132        <service android:name="eyes.blue.bgmusicplayer.NotificationIntentService" />
-132-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:124:9-76
-132-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:124:18-73
+132-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:9-76
+132-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:123:18-73
 133        <!-- For background music player (End) -->
 134
 135
@@ -274,27 +274,27 @@
 140
 141        <provider
 142            android:name="androidx.core.content.FileProvider"
-142-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:133:13-62
+142-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:132:13-62
 143            android:authorities="eyes.blue.provider"
-143-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:134:13-60
+143-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:133:13-60
 144            android:exported="false"
-144-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:135:13-37
+144-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:134:13-37
 145            android:grantUriPermissions="true" >
-145-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:136:13-47
+145-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:135:13-47
 146            <meta-data
-146-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:137:13-139:58
+146-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:136:13-138:58
 147                android:name="android.support.FILE_PROVIDER_PATHS"
-147-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:138:17-67
+147-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:137:17-67
 148                android:resource="@xml/provider_paths" />
-148-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:139:17-55
+148-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:138:17-55
 149        </provider>
 150
 151        <meta-data
-151-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:142:9-144:72
+151-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:141:9-143:72
 152            android:name="io.fabric.ApiKey"
-152-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:143:13-44
+152-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:142:13-44
 153            android:value="2aa4d4d31ff6b0c922706d90b66d6c4a6135f1e6" />
-153-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:144:13-69
+153-->C:\Users\eyesblue\Dropbox\Android_projects\LamrimReader\LamrimReaderForAndroid10\app\src\main\AndroidManifest.xml:143:13-69
 154
 155        <provider
 155-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\53dcc8dfb9f242179dbeecdc7b5b2357\jetified-crashlytics-2.10.1\AndroidManifest.xml:19:9-23:38
@@ -322,17 +322,17 @@
 167                android:value="com.google.firebase.components.ComponentRegistrar" />
 167-->[com.google.firebase:firebase-crashlytics:17.1.1] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\de94ae7ffb8527d89e8a5f242b580d4d\jetified-firebase-crashlytics-17.1.1\AndroidManifest.xml:18:17-82
 168            <meta-data
-168-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:39:13-41:85
+168-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:39:13-41:85
 169                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-169-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:40:17-119
+169-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:40:17-119
 170                android:value="com.google.firebase.components.ComponentRegistrar" />
-170-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:41:17-82
+170-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:41:17-82
 171            <meta-data
-171-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:32:13-34:85
+171-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:32:13-34:85
 172                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-172-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:33:17-96
+172-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:33:17-96
 173                android:value="com.google.firebase.components.ComponentRegistrar" />
-173-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:34:17-82
+173-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:34:17-82
 174            <meta-data
 174-->[com.google.android.gms:play-services-measurement-api:17.4.4] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\f6f5c398937f256c629bd1fca99952bb\jetified-play-services-measurement-api-17.4.4\AndroidManifest.xml:30:13-32:85
 175                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
@@ -357,35 +357,35 @@
 186             but set to not exported to explicitly avoid allowing another app to call it.
 187        -->
 188        <service
-188-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:28:9-35:19
+188-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:28:9-35:19
 189            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-189-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:29:13-82
+189-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:29:13-82
 190            android:directBootAware="true"
-190-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:30:13-43
+190-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:30:13-43
 191            android:exported="false" >
-191-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:31:13-37
+191-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:31:13-37
 192            <intent-filter android:priority="-500" >
-192-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:32:13-34:29
-192-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:32:28-51
+192-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:32:13-34:29
+192-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:32:28-51
 193                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-193-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:33:17-78
-193-->[com.google.firebase:firebase-messaging:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\e0801bd0b37f230f72775a9d5e9e20e8\jetified-firebase-messaging-20.2.2\AndroidManifest.xml:33:25-75
+193-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:33:17-78
+193-->[com.google.firebase:firebase-messaging:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\2732eadace0d913bfaeecdc6f614970c\jetified-firebase-messaging-20.2.3\AndroidManifest.xml:33:25-75
 194            </intent-filter>
 195        </service>
 196
 197        <receiver
-197-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:37:9-44:20
+197-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:37:9-44:20
 198            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-198-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:38:13-78
+198-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:38:13-78
 199            android:exported="true"
-199-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:39:13-36
+199-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:39:13-36
 200            android:permission="com.google.android.c2dm.permission.SEND" >
-200-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:40:13-73
+200-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:40:13-73
 201            <intent-filter>
-201-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:41:13-43:29
+201-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:41:13-43:29
 202                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-202-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:42:17-81
-202-->[com.google.firebase:firebase-iid:20.2.2] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\55595f1d62cd3f786892d43052f28476\jetified-firebase-iid-20.2.2\AndroidManifest.xml:42:25-78
+202-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:42:17-81
+202-->[com.google.firebase:firebase-iid:20.2.3] C:\Users\eyesblue\.gradle\caches\transforms-2\files-2.1\648be7b713aec28fcf52141019964ebd\jetified-firebase-iid-20.2.3\AndroidManifest.xml:42:25-78
 203            </intent-filter>
 204        </receiver>
 205

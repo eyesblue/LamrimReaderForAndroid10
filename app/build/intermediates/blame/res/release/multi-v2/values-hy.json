@@ -4,23 +4,6 @@
             "outputFile": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-hy\\values-hy.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\e0801bd0b37f230f72775a9d5e9e20e8\\jetified-firebase-messaging-20.2.2\\res\\values-hy\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "207",
-                        "endColumns": "101",
-                        "endOffsets": "308"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "5778",
-                        "endColumns": "105",
-                        "endOffsets": "5879"
-                    }
-                },
-                {
                     "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\434b7761682acb6a64d6786d465e6f5d\\preference-1.1.1\\res\\values-hy\\values-hy.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
@@ -69,6 +52,23 @@
                         "startOffsets": "105,213,313,423,512,618,735,817,898,989,1081,1176,1270,1371,1464,1559,1653,1744,1835,1917,2023,2129,2228,2338,2446,2547,2717,6101",
                         "endColumns": "107,99,109,88,105,116,81,80,90,91,94,93,100,92,94,93,90,90,81,105,105,98,109,107,100,169,96,81",
                         "endOffsets": "208,308,418,507,613,730,812,893,984,1076,1171,1265,1366,1459,1554,1648,1739,1830,1912,2018,2124,2223,2333,2441,2542,2712,2809,6178"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\eyesblue\\.gradle\\caches\\transforms-2\\files-2.1\\2732eadace0d913bfaeecdc6f614970c\\jetified-firebase-messaging-20.2.3\\res\\values-hy\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "101",
+                        "endOffsets": "308"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "5778",
+                        "endColumns": "105",
+                        "endOffsets": "5879"
                     }
                 },
                 {

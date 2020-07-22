@@ -3327,8 +3327,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
             GLamrimSect[0][1] = speechStartMs;
             GLamrimSect[0][2] = speechEndMs;
             GLamrimSect[1][0] = -1;
-            GLamrimSect[1][0] = -1;
-            GLamrimSect[1][0] = -1;
+            GLamrimSect[1][1] = -1;
+            GLamrimSect[1][2] = -1;
         } else {// difference media.
             Crashlytics.log(Log.DEBUG, logTag, "Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", endMs=-1; region[1]: endIndex=" + speechEndIndex + ", startMs=0, endMs=" + speechEndMs);
             GLamrimSect[0][0] = speechStartIndex;

@@ -4,12 +4,12 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_media_ff.png"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_pin_blue.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_pin_blue.png"
-    },
-    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_file.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_file.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_pin_blue.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_pin_blue.png"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_launcher.png.flat",
@@ -32,36 +32,36 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_search.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_search.png"
-    },
-    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_left_bound.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_left_bound.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_search.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_search.png"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_reload_last_state.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_reload_last_state.png"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_right_bound.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_right_bound.png"
-    },
-    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_media_next_d.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_media_next_d.png"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\drawable_background.xml.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\drawable\\background.xml"
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_right_bound.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_right_bound.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\anim_in_bounce.xml.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\anim\\in_bounce.xml"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\drawable_background.xml.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\drawable\\background.xml"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_search_next.png.flat",
@@ -100,20 +100,20 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\layout\\media_controller.xml"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_file.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_file.png"
-    },
-    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\drawable_master.jpg.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\drawable\\master.jpg"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_file.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_file.png"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_search_next_p.png.flat",
@@ -128,12 +128,12 @@
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_delete.png"
     },
     {
-        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_save.png.flat",
-        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_save.png"
-    },
-    {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi_ic_media_rew.png.flat",
         "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-xhdpi\\ic_media_rew.png"
+    },
+    {
+        "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\mipmap-hdpi_ic_save.png.flat",
+        "source": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\src\\main\\res\\mipmap-hdpi\\ic_save.png"
     },
     {
         "merged": "C:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\res\\merged\\release\\layout_activity_about.xml.flat",
