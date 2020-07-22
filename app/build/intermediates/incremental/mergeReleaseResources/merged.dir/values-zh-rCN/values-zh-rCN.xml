@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="PicsMenuItem">
+        <item>等比扩展填满置中</item>
+        <item>等比扩展全图显示置中</item>
+        <item>不按比例完全扩展</item>
+        <item>等比缩放置上</item>
+        <item>等比缩放置中</item>
+        <item>等比缩放置底</item>
+        <item>不缩放置中</item>
+        <item>向量</item>
+    </string-array>
+    <string-array name="SettingsMenuItem">
+        <item>显示/隐藏模式切换键</item>
+        <item>选择图片</item>
+        <item>图片扩展方式</item>
+        <item>图片背景颜色</item>
+        <item>字幕颜色</item>
+        <item>字幕背景颜色</item>
+        <item>字幕背景透明度</item>
+        <item>回到原始设定</item>
+    </string-array>
+    <string-array name="remoteSite">
+        <item>http://lamrimreader.eyes-blue.com/appresources/</item>
+    </string-array>
+    <bool name="isShareWithREST">false</bool>
+    <bool name="searchFromNetwork">true</bool>
+    <integer name="MEDIA_TYPE">0</integer>
+    <integer name="SUBTITLE_TYPE">1</integer>
+    <integer name="THEORY_TYPE">2</integer>
+    <integer name="bktFontProp">1</integer>
+    <integer name="defFontProp">0</integer>
+    <integer name="downloadBufferSize">16384</integer>
+    <integer name="isInit">0</integer>
+    <integer name="netSearchInterval">1500</integer>
+    <integer name="reservSpacePercent">10</integer>
+    <integer name="screenOnTime">300000</integer>
+    <integer name="subtitleMonInterval">100</integer>
+    <integer name="subtitleReservSizeK">102400</integer>
+    <integer name="subtitleScrollTouchBtnHeightPercentDp">3</integer>
+    <integer name="subtitleScrollTouchBtnWidthPercentDp">10</integer>
+    <integer name="textMaxSize">200</integer>
+    <integer name="textMinSize">12</integer>
+    <integer name="theorySmallTextSizePercent">90</integer>
+    <string name="GLModeRecordFile">GLMode</string>
+    <string name="OSver">系统版本</string>
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"转到首页"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"转到上一层级"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"更多选项"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"完成"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"查看全部"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"选择应用"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"关闭"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"开启"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"Delete 键"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"Enter 键"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"空格键"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"搜索…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"清除查询"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"搜索查询"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"搜索"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"提交查询"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"语音搜索"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"分享对象"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"与<ns1:g id="APPLICATION_NAME">%s</ns1:g>分享"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"收起"</string>
+    <string name="aboutMsg">　　为了跟上安卓系统的更新，新的广论App也被迫放弃对旧版本的支援，若您的装置是旧版的，您可以到「计画网页」寻找旧版本的广论App，末学会把上一个世代最后的稳定版本放在网站供大家下载安装。 </string>
+    <string name="action_settings">Settings</string>
+    <string name="all_repeat">播放全部音档</string>
+    <string name="app_name">广论App</string>
+    <string name="audioDirName">Audio</string>
+    <string name="available">可使用</string>
+    <string name="background_color">black</string>
+    <string name="beAware">提醒您：</string>
+    <string name="bgplayer_notification_long_text">广论App背景播放控制器</string>
+    <string name="bookContent">论文</string>
+    <string name="bookFontSize">论文</string>
+    <string name="bookFontSizeKey">BookFontSize</string>
+    <string name="btnCancle">取消下载</string>
+    <string name="btnDownloadAll">全部下载</string>
+    <string name="cancel">取消</string>
+    <string name="cant_read_folder">无法读取目录</string>
+    <string name="changelog_full_title">修正记录</string>
+    <string name="changelog_ok_button">确定</string>
+    <string name="changelog_show_full">更多...</string>
+    <string name="changelog_title">What\'s New</string>
+    <string name="checkSubtitleV20141127">checkSubtitleV20141127</string>
+    <string name="choiceDrive">选择装置</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"启用"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"您必须先启用 Google Play 服务，然后才能运行<ns1:g id="APP_NAME">%1$s</ns1:g>。"</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"启用 Google Play 服务"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"安装"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"您的设备没有安装 Google Play 服务，因此无法运行<ns1:g id="APP_NAME">%1$s</ns1:g>。"</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"获取 Google Play 服务"</string>
+    <string msgid="4293541511340436975" name="common_google_play_services_notification_channel_name">"Google Play 服务的适用范围"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"Google Play服务出错"</string>
+    <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"<ns1:g id="APP_NAME">%1$s</ns1:g>无法访问 Google Play 服务，请重试。"</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"您的设备不支持 Google Play 服务，因此无法运行<ns1:g id="APP_NAME">%1$s</ns1:g>。"</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"更新"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"您必须先更新 Google Play 服务，然后才能运行<ns1:g id="APP_NAME">%1$s</ns1:g>。"</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"更新 Google Play 服务"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"Google Play 服务当前正在更新，因此您无法运行<ns1:g id="APP_NAME">%1$s</ns1:g>。"</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"必须使用新版 Google Play 服务。该服务很快就会自行更新。"</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"在手机上打开"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"登录"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"使用 Google 帐号登录"</string>
+    <string name="contactAuther">联繫作者</string>
+    <string msgid="3209159573327985035" name="copy">"复制"</string>
+    <string name="create">储存</string>
+    <string name="defSubtitleType">SRT</string>
+    <string name="defTheoryType">TXT</string>
+    <string name="digOptSetRegionStart">开始位置</string>
+    <string name="dlgAllow">允许</string>
+    <string name="dlgBgPlayMode">背景播放模式</string>
+    <string name="dlgCancel">取消</string>
+    <string name="dlgDelFile">删除档案</string>
+    <string name="dlgDelWarnMsg">%1$s即将被删除，您确定要删除%1$s吗？</string>
+    <string name="dlgDelWarnTitle">删除%1$s</string>
+    <string name="dlgDeling">删除中，请稍候...</string>
+    <string name="dlgDescConnecting">取得 %1$s %2$s资讯中 ...</string>
+    <string name="dlgDescDownloadFail">下载失败，请检查您的网路连线是否正常。</string>
+    <string name="dlgDescDownloading">%1$s %2$s下载中，请稍候...</string>
+    <string name="dlgDescPrepareSpeech">音档准备中，请稍候...</string>
+    <string name="dlgDescPrepareSubtitle">字幕准备中，请稍候...</string>
+    <string name="dlgDisallow">禁止</string>
+    <string name="dlgDontShowThisWarnDesc">不再显示此警告</string>
+    <string name="dlgEndLineGreaterThenStart">结束行数小于起始行数。</string>
+    <string name="dlgEndPageGreaterThenStart">结束页小于起始页。</string>
+    <string name="dlgExitMsg">即将关闭程式，您确定离开吗？</string>
+    <string name="dlgExitTitle">关闭程式</string>
+    <string name="dlgFailLoadSubtitle">字幕载入失败，请重新尝试。</string>
+    <string name="dlgHintGrantStroage">您未同意广论App存取档案，广论App从网路上下载音档后无法正常储存，也无法正常播放，若您在拒绝授权的同时点选不再询问，您必须重新安装广论App，系统才会再显示询问授权对话框。</string>
+    <string name="dlgHintLoadAudio">请先从右上角点选圆形的选单图示，再点选「选择音档」，最后选择您要标记的音档。</string>
+    <string name="dlgHintLoadMediaBeforeSwitchToReadingMode">尚未载入音档，无法切换到阅读模式！</string>
+    <string name="dlgHintMpControllerNoSubtitle">尚无字幕，请点选此处显示拨放选单</string>
+    <string name="dlgHintRecord">请在载入音档后，移动播放位置到要标记的地方，再点选「记录区段」纪录并储存区段。</string>
+    <string name="dlgHintShowMpController">请点选此处显示拨放选单</string>
+    <string name="dlgInputError">输入错误</string>
+    <string name="dlgInputNotFill">资料输入不完全。</string>
+    <string name="dlgLineNumOverPageCount">输入的行数超过该页的行数。</string>
+    <string name="dlgLoadingHard">努力载入中 ...</string>
+    <string name="dlgManageSrcDL">下载</string>
+    <string name="dlgManageSrcDel">删除</string>
+    <string name="dlgManageSrcPlay">播放</string>
+    <string name="dlgManageSrcUpdate">更新</string>
+    <string name="dlgMoveFile">移动档案</string>
+    <string name="dlgMoveFileMsg">背景移动中，请检视通知列以瞭解进度，移动过程中请勿执行其他操作。</string>
+    <string name="dlgMoveFileTitle">档案移动</string>
+    <string name="dlgMsgDlNotComplete">媒体档案  %1$s 尚未下载完成，是否再次下载？</string>
+    <string name="dlgMsgMaintaining">维护档案中，请稍候...</string>
+    <string name="dlgNetAccessMsg">即将存取网路资源，视您目前所在的网路环境，可能造成额外的网路费用，确定下载资源吗？</string>
+    <string name="dlgNetAccessTitle">网路存取</string>
+    <string name="dlgNoRecord">无区段记录</string>
+    <string name="dlgNotGrantStorageYet">未取得存取档案授权</string>
+    <string name="dlgNotLoadAudioYet">未载入音档</string>
+    <string name="dlgNumberFormatError">数字栏位错误，请检查输入内容。</string>
+    <string name="dlgOk">确定</string>
+    <string name="dlgOnlyAcceptNearAudio">只能标记相邻的音档</string>
+    <string name="dlgOptSetRegionEnd">结束位置</string>
+    <string name="dlgPageNumOverPageCount">输入的页数超过广论总页数。</string>
+    <string name="dlgRecordTheoryIndex">广论 %1$d 页  %2$d 行 ~ %3$d 页 %4$d 行</string>
+    <string name="dlgRegEndTime">结束时间：</string>
+    <string name="dlgRegLamrimEnd">广论结束位置: 页数</string>
+    <string name="dlgRegLamrimStart">广论起始位置: 页数</string>
+    <string name="dlgRegLineNum">行数</string>
+    <string name="dlgRegStartTime">开始时间：</string>
+    <string name="dlgResDownload">广论资源下载</string>
+    <string name="dlgSavePositionAs">将目前播放位置设定为</string>
+    <string name="dlgStopDownload">停止下载</string>
+    <string name="dlgSureMoveAllAudioFile">您要将所有的音档移动到您所指定的位置吗？</string>
+    <string name="dlgSureMoveFile">您确定要移动档案吗？</string>
+    <string name="dlgSureStopDownload">您要停止下载吗？</string>
+    <string name="dlgTitleConnecting">连线中</string>
+    <string name="dlgTitleDownloadFail">下载失败</string>
+    <string name="dlgTitleDownloading">下载资源</string>
+    <string name="dlgTitleMaintaining">维护档案</string>
+    <string name="dlgUntitle">未知标题</string>
+    <string name="doNotUse">不使用</string>
+    <string name="downloadSchedule">更新进度</string>
+    <string name="downloadTmpPostfix">.dltmp</string>
+    <string name="emptyTextFieldErr">请输入资料夹名称</string>
+    <string name="err">错误</string>
+    <string name="errFailToSwitchAudio">音档不存在，无法自动切换至该位置，请先下载%1$s的档案资源。</string>
+    <string name="errIAEwhileSetPlayerSrc">开启语音档时发生参数错误!</string>
+    <string name="errIOEwhilePrepPlayer">准备语音档时发生输出入错误!</string>
+    <string name="errIOEwhileSetPlayerSrc">无法正常读取音档，请检查音档是否损毁，请试着重新下载[%1$s]音档。</string>
+    <string name="errISEwhilePrepPlayer">准备语音档时发生拨放器状态错误!</string>
+    <string name="errISEwhileSetPlayerSrc">开启语音档时发生拨放器状态错误!</string>
+    <string name="errLakeBrowser">您的装置上未安装任何可供使用的网页浏览元件，无法开启网页。</string>
+    <string name="errLoadCatchFail">载入快取失败，请点选[选单] -> [选择音档] -> [储存维护]后再尝试一次。</string>
+    <string name="errMoveFile">"搬移档案时发生错误: 来源: %1$s, 目的地: %2$s</string>
+    <string name="errNoMediaPlayer">无播放器错误</string>
+    <string name="errOpenAssetMedia">您的装置无法播放自带的音档，请回报作者您的机型与操作流程。</string>
+    <string name="errOpenPicFail">您所选择的档案损毁或无法读取。</string>
+    <string name="errPlayFailArgErr">侦测到错误参数，停止载入，请重新尝试。</string>
+    <string name="errPlayFailAudioNotFound">音档不存在或无法存取。</string>
+    <string name="errPlayFailLakeAudio">%1$s音档不存在，无法载入语音资料</string>
+    <string name="errPlayFailLakeAudioAndCancel">%1$s音档不存在，取消播放</string>
+    <string name="errPlayerRecycled">播放器已被系统回收，请重新载入。!</string>
+    <string name="errReadRecordFile">读取档案时发生错误，无法读取区段记录！</string>
+    <string name="errRestorePlayStateFailLakeAudio">%1$s音档不存在，无法载回最后状态</string>
+    <string name="errSEwhileSetPlayerSrc">开启语音档时发生安全性错误!</string>
+    <string name="errStorageNotReady">储存空间不足或无法使用储存装置，请检查您的储存装置是否正常，或磁碟已被电脑连线所独佔！</string>
+    <string name="errSyncRecordFile">"同步档案时发生错误，找不到档案！</string>
+    <string name="errUnknowPlayerState">播放器状态不明，无法判断目前播放的音档，请重新载入音档。</string>
+    <string name="errWhileReleasePlayer">释放拨放器时发生状态错误!</string>
+    <string name="errWriteFile">使用者指定目录错误或无写入权限，无法移动档案。</string>
+    <string name="errＷhilePlayMedia">播放媒体时发生错误，请重新载入！</string>
+    <string name="exitApp">关闭</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"高级"</string>
+    <string name="extStorage">外部储存空间</string>
+    <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"其他"</string>
+    <string name="file">档案</string>
+    <string name="filePathRoot">lamrimreader</string>
+    <string name="file_name">档名:</string>
+    <string name="firebase_deeplink_host">xe74n.app.goo.gl</string>
+    <string name="folderCreated">目录已建立</string>
+    <string name="folderErrorToastText">错误目录</string>
+    <string name="folderNameHint">资料夹名称</string>
+    <string name="fontKey">fontKey</string>
+    <string name="freeSpace">可用空间</string>
+    <string name="globalLamrim">全球广论</string>
+    <string name="globalLamrimDirName">GlobalLamrim</string>
+    <string name="globalLamrimScheduleFile">GlobalLamrimSchedule</string>
+    <string name="globalLamrimScheduleFileFormat">CSV</string>
+    <string name="globalLamrimShortName">全广</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="inUse">已使用</string>
+    <string name="inputTitleHint">请输入标题！</string>
+    <string name="intStorage">内部储存空间</string>
+    <string name="isAllowNetAccess">false</string>
+    <string name="isDarkThemeKey">isDarkTheme</string>
+    <string name="isShowInfoTextViewKey">isShowInfoTextView</string>
+    <string name="isShowModeSwBtnKey">isShowModeSwBtn</string>
+    <string name="isShowNetAccessWarn">true</string>
+    <string name="isUseThirdDir">useThirdDir</string>
+    <string name="lamrimCmdUri">http://lamrimreader-cmd.eyes-blue.com/</string>
+    <string name="lastSearchLamrimKey">lastSearchLamrimWords</string>
+    <string name="lastSearchTimeKey">lastNetworkSearchTime</string>
+    <string name="lbDefStorePath">预设档案存放位置(长按选取复制)</string>
+    <string name="lbDel">删除</string>
+    <string name="lbExtStorePath">外部音档：</string>
+    <string name="lbIntStorePath">内部音档：</string>
+    <string name="leaveRenderMode">离开公播模式</string>
+    <string name="loadingData">读取资料</string>
+    <string name="loadingSubtitles">字幕档案读取中，请稍候！</string>
+    <string name="localGlobalLamrimScheduleFileDataErr">全广进度记录错误: </string>
+    <string name="localGlobalLamrimScheduleFileDateFmtErr">全广进度日期格式错误，请重新下载！</string>
+    <string name="localGlobalLamrimScheduleFileDecodeErr">全广进度读取时发生封装错误，请重新下载！ </string>
+    <string name="localGlobalLamrimScheduleFileNotFound">开启全广进度错误，请重新下载！</string>
+    <string name="localGlobalLamrimScheduleFileRangeFmtErr">读取全广进度范围标记错误，请重新下载！</string>
+    <string name="localGlobalLamrimScheduleFileReadErr">全广进度读取错误，请重新下载！</string>
+    <string name="locale">位置</string>
+    <string name="location">位置</string>
+    <string name="markRegionFail">论文大区块标记失败。</string>
+    <string name="mediaCheckSumWhileDownload">true</string>
+    <string name="menuAbout">关于</string>
+    <string name="menuOptions">选项</string>
+    <string name="menuStrGlobalLamrim">全球广论</string>
+    <string name="menuStrPlayRegionRec">区段播放</string>
+    <string name="menuStrPlayRegionRecShortName">区段</string>
+    <string name="menuStrRenderMode">公播模式</string>
+    <string name="menuStrSavePlayRegion">储存区段</string>
+    <string name="menuStrSelectSpeech">选择音档</string>
+    <string name="menuStrSetRecord">记录区段</string>
+    <string name="menuStrTextSize">设定字体</string>
+    <string name="menuTitle">功能选单</string>
+    <string name="moveIntExtToHere">移动「外部」与「内部」储存空间的音档到此指定目录</string>
+    <string name="moveToHere">移动到此</string>
+    <string name="msgAlphaOpt">请输选择透明度</string>
+    <string name="msgCantCreateFolder">您所指定的储存目录无法建立！请重新选择。</string>
+    <string name="msgCreateMediaPlayer">多媒体播放器重建中</string>
+    <string name="msgDownloadList">下载列表：</string>
+    <string name="msgExternalStorage">外部储存空间</string>
+    <string name="msgFailReadAudioFIle">读取音档失败，请重新尝试。</string>
+    <string name="msgFileMoveFail">档案搬移失败</string>
+    <string name="msgFileMoving">搬移中，请稍候...</string>
+    <string name="msgFolderErr">目录错误</string>
+    <string name="msgFolderErrDesc">使用者指定路径不可为空！请重新选择。</string>
+    <string name="msgHintClickLink">若上面的连结无法启动，请点下面的连结启动：\n</string>
+    <string name="msgInstallPlayerFirst">您的系统中没有内建可以播放音乐的App，请自行安装音乐播放器，按确定开启商城安装建议的播放器。</string>
+    <string name="msgInternalStorage">内部储存空间</string>
+    <string name="msgJsonParseErr">解读伺服器回传的资料时发生错误，请重新尝试。</string>
+    <string name="msgLamrimDownloadList">广论App资源下载"</string>
+    <string name="msgLongPressShowMenu">此模式画面上没有选单按键！\n必须透过"按住图片"才能叫出选单。\n重开广论App后会回到正常模式。</string>
+    <string name="msgMediaPlayerErrorIO">多媒体播放器无法读取档案(输出入错误)，请重新尝试。</string>
+    <string name="msgMediaPlayerMalformed">多媒体档案格式错误，请重新尝试。</string>
+    <string name="msgMediaPlayerServerDie">系统中的多媒体播放服务已关闭，请重新尝试。</string>
+    <string name="msgMediaPlayerTimeOut">系统中的多媒体播放服务逾时，请重新尝试。</string>
+    <string name="msgMediaPlayerUnknowErr">多媒体播放器发生未知的错误，请重新尝试。</string>
+    <string name="msgMediaPlayerUnsupported">不支援的多媒体容器格式</string>
+    <string name="msgMoveFileFinish">档案搬移完成</string>
+    <string name="msgMoveFileSummary">共搬移 %1$s 个档案，耗时 %2$s 秒。</string>
+    <string name="msgMoveFromTo">"移动 %1$s 到 %2$s</string>
+    <string name="msgNewVerHasRes">新版本已发佈</string>
+    <string name="msgNoDelWarring">移除广论App时，系统不会删除此处的档案，您必须要自行删除此指定目录中的档案，您确定要移动档案吗？</string>
+    <string name="msgNoDownload">无法自动补档警告</string>
+    <string name="msgNoDownloadDesc">您的所选择的目录广论App没有写入权限，无法自动补档，所有新的下载仍会写入到预设的内部或外部储存区域。</string>
+    <string name="msgNotFolder">您所指定的储存位置为已存在的档案而非目录！请重新选择。</string>
+    <string name="msgPermErr">权限错误</string>
+    <string name="msgPermErrDesc">您所指定的储存目录无读取权限！请重新选择。</string>
+    <string name="msgPlsWait">查询中，请稍候 ...</string>
+    <string name="msgRemindMe">稍后通知我</string>
+    <string name="msgSearch">搜寻</string>
+    <string name="msgSearchNotFound">寻无字串。</string>
+    <string name="msgSearchSendingReq">网路查询</string>
+    <string name="msgSearchStrLenMustMoreThen2">搜寻字串太短，至少2个字</string>
+    <string name="msgSelectFolder">请选择存放目录</string>
+    <string name="msgSelectPic">请选择图片档案</string>
+    <string name="msgSelectThread">请选择同时下载连线数(越多越快，网路越壅塞):</string>
+    <string name="msgSendReqIOErr">无法连接搜寻伺服器，请检查您的网路连线是否正常。</string>
+    <string name="msgShareTitle">广论App专用连结(点击以广论App播放内容)：\n</string>
+    <string name="msgSkipTheVer">忽略此版本</string>
+    <string name="msgUTF8EncodeUnsupport">您的系统不支援UTF-8编码，无法送出查询。</string>
+    <string name="msgUpdateNow">立即更新</string>
+    <string name="msgWarring">警告</string>
+    <string name="newFolder">开新目录</string>
+    <string name="newMediaPlayPosition">NewMediaPlayPosition</string>
+    <string name="newMediaTarget">NewMediaTarget</string>
+    <string name="nnew">新增</string>
+    <string name="noData">无资料</string>
+    <string name="noExtSpace">无外部空间</string>
+    <string name="noSubtitleDesc">无字幕</string>
+    <string name="no_data">无资料</string>
+    <string name="normalMenu">一般选单</string>
+    <string msgid="478774118347071097" name="not_set">"未设置"</string>
+    <string name="picsExtOpt">选择扩展方式</string>
+    <string name="playFinish">播放结束</string>
+    <string name="playFinishNext">本卷播放结束，请由播放面板点选下一卷继续阅读。</string>
+    <string name="playModeKey">playMode</string>
+    <string msgid="7961817945132860002" name="preference_copied">"已将“<ns1:g id="SUMMARY">%1$s</ns1:g>”复制到剪贴板。"</string>
+    <string name="projectWebText">计画网页</string>
+    <string name="projectWebUrl">http://lamrimreader.eyes-blue.com/</string>
+    <string name="recSecFirst">没有区段记录，请先记录区段。</string>
+    <string name="recommandMusicPlayerPkg">com.ushareit.listenit</string>
+    <string name="record">纪录</string>
+    <string name="regionPlayModeRecordFile">regionMode</string>
+    <string name="regionRecordColumeName">records</string>
+    <string name="regionRecordFile">RegionRecord</string>
+    <string name="regionRecordListViewPage">regionListPage</string>
+    <string name="regionRecordListViewPageShift">regionListPageShift</string>
+    <string name="reloadLastState">载回进度</string>
+    <string name="renderImgBgColorKey">renderImgBgColor</string>
+    <string name="renderImgFgPathKey">renderImage</string>
+    <string name="renderImgScaleKey">renderImgScaleType</string>
+    <string name="resNum">版号</string>
+    <string name="runtimeStateFile">runtime</string>
+    <string name="searchFromKey">searchFrom</string>
+    <string name="searchFromNet">从网路</string>
+    <string name="searchHost">http://lamrim-search-service.eyes-blue.com/</string>
+    <string name="searchSummary">"共%1$s笔纪录, 载入耗时%2$s, 搜寻耗时%3$s秒"</string>
+    <string msgid="730395136688082741" name="search_menu_title">"搜索"</string>
+    <string name="select">确定</string>
+    <string name="selectFolder">选择音档位置：</string>
+    <string name="selectFont">字型选择</string>
+    <string name="selectIndexFromMenuDesc">请从选单选择章节或录音</string>
+    <string name="settingMenu">设定选单</string>
+    <string name="setupFontSizeStr">设定字型大小</string>
+    <string name="setupTextSizeSample">廣論</string>
+    <string name="shareRegion">区段分享</string>
+    <string name="single_repeat">重复播放%s</string>
+    <string name="soundInUseError">音效装置被其他软体佔用中</string>
+    <string name="specifyOtherFolder">指定其它音档目录</string>
+    <string name="speechModeRecordFile">speechMode</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="subtitleAlphaKey">subtitleAlpha</string>
+    <string name="subtitleBgColorKey">subtitleBgColor</string>
+    <string name="subtitleDirName">Subtitle</string>
+    <string name="subtitleFgColorKey">subtitleFgColor</string>
+    <string name="subtitleFontSize">字幕</string>
+    <string name="subtitleFontSizeKey">SubtitleFontSize</string>
+    <string name="subtitleNotComp">%1$s字幕似乎不完整，请尝试重新下载此字幕(选择音档 -> 长按%1$s -> 更新)。</string>
+    <string name="subtitleSearchCache">subtitleSearchCache.ser</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>、<ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string name="theoryDirName">Theory</string>
+    <string name="title_activity_calendar">全球广论进度</string>
+    <string name="title_activity_file_dialog">FileDialogActivity</string>
+    <string name="title_activity_intent">IntentActivity</string>
+    <string name="title_activity_storage_manage">储存管理</string>
+    <string name="typeAudio">音档</string>
+    <string name="typeSubtitle">字幕</string>
+    <string name="updateWebPage">http://lamrimreader.eyes-blue.com/</string>
+    <string name="userSpecifDesc">※当您指定音档位置后，此位置将成为主要的储存区域，但该区域中的档案将不会被自动删除。\n※若该区域无法使用(如拔除记忆卡)时，将会自动使用内部储存空间，您可以使用「维护档案」来删除内部储存空间中的冗余档案。\n※App无法侦测指定位置的磁碟剩余空间，请确认该区域有足够的空间储存音档。 </string>
+    <string name="userSpecify">使用者指定</string>
+    <string name="userSpecifySpeechDir">userSpecifySpeechDir</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"关闭"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"开启"</string>
+    <string name="version">版本</string>
+    <string name="versionCheckUrl">http://lamrimreader.eyes-blue.com/appresources/publish/notifier.json</string>
+    <string name="web">网页</string>
+</resources>
