@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
-
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
+
 import java.util.List;
 
 /*
@@ -41,37 +41,7 @@ public class IntentActivity  extends FragmentActivity {
 		// ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
 		// See https://g.co/AppIndexing/AndroidStudio for more information.
 		mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-/*		mGoogleApiClient = new GoogleApiClient.Builder(this)
-				//.enableAutoManage(this, this)
-				.enableAutoManage(this, null)
-				.addApi(AppInvite.API)
-				.addApi(AppIndex.API).build();
 
-		boolean autoLaunchDeepLink = false;
-		AppInvite.AppInviteApi.getInvitation(mGoogleApiClient, this, autoLaunchDeepLink)
-				.setResultCallback(
-						new ResultCallback<AppInviteInvitationResult>() {
-							@Override
-							public void onResult(@NonNull AppInviteInvitationResult result) {
-								if (result.getStatus().isSuccess()) {
-									// Extract deep link from Intent
-									Intent intent = result.getInvitationIntent();
-									String deepLink = AppInviteReferral.getDeepLink(intent);
-									Crashlytics.log(Log.DEBUG,logTag,"Deep Link: "+deepLink);
-
-									Uri path = Uri.parse(deepLink);
-									parseRest(path);
-									// Handle the deep link. For example, open the linked
-									// content, or apply promotional credit to the user's
-									// account.
-
-									// ...
-								} else {
-									Crashlytics.log(Log.DEBUG,logTag, "getInvitation: no deep link found.");
-								}
-							}
-						});
-*/
 		msgView=(TextView)findViewById(R.id.msgView);
 		actBtn=(Button)findViewById(R.id.actBtn);
 		actBtn.setOnClickListener(new View.OnClickListener() {
@@ -83,22 +53,22 @@ public class IntentActivity  extends FragmentActivity {
 		});
 
 		Intent intent = this.getIntent();
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Action: " + intent.getAction() + ", Categories: " + intent.getCategories() + ", Scheme: " + intent.getScheme() + ", Mime type: " + intent.getType() + ", Data: " + intent.getData());
+		FirebaseCrashlytics.getInstance().log("Action: " + intent.getAction() + ", Categories: " + intent.getCategories() + ", Scheme: " + intent.getScheme() + ", Mime type: " + intent.getType() + ", Data: " + intent.getData());
 		Uri intentPathUri = intent.getData();
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Check intent.");
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Intent data: " + intentPathUri);
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Scheme: " + intentPathUri.getScheme());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "EncodedFragment: " + intentPathUri.getEncodedFragment());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "EncodedPath: " + intentPathUri.getEncodedPath());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "EncodedQuery: " + intentPathUri.getEncodedQuery());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "EncodedSchemeSpecificPart: " + intentPathUri.getEncodedSchemeSpecificPart());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Host: " + intentPathUri.getHost());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "LastPathSegment: " + intentPathUri.getLastPathSegment());
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Path: " + intentPathUri.getPath());
+		FirebaseCrashlytics.getInstance().log("Check intent.");
+		FirebaseCrashlytics.getInstance().log("Intent data: " + intentPathUri);
+		FirebaseCrashlytics.getInstance().log("Scheme: " + intentPathUri.getScheme());
+		FirebaseCrashlytics.getInstance().log("EncodedFragment: " + intentPathUri.getEncodedFragment());
+		FirebaseCrashlytics.getInstance().log("EncodedPath: " + intentPathUri.getEncodedPath());
+		FirebaseCrashlytics.getInstance().log("EncodedQuery: " + intentPathUri.getEncodedQuery());
+		FirebaseCrashlytics.getInstance().log("EncodedSchemeSpecificPart: " + intentPathUri.getEncodedSchemeSpecificPart());
+		FirebaseCrashlytics.getInstance().log("Host: " + intentPathUri.getHost());
+		FirebaseCrashlytics.getInstance().log("LastPathSegment: " + intentPathUri.getLastPathSegment());
+		FirebaseCrashlytics.getInstance().log("Path: " + intentPathUri.getPath());
 
 		if(intentPathUri.getHost().equalsIgnoreCase(getString(R.string.firebase_deeplink_host))) {
 			String link = intentPathUri.getQueryParameter("link");
-			Crashlytics.log(Log.DEBUG,logTag,"Firebase link: "+link);
+			FirebaseCrashlytics.getInstance().log("Firebase link: "+link);
 			parseParam(Uri.parse(link));
 		}
 		else if(intentPathUri.getEncodedQuery() == null) parseRest(intentPathUri);
@@ -127,7 +97,7 @@ public class IntentActivity  extends FragmentActivity {
 		if(title==null)title="";
 		else title=Uri.decode(intentPathUri.getQueryParameter("title"));
 
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Parse result: mediaStart=" + speechStart[0] + ", startTimeMs=" + speechStart[1] + ", mediaEnd=" + speechEnd[0] + ", theoryStartPage=" + theoryStart[0] + ", theoryStartLine=" + theoryStart[1]
+		FirebaseCrashlytics.getInstance().log("Parse result: mediaStart=" + speechStart[0] + ", startTimeMs=" + speechStart[1] + ", mediaEnd=" + speechEnd[0] + ", theoryStartPage=" + theoryStart[0] + ", theoryStartLine=" + theoryStart[1]
 				+ ", theoryEndPage=" + theoryEnd[0] + ", theoryEndLine=" + theoryEnd[1] + ", title=" + Uri.decode(intentPathUri.getQueryParameter("title")));
 		startMainActivity(speechStart, speechEnd, theoryStart, theoryEnd, title);
 	}
@@ -192,7 +162,7 @@ public class IntentActivity  extends FragmentActivity {
 
 	private void startMainActivity(int[] speechStart, int[] speechEnd, int[] theoryStart, int[] theoryEnd, String title){
 		Intent lrInt = new Intent(IntentActivity.this, LamrimReaderActivity.class);
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "This intent=" + lrInt);
+		FirebaseCrashlytics.getInstance().log("This intent=" + lrInt);
 		lrInt.putExtra("mediaStart", speechStart[0]);
 		lrInt.putExtra("startTimeMs", speechStart[1]);
 		lrInt.putExtra("mediaEnd", speechEnd[0]);
@@ -204,7 +174,7 @@ public class IntentActivity  extends FragmentActivity {
 		lrInt.putExtra("mode", "region");
 		if(title!=null)lrInt.putExtra("title", title);
 
-		Crashlytics.setString("Statistics", "LaunchAppWithDeepLinking");
+		Util.fireKeyValue("Statistics", "LaunchAppWithDeepLinking");
 
 		lrInt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		lrInt.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

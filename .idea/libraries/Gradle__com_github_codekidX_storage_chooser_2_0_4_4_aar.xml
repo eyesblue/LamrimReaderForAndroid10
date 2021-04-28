@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.codekidX:storage-chooser:2.0.4.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f6d112e282723c9e1bf421c845e30cd7/jetified-storage-chooser-2.0.4.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f6d112e282723c9e1bf421c845e30cd7/jetified-storage-chooser-2.0.4.4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8082f5517d7f4e32e2d490bc63169418/jetified-storage-chooser-2.0.4.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8082f5517d7f4e32e2d490bc63169418/jetified-storage-chooser-2.0.4.4/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8082f5517d7f4e32e2d490bc63169418/jetified-storage-chooser-2.0.4.4/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.codekidX/storage-chooser/2.0.4.4/e8ea79bae6ad32627b8d9205a3ecf10587b1c05d/storage-chooser-2.0.4.4-javadoc.jar!/" />

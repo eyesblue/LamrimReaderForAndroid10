@@ -34,11 +34,8 @@ import androidx.documentfile.provider.DocumentFile;
 import java.io.File;
 import java.util.ArrayList;
 import com.codekidlabs.storagechooser.*;
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
-
-//import android.support.v4.provider.DocumentFile;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 public class StorageManageActivity extends AppCompatActivity {
     private static final int STORAGE_ACCESS_PERMISSION_REQUEST = 1;
@@ -64,7 +61,7 @@ public class StorageManageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storage_manage);
-        Crashlytics.log(Log.DEBUG,getClass().getName(), "Into onCreate");
+        FirebaseCrashlytics.getInstance().log( "Into onCreate");
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -246,7 +243,7 @@ public class StorageManageActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {// 此處需要完整的寫入權限
                 btnMoveToUserSpy.setEnabled(false);
-                Crashlytics.setString("ButtonClick", "MoveFileToSpecifyFolder");
+                Util.fireKeyValue("ButtonClick", "MoveFileToSpecifyFolder");
 
                 // 把要執行的行為先封裝進 Runnable，若已經有寫入權限，則本地執行此Runnable，若無則要求寫入權限(isPermissionPass())，並在onRequestPermissionsResult中獲取權限後執行此Runnable。
                 PermissionGrantedJob = new Runnable() {
@@ -259,7 +256,7 @@ public class StorageManageActivity extends AppCompatActivity {
                             return;
                         }
 
-                        Crashlytics.log(Log.DEBUG,getClass().getName(), "Create folder: " + path);
+                        FirebaseCrashlytics.getInstance().log( "Create folder: " + path);
                         File filePath = new File(path);
                         filePath.mkdirs();
                         if (!filePath.exists() || !filePath.isDirectory() || !filePath.canWrite()) {
@@ -275,12 +272,12 @@ public class StorageManageActivity extends AppCompatActivity {
                         if (ext != null)
                             srcList.add(ext + File.separator + getString(R.string.audioDirName));
 
-                        Crashlytics.log(Log.DEBUG,getClass().getName(), "There are " + srcList.size() + " src folder for move file.");
+                        FirebaseCrashlytics.getInstance().log( "There are " + srcList.size() + " src folder for move file.");
                         Intent intent = new Intent(StorageManageActivity.this, MoveFileService.class);
                         intent.putStringArrayListExtra("srcDirs", srcList);
                         intent.putExtra("destDir", path);
 
-                        Crashlytics.log(Log.DEBUG,getClass().getName(), "Start move file service.");
+                        FirebaseCrashlytics.getInstance().log( "Start move file service.");
 
                         // While user press the move button that mean the path is specified.
                         SharedPreferences.Editor editor = runtime.edit();
@@ -291,7 +288,7 @@ public class StorageManageActivity extends AppCompatActivity {
                         //Util.showInfoPopupWindow(StorageManageActivity.this, "背景移動中，請檢視通知列以瞭解進度，移動過程中請勿執行其他操作。");
                         BaseDialogs.showSimpleMsgDialog(StorageManageActivity.this, getString(R.string.dlgMoveFileTitle), getString(R.string.dlgMoveFileMsg));
                         startService(intent);
-                        Crashlytics.setString("ButtonClick", "MoveFileToSpecifyFolderStartService");
+                        Util.fireKeyValue("ButtonClick", "MoveFileToSpecifyFolderStartService");
                         refreshUsage();
                     }
                 };
@@ -347,43 +344,43 @@ public class StorageManageActivity extends AppCompatActivity {
                             startActivityForResult(intent, OPEN_DOCUMENT_TREE_ABV_23);
                         */
 
-                       // else {
-                            Content c = new Content();
-                            c.setCancelLabel(getString(R.string.cancel));
-                            c.setCreateLabel(getString(R.string.nnew));
-                            c.setFolderCreatedToastText(getString(R.string.folderCreated));
-                            c.setFolderErrorToastText(getString(R.string.folderErrorToastText));
-                            c.setFreeSpaceText(getString(R.string.freeSpace));
-                            c.setInternalStorageText(getString(R.string.msgInternalStorage));
-                            c.setNewFolderLabel(getString(R.string.newFolder));
-                            c.setTextfieldErrorText(getString(R.string.emptyTextFieldErr));
-                            c.setTextfieldHintText(getString(R.string.folderNameHint));
-                            c.setSelectLabel(getString(R.string.select));
-                            c.setOverviewHeading(getString(R.string.choiceDrive));
+                        // else {
+                        Content c = new Content();
+                        c.setCancelLabel(getString(R.string.cancel));
+                        c.setCreateLabel(getString(R.string.nnew));
+                        c.setFolderCreatedToastText(getString(R.string.folderCreated));
+                        c.setFolderErrorToastText(getString(R.string.folderErrorToastText));
+                        c.setFreeSpaceText(getString(R.string.freeSpace));
+                        c.setInternalStorageText(getString(R.string.msgInternalStorage));
+                        c.setNewFolderLabel(getString(R.string.newFolder));
+                        c.setTextfieldErrorText(getString(R.string.emptyTextFieldErr));
+                        c.setTextfieldHintText(getString(R.string.folderNameHint));
+                        c.setSelectLabel(getString(R.string.select));
+                        c.setOverviewHeading(getString(R.string.choiceDrive));
 
 
-                            // Initialize Builder
-                            StorageChooser chooser = new StorageChooser.Builder()
-                                    .withActivity(StorageManageActivity.this)
-                                    .withFragmentManager(getFragmentManager())
-                                    .withMemoryBar(true)
-                                    .allowCustomPath(true)
-                                    //.allowAddFolder(true)
-                                    .setType(StorageChooser.DIRECTORY_CHOOSER)  // For pickup folder.
-                                    // .setType(StorageChooser.FILE_PICKER) // For pickup file.
-                                    .withContent(c)
-                                    .build();
+                        // Initialize Builder
+                        StorageChooser chooser = new StorageChooser.Builder()
+                                .withActivity(StorageManageActivity.this)
+                                .withFragmentManager(getFragmentManager())
+                                .withMemoryBar(true)
+                                .allowCustomPath(true)
+                                //.allowAddFolder(true)
+                                .setType(StorageChooser.DIRECTORY_CHOOSER)  // For pickup folder.
+                                // .setType(StorageChooser.FILE_PICKER) // For pickup file.
+                                .withContent(c)
+                                .build();
 
-                            chooser.setOnSelectListener(new StorageChooser.OnSelectListener() {
-                                @Override
-                                public void onSelect(String path) {
-                                    //Toast.makeText(StorageManageActivity.this, path, Toast.LENGTH_LONG).show();
-                                    Log.d(logTag, "User select specify folder: "+path);
-                                    filePathInput.setText(path);
-                                }
-                            });
+                        chooser.setOnSelectListener(new StorageChooser.OnSelectListener() {
+                            @Override
+                            public void onSelect(String path) {
+                                //Toast.makeText(StorageManageActivity.this, path, Toast.LENGTH_LONG).show();
+                                Log.d(logTag, "User select specify folder: "+path);
+                                filePathInput.setText(path);
+                            }
+                        });
 
-                            chooser.show();
+                        chooser.show();
                         //}
                     }
                 };
@@ -402,7 +399,7 @@ public class StorageManageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final SharedPreferences.Editor editor = runtime.edit();
                 if (!isUseThirdDir) {
-                    Crashlytics.log(Log.DEBUG,getClass().getName(), "is user specify the third dir? " + isUseThirdDir);
+                    FirebaseCrashlytics.getInstance().log( "is user specify the third dir? " + isUseThirdDir);
                     editor.putBoolean(getString(R.string.isUseThirdDir), false);
                     editor.apply();
                     finish();
@@ -486,7 +483,7 @@ public class StorageManageActivity extends AppCompatActivity {
         extSpeechPathInfo.setText(((extSpeechDir != null) ? extSpeechDir : getString(R.string.noExtSpace)));
         intSpeechPathInfo.setText(intSpeechDir);
 
-        Crashlytics.log(Log.DEBUG,getClass().getName(), "Leave onCreate");
+        FirebaseCrashlytics.getInstance().log( "Leave onCreate");
     }
 
     // 注意！此處只檢查到讀取權限，不包含檢查寫入權限
@@ -575,9 +572,9 @@ public class StorageManageActivity extends AppCompatActivity {
     public void finish() {
         boolean isUserSpecifyDir = runtime.getBoolean(getString(R.string.isUseThirdDir), false);
         if (isUserSpecifyDir)
-            Crashlytics.setString("UserSpecifyDirPath", runtime.getString(getString(R.string.userSpecifySpeechDir),null));
+            Util.fireKeyValue("UserSpecifyDirPath", runtime.getString(getString(R.string.userSpecifySpeechDir),null));
         else
-            Crashlytics.setString("DefaultMediaPath", fsm.getSysDefMediaDir());
+            Util.fireKeyValue("DefaultMediaPath", fsm.getSysDefMediaDir());
 
         super.finish();
     }
@@ -622,13 +619,13 @@ public class StorageManageActivity extends AppCompatActivity {
 			public void run() {
 				try {
 					Thread.sleep(500);
-					Crashlytics.log(Log.DEBUG,getClass().getName(),"Set path the EditText: "+filePath);
+					FirebaseCrashlytics.getInstance().log("Set path the EditText: "+filePath);
 					runOnUiThread(new Runnable(){
 						@Override
 						public void run() {
 							filePathInput.setText(filePath);
 						}});
-					
+
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}}).start();
 	*/
@@ -711,7 +708,7 @@ public class StorageManageActivity extends AppCompatActivity {
     }
 
     private String numToKMG(long num) {
-        Crashlytics.log(Log.DEBUG,getClass().getName(), "Cac: " + num);
+        FirebaseCrashlytics.getInstance().log( "Cac: " + num);
         String[] unit = {"", "K", "M", "G", "T"};
         String s = "" + num;
         int len = s.length();
@@ -721,7 +718,7 @@ public class StorageManageActivity extends AppCompatActivity {
 
         int index = sign * 3;
         String result = s.substring(0, s.length() - index) + '.' + s.charAt(index) + unit[sign];
-        Crashlytics.log(Log.DEBUG,getClass().getName(), "Num= " + s + ", Length: " + s.length() + ", result=" + result);
+        FirebaseCrashlytics.getInstance().log( "Num= " + s + ", Length: " + s.length() + ", result=" + result);
         return result;
     }
 

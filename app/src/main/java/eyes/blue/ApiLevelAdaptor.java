@@ -146,4 +146,8 @@ public class ApiLevelAdaptor {
     public static Drawable getDrawable(Context context, int resId){
         return ContextCompat.getDrawable(context, resId);
     }
+
+    public static boolean isSAF(){
+        return (Build.VERSION.SDK_INT >= 23);
+    }
 }

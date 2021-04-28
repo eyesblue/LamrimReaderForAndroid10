@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btnDownloadAll"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                android:textColor="@color/darkTheoryTextColor" />
 
             <ImageButton
                 android:id="@+id/btnMaintain"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dlgTitleMaintaining"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                android:textColor="@color/darkTheoryTextColor" />
 
             <ImageButton
                 android:id="@+id/btnManageStorage"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title_activity_storage_manage"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                android:textColor="@color/darkTheoryTextColor" />
         </LinearLayout>
 
         <ListView

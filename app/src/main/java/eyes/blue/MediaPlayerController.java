@@ -19,8 +19,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -127,7 +127,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
 				@Override
 				public boolean onError(MediaPlayer arg0, int what, int extra) {
-					Crashlytics.log(Log.DEBUG,logTag, "Error happen while play media");
+					FirebaseCrashlytics.getInstance().log("Error happen while play media");
 					changedListener.onPlayerError();
 					
 					String whatStr = "", extraStr = "";
@@ -166,7 +166,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				     *      but the MediaPlayer control panel still try to get information from the media player.
 				     * */
 				    if(what!=-38){
-						Crashlytics.log(Log.ERROR,logTag, "MediaPlayer_Error: mpState="+mpStateStr[mpState]+", what="+whatStr+"("+what+"), extra="+extraStr+"("+extra+")");
+						FirebaseCrashlytics.getInstance().log("ERROR: MediaPlayer_Error: mpState="+mpStateStr[mpState]+", what="+whatStr+"("+what+"), extra="+extraStr+"("+extra+")");
 					}
 					return false;
 				}
@@ -182,10 +182,10 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	}
 
 	private void onPlayComplete(MediaPlayer mp){
-		Crashlytics.log(Log.DEBUG,logTag,"Media player play completion! release WakeLock.");
-//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
+		FirebaseCrashlytics.getInstance().log("Media player play completion! release WakeLock.");
+//		if(wakeLock.isHeld()){FirebaseCrashlytics.getInstance().log("Player paused, release wakeLock.");wakeLock.release();}
 			synchronized(playingIndexKey){
-				Crashlytics.log(Log.DEBUG,logTag,"Set mpState to MP_COMPLETE.");
+				FirebaseCrashlytics.getInstance().log("Set mpState to MP_COMPLETE.");
 				mpState=MP_COMPLETE;
 				//pause();
 				if(subtitleTimer!=null){
@@ -200,7 +200,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 					if(isRegionPlay())subIndex=regionEndMs;
 					seekTo(subIndex);
 				}
-				Crashlytics.log(Log.DEBUG,logTag,"Call changedListener.onComplatePlay()");
+				FirebaseCrashlytics.getInstance().log("Call changedListener.onComplatePlay()");
 				changedListener.onComplatePlay();
 			}
 	}
@@ -222,7 +222,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			mediaPlayer.pause();
 		}
 
-//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
+//		if(wakeLock.isHeld()){FirebaseCrashlytics.getInstance().log("Player paused, release wakeLock.");wakeLock.release();}
 		changedListener.onPause();
 	}
 
@@ -235,13 +235,13 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 		if(subtitle==null){
 			synchronized(mediaPlayerKey){
-//				Crashlytics.log(Log.DEBUG,logTag,"real set position to "+pos);
+//				FirebaseCrashlytics.getInstance().log("real set position to "+pos);
 				mediaPlayer.seekTo(pos);
 			}
 			return;
 		}
 
-		Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+" SeekTo function: seek to position: "+pos+", duration="+mediaPlayer.getDuration());
+		FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName()+" SeekTo function: seek to position: "+pos+", duration="+mediaPlayer.getDuration());
 		// Check is the seek position over the start or end region.
 		int index=Util.subtitleBSearch(subtitle, pos);
 		if(index<0)index=0;
@@ -258,7 +258,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		}
 
 		synchronized(mediaPlayerKey){
-//			Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+" Perform mediaPlayer.seekTo(pos) to "+pos);
+//			FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName()+" Perform mediaPlayer.seekTo(pos) to "+pos);
 			mediaPlayer.seekTo(pos);
 		}
 
@@ -266,7 +266,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			playingIndex=index;
 			changedListener.onSeek(playingIndex, subtitle[playingIndex]);
 			changedListener.onSubtitleChanged(playingIndex, subtitle[playingIndex]);
-//			Crashlytics.log(Log.DEBUG,logTag,"real set position to "+subtitle[playingIndex].startTimeMs);
+//			FirebaseCrashlytics.getInstance().log("real set position to "+subtitle[playingIndex].startTimeMs);
 		}
 	}
 
@@ -298,7 +298,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				}
 
 				if(subtitle!=null){
-					Crashlytics.log(Log.DEBUG,logTag,"The subtitle exist, prepare subtitle timer.");
+					FirebaseCrashlytics.getInstance().log("The subtitle exist, prepare subtitle timer.");
 					subtitleTimer = new SubtitleTimer();
 					subtitleTimer.start();
 				}
@@ -309,11 +309,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				 * MediaPlayer.currentPosition() to 0, it seems control by MediaPlayer, reset it to regionStartMs here.
 				 * */
 				if(isRegionPlay() && mediaPlayer.getCurrentPosition() < regionStartMs){
-					Crashlytics.log(Log.DEBUG,logTag,"Reset the play start position to region start MS.");
+					FirebaseCrashlytics.getInstance().log("Reset the play start position to region start MS.");
 					mediaPlayer.seekTo(regionStartMs);
 //					changedListener.startRegionPlay();
 				}
-//				if(!wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Play media and Lock screen.");wakeLock.acquire();}
+//				if(!wakeLock.isHeld()){FirebaseCrashlytics.getInstance().log("Play media and Lock screen.");wakeLock.acquire();}
 			}catch(Exception e){
 				// Stop the subtitle timer if start failure.
 				if(subtitleTimer!=null){
@@ -323,7 +323,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 				changedListener.onPlayerError();
 				e.printStackTrace();
-				Crashlytics.log(Log.ERROR,logTag, "Media player error in start(), mpState="+mpStateStr[mpState]+": " +e.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: Media player error in start(), mpState="+mpStateStr[mpState]+": " +e.getMessage());
 			}
 		}
 	}
@@ -348,7 +348,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}catch(Exception e){
 				changedListener.onPlayerError();
 				e.printStackTrace();
-				Crashlytics.log(Log.ERROR,logTag, "Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 			return 0;
 			}
 		}
@@ -365,7 +365,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}catch(Exception e){
 				changedListener.onPlayerError();
 				e.printStackTrace();
-				Crashlytics.log(Log.ERROR,logTag, "Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: Media player error in getCurrentPosition(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 				return 0;
 			}
 		}
@@ -382,7 +382,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Crashlytics.log(Log.ERROR,logTag, "Media player error in isPlaying(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
+			FirebaseCrashlytics.getInstance().log("ERROR: Media player error in isPlaying(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 			return false;
 		}
 	}
@@ -402,13 +402,13 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 	@Override
 	public boolean isFullScreen() {
-		Crashlytics.log(Log.DEBUG,logTag,"isFullScreen been called.");
+		FirebaseCrashlytics.getInstance().log("isFullScreen been called.");
 		return false;
 	}
 
 	@Override
 	public void toggleFullScreen() {
-		Crashlytics.log(Log.DEBUG,logTag,"toggleFullScreen been called.");
+		FirebaseCrashlytics.getInstance().log("toggleFullScreen been called.");
 	}
 
 	public void	setOnRegionClick(OnClickListener listener){
@@ -423,7 +423,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 	// sometimes large memory objects may get lost.
 	public boolean isPlayerReady(){
-		Crashlytics.log(Log.DEBUG,logTag,"mediaplayer="+mediaPlayer+", state="+MP_PREPARED);
+		FirebaseCrashlytics.getInstance().log("mediaplayer="+mediaPlayer+", state="+MP_PREPARED);
 		return (mediaPlayer!=null && mpState>=MP_PREPARED);
 	}
 	/*
@@ -433,11 +433,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		// If already reset, skip it avoid the state exception(reset after reset).
 		synchronized(mediaPlayerKey){
 			if(mpState == MP_IDLE){
-				Crashlytics.log(Log.DEBUG,logTag,"Get reset after reset command, skip this reset command.");
+				FirebaseCrashlytics.getInstance().log("Get reset after reset command, skip this reset command.");
 				return;
 			}
 			if(mpState == MP_INITING){
-				Crashlytics.log(Log.ERROR,logTag, "Detected reset media at loading file stage, skip reset, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer);
+				FirebaseCrashlytics.getInstance().log("ERROR: Detected reset media at loading file stage, skip reset, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer);
 				return;
 			}
 		}
@@ -448,7 +448,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		}
 
 		synchronized(mediaPlayerKey){
-			Crashlytics.log(Log.DEBUG,logTag,"============ Reset MediaPlayer ===============");
+			FirebaseCrashlytics.getInstance().log("============ Reset MediaPlayer ===============");
 			try{
 				mediaPlayer.reset();
 				mpState=MP_IDLE;
@@ -457,7 +457,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			}catch(Exception e){
 				e.printStackTrace();
 				changedListener.onPlayerError();
-				Crashlytics.log(Log.ERROR,logTag, "Media player error in reset(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: Media player error in reset(), mpState="+mpStateStr[mpState]+": "+ e.getMessage());
 			}
 		}
 		synchronized(playingIndexKey){
@@ -472,7 +472,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 */
 		// Can't update seekbar on this stage, because there is no information of duration, seekbar can't be create. put in onPrepared.
 		//updateSeekBar();
-//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
+//		if(wakeLock.isHeld()){FirebaseCrashlytics.getInstance().log("Player paused, release wakeLock.");wakeLock.release();}
 	}
 	/*
 	 * Same as function of MediaPlayer and maintain the state of MediaPlayer and release the subtitleTimer.
@@ -482,7 +482,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		subtitleTimer=null;
 			synchronized(mediaPlayerKey){
 				if(mediaPlayer==null)return;
-				Crashlytics.log(Log.DEBUG,logTag,"============ Release MediaPlayer ===============");
+				FirebaseCrashlytics.getInstance().log("============ Release MediaPlayer ===============");
 				mediaPlayer.reset();
 				mediaPlayer.release();
 				mediaPlayer=null;
@@ -491,11 +491,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		if(audioManager != null && remoteControlReceiver != null)audioManager.unregisterMediaButtonEventReceiver(remoteControlReceiver);
 		if(audioManager != null && audioFocusChangeListener != null)quitAudioFocus();
 
-//		if(wakeLock.isHeld()){Crashlytics.log(Log.DEBUG,logTag,"Player paused, release wakeLock.");wakeLock.release();}
+//		if(wakeLock.isHeld()){FirebaseCrashlytics.getInstance().log("Player paused, release wakeLock.");wakeLock.release();}
 	}
 
 	public void quitAudioFocus(){
-		Crashlytics.log(Log.DEBUG,logTag,"Quit Audio Focus.");
+		FirebaseCrashlytics.getInstance().log("Quit Audio Focus.");
 		if(audioManager != null && audioFocusChangeListener != null)audioManager.abandonAudioFocus(audioFocusChangeListener);
 	}
 
@@ -514,7 +514,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	 * */
 	public void setDataSource(final Context context,final int index) throws IllegalArgumentException, SecurityException, IllegalStateException, IOException{
 		if(!fsm.isFilesReady(index)){
-			Crashlytics.log(Log.DEBUG,logTag,"setDataSource: The speech file not exist, skip!!!");
+			FirebaseCrashlytics.getInstance().log("setDataSource: The speech file not exist, skip!!!");
 			Util.showErrorToast(activity, String.format(activity.getString(R.string.errPlayFailLakeAudioAndCancel), SpeechData.getSubtitleName(index)));
 			return;
 		}
@@ -524,17 +524,17 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			loadingMedia=index;
 		}
 
-		Crashlytics.log(Log.DEBUG,logTag,"The subtitle file exist, prepare the subtitle elements.");
+		FirebaseCrashlytics.getInstance().log("The subtitle file exist, prepare the subtitle elements.");
 		subtitle = Util.loadSubtitle(context, index);
 //		if(subtitle.length==0)subtitle=null;
 		final File speechFile=fsm.getLocalMediaFile(index);// 若檔案在Asset中直接存取
 
 		synchronized(mediaPlayerKey){
-			Crashlytics.log(Log.DEBUG,logTag,"Set media player data source in stage: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
+			FirebaseCrashlytics.getInstance().log("Set media player data source in stage: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
 			if(mpState != MP_IDLE)reset();
 			mpState=MP_INITING;
 			if(mediaPlayer==null){
-				Crashlytics.log(Log.ERROR,logTag, "Media player is NULL in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M.");
+				FirebaseCrashlytics.getInstance().log("ERROR: Media player is NULL in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M.");
 				Util.showInfoToast(activity, activity.getString(R.string.msgCreateMediaPlayer));
 				createMediaPlayer();
 			}
@@ -546,28 +546,28 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 				}
 
 				if (android.os.Build.VERSION.SDK_INT >= 16) {
-					Crashlytics.log(Log.DEBUG,logTag, "Build version (" + android.os.Build.VERSION.SDK_INT + ") over 16, set media with " + speechFile.getAbsolutePath());
+					FirebaseCrashlytics.getInstance().log("Build version (" + android.os.Build.VERSION.SDK_INT + ") over 16, set media with " + speechFile.getAbsolutePath());
 					String src = speechFile.getAbsolutePath();
 					mediaPlayer.setDataSource(src);
 				} else {
-					Crashlytics.log(Log.DEBUG,logTag, "Build version (" + android.os.Build.VERSION.SDK_INT + ") under 16, set media with " + Uri.fromFile(speechFile));
+					FirebaseCrashlytics.getInstance().log("Build version (" + android.os.Build.VERSION.SDK_INT + ") under 16, set media with " + Uri.fromFile(speechFile));
 					Uri srcUri = Uri.fromFile(speechFile);
 					mediaPlayer.setDataSource(context, srcUri);
 				}
 			} catch (IllegalArgumentException iae) {
-				Crashlytics.log(Log.ERROR,logTag, "SetDataSource in an invalid state, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString()+": "+ iae.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: SetDataSource in an invalid state, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString()+": "+ iae.getMessage());
 				if (!setDataSrcByFD(context, speechFile)) {
 					createMediaPlayer();
 					return;
 				}
 			} catch (IOException ioe) {
-				Crashlytics.log(Log.ERROR,logTag, "Can't setDataSource by normal way, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString()+": "+ ioe.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: Can't setDataSource by normal way, mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString()+": "+ ioe.getMessage());
 				if (!setDataSrcByFD(context, speechFile)) {
 					createMediaPlayer();
 					return;
 				}
 			} catch (Exception e) {
-				Crashlytics.log(Log.ERROR,logTag, "Error happen in SetDataSource(), mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString() +": "+ e.getMessage());
+				FirebaseCrashlytics.getInstance().log("ERROR: Error happen in SetDataSource(), mpState=" + mpStateStr[mpState] + ", mediaPlayer=" + mediaPlayer + ", context=" + context + ", speechFile=" + speechFile + ", is speech file exist=" + ((speechFile != null) ? speechFile.exists() : "speechFile is null.") + ", Uri=" + Uri.fromFile(speechFile).toString() +": "+ e.getMessage());
 				Util.showErrorToast(activity, activity.getString(R.string.msgFailReadAudioFIle));
 				createMediaPlayer();
 				return;
@@ -592,18 +592,18 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		if(!hasErr)return true;
 //		String errStr="無法正常讀取音檔，請檢查音檔是否損毀，請試著重新下載此音檔，若確定非上述問題，請回報開發者您的機型無法正常播放音檔。";
 //		Util.showErrorToast(activity, anchorView, errStr);
-		Crashlytics.log(Log.ERROR,logTag, "Can't setDataSource by FileDescriptor way, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer+", context="+context+", speechFile="+speechFile+", is speech file exist="+((speechFile!=null)?speechFile.exists():"speechFile is null.")+", Uri="+Uri.fromFile(speechFile).toString()+": "+ e.getMessage());
+		FirebaseCrashlytics.getInstance().log("ERROR: Can't setDataSource by FileDescriptor way, mpState="+mpStateStr[mpState]+", mediaPlayer="+mediaPlayer+", context="+context+", speechFile="+speechFile+", is speech file exist="+((speechFile!=null)?speechFile.exists():"speechFile is null.")+", Uri="+Uri.fromFile(speechFile).toString()+": "+ e.getMessage());
 		return false;
 	}
 
 	private void loadAssetMedia(int index)throws Exception{
 		AssetFileDescriptor afd=fsm.getAssetMediaFile(index);
 
-		Crashlytics.log(Log.DEBUG,logTag,"Load media from Assets folder: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
+		FirebaseCrashlytics.getInstance().log("Load media from Assets folder: "+mpState+", file: "+ SpeechData.getSubtitleName(index));
 		if(mpState != MP_IDLE)reset();
 		mpState=MP_INITING;
 		if(mediaPlayer==null){
-			Crashlytics.log(Log.ERROR,logTag, "Media player is NULL in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M");
+			FirebaseCrashlytics.getInstance().log("ERROR: Media player is NULL in setDataSource(): The MediaPlayer become null, memory free = "+Util.getMemInfo(activity)+"M");
 			Util.showInfoToast(activity, activity.getString(R.string.msgCreateMediaPlayer));
 			createMediaPlayer();
 		}
@@ -655,16 +655,16 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	synchronized public void showControllerView(Activity activity) {
 	//synchronized public void showMediaPlayerController(Activity rootView) {
 		if (activity.isFinishing()) {
-			Crashlytics.log(Log.DEBUG,logTag,"The activity not prepare yet, skip show media controller.");
+			FirebaseCrashlytics.getInstance().log("The activity not prepare yet, skip show media controller.");
 			return;
 		}
 		if (mediaPlayer == null) {
-			Crashlytics.log(Log.DEBUG,logTag,"The media player is null, skip show controller.");
+			FirebaseCrashlytics.getInstance().log("The media player is null, skip show controller.");
 			return;
 		}
 
 		if(mpState<MP_PREPARED){
-			Crashlytics.log(Log.DEBUG,logTag,"The media player loading source skip show controller.");
+			FirebaseCrashlytics.getInstance().log("The media player loading source skip show controller.");
 			return;
 		}
 
@@ -695,7 +695,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 /*	public void refreshSeekBar(){
 		Util.getRootView(activity).post(new Runnable() {
 			public void run() {
-				Crashlytics.log(Log.DEBUG,logTag,"==========================Refeesh control panel.======================");
+				FirebaseCrashlytics.getInstance().log("==========================Refeesh control panel.======================");
 				mediaController.show(500);
 				updateSeekBar();
 //				mediaController.hide();
@@ -707,7 +707,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 	public void rewToLastSubtitle(){
 		if(subtitle==null){
-			Crashlytics.log(Log.DEBUG,logTag,"Rew Click: subtitle is null");
+			FirebaseCrashlytics.getInstance().log("Rew Click: subtitle is null");
 			int pos = mediaPlayer.getCurrentPosition();
             pos -= 5000; // milliseconds
             if(pos<0)pos=0;
@@ -716,7 +716,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return;
 		}
 		synchronized(playingIndexKey){
-			Crashlytics.log(Log.DEBUG,logTag,"Rew Click: playingIndex = "+playingIndex);
+			FirebaseCrashlytics.getInstance().log("Rew Click: playingIndex = "+playingIndex);
 			int currentIndex=playingIndex-1;
 			if(currentIndex>=subtitle.length)
 				currentIndex=subtitle.length-1;
@@ -738,7 +738,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return;
 		}
 		synchronized(playingIndexKey){
-			Crashlytics.log(Log.DEBUG,logTag,"Fw Click: playingIndex = "+playingIndex);
+			FirebaseCrashlytics.getInstance().log("Fw Click: playingIndex = "+playingIndex);
 			int currentIndex=playingIndex+1;
 			if(currentIndex>=subtitle.length)
 				currentIndex=subtitle.length-1;
@@ -779,27 +779,27 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		Drawable drawableFg = (Drawable)layer.findDrawableByLayerId(android.R.id.progress);
 		Drawable drawableBg = (Drawable)layer.findDrawableByLayerId(android.R.id.background);
 
-		Crashlytics.log(Log.DEBUG,logTag,"There are "+layer.getNumberOfLayers()+" layer in SeekBar object, forground: "+drawableFg+", background: "+drawableBg);
+		FirebaseCrashlytics.getInstance().log("There are "+layer.getNumberOfLayers()+" layer in SeekBar object, forground: "+drawableFg+", background: "+drawableBg);
 
 		Rect fgBound=drawableFg.copyBounds();
 		Rect bgBound=drawableBg.copyBounds();
 
 		// The view never draw, skip draw.
 		if(fgBound.height()==0){
-			Crashlytics.log(Log.DEBUG,logTag,"The seekbar not layouted, skip");
+			FirebaseCrashlytics.getInstance().log("The seekbar not layouted, skip");
 			return ;
 		}
 
 		if(mpState<MP_PREPARED){
-			Crashlytics.log(Log.DEBUG,logTag,"updateSeekBar: The player not set data yet, skip.");
+			FirebaseCrashlytics.getInstance().log("updateSeekBar: The player not set data yet, skip.");
 			return;
 		}
 
-		Crashlytics.log(Log.DEBUG,logTag,"forgound: bound.right="+fgBound.right+", bound.left="+fgBound.left+", bound.top="+fgBound.top+", bound.botton="+fgBound.bottom+", IntrinsicWidth="+drawableFg.getIntrinsicWidth()+",IntrinsicHeight= "+drawableFg.getIntrinsicHeight()+", rect.height="+fgBound.height()+", rect.width="+fgBound.width());
-		Crashlytics.log(Log.DEBUG,logTag,"backgound: bound.right="+bgBound.right+", drawableFg.getIntrinsicWidth="+drawableBg.getIntrinsicWidth());
+		FirebaseCrashlytics.getInstance().log("forgound: bound.right="+fgBound.right+", bound.left="+fgBound.left+", bound.top="+fgBound.top+", bound.botton="+fgBound.bottom+", IntrinsicWidth="+drawableFg.getIntrinsicWidth()+",IntrinsicHeight= "+drawableFg.getIntrinsicHeight()+", rect.height="+fgBound.height()+", rect.width="+fgBound.width());
+		FirebaseCrashlytics.getInstance().log("backgound: bound.right="+bgBound.right+", drawableFg.getIntrinsicWidth="+drawableBg.getIntrinsicWidth());
 		// Release the segment select.
 		if(regionStartMs==-1 && regionEndMs==-1 ){
-			Crashlytics.log(Log.DEBUG,logTag,"Release the region select mode.");
+			FirebaseCrashlytics.getInstance().log("Release the region select mode.");
 			Bitmap seekBarFgBmap = getNinepatch(R.drawable.scrubber_primary_holo, fgBound.width(), fgBound.height(), activity);
 			BitmapDrawable fgDrawable = new BitmapDrawable(activity.getResources(), seekBarFgBmap);
 			ClipDrawable progress = new ClipDrawable(fgDrawable, Gravity.AXIS_PULL_BEFORE, ClipDrawable.HORIZONTAL);
@@ -819,19 +819,19 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			return;
 		}
 
-		Crashlytics.log(Log.DEBUG,logTag,"Debug: drawableFg: "+drawableFg+", copyBounds(): "+ drawableFg.copyBounds()+", getIntrinsicWidth: "+drawableFg.getIntrinsicWidth());
+		FirebaseCrashlytics.getInstance().log("Debug: drawableFg: "+drawableFg+", copyBounds(): "+ drawableFg.copyBounds()+", getIntrinsicWidth: "+drawableFg.getIntrinsicWidth());
 
 		//int seekBarStartPosition=Math.round ((regionStartMs==-1)?fgBound.left:(float)regionStartMs/mediaPlayer.getDuration()*fgBound.width());
 		int seekBarStartPosition=Math.round ((regionStartMs==-1)?fgBound.left:(float)regionStartMs/mediaPlayer.getDuration()*fgBound.width());
 		// Add one pixel avoid while enableEnd = enableStart, there will throw exception while copy pixel.
 		int seekBarEndPosition=Math.round (((regionEndMs==-1)?bgBound.right:(float)regionEndMs/mediaPlayer.getDuration()*bgBound.width())+1);
-		Crashlytics.log(Log.DEBUG,logTag,"Set start pixel and end pixel: regionStartMs="+regionStartMs+", seekBarStartPosition="+seekBarStartPosition+", regionEndMs="+regionEndMs+", seekBarEndPosition="+seekBarEndPosition);
+		FirebaseCrashlytics.getInstance().log("Set start pixel and end pixel: regionStartMs="+regionStartMs+", seekBarStartPosition="+seekBarStartPosition+", regionEndMs="+regionEndMs+", seekBarEndPosition="+seekBarEndPosition);
 
 
-		Crashlytics.log(Log.DEBUG,logTag,"Create forground rec: width="+(seekBarEndPosition-seekBarStartPosition)+", height="+fgBound.bottom);
+		FirebaseCrashlytics.getInstance().log("Create forground rec: width="+(seekBarEndPosition-seekBarStartPosition)+", height="+fgBound.bottom);
 		//fgBmap=getNinepatch(R.drawable.scrubber_primary_holo, seekBarEndPosition-seekBarStartPosition,fgBound.bottom, activity);
 		Bitmap fgBmap=getNinepatch(R.drawable.scrubber_primary_segment_mode, bgBound.width(), bgBound.height(), activity);
-		Crashlytics.log(Log.DEBUG,logTag,"Create background rec: width="+bgBound.right+", height="+bgBound.bottom);
+		FirebaseCrashlytics.getInstance().log("Create background rec: width="+bgBound.right+", height="+bgBound.bottom);
 		Bitmap bgBmap=getNinepatch(R.drawable.scrubber_track_holo_dark, bgBound.width(), bgBound.height(), activity);
 
 		//fgBmap.setDensity()
@@ -839,7 +839,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		Canvas bgCanvas=new Canvas(bgBmap);
 
 
-		Crashlytics.log(Log.DEBUG,logTag,"Copy forground rect to background: x1="+seekBarStartPosition+", y1="+ bgBound.top+", x2="+ seekBarEndPosition+", y2="+ bgBound.bottom);
+		FirebaseCrashlytics.getInstance().log("Copy forground rect to background: x1="+seekBarStartPosition+", y1="+ bgBound.top+", x2="+ seekBarEndPosition+", y2="+ bgBound.bottom);
 		//Rect src = new Rect(0, 0, fgBmap.getWidth(), fgBmap.getHeight());
 //		int len=seekBarEndPosition-seekBarStartPosition;
 //		int h=fgBound.height();
@@ -938,11 +938,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 		setPlayRegionStartMs(startTimeMs);
 
 //		seekBar.setRegionMode(startTimeMs, endTimeMs, mediaPlayer.getDuration());
-		Crashlytics.log(Log.DEBUG,logTag," Set play region: isPlayRegion="+isRegionPlay()+", start="+regionStartMs+", end="+regionEndMs);
+		FirebaseCrashlytics.getInstance().log(" Set play region: isPlayRegion="+isRegionPlay()+", start="+regionStartMs+", end="+regionEndMs);
 	}
 
 	public void desetPlayRegion(){
-		Crashlytics.log(Log.DEBUG,logTag,"Deset play region");
+		FirebaseCrashlytics.getInstance().log("Deset play region");
 		regionStartMs=-1;
 		regionEndMs=-1;
 		seekBar.disableRegionMode();
@@ -951,7 +951,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 //	public boolean isPlayRegion(){return (mpState==MP_PLAYING && canPlayRegion());}
 	public boolean isRegionPlay(){
-//		Crashlytics.log(Log.DEBUG,logTag,Thread.currentThread().getName()+": Region start="+regionStartMs+", end="+regionEndMs);
+//		FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName()+": Region start="+regionStartMs+", end="+regionEndMs);
 		return (regionStartMs>=0 && regionEndMs >=0);
 	}
 
@@ -993,7 +993,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 */
 	final protected OnPreparedListener onPreparedListener = new OnPreparedListener() {
 		public void onPrepared(MediaPlayer mp) {
-			Crashlytics.log(Log.DEBUG,logTag, "**** Into onPreparedListener of MediaPlayer ****");
+			FirebaseCrashlytics.getInstance().log("**** Into onPreparedListener of MediaPlayer ****");
 			synchronized(mediaPlayerKey){
 				mpState = MP_PREPARED;
 			}
@@ -1011,11 +1011,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			remoteControlReceiver=new ComponentName(activity,RemoteControlReceiver.class.getName());
 			audioManager.registerMediaButtonEventReceiver(remoteControlReceiver);
 
-			Crashlytics.log(Log.DEBUG,logTag, "Prepare data");
+			FirebaseCrashlytics.getInstance().log("Prepare data");
 			changedListener.onMediaPrepared();
 
 			loadingMedia=-1;
-			Crashlytics.log(Log.DEBUG,logTag,"**** Leave onPreparedListener of MediaPlayer ****");
+			FirebaseCrashlytics.getInstance().log("**** Leave onPreparedListener of MediaPlayer ****");
 		}
 	};
 
@@ -1027,21 +1027,21 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			switch (focusChange) {
 			// Gaint the audio device
 			case AudioManager.AUDIOFOCUS_GAIN:
-				Crashlytics.log(Log.DEBUG,logTag,"Got audio focus.");
+				FirebaseCrashlytics.getInstance().log("Got audio focus.");
 				if(lastState == MP_PLAYING && mediaPlayer != null){
-					Crashlytics.log(Log.DEBUG,logTag,"Last state is PLAYING before lost audio focus, continue play.");
+					FirebaseCrashlytics.getInstance().log("Last state is PLAYING before lost audio focus, continue play.");
 					start();
 				}
 				lastState=-1;
 				break;
 			// lost audio focus long time, release resource here.
 			case AudioManager.AUDIOFOCUS_LOSS:
-				Crashlytics.log(Log.DEBUG,"onAudioFocusChange",	"Loss of audio focus forever, pause play.");
+				FirebaseCrashlytics.getInstance().log("OnAudioFocusChangeListener: Loss of audio focus forever, pause play.");
 				try {
 					pause();
 					//release();
 				} catch (IllegalStateException e) {
-					Crashlytics.log(Log.ERROR,logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS."+": "+ e.getMessage());
+					FirebaseCrashlytics.getInstance().log("ERROR: Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS."+": "+ e.getMessage());
 					e.printStackTrace();
 				}
 				// mpController.stopSubtitleTimer();
@@ -1050,12 +1050,12 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			// You must stop all audio playback, but you can keep your resources
 			// because you will probably get focus back shortly
 			case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-				Crashlytics.log(Log.DEBUG,"onAudioFocusChange",	"temporarily lost audio focus, but should receive it back shortly.");
+				FirebaseCrashlytics.getInstance().log("OnAudioFocusChangeListener: temporarily lost audio focus, but should receive it back shortly.");
 				try {
 					lastState=getMediaPlayerState();
 					pause();
 				} catch (IllegalStateException e) {
-					Crashlytics.log(Log.ERROR,logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT."+": "+ e.getMessage());
+					FirebaseCrashlytics.getInstance().log("ERROR: Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT."+": "+ e.getMessage());
 					e.printStackTrace();
 				}
 				// mpController.stopSubtitleTimer();
@@ -1064,13 +1064,13 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			// continue to play audio quietly (at a low volume) instead of
 			// killing audio completely.
 			case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-				Crashlytics.log(Log.DEBUG,"onAudioFocusChange",	"temporarily lost audio focus, but you are allowed to continue to play audio quietly.");
+				FirebaseCrashlytics.getInstance().log("OnAudioFocusChangeListener: temporarily lost audio focus, but you are allowed to continue to play audio quietly.");
 				try {
 					lastState=getMediaPlayerState();
 					pause();
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
-					Crashlytics.log(Log.ERROR,logTag, "Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK."+": "+ e.getMessage());
+					FirebaseCrashlytics.getInstance().log("ERROR: Audio Focus Exception happen: AudioFocusChangeListener.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK."+": "+ e.getMessage());
 				}
 				// mpController.stopSubtitleTimer();
 				break;
@@ -1087,7 +1087,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	    	// If the key is not group of ACTION_MEDIA_BUTTON skip.
 	    	if (!Intent.ACTION_MEDIA_BUTTON.equals(intent.getAction())) return;
 
-	    	Crashlytics.log(Log.DEBUG,logTag,"Get a Receive Brocast key event: The state of MediaPlayer is "+mpController.getMediaPlayerState());
+	    	FirebaseCrashlytics.getInstance().log("Get a Receive Brocast key event: The state of MediaPlayer is "+mpController.getMediaPlayerState());
 	    	KeyEvent event = (KeyEvent)intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
 	        KeyEvent Xevent = (KeyEvent)intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
 
@@ -1098,21 +1098,21 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 	        // If the event is key down, record the code to key_actionDown then skip.
 		    if(Xevent.getAction() == KeyEvent.ACTION_DOWN){
-		    	Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get "+event.getKeyCode()+" key down.");
+		    	FirebaseCrashlytics.getInstance().log("Receive Brocast: get "+event.getKeyCode()+" key down.");
 		    	key_actionDown=event.getKeyCode();
 		    	return;
 		    }
 
 		    // If there is a key up event but there is no the key down before, skip.
 		    if(Xevent.getAction() == KeyEvent.ACTION_UP && event.getKeyCode() != key_actionDown)return;
-		    Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get "+event.getKeyCode()+" key up.");
+		    FirebaseCrashlytics.getInstance().log("Receive Brocast: get "+event.getKeyCode()+" key up.");
 	            if (event.getKeyCode() == KeyEvent.KEYCODE_MEDIA_PLAY) {
-	                Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_PLAY key.");
+	                FirebaseCrashlytics.getInstance().log("Receive Brocast: get MEDIA_PLAY key.");
 	                mpController.start();
 	                return;
 	            }
 	            else if (KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE == event.getKeyCode() || event.getKeyCode() == KeyEvent.KEYCODE_HEADSETHOOK) {
-	                Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_PLAY_PAUSE key.");
+	                FirebaseCrashlytics.getInstance().log("Receive Brocast: get MEDIA_PLAY_PAUSE key.");
 	            	if(mpController.getMediaPlayerState()==MP_PLAYING){
 	            		mpController.pause();
 	            		return;
@@ -1120,21 +1120,21 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 	            		mpController.start();
 	            		return;
 	                }
-	            	Crashlytics.log(Log.DEBUG,logTag,"The MediaPlayer not stay in can PLAY/PAUSE state.");
+	            	FirebaseCrashlytics.getInstance().log("The MediaPlayer not stay in can PLAY/PAUSE state.");
 	            }
 	            else if(KeyEvent.KEYCODE_MEDIA_PREVIOUS == event.getKeyCode()) {
-	            	Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_PREVIOUS key.");
+	            	FirebaseCrashlytics.getInstance().log("Receive Brocast: get MEDIA_PREVIOUS key.");
             		mpController.fwToNextSubtitle();
             		mpController.reflashProgressView();
 	            	return;
 	            }
 	            else if(KeyEvent.KEYCODE_MEDIA_NEXT == event.getKeyCode()) {
-	            	Crashlytics.log(Log.DEBUG,logTag,"Receive Brocast: get MEDIA_NEXT key.");
+	            	FirebaseCrashlytics.getInstance().log("Receive Brocast: get MEDIA_NEXT key.");
             		mpController.rewToLastSubtitle();
             		mpController.reflashProgressView();
 	            	return;
 	            }
-	            Crashlytics.log(Log.DEBUG,logTag,"Unknow MEDIA_KEY: "+event.getKeyCode());
+	            FirebaseCrashlytics.getInstance().log("Unknow MEDIA_KEY: "+event.getKeyCode());
 	    }
 	}
 
@@ -1145,29 +1145,29 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 			int monInterval=activity.getResources().getInteger(R.integer.subtitleMonInterval);
 			while(true){
 				if(isCancelled()){
-					Crashlytics.log(Log.DEBUG,logTag,"Exit nomaly.");
+					FirebaseCrashlytics.getInstance().log("Exit nomaly.");
 					return null;	// playArrayIndex not last one
 				}
 				try{
-//					Crashlytics.log(Log.DEBUG,logTag,"Subtitle index miss, search the index.");
+//					FirebaseCrashlytics.getInstance().log("Subtitle index miss, search the index.");
 					synchronized(playingIndexKey){
 						/*
 						 * While user drag the seek bar indicator over end of media control view, the MediaPlayer will complete play,
 						 * if there isn't check mpState, that will cause the indicator of SeekBar jump back to random position.
 						 *
 						if(mpState == MP_COMPLETE){
-							Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
+							FirebaseCrashlytics.getInstance().log("SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
 							return null;
 						}
-//						Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: the mpState is not MP_COMPLETE.");
+//						FirebaseCrashlytics.getInstance().log("SubtitleTimer: the mpState is not MP_COMPLETE.");
 						playPoint=mediaPlayer.getCurrentPosition();
                         playArrayIndex=Util.subtitleBSearch(se, playPoint);
 
-                        //Crashlytics.log(Log.DEBUG,logTag,"check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
+                        //FirebaseCrashlytics.getInstance().log("check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
                         // Play region function has set, and over the region, stop play.
                         //if(isRegionPlay() && playPoint > regionEndMs){
                         if(regionEndMs > 0 && playPoint > regionEndMs){
-                                Crashlytics.log(Log.DEBUG,logTag,"Stop Play: play point="+playPoint+", regionEndMs="+regionEndMs);
+                                FirebaseCrashlytics.getInstance().log("Stop Play: play point="+playPoint+", regionEndMs="+regionEndMs);
                                 pause();
                                 changedListener.onComplatePlay();
                                 return null;
@@ -1177,13 +1177,13 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
                                 playingIndex=playArrayIndex;
                                 if(playArrayIndex!=-1)changedListener.onSubtitleChanged(playArrayIndex, subtitle[playArrayIndex]);
                         }
-//                        Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: release playingIndexKey.");
+//                        FirebaseCrashlytics.getInstance().log("SubtitleTimer: release playingIndexKey.");
 					}
 					// The last of subtitle has reached.
 					//if(playArrayIndex==se.length-1)return null;
 
 					if(isCancelled()){
-						Crashlytics.log(Log.DEBUG,logTag,"Exit nomaly.");
+						FirebaseCrashlytics.getInstance().log("Exit nomaly.");
 						return null;
 					}
 
@@ -1228,11 +1228,11 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 					R.integer.subtitleMonInterval);
 			while (true) {
 				if (isCancelled()) {
-					Crashlytics.log(Log.DEBUG,logTag, "Exit nomaly.");
+					FirebaseCrashlytics.getInstance().log("Exit nomaly.");
 					return; // playArrayIndex not last one
 				}
 				try {
-					// Crashlytics.log(Log.DEBUG,logTag,"Subtitle index miss, search the index.");
+					// FirebaseCrashlytics.getInstance().log("Subtitle index miss, search the index.");
 					synchronized (playingIndexKey) {
 						/*
 						 * While user drag the seek bar indicator over end of
@@ -1242,26 +1242,26 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 						 * position.
 						 */
 						if (mpState == MP_COMPLETE) {
-							Crashlytics.log(Log.DEBUG,logTag, "SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
+							FirebaseCrashlytics.getInstance().log("SubtitleTimer: the mpState is MP_COMPLETE, terminate subtitleTimer");
 							return;
 						}
-						// Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: the mpState is not MP_COMPLETE.");
+						// FirebaseCrashlytics.getInstance().log("SubtitleTimer: the mpState is not MP_COMPLETE.");
 						playPoint = mediaPlayer.getCurrentPosition();
 						playArrayIndex = Util.subtitleBSearch(subtitle, playPoint);
 
-						// Crashlytics.log(Log.DEBUG,logTag,"check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
+						// FirebaseCrashlytics.getInstance().log("check play status: isPlayRegion="+isPlayRegion+", region start="+regionStartMs+", region end="+regionEndMs+", play point="+playPoint);
 						// Play region function has set, and over the region,
 						// stop play.
 						// if(isRegionPlay() && playPoint > regionEndMs){
 						if (regionEndMs > 0 && playPoint > regionEndMs) {
-							Crashlytics.log(Log.DEBUG,logTag, "Stop Play: play point=" + playPoint
+							FirebaseCrashlytics.getInstance().log("Stop Play: play point=" + playPoint
 									+ ", regionEndMs=" + regionEndMs);
 							pause();
 							changedListener.onComplatePlay();
 							return;
 						}
 
-						//Crashlytics.log(Log.DEBUG,logTag,"Current position: "+Util.getMsToHMS(playPoint)+", subtitle: "+subtitle[playArrayIndex].text);
+						//FirebaseCrashlytics.getInstance().log("Current position: "+Util.getMsToHMS(playPoint)+", subtitle: "+subtitle[playArrayIndex].text);
 						if (playingIndex != playArrayIndex) {
 							playingIndex = playArrayIndex;
 							if (playArrayIndex != -1)
@@ -1269,7 +1269,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 										playArrayIndex,
 										subtitle[playArrayIndex]);
 						}
-						// Crashlytics.log(Log.DEBUG,logTag,"SubtitleTimer: release playingIndexKey.");
+						// FirebaseCrashlytics.getInstance().log("SubtitleTimer: release playingIndexKey.");
 					}
 					// The last of subtitle has reached.
 					// if(playArrayIndex==se.length-1)return null;
@@ -1277,7 +1277,7 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 					LamrimReaderActivity.setInfoText(playPoint);
 
 					if (isCancelled()) {
-						Crashlytics.log(Log.DEBUG,logTag, "Exit nomaly.");
+						FirebaseCrashlytics.getInstance().log("Exit nomaly.");
 						return;
 					}
 
@@ -1285,15 +1285,15 @@ public class MediaPlayerController implements MediaControllerView.MediaPlayerCon
 
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
-					Crashlytics.log(Log.ERROR, logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
+					FirebaseCrashlytics.getInstance().log("ERROR: SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
 					return;
 				} catch (InterruptedException e) {
 					// e.printStackTrace();
-					Crashlytics.log(Log.ERROR,logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
+					FirebaseCrashlytics.getInstance().log("ERROR: SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
 					return;
 				} catch (Exception e) {
 					// e.printStackTrace();
-					Crashlytics.log(Log.ERROR,logTag, "SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
+					FirebaseCrashlytics.getInstance().log("ERROR: SubtitleTimer_EXCEPTION: mpState=" + mpStateStr[mpState] + ", playPoint=" + playPoint + ", playArrayIndex=" + playArrayIndex + ", regionEndMs=" + regionEndMs);
 					return;
 				}
 			}

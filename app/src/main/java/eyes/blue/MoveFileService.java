@@ -11,7 +11,7 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,7 +46,7 @@ public class MoveFileService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		Crashlytics.log(Log.DEBUG,getClass().getName(), "Into onHandleIntent of Move File service");
+		FirebaseCrashlytics.getInstance().log("Into onHandleIntent of Move File service");
 		
 		powerManager=(PowerManager) getSystemService(Context.POWER_SERVICE);
 		wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getClass().getName());
@@ -70,10 +70,10 @@ public class MoveFileService extends IntentService {
 		int time=(int)(System.currentTimeMillis()-startTime);
 		float spend=(float)time/(float)1000;
 		String readAble=String.format(Locale.ENGLISH, "%.3f%n",spend);
-		Crashlytics.setString("Statistics", "MoveFileToSpecifyFolderFinish");
+		Util.fireKeyValue("Statistics", "MoveFileToSpecifyFolderFinish");
 		notifyMsg(getString(R.string.msgMoveFileFinish), String.format(getString(R.string.msgMoveFileSummary), ""+counter, readAble));
 
-		Crashlytics.log(Log.DEBUG,getClass().getName(),"Move File Service terminate.");
+		FirebaseCrashlytics.getInstance().log("Move File Service terminate.");
 	}
 
 /*	public boolean moveAllMediaFileToUserSpecifyDir(File destDir){
@@ -93,7 +93,7 @@ public class MoveFileService extends IntentService {
 
 		int counter=0;
     	final File[] files=srcDir.listFiles();
-    	Crashlytics.log(Log.DEBUG,logTag,"There are "+files.length+" files wait for move.");
+    	FirebaseCrashlytics.getInstance().log("There are "+files.length+" files wait for move.");
 
     	// Check is the destination has the same file, delete source one.
 		for(File src: files){
@@ -124,7 +124,7 @@ public class MoveFileService extends IntentService {
     	File distTemp=new File(to.getAbsolutePath()+getString(R.string.downloadTmpPostfix));
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
-		Crashlytics.log(Log.DEBUG,logTag,"Copy "+from.getAbsolutePath()+" to "+to.getAbsolutePath());
+		FirebaseCrashlytics.getInstance().log("Copy "+from.getAbsolutePath()+" to "+to.getAbsolutePath());
 		try {
 			fis = new FileInputStream(from);
 			fos =new FileOutputStream(distTemp);

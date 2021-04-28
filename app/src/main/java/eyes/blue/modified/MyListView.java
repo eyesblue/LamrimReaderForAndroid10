@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,13 +85,13 @@ public class MyListView extends ListView {
 
     		@Override
     		public boolean onScaleBegin(ScaleGestureDetector detector) {
-    			Crashlytics.log(Log.DEBUG, getClass().getName(),"Begin scale called factor: "+detector.getScaleFactor());
+    			FirebaseCrashlytics.getInstance().log("Begin scale called factor: "+detector.getScaleFactor());
     			return true;
     		}
     		@Override
     		public boolean onScale(ScaleGestureDetector detector) {
     			float size=adapter.getTextSize()*detector.getScaleFactor();
-				Crashlytics.log(Log.DEBUG, getClass().getName(),"Get scale rate: "+detector.getScaleFactor()+", current Size: "+adapter.getTextSize()+", setSize: "+adapter.getTextSize()*detector.getScaleFactor());
+				FirebaseCrashlytics.getInstance().log("Get scale rate: "+detector.getScaleFactor()+", current Size: "+adapter.getTextSize()+", setSize: "+adapter.getTextSize()*detector.getScaleFactor());
     			if(size<=textSizeMin && adapter.getTextSize()==textSizeMin)
 					return true;
 				else if( size >= textSizeMax && adapter.getTextSize()==textSizeMax)
@@ -101,7 +101,7 @@ public class MyListView extends ListView {
 				else if(size>textSizeMax)size=textSizeMax;
     			adapter.setTextSize(size);
     			adapter.notifyDataSetChanged();
-//    				Crashlytics.log(Log.DEBUG, getClass().getName(),"set size after setting: "+adapter.getTextSize());
+//    				FirebaseCrashlytics.getInstance().log("set size after setting: "+adapter.getTextSize());
     				return true;
     			}
     		@Override
@@ -128,7 +128,7 @@ public class MyListView extends ListView {
 				e.printStackTrace();
 				return false;
 			}
-//			Crashlytics.log(Log.DEBUG, getClass().getName(),"Scale return "+res);
+//			FirebaseCrashlytics.getInstance().log("Scale return "+res);
 			return res;
 		}
 		
@@ -138,7 +138,7 @@ public class MyListView extends ListView {
 			e.printStackTrace();
 			return false;
 		}
-//		Crashlytics.log(Log.DEBUG, getClass().getName(),"TheoryPageView onTouchEvent return "+res);
+//		FirebaseCrashlytics.getInstance().log("TheoryPageView onTouchEvent return "+res);
 		return res;
 	}
 //	public void setOnTouchListener(View.OnTouchListener onTouchListener){this.onTouchListener=onTouchListener;}
@@ -154,12 +154,12 @@ public class MyListView extends ListView {
 		public boolean 	onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){return true;}
 		@Override
 		public boolean 	onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY){
-//			Crashlytics.log(Log.DEBUG, getClass().getName(),"Into onScroll, distance("+distanceX+", "+distanceY+"), scroll point=("+getScrollX()+", "+getScrollY()+")");
+//			FirebaseCrashlytics.getInstance().log("Into onScroll, distance("+distanceX+", "+distanceY+"), scroll point=("+getScrollX()+", "+getScrollY()+")");
 			float scrollX=getScrollX()+distanceX;
 //			float scrollY=getScrollY()+distanceY;
 			float rightBoundY=getHeight()-getMeasuredHeight();
 			float rightBoundX=getWidth()-getMeasuredWidth();
-//			Crashlytics.log(Log.DEBUG, getClass().getName(),"Layout params: ("+getLayout().getWidth()+", "+getLayout().getHeight()+", content size: ("+getWidth()+", "+getHeight()+"), meansure size: "+getMeasuredWidth()+", "+getMeasuredHeight());
+//			FirebaseCrashlytics.getInstance().log("Layout params: ("+getLayout().getWidth()+", "+getLayout().getHeight()+", content size: ("+getWidth()+", "+getHeight()+"), meansure size: "+getMeasuredWidth()+", "+getMeasuredHeight());
 			// reached Up/Left bound.
 			
 			// Restrict the left side can't be over.
@@ -168,13 +168,13 @@ public class MyListView extends ListView {
 			//	if(scrollY<=0)scrollY=0;
 			
 				
-/*			Crashlytics.log(Log.DEBUG, getClass().getName(),"textWidth: "+textWidth+", scrollX: "+getScrollX()+", getMeasuredWidth: "+getMeasuredWidth());
+/*			FirebaseCrashlytics.getInstance().log("textWidth: "+textWidth+", scrollX: "+getScrollX()+", getMeasuredWidth: "+getMeasuredWidth());
 			// Reached Right/bottom bound.
 			if(textWidth-getMeasuredWidth()-getScrollX()<=0){
-				Crashlytics.log(Log.DEBUG, getClass().getName(),"Right bound reached Return false");
+				FirebaseCrashlytics.getInstance().log("Right bound reached Return false");
 				return false;
 			}			
-			Crashlytics.log(Log.DEBUG, getClass().getName(),"Scroll to ("+scrollX+", "+getScrollY()+")");
+			FirebaseCrashlytics.getInstance().log("Scroll to ("+scrollX+", "+getScrollY()+")");
 */			scrollTo((int)scrollX,(int)getScrollY());
 			
 			// Left bound has reached, and still scroll to left
@@ -269,14 +269,14 @@ public class MyListView extends ListView {
 	int[] highlightWordCallArg=null; // This is use for return to user query last call record.
 	public void setHighlightWord(int startPage, int line, int startIndex, int length){
 		highlightWordCallArg=new int[]{startPage, line, startIndex, length};
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"Set highlight word at page "+startPage+", Line "+line+", index "+startIndex+", length "+length);
+		FirebaseCrashlytics.getInstance().log("Set highlight word at page "+startPage+", Line "+line+", index "+startIndex+", length "+length);
 		int index=lineWordToIndex(startPage, line, startIndex);
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"Set highlight word at page "+startPage+", index "+index+", length "+length);
+		FirebaseCrashlytics.getInstance().log("Set highlight word at page "+startPage+", index "+index+", length "+length);
 		String sample=getContentStr(startPage,0,TO_END);
 		highlightWord=new int[2][3];
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"startIndex+length="+(index+length)+", sample length="+sample.length());
+		FirebaseCrashlytics.getInstance().log("startIndex+length="+(index+length)+", sample length="+sample.length());
 		if(index+length<sample.length()){
-			Crashlytics.log(Log.DEBUG, getClass().getName(),"The highlight in one page");
+			FirebaseCrashlytics.getInstance().log("The highlight in one page");
 			highlightWord[0][0]=startPage;
 			highlightWord[0][1]=index;
 			highlightWord[0][2]=length;
@@ -285,14 +285,14 @@ public class MyListView extends ListView {
 			highlightWord[1][2]=-1;
 		}
 		else{
-			Crashlytics.log(Log.DEBUG, getClass().getName(),"The highlight words over second page");
+			FirebaseCrashlytics.getInstance().log("The highlight words over second page");
 			highlightWord[0][0]=startPage;
 			highlightWord[0][1]=index;
 			highlightWord[0][2]=sample.length()-index;
 			highlightWord[1][0]=startPage+1;
 			highlightWord[1][1]=0;
 			highlightWord[1][2]=length-(sample.length()-index);
-			Crashlytics.log(Log.DEBUG, getClass().getName(),"Set highlight at page,line,word: "+highlightWord[0][0]+", "+highlightWord[0][1]+", "+highlightWord[0][2]+" and "+highlightWord[1][0]+", "+highlightWord[1][1]+", "+highlightWord[1][2]);
+			FirebaseCrashlytics.getInstance().log("Set highlight at page,line,word: "+highlightWord[0][0]+", "+highlightWord[0][1]+", "+highlightWord[0][2]+" and "+highlightWord[1][0]+", "+highlightWord[1][1]+", "+highlightWord[1][2]);
 		}
 		refresh();
 	}
@@ -326,7 +326,7 @@ public class MyListView extends ListView {
 	
 	public float setViewToPosition(final int page,int line){
 /*		int firstView=getFirstVisiblePosition()+1;
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"First view index: "+firstView);
+		FirebaseCrashlytics.getInstance().log("First view index: "+firstView);
 		View v=getChildAt(firstView);
 		TextView tpView=(TextView)v.findViewById(R.id.pageContentView);
 
@@ -342,7 +342,7 @@ public class MyListView extends ListView {
 		float textSize=bounds.height();
 //		float shift=textSize*line/context.getResources().getDisplayMetrics().densityDpi*160f;
 		final float shift=-textSize*line*2.4f;
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"Move view to page "+page+" shift "+shift);
+		FirebaseCrashlytics.getInstance().log("Move view to page "+page+" shift "+shift);
 		post(new Runnable(){
 			@Override
 			public void run() {
@@ -355,7 +355,7 @@ public class MyListView extends ListView {
 	
 	
 	public int[] searchLast(int startPage, int startLine, int startWord, String str){
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"search last "+str+" from page "+startPage+", line "+startLine+", word "+startWord);
+		FirebaseCrashlytics.getInstance().log("search last "+str+" from page "+startPage+", line "+startLine+", word "+startWord);
 		int rangePageStart=startPage;
 		int rangePageEnd=startPage;
 		int pageLen[][]=new int[5][2];
@@ -366,7 +366,7 @@ public class MyListView extends ListView {
 		if(startLine<0)startPage--;
 		if(startPage<0)return null;
 		
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"Call lineWordToIndex(page="+startPage+", line="+startLine+", word="+startWord+")"); 
+		FirebaseCrashlytics.getInstance().log("Call lineWordToIndex(page="+startPage+", line="+startLine+", word="+startWord+")"); 
 		int startIndex=lineWordToIndex(startPage, startLine, startWord);
 		
 		String sample=getContentStr(startPage, startIndex, TO_START);
@@ -381,7 +381,7 @@ public class MyListView extends ListView {
 				sample=getContentStr(rangePageEnd,0,TO_END)+sample;
 				pageLen[pageIndex][0]=rangePageEnd;
 				pageLen[pageIndex][1]=sample.length();
-				Crashlytics.log(Log.DEBUG, getClass().getName(),"Add page "+rangePageEnd+" to sample");
+				FirebaseCrashlytics.getInstance().log("Add page "+rangePageEnd+" to sample");
 			}
 		
 			int searchResult=searchString(sample,str,TO_START);
@@ -432,7 +432,7 @@ public class MyListView extends ListView {
 		return searchNext(startPage, TheoryData.content.length-1, startLine, startWord, str);
 	}
 	public int[] searchNext(int startPage, int endPage, int startLine, int startWord, String str){
-		Crashlytics.log(Log.DEBUG, getClass().getName(),"search next"+str+" from page "+startPage+", line "+startLine+", word "+startWord);
+		FirebaseCrashlytics.getInstance().log("search next"+str+" from page "+startPage+", line "+startLine+", word "+startWord);
 		int rangePageStart=startPage;
 		int rangePageEnd=startPage;
 		int pageLen[][]=new int[5][2];
@@ -444,14 +444,14 @@ public class MyListView extends ListView {
 		pageLen[0][1]=sample.length();
 		while(rangePageEnd<endPage){
 			while(sample.length()<str.length()){
-				Crashlytics.log(Log.DEBUG, getClass().getName(),"Sample="+sample+"sample length="+sample.length()+", str length="+str.length());
+				FirebaseCrashlytics.getInstance().log("Sample="+sample+"sample length="+sample.length()+", str length="+str.length());
 				++pageIndex;
 				if(++rangePageEnd>=TheoryData.content.length)return null;  // The rest length of content not longer then searching string.
 				
 				sample+=getContentStr(rangePageEnd,0,TO_END);
 				pageLen[pageIndex][0]=rangePageEnd;
 				pageLen[pageIndex][1]=sample.length();
-				Crashlytics.log(Log.DEBUG, getClass().getName(),"Add page "+rangePageEnd+" to sample");
+				FirebaseCrashlytics.getInstance().log("Add page "+rangePageEnd+" to sample");
 			}
 		
 			int searchResult=searchString(sample,str,TO_END);
@@ -593,7 +593,7 @@ public class MyListView extends ListView {
 	 * The direct must be MyListView.TO_START(from 0 to fromIndex) or MyListView.TO_END(from fromIndex to end of content).
 	 * */
 	private static int searchString(String sample, String str, int direct){
-		Crashlytics.log(Log.DEBUG, "MyListView","The direct is "+((direct==TO_START)?"TO_START":"TO_END"));
+		FirebaseCrashlytics.getInstance().log("The direct is "+((direct==TO_START)?"TO_START":"TO_END"));
 		int shift=0;
 		
 		if(direct == TO_START){
@@ -672,7 +672,7 @@ public class MyListView extends ListView {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View row = convertView;
 			if (row == null) {
-				Crashlytics.log(Log.DEBUG, getClass().getName(), position+"th row=null, construct it.");
+				FirebaseCrashlytics.getInstance().log( position+"th row=null, construct it.");
 				LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 				row = inflater.inflate(R.layout.theory_page_view, parent, false);
 				

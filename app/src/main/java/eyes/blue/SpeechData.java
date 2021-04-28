@@ -2,16 +2,13 @@ package eyes.blue;
 
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
-
 public class SpeechData {
 	public static String getNameId(int i){
 		String result=null;
 		try{
 			result=name[i].substring(0, 7);
 		}catch(ArrayIndexOutOfBoundsException e){
-			Crashlytics.log(Log.ERROR, "SpeechData", "SpeechData.getNameId(MediaIndex): Access index of name["+i+"], it should not happen.");
-			Crashlytics.logException(e);
+			Util.fireException("SpeechData.getNameId(MediaIndex): Access index of name["+i+"], it should not happen.", e);
 			throw e;
 		}
 				

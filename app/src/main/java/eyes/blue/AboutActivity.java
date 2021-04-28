@@ -7,8 +7,8 @@ import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.util.Locale;
 
@@ -29,7 +29,7 @@ public class AboutActivity extends Activity {
         String mailToStr="%1$s：<a href=\"mailto:eyesblue@eyes-blue.com?&subject=%2$s&body=\n\n\n\n%3$s: %4$s(%5$d)\n%6$s: %7$s, Android%8$s, %9$s: %10$s\">eyesblue@eyes-blue.com</a>";
         mailToStr=String.format(Locale.US, mailToStr,getString(R.string.contactAuther), getString(R.string.app_name)+getString(R.string.contactAuther), getString(R.string.version), BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE, getString(R.string.OSver), android.os.Build.MANUFACTURER+" "+android.os.Build.MODEL, Build.VERSION.RELEASE+"("+Build.VERSION.SDK_INT+")", getString(R.string.locale), ApiLevelAdaptor.getLocale(AboutActivity.this));
         mailToStr=mailToStr.replaceAll("\n", "%0d%0a");
-        Crashlytics.log(Log.DEBUG, getClass().getName(),"Mail to string: "+mailToStr);
+        FirebaseCrashlytics.getInstance().log("Mail to string: "+mailToStr);
         aboutMailToMe.setText(ApiLevelAdaptor.fromHtml(mailToStr));
         aboutMailToMe.setMovementMethod(LinkMovementMethod.getInstance());
     }

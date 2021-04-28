@@ -1,4 +1,4 @@
-#Fri Jul 10 18:58:41 CST 2020
+#Wed Apr 28 16:29:53 CST 2021
 base.0=C\:\\Users\\eyesblue\\Dropbox\\Android_projects\\LamrimReader\\LamrimReaderForAndroid10\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

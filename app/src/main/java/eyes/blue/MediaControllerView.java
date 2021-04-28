@@ -33,7 +33,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.lang.ref.WeakReference;
 import java.util.Formatter;
@@ -584,7 +584,7 @@ public class MediaControllerView extends FrameLayout {
                 }
             }catch(Exception e){
                 Log.e(getClass().getName(), "Error happen in MediaControllerView.onProgressChanged: ", e);
-                Crashlytics.log(Log.ERROR, getClass().getName(), e.getLocalizedMessage());
+                Util.fireException("Error happen in MediaControllerView.onProgressChanged: ",e);
                 Util.showErrorToast(mContext, mContext.getString(R.string.errPlayerRecycled), 100);
             }
         }
@@ -681,13 +681,13 @@ public class MediaControllerView extends FrameLayout {
 
     private void installPrevNextListeners() {
         if (mNextButton != null) {
-                Crashlytics.log(Log.DEBUG,getClass().getName(),"Set setOnClickListener on NextButton");
+                FirebaseCrashlytics.getInstance().log("Set setOnClickListener on NextButton");
             mNextButton.setOnClickListener(mNextListener);
             mNextButton.setEnabled(mNextListener != null);
         }
 
         if (mPrevButton != null) {
-                Crashlytics.log(Log.DEBUG,getClass().getName(),"Set setOnClickListener on PrevButton");
+                FirebaseCrashlytics.getInstance().log("Set setOnClickListener on PrevButton");
             mPrevButton.setOnClickListener(mPrevListener);
             mPrevButton.setEnabled(mPrevListener != null);
         }
@@ -699,7 +699,7 @@ public class MediaControllerView extends FrameLayout {
         mListenersSet = true;
 
         if (mRoot != null) {
-        	Crashlytics.log(Log.DEBUG,getClass().getName(),"Call installPrevNextListeners()");
+        	FirebaseCrashlytics.getInstance().log("Call installPrevNextListeners()");
             installPrevNextListeners();
            
             if (mNextButton != null && !mFromXml) {

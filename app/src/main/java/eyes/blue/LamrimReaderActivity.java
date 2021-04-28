@@ -21,8 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.os.RemoteException;
-import com.crashlytics.android.Crashlytics;
+
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -77,6 +76,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GestureDetectorCompat;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import eyes.blue.bgmusicplayer.MainActivity;
 import eyes.blue.bgmusicplayer.PlaybackService;
@@ -107,7 +107,6 @@ import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 import afzkl.development.colorpickerview.view.ColorPickerView;
 import eyes.blue.modified.MyListView;
 import eyes.blue.modified.OnDoubleTapEventListener;
-import io.fabric.sdk.android.Fabric;
 
 import static eyes.blue.MediaPlayerController.MP_PREPARED;
 
@@ -220,18 +219,17 @@ public class LamrimReaderActivity extends AppCompatActivity {
         // try{
         super.onCreate(savedInstanceState);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        Fabric.with(this, new Crashlytics());
 ///		requestWindowFeature(Window.FEATURE_NO_TITLE);
 //		requestWindowFeature(com.actionbarsherlock.view.Window.FEATURE_ACTION_BAR_OVERLAY);
 
         appStartTimeMs = System.currentTimeMillis();
         setContentView(R.layout.main);
 
-        Crashlytics.log(Log.DEBUG, logTag, "set content view finish");
-        Crashlytics.log(Log.DEBUG, logTag,"=====================set content view finish===================");
+        FirebaseCrashlytics.getInstance().log("set content view finish");
+        FirebaseCrashlytics.getInstance().log("=====================set content view finish===================");
 
         // 檢查是否背景仍在播放，若有則停止背景播放服務
-        Crashlytics.log(Log.DEBUG, logTag,"Main UI start, stop Background player if exist.");
+        FirebaseCrashlytics.getInstance().log("Main UI start, stop Background player if exist.");
         Intent serviceIntent = new Intent(this, PlaybackService.class);
         stopService(serviceIntent);
 
@@ -273,8 +271,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
         versionManager.checkVersion();
 */
 
-        if (savedInstanceState != null) Crashlytics.log(Log.DEBUG, logTag, "The savedInstanceState is not null!");
-        Crashlytics.log(Log.DEBUG, logTag, "mediaIndex=" + mediaIndex);
+        if (savedInstanceState != null) FirebaseCrashlytics.getInstance().log("The savedInstanceState is not null!");
+        FirebaseCrashlytics.getInstance().log("mediaIndex=" + mediaIndex);
 //		powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 //		wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, logTag);
 //		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -296,7 +294,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         textDefSize = (int) ((TextView) findViewById(R.id.subtitleView)).getTextSize();
         textMinSize = getResources().getInteger(R.integer.textMinSize);
         textMaxSize = getResources().getInteger(R.integer.textMaxSize);
-        Crashlytics.log(Log.DEBUG, logTag, "Get font size: max=" + textMaxSize + ", def=" + textDefSize + ", min=" + textMinSize);
+        FirebaseCrashlytics.getInstance().log("Get font size: max=" + textMaxSize + ", def=" + textDefSize + ", min=" + textMinSize);
 
         modeSwBtn = (Button) findViewById(R.id.modeSwBtn);
         modeSwBtn.setOnTouchListener(new View.OnTouchListener() {
@@ -318,8 +316,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             mpController.seekTo(mpController.getCurrentPosition());
                         } catch (Exception et) {
                             et.printStackTrace();
-                            Crashlytics.log(Log.DEBUG, logTag, "ReadingModeSEindex been access before construct finish.");
-                            Crashlytics.logException(et);
+                            Util.fireException("ReadingModeSEindex been access before construct finish.", et);
                         }
                     }
 
@@ -347,7 +344,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 if (height <= minHeight) {
                     height = minHeight;
                     setSubtitleViewMode(SUBTITLE_MODE);
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SWITCH_TO_SUBTITLE_MODE");
+                    Util.fireKeyValue(Util.BUTTON_CLICK, "SWITCH_TO_SUBTITLE_MODE");
 
                     if (mpController.getMediaPlayerState() == MediaPlayerController.MP_PLAYING && mpController.getSubtitle() != null) {
                         if (mpController.getCurrentPosition() == -1)
@@ -367,10 +364,10 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             return true;
                         }
                         setSubtitleViewMode(READING_MODE);
-                        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SWITCH_TO_READING_MODE");
+                        Util.fireKeyValue(Util.BUTTON_CLICK, "SWITCH_TO_READING_MODE");
                     }
                 }
-                Crashlytics.log(Log.DEBUG, logTag, "Set height to: "+height);
+                FirebaseCrashlytics.getInstance().log("Set height to: "+height);
                 if (height > maxHeight)
                     height = maxHeight;
 
@@ -396,7 +393,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
          * mediaIndex>=SpeechData.name.length)return; final int
          * pageNum=SpeechData.refPage[mediaIndex]-1; if(pageNum==-1)return;
          * //bookView.setItemChecked(pageNum, true); setTheoryArea(pageNum, 0);
-         * Crashlytics.log(Log.DEBUG, logTag,"Jump to theory page index "+pageNum); //
+         * FirebaseCrashlytics.getInstance().log("Jump to theory page index "+pageNum); //
          * adapter.notifyDataSetChanged(); }});
          */
         jumpPage = (EditText) actionBarControlPanel.findViewById(R.id.jumpPage);
@@ -428,13 +425,13 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     runtimeEditor.putBoolean(getString(R.string.isShowInfoTextViewKey), isShowInfoText);
                     runtimeEditor.apply();
                     if (isShowInfoText) {
-                        Crashlytics.log(Log.DEBUG, logTag, "Enable information text view");
+                        FirebaseCrashlytics.getInstance().log("Enable information text view");
                         infoTextView.setVisibility(View.VISIBLE);
-                        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "ENABLE_INFO_TEXT");
+                        Util.fireKeyValue(Util.BUTTON_CLICK, "ENABLE_INFO_TEXT");
                     } else {
-                        Crashlytics.log(Log.DEBUG, logTag, "Disable information text view");
+                        FirebaseCrashlytics.getInstance().log("Disable information text view");
                         infoTextView.setVisibility(View.GONE);
-                        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "DISABLE_INFO_TEXT");
+                        Util.fireKeyValue(Util.BUTTON_CLICK, "DISABLE_INFO_TEXT");
                     }
                     runtimeEditor.putBoolean(getString(R.string.isShowInfoTextViewKey), isShowInfoText);
                     runtimeEditor.apply();
@@ -460,12 +457,12 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         bookView.setSelectionFromTop(pageNum, 0);
-                        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "JUMP_PAGE_" + pageNum);
+                        Util.fireKeyValue(Util.BUTTON_CLICK, "JUMP_PAGE_" + pageNum);
                     }
                 }, 200);
                 // bookView.setItemChecked(num-1, true);
                 // bookView.setSelection(pageNum);
-                Crashlytics.log(Log.DEBUG, logTag, "Jump to theory page index " + (num - 1));
+                FirebaseCrashlytics.getInstance().log("Jump to theory page index " + (num - 1));
                 // adapter.notifyDataSetChanged();
                 return false;
             }
@@ -498,7 +495,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     final int theoryTextSize = runtime.getInt(getString(R.string.bookFontSizeKey), textDefSize);
                     bookView.setTextSize(theoryTextSize);
                     bookView.setSelectionFromTop(bookPosition, bookShift);
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SWITCH_TO_" + ((isDark_Theme) ? "DARK" : "LIGHT" + "_THEME"));
+                    Util.fireKeyValue(Util.BUTTON_CLICK, "SWITCH_TO_" + ((isDark_Theme) ? "DARK" : "LIGHT" + "_THEME"));
                 }
             });
         }
@@ -509,7 +506,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             playBgm.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "PLAY_SPEECH_BACKGROUND");
+                    Util.fireKeyValue(Util.BUTTON_CLICK, "PLAY_SPEECH_BACKGROUND");
 
                     int position = -1;
                     if (mediaIndex < 0 || mpController == null || !mpController.isPlayerReady() || (position = mpController.getCurrentPosition()) < 0) {
@@ -573,7 +570,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 /*            playBgm.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "PLAY_SPEECH_BACKGROUND");
+                    Util.fireKeyValue(Util.BUTTON_CLICK, "PLAY_SPEECH_BACKGROUND");
 
                     int position = -1;
                     if (mediaIndex < 0 || mpController == null || !mpController.isPlayerReady() || (position = mpController.getCurrentPosition()) < 0) {
@@ -644,7 +641,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar arg0) {
                     volumeController.setSelected(false);
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.STATISTICS, "VOLUME_CONTROL_WITH_SEEKBAR");
+                    Util.fireKeyValue(Util.STATISTICS, "VOLUME_CONTROL_WITH_SEEKBAR");
 
                 }
 
@@ -695,7 +692,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 new int[]{android.R.id.text1, android.R.id.text2});
 
         if (mpController != null)
-            Crashlytics.log(Log.DEBUG, logTag, "The media player controller is not null in onCreate!!!!!");
+            FirebaseCrashlytics.getInstance().log("The media player controller is not null in onCreate!!!!!");
         if (mpController == null)
             createMpController();
 
@@ -712,7 +709,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
             @Override
             public boolean onSingleTapConfirmed(MotionEvent e) {
-                Crashlytics.log(Log.DEBUG, logTag, "SubtitleView been clicked, Show media plyaer control panel.");
+                FirebaseCrashlytics.getInstance().log("SubtitleView been clicked, Show media plyaer control panel.");
 
                 if (mpController == null) {
                     setSubtitleViewText(getString(R.string.errPlayerRecycled));
@@ -724,13 +721,13 @@ public class LamrimReaderActivity extends AppCompatActivity {
 ///							showTitle();
                 }
 
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.STATISTICS, "Subtitle_SingleTap");
+                Util.fireKeyValue(Util.STATISTICS, "Subtitle_SingleTap");
                 return true;
             }
 
             @Override
             public boolean onDoubleTapEvent(MotionEvent e) {
-                Crashlytics.log(Log.DEBUG, logTag, "SubtitleView been double clicked.");
+                FirebaseCrashlytics.getInstance().log("SubtitleView been double clicked.");
                 // If it stay in subtitle mode, do nothing.
                 if (subtitleViewRenderMode == SUBTITLE_MODE)
                     return false;
@@ -746,8 +743,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                         subtitleView.scrollTo(subtitleView.getScrollX(), subtitleView.getLineBounds(line, null) - subtitleView.getLineHeight());
                     } catch (Exception et) {
                         et.printStackTrace();
-                        Crashlytics.log(Log.DEBUG, logTag, "ReadingModeSEindex been access before construct finish.");
-                        Crashlytics.logException(et);
+                        Util.fireException("ReadingModeSEindex been access before construct finish.", et);
                     }
                 }
                 return true;
@@ -762,7 +758,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     // Unknown problem, there will return null on some
                     // machine.
                     Layout layout = subtitleView.getLayout();
-                    Crashlytics.log(Log.DEBUG, logTag, "Layout is " + ((layout == null) ? "null" : "not null"));
+                    FirebaseCrashlytics.getInstance().log("Layout is " + ((layout == null) ? "null" : "not null"));
                     if (layout == null)
                         return true;
                     // ======================================================
@@ -772,14 +768,14 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             null)
                             - subtitleView.getMeasuredHeight()
                             + subtitleView.getLineHeight();
-                    Crashlytics.log(Log.DEBUG, logTag, "Org Y=" + y + "layout.height=" + subtitleView.getLayoutParams().height + ", subtitle.height=" + subtitleView.getHeight() + ", measureHeight=" + subtitleView.getMeasuredHeight());
+                    FirebaseCrashlytics.getInstance().log("Org Y=" + y + "layout.height=" + subtitleView.getLayoutParams().height + ", subtitle.height=" + subtitleView.getHeight() + ", measureHeight=" + subtitleView.getMeasuredHeight());
                     if (y < 0)
                         y = 0;
                     if (y > bottom)
                         y = bottom;
                     // if(subtitleView.getLayoutParams().height-subtitleView.getMeasuredHeight()-y<0)y=subtitleView.getLayoutParams().height-subtitleView.getMeasuredHeight();
                     subtitleView.scrollTo(subtitleView.getScrollX(), y);
-                    Crashlytics.log(Log.DEBUG, logTag, "Scroll subtitle view to " + subtitleView.getScrollX() + ", " + y);
+                    FirebaseCrashlytics.getInstance().log("Scroll subtitle view to " + subtitleView.getScrollX() + ", " + y);
                 }
                 return true;
             }
@@ -791,7 +787,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
             @Override
             public boolean onScaleBegin(ScaleGestureDetector detector) {
-                Crashlytics.log(Log.DEBUG, logTag, "Begin scale called factor: " + detector.getScaleFactor());
+                FirebaseCrashlytics.getInstance().log("Begin scale called factor: " + detector.getScaleFactor());
 //						AnalyticsApplication.sendEvent("ui_action", "subtitle_event", "scale_start", null);
                 return true;
             }
@@ -821,7 +817,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             public void onScaleEnd(ScaleGestureDetector detector) {
                 runtimeEditor.putInt(getString(R.string.subtitleFontSizeKey), (int) subtitleView.getTextSize());
                 runtimeEditor.commit();
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.STATISTICS, "FINGER_SCALE_ON_SUBTITLE_VIEW");
+                Util.fireKeyValue(Util.STATISTICS, "FINGER_SCALE_ON_SUBTITLE_VIEW");
             }
         });
 
@@ -833,10 +829,10 @@ public class LamrimReaderActivity extends AppCompatActivity {
                         return stScaleGestureDetector.onTouchEvent(event);
                     }
 
-                    Crashlytics.log(Log.DEBUG, logTag, "Call subtitleViewGestureListener");
+                    FirebaseCrashlytics.getInstance().log("Call subtitleViewGestureListener");
                     boolean res = subtitleViewGestureListener.onTouchEvent(event);
                     return res;
-                    // Crashlytics.log(Log.DEBUG, logTag, "Subtitle OnTouchListener return "+res);
+                    // FirebaseCrashlytics.getInstance().log("Subtitle OnTouchListener return "+res);
                 } catch (Exception e) {
                     e.printStackTrace();
                     //Util.fireException("Exception happen in OnTouchListener of SubtitleView.", e);
@@ -896,8 +892,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     bookView.setViewToPosition(bookViewMountPoint[0], bookViewMountPoint[1]);
                     //bookView.setSelectionFromTop(bookViewMountPoint[0], bookViewMountPoint[1]);
                 }
-                Crashlytics.log(Log.DEBUG, logTag, "Jump to theory page index " + bookViewMountPoint[0] + " shift " + bookViewMountPoint[1]);
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.STATISTICS, "DOUBLE_CLICK_ON_BOOKVIEW");
+                FirebaseCrashlytics.getInstance().log("Jump to theory page index " + bookViewMountPoint[0] + " shift " + bookViewMountPoint[1]);
+                Util.fireKeyValue(Util.STATISTICS, "DOUBLE_CLICK_ON_BOOKVIEW");
                 return true;
             }
         });
@@ -906,7 +902,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    Crashlytics.log(Log.DEBUG, logTag, "Hide media player controller.");
+                    FirebaseCrashlytics.getInstance().log("Hide media player controller.");
                     hideMediaController(false);
                 }
                 return false;
@@ -929,7 +925,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         renderView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Crashlytics.log(Log.DEBUG, logTag, "Into onLongClickListener of render image.");
+                FirebaseCrashlytics.getInstance().log("Into onLongClickListener of render image.");
                 showRenderModeFirstLevelMenu();
                 return true;
             }
@@ -938,7 +934,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Crashlytics.log(Log.DEBUG, logTag, "Into onLongClickListener of render image.");
+                FirebaseCrashlytics.getInstance().log("Into onLongClickListener of render image.");
                 if (mpController == null) {
                     setSubtitleViewText(getString(R.string.errPlayerRecycled));
                     createMpController();
@@ -955,7 +951,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         if (actionBar != null) actionBar.setSubtitle(appSubtitle);
 
         int onCreateSpendTimeMs = (int) (System.currentTimeMillis() - appStartTimeMs);
-        Crashlytics.log(Log.DEBUG, logTag, "=============== onCreate spend time: " + onCreateSpendTimeMs);
+        FirebaseCrashlytics.getInstance().log("=============== onCreate spend time: " + onCreateSpendTimeMs);
         //Crashlytics.setDouble("InitialMainActivityTime", onCreateSpendTimeMs);
 
     }// ========================================== End of OnCreate() ============================================
@@ -963,7 +959,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
     // For catch global event, acquire again if user action happen.
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-//		Crashlytics.log(Log.DEBUG, logTag,"Into dispatchTouchEvent() of activity.");
+//		FirebaseCrashlytics.getInstance().log("Into dispatchTouchEvent() of activity.");
         if (wakeLock.isHeld()) wakeLock.release();
         if (!wakeLock.isHeld()) {
             wakeLock.acquire(getResources().getInteger(R.integer.screenOnTime));
@@ -972,7 +968,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
     }
 
     private void swapRegionSet() {
-        Crashlytics.log(Log.DEBUG, logTag, "RegionSet={" + regionSet[0] + ", " + regionSet[1] + ", " + regionSet[2] + ", " + regionSet[3] + "} before swap.");
+        FirebaseCrashlytics.getInstance().log("RegionSet={" + regionSet[0] + ", " + regionSet[1] + ", " + regionSet[2] + ", " + regionSet[3] + "} before swap.");
         if (regionSet[0] < regionSet[2]) return;
         if (regionSet[0] <= regionSet[2] && regionSet[1] <= regionSet[3]) return;
 
@@ -984,7 +980,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         regionSet[1] = regionSet[3];
         regionSet[3] = swap;
 
-        Crashlytics.log(Log.DEBUG, logTag, "RegionSet={" + regionSet[0] + ", " + regionSet[1] + ", " + regionSet[2] + ", " + regionSet[3] + "} after swap.");
+        FirebaseCrashlytics.getInstance().log("RegionSet={" + regionSet[0] + ", " + regionSet[1] + ", " + regionSet[2] + ", " + regionSet[3] + "} after swap.");
     }
 
     private void shareSegment(RegionRecord record) {
@@ -1012,7 +1008,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SHARE_REGION");
+        Util.fireKeyValue(Util.BUTTON_CLICK, "SHARE_REGION");
 
         String msgTitle = ((title.isEmpty()) ? "" : title + " - ") + getString(R.string.msgShareTitle);
         String secTitle =getString(R.string.msgHintClickLink);
@@ -1044,7 +1040,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SHARE_REGION");
+        Util.fireKeyValue(Util.BUTTON_CLICK, "SHARE_REGION");
 
         String msgTitle = ((title.isEmpty()) ? "" : title + " - ") + getString(R.string.msgShareTitle);
 
@@ -1106,7 +1102,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     return;
                 }
                 /*if(regionSet[2]!=-1 && Math.abs(mediaIndex-regionSet[2])>1){
-					Crashlytics.log(Log.DEBUG, logTag,"regionSet[0]-regionSet[2]="+(regionSet[0]-regionSet[2]));
+					FirebaseCrashlytics.getInstance().log("regionSet[0]-regionSet[2]="+(regionSet[0]-regionSet[2]));
 					BaseDialogs.showErrorDialog(LamrimReaderActivity.this, "只能標記相鄰的音檔");
 					return;
 				}
@@ -1182,7 +1178,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                     public void run() {
                                         regionFakeList.add(fakeSample);
                                         if (regionRecordAdapter != null)
-                                            Crashlytics.log(Log.DEBUG, logTag, "Warring: the regionRecordAdapter = null !!!");
+                                            FirebaseCrashlytics.getInstance().log("Warring: the regionRecordAdapter = null !!!");
                                         else
                                             regionRecordAdapter.notifyDataSetChanged();
 
@@ -1233,7 +1229,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                                 if (bookMap != null && bookMap[index] != null)
                                     if (highlightWord == null || !(bookMap[index][0] == highlightWord[0] && bookMap[index][1] == highlightWord[1] && bookMap[index][2] == highlightWord[2] && bookMap[index][3] == highlightWord[3])) {
-                                        Crashlytics.log(Log.DEBUG, logTag, "Set highlight at Page: " + bookMap[index][0] + ", Line: " + bookMap[index][1] + ", Word: " + bookMap[index][2] + ", Length: " + bookMap[index][3]);
+                                        FirebaseCrashlytics.getInstance().log("Set highlight at Page: " + bookMap[index][0] + ", Line: " + bookMap[index][1] + ", Word: " + bookMap[index][2] + ", Length: " + bookMap[index][3]);
                                         bookView.setHighlightWord(bookMap[index][0], bookMap[index][1], bookMap[index][2], bookMap[index][3]);
                                         synchronized (bookViewMountPointKey) {
                                             bookViewMountPoint[0] = bookMap[index][0];
@@ -1279,7 +1275,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     @Override
                     public void onPlayerError() {
                         setSubtitleViewText(getString(R.string.errＷhilePlayMedia));
-                        Crashlytics.log(Log.ERROR, logTag, "Player error cause onPlayerError() been called.");
+                        FirebaseCrashlytics.getInstance().log("ERROR: Player error cause onPlayerError() been called.");
                     }
 
                     @Override
@@ -1330,7 +1326,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             createMpController();
                             return;
                         }
-                        Crashlytics.log(Log.DEBUG, logTag, "MediaPlayer prepared, show controller.");
+                        FirebaseCrashlytics.getInstance().log("MediaPlayer prepared, show controller.");
                         //AnalyticsApplication.sendEvent("play_action", "player_event", SpeechData.getSubtitleName(mediaIndex) + "_prepared");
 
                         //if (mpController.isSubtitleReady()) {
@@ -1345,7 +1341,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                         //		pageEnd=SpeechData.refPage[mediaIndex];
 
                         int[][] mediaBookMaps = BookMap.getMediaIndex(mediaIndex);
-                        Crashlytics.log(Log.DEBUG, logTag, "載入論文音檔對應表: " + SpeechData.getSubtitleName(mediaIndex));
+                        FirebaseCrashlytics.getInstance().log("載入論文音檔對應表: " + SpeechData.getSubtitleName(mediaIndex));
                         if (mediaBookMaps != null) {
                             bookMap = new int[se.length][]; // For setHighlightWord(int startPage, int line, int startIndex, int length)
 
@@ -1413,17 +1409,15 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                     try {
                                         bookView.setHighlightLine(theoryHighlightRegion[0], theoryHighlightRegion[1], theoryHighlightRegion[2], theoryHighlightRegion[3]);
                                     } catch (Exception e) {
-                                        Crashlytics.log(Log.ERROR, logTag, "Error happen while set the Highlight Line.");
-                                        Crashlytics.log(Log.ERROR, logTag, e.getMessage());
-                                        Crashlytics.logException(e);
+                                        Util.fireException("ERROR: Error happen while set the Highlight Line.", e);
                                         Util.showErrorToast(LamrimReaderActivity.this, getString(R.string.markRegionFail));
                                     }
                                 }
                             }, 1000);
 
 //							mpController.refreshSeekBar();
-                            Crashlytics.log(Log.DEBUG, logTag, "GlobalLamrim mode: play index " + GLamrimSect[GLamrimSectIndex][0] + ", Sec: " + GLamrimSect[GLamrimSectIndex][1] + ":" + GLamrimSect[GLamrimSectIndex][2]);
-                            Crashlytics.log(Log.DEBUG, logTag, "Mark theory: start page=" + theoryHighlightRegion[0] + " start line=" + theoryHighlightRegion[1] + ", offset=" + bookViewMountPoint[1]);
+                            FirebaseCrashlytics.getInstance().log("GlobalLamrim mode: play index " + GLamrimSect[GLamrimSectIndex][0] + ", Sec: " + GLamrimSect[GLamrimSectIndex][1] + ":" + GLamrimSect[GLamrimSectIndex][2]);
+                            FirebaseCrashlytics.getInstance().log("Mark theory: start page=" + theoryHighlightRegion[0] + " start line=" + theoryHighlightRegion[1] + ", offset=" + bookViewMountPoint[1]);
 
                             int regionStart = GLamrimSect[GLamrimSectIndex][1];
                             int regionEnd = GLamrimSect[GLamrimSectIndex][2];
@@ -1447,7 +1441,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             setSubtitleViewText(getString(R.string.dlgHintShowMpController));
                             showMediaController();
 /*							}else if (regionPlayIndex != -1) {
-							Crashlytics.log(Log.DEBUG, logTag, "Region Mode: This play event is region play, set play region.");
+							FirebaseCrashlytics.getInstance().log("Region Mode: This play event is region play, set play region.");
 							bookView.setHighlightLine(theoryHighlightRegion[0], theoryHighlightRegion[1], theoryHighlightRegion[2], theoryHighlightRegion[3]);
 							if(actionBar != null)actionBar.setTitle(getString(R.string.menuStrPlayRegionRecShortName)+": "+RegionRecord.records.get(regionPlayIndex).title);
 							setMediaControllerView(RegionRecord.records.get(regionPlayIndex).startTimeMs,RegionRecord.records.get(regionPlayIndex).endTimeMs, true, true, normalModePrevNextListener.getPrevListener(), true, true, normalModePrevNextListener.getNextListener());
@@ -1455,7 +1449,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 							mpController.start();
 							regionPlayIndex = -1;*/
                         } else {
-                            Crashlytics.log(Log.DEBUG, logTag, "Normal mode: The play event is fire by user select a new speech.");
+                            FirebaseCrashlytics.getInstance().log("Normal mode: The play event is fire by user select a new speech.");
 
                             // The title of actionBar will miss while restart the App.
                             actionBarTitle = SpeechData.getNameId(mediaIndex);
@@ -1473,7 +1467,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 							*/
 
                             int seekPosition = playRecord.getInt("playPosition", 0);
-                            Crashlytics.log(Log.DEBUG, logTag, "Seek to last play positon " + seekPosition);
+                            FirebaseCrashlytics.getInstance().log("Seek to last play positon " + seekPosition);
                             mpController.setPrevNextListeners(normalModePrevNextListener.getPrevPageListener(), normalModePrevNextListener.getNextPageListener());
                             mpController.seekTo(seekPosition);
                             setSubtitleViewText(getString(R.string.dlgHintShowMpController));
@@ -1488,7 +1482,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                     @Override
                     public void onStartPlay() {
-                        Crashlytics.log(Log.DEBUG, logTag, "Hide Title bar.");
+                        FirebaseCrashlytics.getInstance().log("Hide Title bar.");
                         int seekPosition = mpController.getCurrentPosition();
                         mpController.seekTo(seekPosition);
 //						hideTitle();
@@ -1496,12 +1490,12 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                     @Override
                     public void onPause() {
-                        Crashlytics.log(Log.DEBUG, logTag, "Show Title bar.");
+                        FirebaseCrashlytics.getInstance().log("Show Title bar.");
                     }
 
                     @Override
                     public void onComplatePlay() {
-                        Crashlytics.log(Log.DEBUG, logTag, "Show Title bar.");
+                        FirebaseCrashlytics.getInstance().log("Show Title bar.");
                         if (GLamrimSectIndex == 0 && GLamrimSect[1][0] != -1)
                             Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.playFinishNext));
                         //else Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.playFinish));
@@ -1539,7 +1533,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     mpController.setShowLongTerm(false);
                     hideMediaController(true);
                 }
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "PinButtonOnMpController " + ((isClick) ? "Clicked" : "Release"));
+                Util.fireKeyValue(Util.BUTTON_CLICK, "PinButtonOnMpController " + ((isClick) ? "Clicked" : "Release"));
             }
         });
     }
@@ -1547,7 +1541,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Crashlytics.log(Log.DEBUG, logTag, "**** onStart() ****");
+        FirebaseCrashlytics.getInstance().log("**** onStart() ****");
 /*
 		float modeSwBtnHeight = (float) getResources().getInteger(
 				R.integer.subtitleScrollTouchBtnHeightPercentDp)
@@ -1577,7 +1571,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
 
 
-        Crashlytics.log(Log.DEBUG, logTag, "**** Leave onStart() ****");
+        FirebaseCrashlytics.getInstance().log("**** Leave onStart() ****");
     }
 
     public static Point getScreenDim() {
@@ -1588,7 +1582,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Crashlytics.log(Log.DEBUG, logTag, "**** Into onResume() ****");
+        FirebaseCrashlytics.getInstance().log("**** Into onResume() ****");
         /*
          * While in the sleep mode, the life cycle into onPause, when user
          * active the application the life cycle become onResume -> onPause ->
@@ -1602,7 +1596,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         /*
          * try { if (mpController.getMediaPlayerState() >=
          * MediaPlayerController.MP_PREPARING){
-         * Crashlytics.log(Log.DEBUG, logTag,"onResume: The state of MediaPlayer is PAUSE, start play."
+         * FirebaseCrashlytics.getInstance().log("onResume: The state of MediaPlayer is PAUSE, start play."
          * ); //
          * mpController.setAnchorView(LamrimReaderActivity.this.findViewById
          * (android.R.id.content)); // mpController.showMediaPlayerController();
@@ -1610,9 +1604,9 @@ public class LamrimReaderActivity extends AppCompatActivity {
          */
 
         Intent cmdIntent = this.getIntent();
-        Crashlytics.log(Log.DEBUG, logTag, "Check command intent : " + ((cmdIntent == null) ? "is null." : "not null."));
+        FirebaseCrashlytics.getInstance().log("Check command intent : " + ((cmdIntent == null) ? "is null." : "not null."));
         if (cmdIntent != null && cmdIntent.getAction() != null && cmdIntent.getAction().equals(Intent.ACTION_VIEW)) {
-            Crashlytics.log(Log.DEBUG, logTag, "Action: " + getIntent().getAction());
+            FirebaseCrashlytics.getInstance().log("Action: " + getIntent().getAction());
 
             // Here must check is the file exist, or unlimited loop happen [file not exist] -> [switch to SpeechMenuActivity] -> show network access dialog -> disallow -> [here] and so on.
 //			int mStart=cmdIntent.getIntExtra("mediaStart", 0);
@@ -1628,11 +1622,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
             GLamrimSectIndex = 0;
             getIntent().setAction(Intent.ACTION_MAIN);
             String title = cmdIntent.getStringExtra("title");
-            Crashlytics.log(Log.DEBUG, logTag, "Title: " + title);
+            FirebaseCrashlytics.getInstance().log("Title: " + title);
             if (title != null)
                 actionBarTitle = getString(R.string.menuStrPlayRegionRecShortName) + ": " + title;
             else actionBarTitle = getString(R.string.menuStrPlayRegionRecShortName) + ": "+getString(R.string.dlgUntitle);
-            Crashlytics.log(Log.DEBUG, logTag, "actionBarTitle: " + title);
+            FirebaseCrashlytics.getInstance().log("actionBarTitle: " + title);
             startRegionPlay(cmdIntent.getIntExtra("mediaStart", 0),
                     cmdIntent.getIntExtra("startTimeMs", 0),
                     cmdIntent.getIntExtra("mediaEnd", 0),
@@ -1647,32 +1641,32 @@ public class LamrimReaderActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = playRecord.edit();
             editor.putInt("playPosition", cmdIntent.getIntExtra("startTimeMs", 0));
             editor.commit();
-            Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.STATISTICS, "OPEN_REGION_FROM_OTHERS_SHARE");
+            Util.fireKeyValue(Util.STATISTICS, "OPEN_REGION_FROM_OTHERS_SHARE");
             return;
         }
 
         // Check is mediaPlayer loaded.
-        Crashlytics.log(Log.DEBUG, logTag, "onResume: Check is the MediaPlayer has ready");
+        FirebaseCrashlytics.getInstance().log("onResume: Check is the MediaPlayer has ready");
         if (mpController.isPlayerReady() && mediaIndex != -1) {
-            Crashlytics.log(Log.DEBUG, logTag, "onResume: The MediaPlayer has ready, skip reload.");
+            FirebaseCrashlytics.getInstance().log("onResume: The MediaPlayer has ready, skip reload.");
             return;
         }
 
-        Crashlytics.log(Log.DEBUG, logTag, "onResume: Into reload last state procedure.");
+        FirebaseCrashlytics.getInstance().log("onResume: Into reload last state procedure.");
         playMode = runtime.getInt("playMode", -1);
         if (playMode == -1) {    // Never played.
-            Crashlytics.log(Log.DEBUG, logTag, "onResume: This is new install, never played, skip reload MediaPlayer.");
+            FirebaseCrashlytics.getInstance().log("onResume: This is new install, never played, skip reload MediaPlayer.");
             return;
         }
 
-        Crashlytics.log(Log.DEBUG, logTag, "Media index = " + mediaIndex);
-        Crashlytics.log(Log.DEBUG, logTag, "Reload playMode " + playMode);
+        FirebaseCrashlytics.getInstance().log("Media index = " + mediaIndex);
+        FirebaseCrashlytics.getInstance().log("Reload playMode " + playMode);
         if (playMode == SPEECH_PLAY_MODE) {
-            Crashlytics.log(Log.DEBUG, logTag, "Reload SPEECH_PLAY_MODE");
+            FirebaseCrashlytics.getInstance().log("Reload SPEECH_PLAY_MODE");
             playRecord = getSharedPreferences(getString(R.string.speechModeRecordFile), 0);
             if (playRecord == null) return;
             mediaIndex = playRecord.getInt("mediaIndex", -1);
-            Crashlytics.log(Log.DEBUG, logTag, "play index " + mediaIndex);
+            FirebaseCrashlytics.getInstance().log("play index " + mediaIndex);
             if (mediaIndex == -1) return;
 
             // Here must check is the file exist, or unlimited loop happen [file not exist] -> [switch to SpeechMenuActivity] -> show network access dialog -> disallow -> [here] and so on.
@@ -1682,17 +1676,17 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 setSubtitleViewText(errMsg);
                 return;
             }
-            Crashlytics.log(Log.DEBUG, logTag, "Call startPlay from onResume.");
+            FirebaseCrashlytics.getInstance().log("Call startPlay from onResume.");
             startPlay(mediaIndex);
         } else if (playMode == REGION_PLAY_MODE || playMode == GL_PLAY_MODE) {
-            Crashlytics.log(Log.DEBUG, logTag, "play region mode, load media index " + mediaIndex);
+            FirebaseCrashlytics.getInstance().log("play region mode, load media index " + mediaIndex);
 
             if (playMode == REGION_PLAY_MODE) {
-                Crashlytics.log(Log.DEBUG, logTag, "Reload REGION_PLAY_MODE");
+                FirebaseCrashlytics.getInstance().log("Reload REGION_PLAY_MODE");
                 playRecord = getSharedPreferences(getString(R.string.regionPlayModeRecordFile), 0);
                 if (playRecord == null) return;
             } else {
-                Crashlytics.log(Log.DEBUG, logTag, "Reload GL_PLAY_MODE");
+                FirebaseCrashlytics.getInstance().log("Reload GL_PLAY_MODE");
                 playRecord = getSharedPreferences(getString(R.string.GLModeRecordFile), 0);
                 if (playRecord == null) return;
             }
@@ -1701,11 +1695,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
             int mStart = playRecord.getInt("startMediaIndex", -1);
             int mEnd = playRecord.getInt("endMediaIndex", -1);
             if (mStart == -1 || mEnd == -1) {
-                Crashlytics.log(Log.DEBUG, logTag, "region start media=" + mStart + ", region end media=" + mEnd + ", skip load.");
+                FirebaseCrashlytics.getInstance().log("region start media=" + mStart + ", region end media=" + mEnd + ", skip load.");
                 setSubtitleViewText(getString(R.string.errPlayFailArgErr));
                 return;
             }
-            Crashlytics.log(Log.DEBUG, logTag, "Check is file exist : " + mStart + ", " + mEnd);
+            FirebaseCrashlytics.getInstance().log("Check is file exist : " + mStart + ", " + mEnd);
             if (!fsm.isFilesReady(mStart) || !fsm.isFilesReady(mEnd)) {
                 int leakMedia = -1;
                 if (!fsm.isFilesReady(mStart)) leakMedia = mStart;
@@ -1732,7 +1726,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             );
         }
 
-        Crashlytics.log(Log.DEBUG, logTag, "**** Leave onResume() ****");
+        FirebaseCrashlytics.getInstance().log("**** Leave onResume() ****");
     }
 
     // I use the function check is the activity has load and ready for operation.
@@ -1771,18 +1765,18 @@ public class LamrimReaderActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        Crashlytics.log(Log.DEBUG, logTag, "**** onDestroy ****");
+        FirebaseCrashlytics.getInstance().log("**** onDestroy ****");
         // fileDownloader.finish();
         mpController.finish();
         mpController = null;
         if (wakeLock.isHeld()) wakeLock.release();
 
         super.onDestroy();
-        Crashlytics.log(Log.DEBUG, logTag, "**** onDestroy ****");
+        FirebaseCrashlytics.getInstance().log("**** onDestroy ****");
     }
 
     protected void saveRuntime() {
-        Crashlytics.log(Log.DEBUG, logTag, "**** saveRuntime ****");
+        FirebaseCrashlytics.getInstance().log("**** saveRuntime ****");
         SharedPreferences.Editor record = null;
         if (playMode == SPEECH_PLAY_MODE) {
             playRecord = getSharedPreferences(getString(R.string.speechModeRecordFile), 0);
@@ -1797,7 +1791,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             record = playRecord.edit();
         }
 
-        Crashlytics.log(Log.DEBUG, logTag, "Save mediaIndex=" + mediaIndex);
+        FirebaseCrashlytics.getInstance().log("Save mediaIndex=" + mediaIndex);
         int bookPosition = bookView.getFirstVisiblePosition();
         View v = bookView.getChildAt(0);
         int bookShift = (v == null) ? 0 : v.getTop();
@@ -1808,7 +1802,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
         // The record will be null at first time switch to another activity after install
         if (record != null) {
-            Crashlytics.log(Log.DEBUG, logTag, "MediaPlayer status=" + mpController.getMediaPlayerState());
+            FirebaseCrashlytics.getInstance().log("MediaPlayer status=" + mpController.getMediaPlayerState());
             record.putInt("regionIndex", GLamrimSectIndex);
             record.putInt("mediaIndex", mediaIndex);
             // editor.putInt("playerStatus", mpController.getMediaPlayerState());
@@ -1818,7 +1812,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             }
             record.commit();
         }
-        Crashlytics.log(Log.DEBUG, logTag, "**** saveRuntime ****");
+        FirebaseCrashlytics.getInstance().log("**** saveRuntime ****");
     }
 
     @Override
@@ -1843,7 +1837,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     }
                 });
         builder.create().show();
-        Crashlytics.log(Log.DEBUG, logTag, "**** onBackPressed ****");
+        FirebaseCrashlytics.getInstance().log("**** onBackPressed ****");
     }
 
     @Override
@@ -1890,7 +1884,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Crashlytics.log(Log.DEBUG, logTag, "****OptionsItemselected, select item=" + item.getItemId() + ", String=" + item.getTitle() + ", Order=" + item.getOrder() + " ****");
+        FirebaseCrashlytics.getInstance().log("****OptionsItemselected, select item=" + item.getItemId() + ", String=" + item.getTitle() + ", Order=" + item.getOrder() + " ****");
         // Here, thisActivity is the current activity
 
 
@@ -1908,11 +1902,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
             }
 
         String gid = (String) item.getTitle();
-        Util.fireSelectEvent(mFirebaseAnalytics, logTag,Util.MENU_CLICK, ((gid.length() == 0) ? "MENU_BUTTON" : gid));
+        Util.fireKeyValue(Util.MENU_CLICK, ((gid.length() == 0) ? "MENU_BUTTON" : gid));
 
 		/*  // Always show enabled menu item now.
 		if (item.equals(rootMenuItem)) {
-			Crashlytics.log(Log.DEBUG, logTag, "Create menu: can save region? " + mpController.isRegionPlay());
+			FirebaseCrashlytics.getInstance().log("Create menu: can save region? " + mpController.isRegionPlay());
 			if (RegionRecord.records.size() > 0) {
 				playRegionRec.setEnabled(true);
 				playRegionRec.setIcon(R.drawable.region);
@@ -2033,7 +2027,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         String mailToStr="%1$s：<a href=\"mailto:eyesblue@eyes-blue.com?&subject=%2$s&body=\n\n\n\n%3$s: %4$s, %5$s: %6$d\n%7$s: %8$s, Android%9$s\">eyesblue@eyes-blue.com</a>";
         mailToStr=String.format(mailToStr,getString(R.string.contactAuther), getString(R.string.app_name)+getString(R.string.contactAuther), getString(R.string.version), BuildConfig.VERSION_NAME, getString(R.string.resNum), BuildConfig.VERSION_CODE, getString(R.string.OSver), android.os.Build.MANUFACTURER+" "+android.os.Build.MODEL, Build.VERSION.RELEASE+"("+Build.VERSION.SDK_INT+")");
         mailToStr=mailToStr.replaceAll("\n", "%0d%0a");
-        Crashlytics.log(Log.DEBUG, logTag,"Mail to string: "+mailToStr);
+        FirebaseCrashlytics.getInstance().log("Mail to string: "+mailToStr);
         aboutMailToMe.setText(Html.fromHtml(mailToStr));
         aboutMailToMe.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -2066,17 +2060,17 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        Crashlytics.log(Log.DEBUG, logTag, "**** Into onActivityResult: Get result from: " + requestCode + " ****");
+        FirebaseCrashlytics.getInstance().log("**** Into onActivityResult: Get result from: " + requestCode + " ****");
 
         if (resultCode == RESULT_CANCELED) {
-            Crashlytics.log(Log.DEBUG, logTag, "User skip, do nothing.");
+            FirebaseCrashlytics.getInstance().log("User skip, do nothing.");
             return;
         }
 
         SharedPreferences.Editor record = null;
         switch (requestCode) {
             case SPEECH_MENU_RESULT:
-                Crashlytics.log(Log.DEBUG, logTag, "Return from SPEECH_MENU_RESULT");
+                FirebaseCrashlytics.getInstance().log("Return from SPEECH_MENU_RESULT");
                 if (intent == null) return;
 
                 playMode = SPEECH_PLAY_MODE;
@@ -2091,7 +2085,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     position = 0;
                 }
 
-                Crashlytics.log(Log.DEBUG, logTag, "OnResult: the user select index=" + selected);
+                FirebaseCrashlytics.getInstance().log("OnResult: the user select index=" + selected);
                 if (selected == -1 || position == -1) return;
 
                 mpController.setPlayRegion(-1, -1);
@@ -2108,14 +2102,14 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 runtimeEditor.putInt("playMode", playMode);
                 runtimeEditor.commit();
 
-                Crashlytics.log(Log.DEBUG, logTag, "Call reset player in onActivityResult.");
+                FirebaseCrashlytics.getInstance().log("Call reset player in onActivityResult.");
                 //mpController.reset();
 //			AnalyticsApplication.sendEvent("activity", "SpeechMenu_result", "select_index_"	+ selected, null);
                 // After onActivityResult, the life-cycle will return to onStart,
                 // do start downloader in OnResume.
                 break;
             case SPEECH_MENU_RESULT_REGION: // the function seems never used.
-                Crashlytics.log(Log.DEBUG, logTag, "Return from SPEECH_MENU_RESULT_REGION");
+                FirebaseCrashlytics.getInstance().log("Return from SPEECH_MENU_RESULT_REGION");
                 mpController.reset();
                 playMode = REGION_PLAY_MODE;
                 mediaIndex = GLamrimSect[0][0];
@@ -2130,7 +2124,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 runtimeEditor.putInt("playMode", playMode);
                 runtimeEditor.commit();
 
-                Crashlytics.log(Log.DEBUG, logTag, "Mark theory: start page=" + theoryHighlightRegion[0] + " start line=" + theoryHighlightRegion[1] + ", offset=" + bookViewMountPoint[1]);
+                FirebaseCrashlytics.getInstance().log("Mark theory: start page=" + theoryHighlightRegion[0] + " start line=" + theoryHighlightRegion[1] + ", offset=" + bookViewMountPoint[1]);
 
                 //startPlay(mediaIndex);
                 break;
@@ -2172,12 +2166,12 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                     String sec[] = title.split("/");
                     int[] speechStart = GlRecord.getSpeechStrToInt(glRecord.speechPositionStart);
-                    Crashlytics.log(Log.DEBUG, logTag, "mediaIndex=" + GLamrimSect[0][0] + ", name=" + SpeechData.getSubtitleName(speechStart[0]));
+                    FirebaseCrashlytics.getInstance().log("mediaIndex=" + GLamrimSect[0][0] + ", name=" + SpeechData.getSubtitleName(speechStart[0]));
                     actionBarTitle = getString(R.string.globalLamrimShortName) + ": " + sec[1] + "/" + sec[2] + " - " + SpeechData.getSubtitleName(speechStart[0]);//音檔部分顯示功能不正常
                     String regionInfo[] = glRecord.desc.split("……");
                     regionStartInfo = regionInfo[0].trim();
                     regionEndInfo = regionInfo[1].trim();
-                    Crashlytics.log(Log.DEBUG, logTag, "Get data: " + glRecord);
+                    FirebaseCrashlytics.getInstance().log("Get data: " + glRecord);
                     setRegionSec(glRecord.speechPositionStart, glRecord.speechPositionEnd, glRecord.theoryLineStart, glRecord.theoryLineEnd, 0, actionBarTitle);
 
 
@@ -2187,7 +2181,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 GLamrimSectIndex = 0;
                 mediaIndex = GLamrimSect[0][0];
 
-                Crashlytics.log(Log.DEBUG, logTag,"Set mediaIndex=" + mediaIndex + ", play position=" + GLamrimSect[0][0]);
+                FirebaseCrashlytics.getInstance().log("Set mediaIndex=" + mediaIndex + ", play position=" + GLamrimSect[0][0]);
 
                 record.putInt("regionIndex", 0);
                 record.putInt("mediaIndex", GLamrimSect[0][0]);
@@ -2216,7 +2210,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 break;
         }
 
-        Crashlytics.log(Log.DEBUG, logTag,"Leave onActivityResult");
+        FirebaseCrashlytics.getInstance().log("Leave onActivityResult");
     }
 
     Thread startPlayThread = null;
@@ -2231,14 +2225,14 @@ public class LamrimReaderActivity extends AppCompatActivity {
         // This avoid the unlimit loop that reload last state on onResume -> file not exist -> SpeechMenuActivity -> showDownloadDialog -> disallow -> onResume ... so on.
         if (!fsm.isFilesReady(mediaIndex)) {
             Util.showErrorToast(LamrimReaderActivity.this, getString(R.string.errPlayFailAudioNotFound), 1000);
-            Crashlytics.log(Log.DEBUG, logTag, "startPlay: the media is not ready, skip play.");
+            FirebaseCrashlytics.getInstance().log("startPlay: the media is not ready, skip play.");
             return false;
         }
 
         synchronized (startPlayKey) {
 
             if (startPlayThread != null && startPlayThread.isAlive()) {
-                Crashlytics.log(Log.DEBUG, logTag, "The startPlay has a task running, skip the thread.");
+                FirebaseCrashlytics.getInstance().log("The startPlay has a task running, skip the thread.");
                 return false;
             }
 
@@ -2252,19 +2246,19 @@ public class LamrimReaderActivity extends AppCompatActivity {
 						/*
 						int loadingMedia=mpController.getLoadingMediaIndex();
 						if(loadingMedia==mediaIndex){
-							Crashlytics.log(Log.DEBUG, logTag,"The media index "+mediaIndex+" has loading, skip this procedure.");
+							FirebaseCrashlytics.getInstance().log("The media index "+mediaIndex+" has loading, skip this procedure.");
 							AnalyticsApplication.sendEvent("error", "loading_media",	"duplicate_thread", 1);
 							return ;
 						}*/
 
-                Crashlytics.log(Log.DEBUG, logTag, "Start play index " + mediaIndex);
+                FirebaseCrashlytics.getInstance().log("Start play index " + mediaIndex);
                 // put the controller panel down, if the controller panel already been pin.
                 mpController.setShowLongTerm(false);
                 // Reset subtitle to SUBTITLE_MODE
                 bookView.clearHighlightLine();
                 setSubtitleViewMode(SUBTITLE_MODE);
                 setSubtitleViewText(getString(R.string.dlgDescPrepareSpeech));
-                Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName() + " setDataSource.");
+                FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName() + " setDataSource.");
                 //mpController.setDataSource(getApplicationContext(),	mediaIndex);
 
                 mpController.release();
@@ -2272,28 +2266,24 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 mpController.setDataSource(LamrimReaderActivity.this, mediaIndex);
             } catch (IllegalArgumentException e) {
                 setSubtitleViewText(getString(R.string.errIAEwhileSetPlayerSrc));
-                Crashlytics.log(Log.ERROR, logTag,"IllegalArgumentException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex));
-                Crashlytics.logException(e);
+                Util.fireException("ERROR: IllegalArgumentException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex),e);
                 e.printStackTrace();
             } catch (SecurityException e) {
                 setSubtitleViewText(getString(R.string.errSEwhileSetPlayerSrc));
-                Crashlytics.log(Log.ERROR, logTag,"SecurityException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex));
-                Crashlytics.logException(e);
+                Util.fireException("ERROR: SecurityException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex),e);
                 e.printStackTrace();
             } catch (IllegalStateException e) {
                 setSubtitleViewText(getString(R.string.errISEwhileSetPlayerSrc));
-                Crashlytics.log(Log.ERROR, logTag,"IllegalStateException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex));
-                Crashlytics.logException(e);
+                Util.fireException("ERROR: IllegalStateException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex),e);
                 e.printStackTrace();
             } catch (IOException e) {
                 setSubtitleViewText(String.format(getString(R.string.errIOEwhileSetPlayerSrc), SpeechData.getNameId(mediaIndex)));
-                Crashlytics.log(Log.ERROR, logTag,"IOException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex));
-                Crashlytics.logException(e);
+                FirebaseCrashlytics.getInstance().log("ERROR: IOException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex));
+                Util.fireException("ERROR: IOException happen while prepare media "+SpeechData.getSubtitleName(mediaIndex),e);
                 e.printStackTrace();
             } catch (Exception e) {
                 setSubtitleViewText(getString(R.string.errＷhilePlayMedia));
-                Crashlytics.log(Log.ERROR, logTag,"Unknown Exception happen while prepare media "+SpeechData.getSubtitleName(mediaIndex));
-                Crashlytics.logException(e);
+                Util.fireException("ERROR: Unknown Exception happen while prepare media "+SpeechData.getSubtitleName(mediaIndex),e);
                 e.printStackTrace();
             }
         }// synchronized
@@ -2317,11 +2307,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
 					// Check duplicate load media.
 					int loadingMedia=mpController.getLoadingMediaIndex();
 					if(loadingMedia==mediaIndex){
-						Crashlytics.log(Log.DEBUG, logTag,"The media index "+mediaIndex+" has loading, skip this procedure.");
+						FirebaseCrashlytics.getInstance().log("The media index "+mediaIndex+" has loading, skip this procedure.");
 						return null;
 					}
 
-					Crashlytics.log(Log.DEBUG, logTag,"Start play index "+mediaIndex);
+					FirebaseCrashlytics.getInstance().log("Start play index "+mediaIndex);
 					// Reset subtitle to SUBTITLE_MODE
 					bookView.clearHighlightLine();
 					setSubtitleViewMode(SUBTITLE_MODE);
@@ -2402,11 +2392,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (i == R.id.defFont) {
-                    Crashlytics.log(Log.DEBUG, logTag, "User click default font.");
+                    FirebaseCrashlytics.getInstance().log("User click default font.");
                     runtimeEditor.putInt(getString(R.string.fontKey), getResources().getInteger(R.integer.defFontProp));
                 }
                 if (i == R.id.bktFont) {
-                    Crashlytics.log(Log.DEBUG, logTag, "User click BKT font.");
+                    FirebaseCrashlytics.getInstance().log("User click BKT font.");
                     runtimeEditor.putInt(getString(R.string.fontKey), getResources().getInteger(R.integer.bktFontProp));
                 }
                 runtimeEditor.apply();
@@ -2424,7 +2414,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         final int orgSubtitleSize = runtime.getInt(getString(R.string.subtitleFontSizeKey), textDefSize - textMinSize);
 //		final int textMaxSize = getResources().getInteger(R.integer.textMaxSize) - getResources().getInteger(R.integer.textMinSize);
 
-        Crashlytics.log(Log.DEBUG, logTag, "Set theory size Max=" + (textMaxSize) + ", orgSize="
+        FirebaseCrashlytics.getInstance().log("Set theory size Max=" + (textMaxSize) + ", orgSize="
                 + orgTheorySize + ", subtitle size Max=" + textMaxSize
                 + ", orgSize=" + orgSubtitleSize);
         runOnUiThread(new Runnable() {
@@ -2447,7 +2437,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Crashlytics.log(Log.DEBUG, logTag,
+                        FirebaseCrashlytics.getInstance().log(
                                 "Seek bar get progress: " + progress + ", min size: "
                                         //+ getResources().getInteger(R.integer.textMinSize)
                                         + textMinSize
@@ -2464,7 +2454,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                     lineCount = 1;
                                 subtitleView.setHeight(subtitleView.getLineHeight() * lineCount);
                             }
-                            Crashlytics.log(Log.DEBUG, logTag, "set font size " + (progress + textMinSize));
+                            FirebaseCrashlytics.getInstance().log("set font size " + (progress + textMinSize));
                             subtitleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, progress + textMinSize);
                         }
                         seekBar.setProgress(progress);
@@ -2480,7 +2470,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 runtimeEditor.putInt(getString(R.string.bookFontSizeKey), (int) bookView.getTextSize());
                 runtimeEditor.commit();
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.STATISTICS, "Change BookView text size with seek bar.");
+                Util.fireKeyValue(Util.STATISTICS, "Change BookView text size with seek bar.");
             }
         };
         theorySb.setOnSeekBarChangeListener(sbListener);
@@ -2497,7 +2487,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         setTextSizeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                Crashlytics.log(Log.DEBUG, logTag, "Write theory size: " + (int) theorySb.getProgress()
+                FirebaseCrashlytics.getInstance().log("Write theory size: " + (int) theorySb.getProgress()
                         + ", subtitle size: " + subtitleSb.getProgress() + " to runtime.");
                 runtimeEditor.putInt(getString(R.string.bookFontSizeKey), theorySb.getProgress()
                         //+ getResources().getInteger(R.integer.textMinSize));
@@ -2509,7 +2499,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                 //textSize.setBackgroundColor(Color.BLACK);
                 textSize.setSelected(false);
-                Crashlytics.log(Log.DEBUG, logTag, "Check size after write to db: theory size: "
+                FirebaseCrashlytics.getInstance().log("Check size after write to db: theory size: "
                         + runtime.getInt(getString(R.string.bookFontSizeKey), 0) + ", subtitle size: "
                         + runtime.getInt(getString(R.string.subtitleFontSizeKey), 0));
                 // updateTextSize();
@@ -2605,7 +2595,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showSearchSubtitleDialog(final View searchView, final String string) {
+    private void showSearchSubtitleFromLocalDialog(final View searchView, final String string) {
+        // Show ProgressDialog while load subtitle file, it no need show it while search stage, because too short time.
         final ProgressDialog pd = new ProgressDialog(this);
 
         Runnable run = new Runnable() {
@@ -2621,9 +2612,12 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                 long loadStartTime = System.currentTimeMillis();
                 if (!isSearchReady) if (!loadSearchObj(pd)) {
-                    Crashlytics.log(Log.DEBUG, logTag, "User cancel the build data procedure.");
+                    FirebaseCrashlytics.getInstance().log("User cancel the build data procedure.");
+                    pd.dismiss();
                     return;
                 }
+                pd.dismiss();
+
                 final long loadTime = System.currentTimeMillis() - loadStartTime;
                 subtitleSearchResult.clear();
 
@@ -2639,7 +2633,6 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                                 for (int i = 0; i < 320; i++) {
                                     int[][] res = subtitleSearch[i].search(string);
-                                    pd.incrementProgressBy(1);
                                     if (res == null) continue;
 
                                     for (int j = 0; j < res.length; j++)
@@ -2649,7 +2642,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                 }
 
                                 final long searchTime = System.currentTimeMillis() - searchStartTime;
-                                Crashlytics.log(Log.DEBUG, logTag, "Search result count: " + counter + ", spend: " + searchTime + "ms.");
+                                FirebaseCrashlytics.getInstance().log("Search "+string+" result count: " + counter + ", spend: " + searchTime + "ms.");
 
                                 ArrayList<HashMap<String, String>> subtitleSearchFakeList = new ArrayList<>();
                                 for (int i = 0; i < subtitleSearchResult.size(); ++i)
@@ -2669,7 +2662,19 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
                                 // =========================================================================
                                 final ListView subtitleSearchList = (ListView) searchView.findViewById(R.id.listView);
-                                subtitleSearchList.setOnItemClickListener(new OnItemClickListener() {
+
+                                if(counter < 1){
+                                    /*
+                                    * 輸出結果的畫面裡的「總結」部分會接受觸控，若無搜尋結果下接收到觸控，則會發生NullPointerException，故當無搜尋結果時不應觸控。
+                                    * */
+                                    Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.msgSearchNotFound));
+                                    pd.dismiss();
+                                    Util.fireKeyValue( Util.SEARCH_SUBTITLE,"NOT_FOUND: "+string);
+                                    subtitleSearchList.setOnItemClickListener(null);
+                                    //return;
+                                }
+                                else
+                                    subtitleSearchList.setOnItemClickListener(new OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                         int pos = position - subtitleSearchList.getHeaderViewsCount();
@@ -2706,12 +2711,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
                                             subtitleSearchList.addHeaderView(subtitleSearchHeaderTextView, null, false);
 
                                         subtitleSearchList.setAdapter(subtitleSearchAdapter);
-                                        pd.dismiss();
                                         subtitleSearchList.setEnabled(true);
                                         subtitleSearchList.setVisibility(View.VISIBLE);
                                     }
                                 });
-                                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(), Util.BUTTON_CLICK,"SEARCH_SUBTITLE");
+                                Util.fireKeyValue( Util.SEARCH_SUBTITLE,string);
                             }
                         };
                         t.start();
@@ -2726,7 +2730,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             public void onDismiss(DialogInterface dialog) {
                 if (t.isAlive()) {
                     t.interrupt();
-                    Crashlytics.log(Log.DEBUG, logTag, "Stop build data thread of subtitle search.");
+                    FirebaseCrashlytics.getInstance().log("Stop build data thread of subtitle search.");
                 }
             }
         });
@@ -2769,8 +2773,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     connection.setRequestProperty("Content-Type", "application/json");
                     connection.setRequestProperty("Accept", "application/json");
                     connection.setRequestProperty("Accept-Charset", "utf-8,*");
-                    Crashlytics.log(Log.DEBUG, logTag, url.toString());
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(), Util.BUTTON_CLICK,"SEARCH_LAMRIM_FROM_SERVER");
+                    FirebaseCrashlytics.getInstance().log(url.toString());
+                    Util.fireKeyValue( Util.BUTTON_CLICK,"SEARCH_LAMRIM_FROM_SERVER");
                     try {
                         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                         StringBuilder stringBuilder = new StringBuilder();
@@ -2779,7 +2783,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             stringBuilder.append(line).append("\n");
                         }
                         bufferedReader.close();
-                        Crashlytics.log(Log.DEBUG, logTag, stringBuilder.toString());
+                        FirebaseCrashlytics.getInstance().log(stringBuilder.toString());
                         json = new JSONObject(stringBuilder.toString());
                     } finally {
                         connection.disconnect();
@@ -2788,10 +2792,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     pd.dismiss();
                     setSearchNextBtnEnable(searchNextBtn);
                     Util.showErrorToast(LamrimReaderActivity.this, getString(R.string.msgSendReqIOErr));
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(), Util.STATISTICS,"SEARCH_LAMRIM_FROM_SERVER_FAILURE");
-                    Crashlytics.log(Log.ERROR, logTag,"Error happen while search Lamrim from server.");
-                    Crashlytics.log(Log.ERROR, logTag, e.getMessage());
-                    Crashlytics.logException(e);
+                    Util.fireKeyValue( Util.STATISTICS,"SEARCH_LAMRIM_FROM_SERVER_FAILURE");
+                    Util.fireException("ERROR: Error happen while search Lamrim from server.", e);
                     e.printStackTrace();
                     return;
                 }
@@ -2812,7 +2814,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     pd.dismiss();
                     setSearchNextBtnEnable(searchNextBtn);
                     Util.showErrorToast(LamrimReaderActivity.this, getString(R.string.msgJsonParseErr));
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(), Util.BUTTON_CLICK,"SEARCH_LAMRIM_FROM_SERVER_FAILURE");
+                    Util.fireKeyValue( Util.BUTTON_CLICK,"SEARCH_LAMRIM_FROM_SERVER_FAILURE");
                     jse.printStackTrace();
                     return;
                 }
@@ -2848,15 +2850,13 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     pd.dismiss();
                     setSearchNextBtnEnable(searchNextBtn);
                     Util.showErrorToast(LamrimReaderActivity.this, getString(R.string.msgJsonParseErr));
-                    //Crashlytics.setString("ButtonClick", "SEARCH_LAMRIM_FROM_SERVER_FAILURE_PARSE_ERROR");
-                    Crashlytics.log(Log.ERROR, logTag,"Parse JSON data failure that from Lamrim search server.");
-                    Crashlytics.logException(jse);
-                    Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(), Util.BUTTON_CLICK,"SEARCH_LAMRIM_FROM_SERVER_FAILURE_PARSE_ERROR");
+                    Util.fireException("ERROR: Parse JSON data failure that from Lamrim search server.", jse);
+                    Util.fireKeyValue( Util.BUTTON_CLICK,"SEARCH_LAMRIM_FROM_SERVER_FAILURE_PARSE_ERROR");
                     jse.printStackTrace();
                     return;
                 }
 
-                Crashlytics.log(Log.DEBUG, logTag, "Search result count: " + count + ", Load time: " + loadTime + ", spend: " + searchTime + "ms.");
+                FirebaseCrashlytics.getInstance().log("Search result count: " + count + ", Load time: " + loadTime + ", spend: " + searchTime + "ms.");
 
                 ArrayList<HashMap<String, String>> subtitleSearchFakeList = new ArrayList<>();
                 for (int i = 0; i < jArray.length(); ++i)
@@ -2894,7 +2894,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                             pd.dismiss();
                             setSearchNextBtnEnable(searchNextBtn);
                             Util.showErrorToast(LamrimReaderActivity.this, getString(R.string.msgJsonParseErr));
-                            Crashlytics.log(Log.ERROR, logTag,"JSON data parse failure that from Lamrim search server.");
+                            FirebaseCrashlytics.getInstance().log("ERROR: JSON data parse failure that from Lamrim search server.");
                             return;
                         }
                     }
@@ -2931,7 +2931,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
     //TextView lamrimLabel=null;
     //TextView subtitleLabel=null;
     private void showSearchDialog() {
-        Crashlytics.log(Log.DEBUG, logTag, "Into showSearchDialog.");
+        FirebaseCrashlytics.getInstance().log("Into showSearchDialog.");
         LayoutInflater factory = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         final View searchView = factory.inflate(R.layout.search_view, null);
         final TextView lamrimLabel = (TextView) searchView.findViewById(R.id.lamrimLabel);
@@ -2989,7 +2989,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                         subtitleSearchList.setSelectionAfterHeaderView();
 
                         if (!searchFrom.isChecked()) {
-                            showSearchSubtitleDialog(searchView, Util.simpToTradChar(LamrimReaderActivity.this, str));
+                            showSearchSubtitleFromLocalDialog(searchView, Util.simpToTradChar(LamrimReaderActivity.this, str));
                         } else {
                             // Search from Lamrim Search Service.
                             searchNextBtn.setEnabled(false);
@@ -3028,7 +3028,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         searchFrom.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Crashlytics.log(Log.DEBUG, logTag, "User change the state of CheckBox [searchFrom].");
+                FirebaseCrashlytics.getInstance().log("User change the state of CheckBox [searchFrom].");
                 runtimeEditor.putBoolean(getString(R.string.searchFromKey), isChecked);
                 runtimeEditor.commit();
             }
@@ -3095,7 +3095,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
 
             // If no input stream skip.
             if (searchInput.getText().toString().length() == 0) {
-                Crashlytics.log(Log.DEBUG, logTag, "User input length = 0, skip search");
+                FirebaseCrashlytics.getInstance().log("User input length = 0, skip search");
                 searchLastBtn.setEnabled(true);
                 searchNextBtn.setEnabled(true);
                 return;
@@ -3105,7 +3105,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             boolean isFirstSearch = (lastSearchStr == null);
 
             if (isFirstSearch || !lastSearchStr.equals(str)) {
-                Crashlytics.log(Log.DEBUG, logTag, "It is first search.");
+                FirebaseCrashlytics.getInstance().log("It is first search.");
                 index[0] = bookView.getFirstVisiblePosition();
                 index[1] = 0;
                 index[2] = 0;
@@ -3115,13 +3115,13 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 int[] result = null;
                 if (v.equals(searchNextBtn)) {
                     index[2]++;
-                    Crashlytics.log(Log.DEBUG, logTag, "Change start word from " + index[2]);
-                    Crashlytics.log(Log.DEBUG, logTag, "Search Next " + str + " from Page " + index[0] + " Line " + index[1] + " word " + index[2]);
+                    FirebaseCrashlytics.getInstance().log("Change start word from " + index[2]);
+                    FirebaseCrashlytics.getInstance().log("Search Next " + str + " from Page " + index[0] + " Line " + index[1] + " word " + index[2]);
                     result = bookView.searchNext(index[0], index[1], index[2], Util.simpToTradChar(LamrimReaderActivity.this, str));
                 } else {
                     index[2]--;
-                    Crashlytics.log(Log.DEBUG, logTag, "Change start word from " + index[2]);
-                    Crashlytics.log(Log.DEBUG, logTag, "Search Last " + str + " from Page " + index[0] + " Line " + index[1] + " word " + index[2]);
+                    FirebaseCrashlytics.getInstance().log("Change start word from " + index[2]);
+                    FirebaseCrashlytics.getInstance().log("Search Last " + str + " from Page " + index[0] + " Line " + index[1] + " word " + index[2]);
                     if (isFirstSearch) {
                         int linearIndex = MyListView.getContentStr(index[0], 0, MyListView.TO_END).length();
                         result = bookView.searchLast(index[0], 0, linearIndex, Util.simpToTradChar(LamrimReaderActivity.this, str)); // It will set -1 to index[2] on first time search.
@@ -3130,7 +3130,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 }
 
                 if (result == null) {
-                    Crashlytics.log(Log.DEBUG, logTag, "Not found.");
+                    FirebaseCrashlytics.getInstance().log("Not found.");
                     Util.showInfoToast(LamrimReaderActivity.this, getString(R.string.msgSearchNotFound));
                     searchLastBtn.setEnabled(true);
                     searchNextBtn.setEnabled(true);
@@ -3142,13 +3142,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     bookView.setViewToPosition(index[0], index[1]);
                 }
             } catch (Exception e) {
-                Crashlytics.log(Log.ERROR, logTag, "Error happen while Search: (" + str + ")");
-                Crashlytics.log(Log.ERROR, logTag, e.getMessage());
-                Crashlytics.logException(e);
+                Util.fireException("ERROR: Error happen while Search: (" + str + ")", e);
             }
             searchLastBtn.setEnabled(true);
             searchNextBtn.setEnabled(true);
-            Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SEARCH_LAMRIM");
+            Util.fireKeyValue(Util.BUTTON_CLICK, "SEARCH_LAMRIM");
         }
     }
 
@@ -3179,11 +3177,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
         regionListView = (ListView) popupView.findViewById(R.id.recordListView);
         regionListView.setAdapter(regionRecordAdapter);
 //		popupWindow.setWidth(popupView.getWidth());
-        Crashlytics.log(Log.DEBUG, logTag, "There are " + regionRecordAdapter.getCount() + " items in regionList view.");
+        FirebaseCrashlytics.getInstance().log("There are " + regionRecordAdapter.getCount() + " items in regionList view.");
         regionListView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, final int position, long id) {
-                Crashlytics.log(Log.DEBUG, logTag, "Region record menu: item " + RegionRecord.records.get(position).title + " clicked.");
+                FirebaseCrashlytics.getInstance().log("Region record menu: item " + RegionRecord.records.get(position).title + " clicked.");
                 RegionRecord rec = RegionRecord.records.get(position);
 /*				int start=rec.mediaStart;
 				int end = rec.mediaEnd;
@@ -3222,7 +3220,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }    // Don't force close if problem here.
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "PLAY_SAVED_REGION_RECORD");
+                Util.fireKeyValue(Util.BUTTON_CLICK, "PLAY_SAVED_REGION_RECORD");
             }
         });
 
@@ -3238,7 +3236,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 runtimeEditor.putInt(pageKey, pageCount);
                 runtimeEditor.putInt(pageShiftKey, shift);
                 runtimeEditor.commit();
-                Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "CANCLE_SELECT_SAVE_REGION_RECORD");
+                Util.fireKeyValue(Util.BUTTON_CLICK, "CANCLE_SELECT_SAVE_REGION_RECORD");
             }
         });
         popupWindow.setFocusable(true);
@@ -3251,7 +3249,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         popupWindow.setAnimationStyle(R.style.AnimationPopup);
         popupWindow.update();
         popupWindow.showAtLocation(findViewById(R.id.rootLayout), Gravity.LEFT | Gravity.TOP, 0, contentViewTop);
-        Util.fireSelectEvent(mFirebaseAnalytics, getClass().getName(),Util.BUTTON_CLICK, "SHOW_RECORD_LIST");
+        Util.fireKeyValue(Util.BUTTON_CLICK, "SHOW_RECORD_LIST");
         // popupWindow.showAsDropDown(findViewById(R.id.subtitleView),0, 0);
         // popupWindow.showAsDropDown(findViewById(R.id.subtitleView));
     }
@@ -3299,8 +3297,8 @@ public class LamrimReaderActivity extends AppCompatActivity {
         record.commit();
         mediaIndex = this.GLamrimSect[regionIndex][0];
         //GLamrimSectIndex=0;
-        Crashlytics.log(Log.DEBUG, logTag, "Mark theory: start page=" + theoryHighlightRegion[0] + " start line=" + theoryHighlightRegion[1] + ", offset=" + bookViewMountPoint[1]);
-        Crashlytics.log(Log.DEBUG, logTag, "Call startPlay from startRegionPlay");
+        FirebaseCrashlytics.getInstance().log("Mark theory: start page=" + theoryHighlightRegion[0] + " start line=" + theoryHighlightRegion[1] + ", offset=" + bookViewMountPoint[1]);
+        FirebaseCrashlytics.getInstance().log("Call startPlay from startRegionPlay");
         startPlay(mediaIndex);
     }
 
@@ -3310,19 +3308,19 @@ public class LamrimReaderActivity extends AppCompatActivity {
         int[] speechStart = GlRecord.getSpeechStrToInt(glRecord.speechPositionStart);// {speechIndex, TimeMs}
         int[] speechEnd = GlRecord.getSpeechStrToInt(glRecord.speechPositionEnd);// {speechIndex, TimeMs}
 
-        Crashlytics.log(Log.DEBUG, logTag, "Parse result: Theory: P" + theoryStart[0] + "L" + theoryStart[1] + " ~ P" + theoryEnd[0] + "L" + theoryEnd[1]);
-        Crashlytics.log(Log.DEBUG, logTag, "Parse result: Speech: " + speechStart[0] + ":" + Util.getMsToHMS(speechStart[1]) + " ~ " + speechEnd[0] + ":" + Util.getMsToHMS(speechEnd[1]));
+        FirebaseCrashlytics.getInstance().log("Parse result: Theory: P" + theoryStart[0] + "L" + theoryStart[1] + " ~ P" + theoryEnd[0] + "L" + theoryEnd[1]);
+        FirebaseCrashlytics.getInstance().log("Parse result: Speech: " + speechStart[0] + ":" + Util.getMsToHMS(speechStart[1]) + " ~ " + speechEnd[0] + ":" + Util.getMsToHMS(speechEnd[1]));
 
         setRegionSec(speechStart[0], speechStart[1], speechEnd[0], speechEnd[1], theoryStart[0], theoryStart[1], theoryEnd[0], theoryEnd[1], title);
     }
 
     private void setRegionSec(int speechStartIndex, int speechStartMs, int speechEndIndex, int speechEndMs, final int theoryStartPage, final int theoryStartLine, int theoryEndPage, int theoryEndLine, String title) {
-        Crashlytics.log(Log.DEBUG, logTag, "Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", speechEndIndex=" + speechEndIndex + ", endMs=" + speechEndMs);
+        FirebaseCrashlytics.getInstance().log("Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", speechEndIndex=" + speechEndIndex + ", endMs=" + speechEndMs);
 
         actionBarTitle = title;
 
         if (speechStartIndex == speechEndIndex) {
-            Crashlytics.log(Log.DEBUG, logTag, "Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", endMs=" + speechEndMs + "; region[1]: -1, -1, -1");
+            FirebaseCrashlytics.getInstance().log("Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", endMs=" + speechEndMs + "; region[1]: -1, -1, -1");
             GLamrimSect[0][0] = speechStartIndex;
             GLamrimSect[0][1] = speechStartMs;
             GLamrimSect[0][2] = speechEndMs;
@@ -3330,7 +3328,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             GLamrimSect[1][1] = -1;
             GLamrimSect[1][2] = -1;
         } else {// difference media.
-            Crashlytics.log(Log.DEBUG, logTag, "Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", endMs=-1; region[1]: endIndex=" + speechEndIndex + ", startMs=0, endMs=" + speechEndMs);
+            FirebaseCrashlytics.getInstance().log("Set region[0]: startIndex=" + speechStartIndex + ", startMs=" + speechStartMs + ", endMs=-1; region[1]: endIndex=" + speechEndIndex + ", startMs=0, endMs=" + speechEndMs);
             GLamrimSect[0][0] = speechStartIndex;
             GLamrimSect[0][1] = speechStartMs;
             GLamrimSect[0][2] = -1;
@@ -3418,7 +3416,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                 } else if (which == 2) switchMainView();
                 else if (which == 3) showAboutDialog();
                 else if (which == 4) onBackPressed();
-                else Crashlytics.log(Log.DEBUG, logTag, "There is a non exist menu option been selected.");
+                else FirebaseCrashlytics.getInstance().log("There is a non exist menu option been selected.");
             }
         });
 		/*builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -3494,7 +3492,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         renderView.setScaleType(scaleType[which]);
-                        Crashlytics.log(Log.DEBUG, logTag, "Set image scale type: " + scaleStr[which]);
+                        FirebaseCrashlytics.getInstance().log("Set image scale type: " + scaleStr[which]);
                         runtimeEditor.putInt(getString(R.string.renderImgScaleKey), which);
                         runtimeEditor.commit();
                     }
@@ -3532,7 +3530,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             int alpha = runtime.getInt(getString(R.string.subtitleAlphaKey), 255) << 24 & 0xFF000000;
             //int color = runtime.getInt(getString(R.string.subtitleBgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleBGcolor)) & 0x00FFFFFF;
             int color = runtime.getInt(getString(R.string.subtitleBgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this,R.color.defSubtitleBGcolor)) & 0x00FFFFFF;
-            Crashlytics.log(Log.DEBUG, logTag, "Load alpha of subitlte: " + alpha);
+            FirebaseCrashlytics.getInstance().log("Load alpha of subitlte: " + alpha);
             int bgColor = alpha | color;
             //subtitleView.setTextColor(runtime.getInt(getString(R.string.subtitleFgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleFGcolor)));
             subtitleView.setTextColor(runtime.getInt(getString(R.string.subtitleFgColorKey), ApiLevelAdaptor.getColor(LamrimReaderActivity.this, R.color.defSubtitleFGcolor)));
@@ -3639,7 +3637,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             @Override
             public void onColorChanged(int color) {
                 int alpha = runtime.getInt(getString(R.string.subtitleAlphaKey), 255);
-                Crashlytics.log(Log.DEBUG, logTag, "Get alpha: " + alpha);
+                FirebaseCrashlytics.getInstance().log("Get alpha: " + alpha);
                 int c = Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color));
                 subtitleView.setBackgroundColor(c);
             }
@@ -3683,7 +3681,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             @Override
             public void onCancel(DialogInterface dialog) {
                 int alpha = seekBar.getProgress();
-                Crashlytics.log(Log.DEBUG, logTag, "Save alpha of subitlte to " + alpha);
+                FirebaseCrashlytics.getInstance().log("Save alpha of subitlte to " + alpha);
                 runtimeEditor.putInt(getString(R.string.subtitleAlphaKey), alpha);
                 runtimeEditor.commit();
             }
@@ -3769,7 +3767,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             View row = convertView;
             if (row == null) {
-                Crashlytics.log(Log.DEBUG, logTag, position+"th row=null, construct it.");
+                FirebaseCrashlytics.getInstance().log(position+"th row=null, construct it.");
                 LayoutInflater inflater = getLayoutInflater();
                 row = inflater.inflate(R.layout.subtitle_search_result_row, parent, false);
                 ((TextView) row.findViewById(R.id.text)).setTypeface(Util.getFont(LamrimReaderActivity.this, runtime));
@@ -3845,7 +3843,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             View row = convertView;
             if (row == null) {
-                Crashlytics.log(Log.DEBUG, logTag, position+"th row=null, construct it.");
+                FirebaseCrashlytics.getInstance().log(position+"th row=null, construct it.");
                 LayoutInflater inflater = getLayoutInflater();
                 row = inflater.inflate(R.layout.subtitle_search_result_row, parent, false);
                 ((TextView) row.findViewById(R.id.text)).setTypeface(Util.getFont(LamrimReaderActivity.this, runtime));
@@ -3913,13 +3911,13 @@ public class LamrimReaderActivity extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             View row = convertView;
             if (row == null) {
-                Crashlytics.log(Log.DEBUG, logTag, position+"th row=null, construct it.");
+                FirebaseCrashlytics.getInstance().log(position+"th row=null, construct it.");
                 LayoutInflater inflater = getLayoutInflater();
                 row = inflater.inflate(R.layout.popup_record_list_row, parent, false);
             }
 
             final RegionRecord record = RegionRecord.getRegionRecord(LamrimReaderActivity.this, position);
-            Crashlytics.log(Log.DEBUG, logTag, "Set: " + record.title);
+            FirebaseCrashlytics.getInstance().log("Set: " + record.title);
             TextView title = (TextView) row.findViewById(R.id.regionRowTitle);
             TextView timeReg = (TextView) row.findViewById(R.id.timeRegion);
             TextView theoryIndex = (TextView) row.findViewById(R.id.theoryIndex);
@@ -3938,7 +3936,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
                     + Util.getMsToHMS(record.startTimeMs, "\"", "'", false) + " ~ "
                     + SpeechData.getTheoryName(record.mediaEnd) + "  " + Util.getMsToHMS(record.endTimeMs, "\"", "'", false));
             info.setText(record.info);
-            Crashlytics.log(Log.DEBUG, logTag, "Info: " + record.info);
+            FirebaseCrashlytics.getInstance().log("Info: " + record.info);
 
             shareButton.setFocusable(false);
             editButton.setFocusable(false);
@@ -4005,7 +4003,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         OnClickListener nextListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Crashlytics.log(Log.DEBUG, logTag, "Next button click on Global Lamrim mode.");
+                FirebaseCrashlytics.getInstance().log("Next button click on Global Lamrim mode.");
                 GLamrimSectIndex = 1;
                 startLamrimSection();
             }
@@ -4014,7 +4012,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         OnClickListener prevListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Crashlytics.log(Log.DEBUG, logTag, "Prev button click on Global Lamrim mode.");
+                FirebaseCrashlytics.getInstance().log("Prev button click on Global Lamrim mode.");
                 GLamrimSectIndex = 0;
                 startLamrimSection();
             }
@@ -4023,7 +4021,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         private void startLamrimSection() {
             if (GLamrimSect[GLamrimSectIndex][0] == -1) return;
             hideMediaController(true);
-            Crashlytics.log(Log.DEBUG, logTag, "Switch to first section of Global Lamrim.");
+            FirebaseCrashlytics.getInstance().log("Switch to first section of Global Lamrim.");
             mpController.reset();
 
             SharedPreferences.Editor record = playRecord.edit();
@@ -4031,7 +4029,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
             record.putInt("playPosition", GLamrimSect[GLamrimSectIndex][1]);
             record.commit();
 
-            Crashlytics.log(Log.DEBUG, logTag, "Call startPlay from glModePrevNextListener");
+            FirebaseCrashlytics.getInstance().log("Call startPlay from glModePrevNextListener");
 
             // Rebuild the title text [MediaName]-[month]/[date](117B-01/30)
             mediaIndex = GLamrimSect[GLamrimSectIndex][0];
@@ -4064,7 +4062,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         OnClickListener prevListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Crashlytics.log(Log.DEBUG, logTag, "Prev button click on Normal mode.");
+                FirebaseCrashlytics.getInstance().log("Prev button click on Normal mode.");
                 if (mediaIndex - 1 < 0) return;
 
                 startLamrimSection(--mediaIndex);
@@ -4074,7 +4072,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         OnClickListener nextListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Crashlytics.log(Log.DEBUG, logTag, "Next button click on Normal mode.");
+                FirebaseCrashlytics.getInstance().log("Next button click on Normal mode.");
                 if (mediaIndex + 1 >= SpeechData.name.length) return;
 
                 startLamrimSection(++mediaIndex);
@@ -4082,7 +4080,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         };
 
         private void startLamrimSection(int index) {
-            Crashlytics.log(Log.DEBUG, logTag, "Switch to speech " + SpeechData.getTheoryName(index));
+            FirebaseCrashlytics.getInstance().log("Switch to speech " + SpeechData.getTheoryName(index));
             hideMediaController(true);
 
             // File not exist.
@@ -4109,11 +4107,11 @@ public class LamrimReaderActivity extends AppCompatActivity {
 				}
 			}
 */
-            Crashlytics.log(Log.DEBUG, logTag, "Call reset player.");
+            FirebaseCrashlytics.getInstance().log("Call reset player.");
             actionBarTitle = SpeechData.getNameId(index);
             getSupportActionBar().setTitle(actionBarTitle);
             mpController.reset();
-            Crashlytics.log(Log.DEBUG, logTag, "Call startPlay from normalModePrevNextListener");
+            FirebaseCrashlytics.getInstance().log("Call startPlay from normalModePrevNextListener");
             mediaIndex = index;
             startPlay(index);
         }
@@ -4140,7 +4138,7 @@ public class LamrimReaderActivity extends AppCompatActivity {
         SharedPreferences.Editor record = playRecord.edit();
         record.putInt("mediaIndex", media);
         record.putInt("playPosition", timeMs);
-        Crashlytics.log(Log.DEBUG, logTag, "Save play position: " + timeMs);
+        FirebaseCrashlytics.getInstance().log("Save play position: " + timeMs);
         record.commit();
 
         SharedPreferences.Editor editor = runtime.edit();

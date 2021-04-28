@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LamrimReaderForAndroid10.iml" filepath="$PROJECT_DIR$/LamrimReaderForAndroid10.iml" group="LamrimReaderForAndroid10" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="LamrimReaderForAndroid10/app" />
-      <module fileurl="file://$PROJECT_DIR$/colorPickerView/colorPickerView.iml" filepath="$PROJECT_DIR$/colorPickerView/colorPickerView.iml" group="LamrimReaderForAndroid10/colorPickerView" />
-      <module fileurl="file://$PROJECT_DIR$/newQuickAction/newQuickAction.iml" filepath="$PROJECT_DIR$/newQuickAction/newQuickAction.iml" group="LamrimReaderForAndroid10/newQuickAction" />
-      <module fileurl="file://$PROJECT_DIR$/robotoCalendarLibrary/robotoCalendarLibrary.iml" filepath="$PROJECT_DIR$/robotoCalendarLibrary/robotoCalendarLibrary.iml" group="LamrimReaderForAndroid10/robotoCalendarLibrary" />
+      <module fileurl="file://$PROJECT_DIR$/LamrimReaderForAndroid10.iml" filepath="$PROJECT_DIR$/LamrimReaderForAndroid10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LamrimReaderForAndroid10.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LamrimReaderForAndroid10.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/colorPickerView/LamrimReaderForAndroid10.colorPickerView.iml" filepath="$PROJECT_DIR$/.idea/modules/colorPickerView/LamrimReaderForAndroid10.colorPickerView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/newQuickAction/LamrimReaderForAndroid10.newQuickAction.iml" filepath="$PROJECT_DIR$/.idea/modules/newQuickAction/LamrimReaderForAndroid10.newQuickAction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/robotoCalendarLibrary/LamrimReaderForAndroid10.robotoCalendarLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/robotoCalendarLibrary/LamrimReaderForAndroid10.robotoCalendarLibrary.iml" />
     </modules>
   </component>
 </project>

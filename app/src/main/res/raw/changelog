@@ -23,6 +23,19 @@
   	<div class='title'><p><a href="http://www.facebook.com/lamrimreader">執行問題反應區</a></p></div>
   	<div class='title'><p><a href="http://lamrimreader.eyes-blue.com/">計畫首頁</a></p></div>
 
+$218
+% Version 1.6.12
+  _ 2021-04-28
+  * 因應Google即將移除Google Site，移除Google資源下載點，全部改為從http://lamrimreader.eyes-blue.com下載。
+  * 因應Google即將移除Google Site，移除開發歷程連結。
+  * 修正預設介面為暗色調布景主題。
+  * 修正本地字幕搜索無符合結果時，觸控造成強制關閉的錯誤。
+  * 修正背景播放器更新圖形界面時，發生IllegalStateException問題。
+  * 修正背景播放器關閉時，發生IllegalStateException問題。
+  * 移除權限要求android.permission.GET_TASKS。
+  * 移除 Crashlytics, 改為FirebaseCrashlytics。
+  * 修改styles.xml中的布景配色名稱為lamrimColorPrimary, lamrimColorPrimaryDark, lamrimColorAccent，以避免因引入的Library中使用預設的配色名稱(colorPrimary, colorPrimaryDark, colorAccent)造成系統取用Library中的配色，而不取用App設定的配色。
+
 $216
 % Version 1.6.10
   _ 2020-7-22

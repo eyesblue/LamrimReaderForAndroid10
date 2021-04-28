@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 public class DownloadAllServiceHandler extends Activity {
 	@Override
@@ -39,7 +39,7 @@ public class DownloadAllServiceHandler extends Activity {
 				
 				Intent intent = new Intent(DownloadAllServiceHandler.this, DownloadAllService.class);
 				intent.putExtra("cmd", "stop");
-				Crashlytics.log(Log.DEBUG,getClass().getName(),"Stop download all service.");
+				FirebaseCrashlytics.getInstance().log("Stop download all service.");
 		        stopService(intent);
 		        removeNotification();
 		        finish();

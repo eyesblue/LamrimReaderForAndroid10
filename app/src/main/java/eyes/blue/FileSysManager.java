@@ -13,7 +13,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -178,7 +178,7 @@ public class FileSysManager {
             specFile = new File(userSpecDir + File.separator + SpeechData.name[i]);
             // Test is exist and readable.
             if (specFile.exists() && specFile.canRead()) {
-                //Crashlytics.log(Log.DEBUG,logTag, Thread.currentThread().getName() + ": the media file exist in user specification location: " + specFile.getAbsolutePath());
+                //FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName() + ": the media file exist in user specification location: " + specFile.getAbsolutePath());
                 return specFile;
             }
         }
@@ -268,7 +268,7 @@ public class FileSysManager {
     }
 
     public void deleteAllSpeechFiles(int locate) {
-        Crashlytics.log(Log.DEBUG,"FileSysManager", "Delete all speech file in " + locateDesc[locate]);
+        FirebaseCrashlytics.getInstance().log("Delete all speech file in " + locateDesc[locate]);
         String dir = context.getString(R.string.audioDirName);
 
         File srcDir = new File(srcRoot[locate] + File.separator + dir);
@@ -278,7 +278,7 @@ public class FileSysManager {
     }
 
     public void deleteAllSubtitleFiles(int locate) {
-        Crashlytics.log(Log.DEBUG,"FileSysManager", "Delete all subtitle file in " + locateDesc[locate]);
+        FirebaseCrashlytics.getInstance().log("Delete all subtitle file in " + locateDesc[locate]);
         String dir = context.getString(R.string.subtitleDirName);
         File srcDir = new File(srcRoot[locate] + File.separator + dir);
         for (File f : srcDir.listFiles())
@@ -347,7 +347,7 @@ public class FileSysManager {
 
     private boolean moveContentsOfDir(File srcDir, File destDir, final ProgressDialog pd) {
         final File[] files = srcDir.listFiles();
-        Crashlytics.log(Log.DEBUG,logTag, "There are " + files.length + " files wait for move.");
+        FirebaseCrashlytics.getInstance().log("There are " + files.length + " files wait for move.");
         ((Activity) context).runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -366,7 +366,7 @@ public class FileSysManager {
                 }
             }
 
-    			/* Copy To */
+            /* Copy To */
             ((Activity) context).runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -391,7 +391,7 @@ public class FileSysManager {
         File distTemp = new File(to.getAbsolutePath() + context.getString(R.string.downloadTmpPostfix));
         FileInputStream fis = null;
         FileOutputStream fos = null;
-        Crashlytics.log(Log.DEBUG,logTag, "Copy " + from.getAbsolutePath() + " to " + to.getAbsolutePath());
+        FirebaseCrashlytics.getInstance().log("Copy " + from.getAbsolutePath() + " to " + to.getAbsolutePath());
         try {
             fis = new FileInputStream(from);
             fos = new FileOutputStream(distTemp);
@@ -447,16 +447,16 @@ public class FileSysManager {
                 sbx = new File(srcRoot[EXTERNAL] + File.separator + context.getString(R.string.subtitleDirName) + File.separator + SpeechData.getSubtitleName(i) + "." + context.getString(R.string.defSubtitleType));
             }
             if (meu != null && meu.exists()) {
-                Crashlytics.log(Log.DEBUG,logTag, SpeechData.getNameId(i) + " Media file exist in USER SPECIFY DIR, delete external and internal.");
+                FirebaseCrashlytics.getInstance().log(SpeechData.getNameId(i) + " Media file exist in USER SPECIFY DIR, delete external and internal.");
                 if (srcRoot[EXTERNAL] != null) mex.delete();
                 mei.delete();
             } else if (srcRoot[EXTERNAL] != null && mex.exists()) {
-                Crashlytics.log(Log.DEBUG,logTag, SpeechData.getNameId(i) + " Media file exist in EXTERNAL DIR, delete internal.");
+                FirebaseCrashlytics.getInstance().log(SpeechData.getNameId(i) + " Media file exist in EXTERNAL DIR, delete internal.");
                 mei.delete();
             }
 
             if (srcRoot[EXTERNAL] != null && sbx.exists()) {
-                Crashlytics.log(Log.DEBUG,logTag, SpeechData.getNameId(i) + " Subtitle file exist in EXTERNAL DIR, delete internal.");
+                FirebaseCrashlytics.getInstance().log(SpeechData.getNameId(i) + " Subtitle file exist in EXTERNAL DIR, delete internal.");
                 sbi.delete();
             }
         }

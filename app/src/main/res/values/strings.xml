@@ -128,7 +128,7 @@
     <string name="contactAuther">聯繫作者</string>
     <string name="web">網頁</string>
     <string name="projectWebText">計畫網頁</string>
-    <string name="projectWebUrl">計畫網頁：http://lamrimreader.eyes-blue.com/\n開發歷程：http://tw.lamrimreader.eyes-blue.com/</string>
+    <string name="projectWebUrl">計畫網頁：http://lamrimreader.eyes-blue.com/</string>
 
     <string name="dlgNotGrantStorageYet">未取得存取檔案授權</string>
     <string name="dlgHintGrantStroage">您未同意廣論App存取檔案，廣論App從網路上下載音檔後無法正常儲存，也無法正常播放，若您在拒絕授權的同時點選不再詢問，您必須重新安裝廣論App，系統才會再顯示詢問授權對話框。</string>
@@ -409,7 +409,7 @@
     <string name="NOTIFICATION_ACTION_NEXT">com.example.szantog.notification_action_ff</string>
     <string name="NOTIFICATION_ACTION_QUIT">com.example.szantog.notification_action_quit</string>
     <string name="single_repeat">重複播放%s</string>
-    <string name="all_repeat">播放全部音檔</string>
+    <string name="all_repeat">重複播放全部音檔</string>
     <string name="bgplayer_notification_long_text">廣論App背景播放控制器</string>
 
 

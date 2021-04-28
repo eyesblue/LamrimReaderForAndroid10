@@ -3,7 +3,8 @@ package eyes.blue;
 import android.content.Context;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.CustomKeysAndValues;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,7 +25,7 @@ public class HttpDownloader {
     static String logTag="HttpDownloader";
     public static void stopRun(){cancelled=true;}
     public static boolean download(Context cont, String url, String outputPath, DownloadProgressListener listener){
-        Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"Download file from "+url);
+        FirebaseCrashlytics.getInstance().log("Download file from "+url);
 
         cancelled = false;
         File tmpFile=new File(outputPath+cont.getString(R.string.downloadTmpPostfix));
@@ -46,7 +47,7 @@ public class HttpDownloader {
             conn=connFollowRedirect(url);
             if (conn.getResponseCode() != 200){
                 if(conn!=null)conn.disconnect();
-                Crashlytics.log(Log.ERROR, HttpDownloader.class.getName(), "Http connection return "+conn.getResponseCode()+", connection failure.");
+                FirebaseCrashlytics.getInstance().log("ERROR: Http connection return "+conn.getResponseCode()+", connection failure.");
                 Log.d( HttpDownloader.class.getName(), "Http connection return "+conn.getResponseCode()+", connection failure.");
                 return false;
             }
@@ -65,13 +66,13 @@ public class HttpDownloader {
         }
 
         if(cancelled){
-            Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"User canceled, download procedure skip!");
+            FirebaseCrashlytics.getInstance().log("User canceled, download procedure skip!");
             if(conn!=null)conn.disconnect();
             return false;
         }
 
-        Crashlytics.log(Log.ERROR, HttpDownloader.class.getName(), "Http connected, loading data...");
-        Crashlytics.setDouble("ResponseTimeOfDownload", (System.currentTimeMillis()-startTime));
+        FirebaseCrashlytics.getInstance().log("ERROR: Http connected, loading data...");
+        Util.fireFloat("ResponseTimeOfDownload", (System.currentTimeMillis()-startTime));
         InputStream is=null;
         try {
             is = conn.getInputStream();
@@ -89,7 +90,7 @@ public class HttpDownloader {
         }
 
         if(cancelled){
-            Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"User canceled, download procedure skip!");
+            FirebaseCrashlytics.getInstance().log("User canceled, download procedure skip!");
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
             if(conn!=null)conn.disconnect();
             tmpFile.delete();
@@ -101,7 +102,7 @@ public class HttpDownloader {
         try {
             fos=new FileOutputStream(tmpFile);
         } catch (FileNotFoundException e1) {
-            Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"File Not Found Exception happen while create output temp file ["+tmpFile.getName()+"] !");
+            FirebaseCrashlytics.getInstance().log("File Not Found Exception happen while create output temp file ["+tmpFile.getName()+"] !");
             if(conn!=null)conn.disconnect();
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
             tmpFile.delete();
@@ -114,13 +115,13 @@ public class HttpDownloader {
             try {   is.close();     } catch (IOException e) {e.printStackTrace();}
             try {   fos.close();    } catch (IOException e) {e.printStackTrace();}
             tmpFile.delete();
-            Crashlytics.log(Log.DEBUG, logTag,"User canceled, download procedure skip!");
+            FirebaseCrashlytics.getInstance().log("User canceled, download procedure skip!");
             return false;
         }
 
         try {
             byte[] buf=new byte[bufLen];
-            Crashlytics.log(Log.DEBUG,cont.getClass().getName(),Thread.currentThread().getName()+": Start read stream from remote site, is="+((is==null)?"NULL":"exist")+", buf="+((buf==null)?"NULL":"exist"));
+            FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName()+": Start read stream from remote site, is="+((is==null)?"NULL":"exist")+", buf="+((buf==null)?"NULL":"exist"));
             while((readLen=is.read(buf))!=-1){
                 counter+=readLen;
                 fos.write(buf,0,readLen);
@@ -131,7 +132,7 @@ public class HttpDownloader {
                     try {   is.close();     } catch (IOException e) {e.printStackTrace();}
                     try {   fos.close();    } catch (IOException e) {e.printStackTrace();}
                     tmpFile.delete();
-                    Crashlytics.log(Log.DEBUG,cont.getClass().getName(),"User canceled, download procedure skip!");
+                    FirebaseCrashlytics.getInstance().log("User canceled, download procedure skip!");
                     return false;
                 }
             }
@@ -145,7 +146,7 @@ public class HttpDownloader {
             try {   fos.close();    } catch (IOException e2) {e2.printStackTrace();}
             tmpFile.delete();
             e.printStackTrace();
-            Crashlytics.log(Log.DEBUG,cont.getClass().getName(),Thread.currentThread().getName()+": IOException happen while download media.");
+            FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName()+": IOException happen while download media.");
             return false;
         }
 
@@ -153,8 +154,7 @@ public class HttpDownloader {
             tmpFile.delete();
             return false;
         }
-
-        Crashlytics.setDouble("SpendTimeOfDownload", (System.currentTimeMillis()-startTime));
+        Util.fireFloat("SpendTimeOfDownload", (System.currentTimeMillis()-startTime));
 
         // rename the protected file name to correct file name
         if(!tmpFile.renameTo(new File(outputPath))){
@@ -162,7 +162,7 @@ public class HttpDownloader {
             return false;
         }
 
-        Crashlytics.log(Log.DEBUG,cont.getClass().getName(),Thread.currentThread().getName()+": Download finish, return true.");
+        FirebaseCrashlytics.getInstance().log(Thread.currentThread().getName()+": Download finish, return true.");
         return true;
     }
 
@@ -188,7 +188,7 @@ public class HttpDownloader {
             if (times > 3)
                 throw new IOException("Stuck in redirect loop");
 
-            Crashlytics.log(Log.DEBUG, logTag,"Connect to "+url);
+            FirebaseCrashlytics.getInstance().log("Connect to "+url);
             resourceUrl = new URL(url);
             conn        = (HttpURLConnection) resourceUrl.openConnection();
             conn.setRequestMethod("GET");
@@ -203,14 +203,14 @@ public class HttpDownloader {
             {
                 case HttpURLConnection.HTTP_MOVED_PERM:
                 case HttpURLConnection.HTTP_MOVED_TEMP:
-                    Crashlytics.log(Log.DEBUG, logTag,"Find redirect response.");
+                    FirebaseCrashlytics.getInstance().log("Find redirect response.");
                     location = conn.getHeaderField("Location");
-                    Crashlytics.log(Log.DEBUG, logTag,"Location: "+location);
+                    FirebaseCrashlytics.getInstance().log("Location: "+location);
                     //location = URLDecoder.decode(location, "UTF-8");
                     base     = new URL(url);
                     next     = new URL(base, location);  // Deal with relative URLs
                     url      = next.toExternalForm();
-                    Crashlytics.log(Log.DEBUG, logTag,"Next URL: "+url);
+                    FirebaseCrashlytics.getInstance().log("Next URL: "+url);
                     listHeaders(conn);
                     continue;
             }

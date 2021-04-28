@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 /*
 * 在Android 7 以後，同一組字串不能被 ForegroundColorSpan 設定兩次不同的顏色，會發生時好時壞的狀況。
@@ -107,19 +107,19 @@ public class TheoryPageView extends TextView {
 	 * Set highlight to whole line, from startLine to endLine, assign -1 to endLine that mean to whole end of line, if you want clear highlight call setText(String text).
 	 * */
 	public void setHighlightLine(int startLine, int endLine){
-		if(debug) Crashlytics.log(Log.DEBUG, getClass().getName(),"get setHighlightLine call: startLine="+startLine+", endLine="+endLine);
+		if(debug) FirebaseCrashlytics.getInstance().log("get setHighlightLine call: startLine="+startLine+", endLine="+endLine);
 		SpannableStringBuilder text=new SpannableStringBuilder(getText());
 		String str=text.toString();
 		String[] lines = str.split("\n");
 		if(endLine==-1){
 			endLine=lines.length-1;
-			if(debug)Crashlytics.log(Log.DEBUG, getClass().getName(),"highlight to end: "+endLine);
+			if(debug)FirebaseCrashlytics.getInstance().log("highlight to end: "+endLine);
 		}
 		int wordCounter=0;
 		
 		for(int i=0;i<lines.length;i++){
 			if(i>=startLine && i<=endLine){
-				if(debug)Crashlytics.log(Log.DEBUG, getClass().getName(),"highlight: start="+wordCounter+", end="+wordCounter+lines[i].length());
+				if(debug)FirebaseCrashlytics.getInstance().log("highlight: start="+wordCounter+", end="+wordCounter+lines[i].length());
 				text.setSpan(new BackgroundColorSpan(highColorLine), wordCounter, wordCounter+lines[i].length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 			}
 			wordCounter+=lines[i].length()+1;
@@ -142,20 +142,20 @@ public class TheoryPageView extends TextView {
         	char c=text.charAt(i);
         	if(onCmd){
         		if(c!='>'){end++;continue;}
-        		if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","Find a command stop");
+        		if(debug)FirebaseCrashlytics.getInstance().log("Find a command stop");
             	onCmd=false;
             	
            		switch(text.charAt(start)){
            			case '/':
            				switch(text.charAt(start+1)){
-           					case 'b':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","release bold command");isBold=false;break;
-           					case 'n':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","release num command");isNum=false;;break;
-           					case 's':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","release small command");isSmall=false;break;
+           					case 'b':if(debug)FirebaseCrashlytics.getInstance().log("release bold command");isBold=false;break;
+           					case 'n':if(debug)FirebaseCrashlytics.getInstance().log("release num command");isNum=false;;break;
+           					case 's':if(debug)FirebaseCrashlytics.getInstance().log("release small command");isSmall=false;break;
            				};
            				break;
-           			case 'b':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","set bold command");isBold=true;break;
-           			case 'n':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","set num command");isNum=true;break;
-           			case 's':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","set small command");isSmall=true;break;
+           			case 'b':if(debug)FirebaseCrashlytics.getInstance().log("set bold command");isBold=true;break;
+           			case 'n':if(debug)FirebaseCrashlytics.getInstance().log("set num command");isNum=true;break;
+           			case 's':if(debug)FirebaseCrashlytics.getInstance().log("set small command");isSmall=true;break;
            		}
            		start=i+1;
            		end=start;
@@ -179,8 +179,8 @@ public class TheoryPageView extends TextView {
  //       			dots[dotIndex].c=c;
 
         		}
-        		if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","Print "+text.substring(start, end)+", start: "+start+", end: "+end+", ("+(end-start)+")");
-//        		Crashlytics.log(Log.DEBUG, "LamrimReader","Get point, Before:"+words);
+        		if(debug)FirebaseCrashlytics.getInstance().log("Print "+text.substring(start, end)+", start: "+start+", end: "+end+", ("+(end-start)+")");
+//        		FirebaseCrashlytics.getInstance().log("Get point, Before:"+words);
         		//canvas.drawCircle(x, y+pointSize+2, pointSize, getPaint());
         		dots[dotIndex]=new Dot(lineCounter,line.length(),(((isSmall)?smallSize:1)),c);
         		//dots[dotIndex].line=lineCounter;
@@ -192,7 +192,7 @@ public class TheoryPageView extends TextView {
         		end=start;
         	}
         	else if(c=='\n'){
-//        		Crashlytics.log(Log.DEBUG, "LamrimReader","Get new line, draw text from "+start+" to "+end+",on ("+x+","+y+") text length="+text.length());
+//        		FirebaseCrashlytics.getInstance().log("Get new line, draw text from "+start+" to "+end+",on ("+x+","+y+") text length="+text.length());
         		//canvas.drawText(text, start, end, x, y, getPaint());
         		SpannableString str=new SpannableString (text.substring(start, end)+"\n");
 //        		str.setSpan(new ForegroundColorSpan(textColor), 0, str.length(), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -212,7 +212,7 @@ public class TheoryPageView extends TextView {
         		lineCounter++;
         	}
         	else if(c=='<'){
-        		if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","Find a command start");
+        		if(debug)FirebaseCrashlytics.getInstance().log("Find a command start");
         		if(end-start>0){
         			SpannableString str=new SpannableString (text.substring(start, end));
 					if(isBold)
@@ -266,7 +266,7 @@ public class TheoryPageView extends TextView {
 	public void setTextSize(float size){
 		super.setTextSize(size);
 //		this.setOnTouchListener(touchListener);
-		if(debug)Crashlytics.log(Log.DEBUG, "LamrimLeader","TheoryPageView.setTextSize() Set font size to "+size);
+		if(debug)FirebaseCrashlytics.getInstance().log("TheoryPageView.setTextSize() Set font size to "+size);
 	}
 	
 	@Override
@@ -324,19 +324,19 @@ public class TheoryPageView extends TextView {
         	char c=text.charAt(i);
         	if(onCmd){
         		if(c!='>'){end++;continue;}
-        		if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","Find a command stop");
+        		if(debug)FirebaseCrashlytics.getInstance().log("Find a command stop");
             	onCmd=false;
             	
            		switch(text.charAt(start)){
            			case '/':
            				switch(text.charAt(start+1)){
-           				case 'b':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","release bold command");getPaint().setFakeBoldText(false);break;
-           				case 'n':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","release num command");getPaint().setColor(Color.BLACK);break;
-           				case 's':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","release small command");getPaint().setTextSize(orgTextSize);break;
+           				case 'b':if(debug)FirebaseCrashlytics.getInstance().log("release bold command");getPaint().setFakeBoldText(false);break;
+           				case 'n':if(debug)FirebaseCrashlytics.getInstance().log("release num command");getPaint().setColor(Color.BLACK);break;
+           				case 's':if(debug)FirebaseCrashlytics.getInstance().log("release small command");getPaint().setTextSize(orgTextSize);break;
            				};break;
-           			case 'b':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","set bold command");getPaint().setFakeBoldText(true);break;
-           			case 'n':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","set num command");getPaint().setColor(Color.BLUE);break;
-           			case 's':if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","set small command");getPaint().setTextSize((float) (getTextSize()*0.9));break;
+           			case 'b':if(debug)FirebaseCrashlytics.getInstance().log("set bold command");getPaint().setFakeBoldText(true);break;
+           			case 'n':if(debug)FirebaseCrashlytics.getInstance().log("set num command");getPaint().setColor(Color.BLUE);break;
+           			case 's':if(debug)FirebaseCrashlytics.getInstance().log("set small command");getPaint().setTextSize((float) (getTextSize()*0.9));break;
            		}
            		start=i+1;
            		end=start;
@@ -346,7 +346,7 @@ public class TheoryPageView extends TextView {
         			canvas.drawText(text, start, end, x, y, getPaint());
         			x+=getPaint().measureText("中")*(end-start);
         		}
-        		if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","Print "+text.substring(start, end)+", start: "+start+", end: "+end+", ("+(end-start)+")");
+        		if(debug)FirebaseCrashlytics.getInstance().log("Print "+text.substring(start, end)+", start: "+start+", end: "+end+", ("+(end-start)+")");
         		canvas.drawCircle(x, y+pointSize+2, pointSize, getPaint());
         		start=i+1;
         		end=start;
@@ -361,7 +361,7 @@ public class TheoryPageView extends TextView {
         		continue;
         	}
         	else if(c=='<'){
-        		if(debug)Crashlytics.log(Log.DEBUG, "LamrimReader","Find a command start");
+        		if(debug)FirebaseCrashlytics.getInstance().log("Find a command start");
         		if(end-start>0){
         			canvas.drawText(text, start, end, x, y, getPaint());
         			x+=getPaint().measureText("中")*(end-start);
@@ -381,13 +381,13 @@ public class TheoryPageView extends TextView {
         		wordCounter+=words.length();
         		x+=wordLen*words.length();
         		
-        		Crashlytics.log(Log.DEBUG, "LamrimReader","Get point, Before:"+words);
+        		FirebaseCrashlytics.getInstance().log("Get point, Before:"+words);
         		canvas.drawCircle(x, y+pointSize+2, pointSize, paint);
         		words="";
         		continue;
         	}
         	else if(c=='\n'){
-        		Crashlytics.log(Log.DEBUG, "LamrimReader","Get new line.");
+        		FirebaseCrashlytics.getInstance().log("Get new line.");
         		canvas.drawText(words, 0, words.length(), x, y, getPaint());
 //        		x+=wordLen*words.length();
         		words="";
@@ -420,13 +420,13 @@ public class TheoryPageView extends TextView {
 			case MotionEvent.ACTION_DOWN:
 				
 				// return false for long click listener
-				Crashlytics.log(Log.DEBUG, getClass().getName(),"First click event in to onTouchListener, return fals.");
+				FirebaseCrashlytics.getInstance().log("First click event in to onTouchListener, return fals.");
 				return false;
 
 			case MotionEvent.ACTION_POINTER_DOWN:
 				
 				if(event.getActionIndex()==1){
-					Crashlytics.log(Log.DEBUG, getClass().getName(),"Second click event in to onTouchListener.");
+					FirebaseCrashlytics.getInstance().log("Second click event in to onTouchListener.");
 				x = (event.getX(0) - event.getX(1));  
 				y = event.getY(0) - event.getY(1);  
 				orgDist = (float) Math.sqrt(x * x + y * y);
@@ -449,7 +449,7 @@ public class TheoryPageView extends TextView {
 					float newDist = (float) Math.sqrt(x * x + y * y);
 					float dp=(newDist - orgDist) * getResources().getDisplayMetrics().density;
 					float size = orgFontSize+dp/12;
-					Crashlytics.log(Log.DEBUG, getClass().getName(),"OrgDist="+orgDist+", Dist= "+dp+"dp, scale="+size);
+					FirebaseCrashlytics.getInstance().log("OrgDist="+orgDist+", Dist= "+dp+"dp, scale="+size);
 	 
 					if ((size < MAX_FONT_SIZE && size > MIN_FONT_SIZE)) {  
 						setTextSize(TypedValue.COMPLEX_UNIT_PX, size);  

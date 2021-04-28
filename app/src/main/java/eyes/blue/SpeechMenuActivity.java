@@ -34,9 +34,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.core.view.MenuItemCompat;
-
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import net.londatiga.android.ActionItem;
 import net.londatiga.android.QuickAction;
@@ -135,7 +134,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				switch(actionId){
 				case PLAY:
 					resultAndPlay(manageItemIndex);
-                    Crashlytics.setString("ButtonClick", "QuickActionMenuPlay");
+                    Util.fireKeyValue("ButtonClick", "QuickActionMenuPlay");
 					break;
 				case UPDATE:
 					DialogInterface.OnClickListener updateListener=new DialogInterface.OnClickListener(){
@@ -145,7 +144,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 							File f=fsm.getLocalMediaFile(manageItemIndex);
 							if(f!=null && !fsm.isFromUserSpecifyDir(f))f.delete();
 							downloadSrc(manageItemIndex);
-                            Crashlytics.setString("ButtonClick", "QuickActionMenuUpdate");
+							Util.fireKeyValue("ButtonClick", "QuickActionMenuUpdate");
 						}};
 
 					BaseDialogs.showDelWarnDialog(SpeechMenuActivity.this, getString(R.string.file), updateListener, null);
@@ -164,13 +163,13 @@ public class SpeechMenuActivity extends AppCompatActivity {
 								return;
 							}
 							updateUi(manageItemIndex,true);
-                            Crashlytics.setString("ButtonClick", "QuickActionMenuDelete");
+                            Util.fireKeyValue("ButtonClick", "QuickActionMenuDelete");
 						}};
 
 					BaseDialogs.showDelWarnDialog(SpeechMenuActivity.this, getString(R.string.file), deleteListener, null);
 					break;
 				case CANCEL:
-                    Crashlytics.setString("ButtonClick", "QuickActionMenuCancel");
+                    Util.fireKeyValue("ButtonClick", "QuickActionMenuCancel");
 					break;
 				};
 			}
@@ -209,7 +208,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		subjects=new String[infos.length];
 		rangeDescs=new String[infos.length];
 		for(int i=0;i<infos.length;i++){
-	//		Crashlytics.log(Log.DEBUG, logTag,"Desc: "+infos[i]);
+	//		FirebaseCrashlytics.getInstance().log("Desc: "+infos[i]);
 			String[] sep=infos[i].split("-");
 			descs[i]=sep[0];
 			if(sep.length>1)subjects[i]=sep[1];
@@ -233,15 +232,15 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		speechList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-				Crashlytics.log(Log.DEBUG, logTag,"User click position "+position);
+				FirebaseCrashlytics.getInstance().log("User click position "+position);
 				if(fireLock())return;
 
 				if(fsm.isFilesReady(position)){
-					Crashlytics.log(Log.DEBUG, logTag,"File exist, return play.");
+					FirebaseCrashlytics.getInstance().log("File exist, return play.");
 					resultAndPlay(position);
 				}
 				else {
-					Crashlytics.log(Log.DEBUG, logTag,"File not exist, start download.");
+					FirebaseCrashlytics.getInstance().log("File not exist, start download.");
 					downloadSrc(position);
 				}
 				//AnalyticsApplication.sendEvent("ui_action", "SpeechMenuActivity", "select_item_"+SpeechData.getSubtitleName(position));
@@ -254,7 +253,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				if(speechFlags[position]) fileReadyQAction.show(v);
 				else fileNotReadyQAction.show(v);
 
-                Crashlytics.setString("ButtonClick", "ShowQuickActionMenu");
+                Util.fireKeyValue("ButtonClick", "ShowQuickActionMenu");
 				return true;
 			}
 
@@ -278,7 +277,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			public void onClick(View arg0) {
 				if(fireLock())return;
 				maintain();
-                Crashlytics.setString("ButtonClick", "MaintainFilesButtonClicked");
+                Util.fireKeyValue("ButtonClick", "MaintainFilesButtonClicked");
 			}});
 
 		btnManageStorage.setOnClickListener(new View.OnClickListener (){
@@ -288,7 +287,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				final Intent storageManage = new Intent(SpeechMenuActivity.this, StorageManageActivity.class);
 				startActivity(storageManage);
 				buttonUpdater.cancel();
-                Crashlytics.setString("ButtonClick", "ManageStorageButtonClicked");
+                Util.fireKeyValue("ButtonClick", "ManageStorageButtonClicked");
 			}});
 
 	 }
@@ -318,7 +317,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		
 		int[] resource =b.getIntArray("index");
 		if(resource == null || resource.length<=0){
-			Crashlytics.log(Log.DEBUG, logTag, "Start SpeechMenuActivity with download command, but no media index extras, skip download.");
+			FirebaseCrashlytics.getInstance().log( "Start SpeechMenuActivity with download command, but no media index extras, skip download.");
 			return;
 		}
 		downloadSrc(resource);
@@ -377,18 +376,18 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 		String menuStr=item.getTitle().toString();
 		if(menuStr.startsWith(getString(R.string.reloadLastState))){
-			Crashlytics.log(Log.DEBUG, logTag,"User click reload last state button.");
+			FirebaseCrashlytics.getInstance().log("User click reload last state button.");
 			Intent playWindow = new Intent();
 			playWindow.putExtra("reloadLastState", true);
 			setResult(Activity.RESULT_OK, playWindow);
-            Crashlytics.setString("ButtonClick", "ReloadLastState");
+            Util.fireKeyValue("ButtonClick", "ReloadLastState");
 			finish();
 		}
 		return true;
 	}
 	
 	private void resultAndPlay(int position){
-		Crashlytics.log(Log.DEBUG, logTag,"Speech menu "+position+"th item clicked.");
+		FirebaseCrashlytics.getInstance().log("Speech menu "+position+"th item clicked.");
 		Intent playWindow = new Intent();
 		playWindow.putExtra("index", position);
 		setResult(Activity.RESULT_OK, playWindow);
@@ -423,7 +422,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 	// 從頭掃描一次確認音檔是否存在
 	private void refreshFlags(final int start,final int end,final boolean isRefreshView){
-		Crashlytics.log(Log.DEBUG, logTag, "Refresh flags: start="+start+", end="+end);
+		FirebaseCrashlytics.getInstance().log( "Refresh flags: start="+start+", end="+end);
 		Thread t=new Thread(new Runnable(){
 			@Override
 			public void run() {
@@ -455,7 +454,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	}
 	
 	private void downloadSrc(final int... index){
-		Crashlytics.log(Log.DEBUG, logTag, "downloadSrc been call.");
+		FirebaseCrashlytics.getInstance().log( "downloadSrc been call.");
 		for(int i=0;i<index.length;i++){
 			File mediaFile=fsm.getLocalMediaFile(index[i]);
 		
@@ -486,7 +485,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	public void checkNetAccessPermission(final Runnable task){
 		boolean isShowNetAccessWarn=runtime.getBoolean(getString(R.string.isShowNetAccessWarn), true);
 		boolean isAllowAccessNet=runtime.getBoolean(getString(R.string.isAllowNetAccess), false);
-		Crashlytics.log(Log.DEBUG,this.getClass().getName(),"ShowNetAccessWarn: "+isShowNetAccessWarn+", isAllowNetAccess: "+isAllowAccessNet);
+		FirebaseCrashlytics.getInstance().log("ShowNetAccessWarn: "+isShowNetAccessWarn+", isAllowNetAccess: "+isAllowAccessNet);
 		if(isShowNetAccessWarn ||(!isShowNetAccessWarn && !isAllowAccessNet)){
 			rootView.post(new Runnable() {
 				public void run() {
@@ -516,7 +515,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		builder.setMessage(getString(R.string.dlgNetAccessMsg));
 		builder.setPositiveButton(getString(R.string.dlgAllow), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				Crashlytics.log(Log.DEBUG, logTag,"Check box check status: "+dontShowAgain.isChecked());
+				FirebaseCrashlytics.getInstance().log("Check box check status: "+dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isShowNetAccessWarn), !dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isAllowNetAccess), true);
 				editor.commit();
@@ -528,7 +527,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		});
 		builder.setNegativeButton(getString(R.string.dlgDisallow), new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				Crashlytics.log(Log.DEBUG, logTag,"Check box check status: "+dontShowAgain.isChecked());
+				FirebaseCrashlytics.getInstance().log("Check box check status: "+dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isShowNetAccessWarn), !dontShowAgain.isChecked());
 				editor.putBoolean(getString(R.string.isAllowNetAccess), false);
 				editor.commit();
@@ -575,14 +574,14 @@ public class SpeechMenuActivity extends AppCompatActivity {
 						NumberPicker np = (NumberPicker) v;
 						count = np.getValue();
 
-						Crashlytics.log(Log.DEBUG, logTag,	"Start download all service with thread count "	+ count);
+						FirebaseCrashlytics.getInstance().log(	"Start download all service with thread count "	+ count);
 
 						try{
 							dialog.dismiss();
 						}catch(Exception e){e.printStackTrace();}
 						Intent intent = new Intent(SpeechMenuActivity.this,	DownloadAllService.class);
 						intent.putExtra("threadCount", count);
-						Crashlytics.log(Log.DEBUG, logTag,	"Start download all service.");
+						FirebaseCrashlytics.getInstance().log(	"Start download all service.");
 						startService(intent);
 //						if (wakeLock.isHeld())wakeLock.release();
 					}
@@ -629,14 +628,14 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	
 	private boolean fireLock(){
 		if(fireLockKey){
-			Crashlytics.log(Log.DEBUG, logTag,"Fire locked");
+			FirebaseCrashlytics.getInstance().log("Fire locked");
 			return true;
 		}
 		fireLockKey=true;
 		synchronized(fireLocker){
 			fireLocker.notify();
 		}
-		Crashlytics.log(Log.DEBUG, logTag,"Fire released, lock it!");
+		FirebaseCrashlytics.getInstance().log("Fire released, lock it!");
 		return false;
 	}
 	
@@ -652,7 +651,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {e.printStackTrace();}
-					Crashlytics.log(Log.DEBUG, logTag,"Fire locker release the lock.");
+					FirebaseCrashlytics.getInstance().log("Fire locker release the lock.");
 					fireLockKey=false;
 
 			}
@@ -672,7 +671,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 							synchronized(btnDownloadAll){
 								if(fireLock())return;
 								downloadAllSrc();
-                                Crashlytics.setString("ButtonClick", "DownloadAllButtonClicked");
+                                Util.fireKeyValue("ButtonClick", "DownloadAllButtonClicked");
 							}
 						}});
 				}
@@ -683,7 +682,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 						public void onClick(View arg0) {
 							synchronized(btnDownloadAll){
 								Intent intent = new Intent(SpeechMenuActivity.this, DownloadAllService.class);
-								Crashlytics.log(Log.DEBUG, logTag,"Stop download all service.");
+								FirebaseCrashlytics.getInstance().log("Stop download all service.");
 								stopService(intent);
 								//NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 								//mNotificationManager.cancel(DownloadAllService.notificationId);
@@ -714,7 +713,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		public void onReceive(Context context, Intent intent) {
 			String action=intent.getStringExtra("action");
 			if(action.equalsIgnoreCase("start") || action.equalsIgnoreCase("stop")){
-				Crashlytics.log(Log.DEBUG,"ServiceReceiver", "Receive broadcast message: service "+action);
+				FirebaseCrashlytics.getInstance().log("Receive broadcast message: service "+action);
 				updateDownloadAllBtn();
 			}
 			else if(action.equalsIgnoreCase("download")){
@@ -725,13 +724,13 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				}
 				
 				boolean isSuccess=intent.getBooleanExtra("isSuccess", false);
-				Crashlytics.log(Log.DEBUG, logTag,"broadcast receive index "+index+" download "+isSuccess);
+				FirebaseCrashlytics.getInstance().log("broadcast receive index "+index+" download "+isSuccess);
 				
 				/* It should update the background of item of speechList, but I havn't not find a good way to do it.*/
 				if(isSuccess)updateUi(index, false);
 			}
 			else if(action.equalsIgnoreCase("terminate")){
-				Crashlytics.log(Log.DEBUG,"ServiceReceiver", "Receive broadcast message: service "+action);
+				FirebaseCrashlytics.getInstance().log("Receive broadcast message: service "+action);
 				buttonUpdater.cancel();
 				updateDownloadAllBtn();
 			}
@@ -753,12 +752,12 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				if(pd.isShowing())pd.dismiss();
 				
 				if(downloader!=null && !downloader.isCancelled()){
-					Crashlytics.log(Log.DEBUG, logTag,"The download procedure been cancel.");
+					FirebaseCrashlytics.getInstance().log("The download procedure been cancel.");
 					downloader.stopRun();
 //					if(wakeLock.isHeld())wakeLock.release();
 				}
 				if(isCallFromDownloadCmd){
-					Crashlytics.log(Log.DEBUG, logTag,"The download is start by download command, return caller activity now.");
+					FirebaseCrashlytics.getInstance().log("The download is start by download command, return caller activity now.");
 					isCallFromDownloadCmd=false;
 					setResult(RESULT_CANCELED);
 					buttonUpdater.cancel();
@@ -772,7 +771,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 	*/
 	
 	private AlertDialog getDownloadAgainDialog(final int ... index){
-		Crashlytics.log(Log.DEBUG, logTag, "There is download fail, show download again dialog.");
+		FirebaseCrashlytics.getInstance().log( "There is download fail, show download again dialog.");
 		String msg=String.format(getString(R.string.dlgMsgDlNotComplete), SpeechData.getNameId(index[0]));
 		final AlertDialog.Builder dialog = new AlertDialog.Builder(SpeechMenuActivity.this);
 		dialog.setTitle(msg); 
@@ -833,7 +832,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 			while (!cancelled && System.currentTimeMillis()< activeTime) {
 				synchronized (btnDownloadAll) {
-					Crashlytics.log(Log.DEBUG, logTag, "Button updater awake");
+					FirebaseCrashlytics.getInstance().log( "Button updater awake");
 					updateDownloadAllBtn();
 
 					try {
@@ -843,7 +842,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 					}
 				}
 			}
-			Crashlytics.log(Log.DEBUG, logTag, "Button updater terminate");
+			FirebaseCrashlytics.getInstance().log( "Button updater terminate");
 			return;
 		}
 	}
@@ -862,12 +861,12 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		public View getView(final int position, View convertView, ViewGroup parent) {
 			View row = convertView;
 			if (row == null) {
-//				Crashlytics.log(Log.DEBUG, logTag, "row=null, construct it.");
+//				FirebaseCrashlytics.getInstance().log( "row=null, construct it.");
 				LayoutInflater inflater = getLayoutInflater();
 				row = inflater.inflate(R.layout.speech_row, parent, false);
 			}
 
-//			Crashlytics.log(Log.DEBUG, logTag, "Set "+SpeechData.getNameId(position)+": is speech exist: "+speechFlags[position]+", is subtitle exist: "+subtitleFlags[position]);
+//			FirebaseCrashlytics.getInstance().log( "Set "+SpeechData.getNameId(position)+": is speech exist: "+speechFlags[position]+", is subtitle exist: "+subtitleFlags[position]);
 			TextView title = (TextView) row.findViewById(R.id.title);
 			TextView subject = (TextView) row.findViewById(R.id.subject);
 			TextView speechDesc = (TextView) row.findViewById(R.id.speechDesc);
@@ -912,17 +911,15 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				try{
 					mediaExist=mediaFile.exists();
 				}catch(NullPointerException npe){
-					Crashlytics.log(Log.DEBUG, logTag,"The storage media has not usable, skip.");
 					Util.showErrorToast(SpeechMenuActivity.this, getString(R.string.errStorageNotReady));
-					Crashlytics.log(Log.DEBUG, logTag, "The storage media has not usable, skip.");
-					Crashlytics.logException(npe);
+					Util.fireException("The storage media has not usable, skip.", npe);
 					unlockScreen();
 					return;
 				}
 				
 				if(!mediaExist) {
 					showProgDialog(tasks[i]);
-					Crashlytics.log(Log.DEBUG, logTag,"*********** Download file ***********");
+					FirebaseCrashlytics.getInstance().log("*********** Download file ***********");
 					mediaExist = HttpDownloader.download(SpeechMenuActivity.this,rs.getMediaFileAddress(tasks[i]), mediaFile.getAbsolutePath(), dpListener);
 					dismissProgDialog();
 				}
@@ -943,7 +940,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				return;
 			}
 
-			Crashlytics.log(Log.DEBUG, logTag,"The download has failure, show download again dialog.");
+			FirebaseCrashlytics.getInstance().log("The download has failure, show download again dialog.");
 			if(!isCallFromDownloadCmd)
 				rootView.post(new Runnable(){
 					@Override
@@ -954,8 +951,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 //						if(!wakeLock.isHeld()){wakeLock.acquire();}
 							dialog.show();
 						}catch(Exception e){
-							Crashlytics.log(Log.DEBUG, logTag, "Error happen while show download progress dialog.");
-							Crashlytics.logException(e);
+							Util.fireException("Error happen while show download progress dialog.", e);
 						}
 					}});
 		}
@@ -965,7 +961,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					Crashlytics.log(Log.DEBUG, logTag,"Show single download dialog for "+SpeechData.getNameId(targetIndex));
+					FirebaseCrashlytics.getInstance().log("Show single download dialog for "+SpeechData.getNameId(targetIndex));
 					downloadProg=new ProgressBar(SpeechMenuActivity.this,null, android.R.attr.progressBarStyleHorizontal); // The view must recreate or [The specified child already has a parent.] must happen.
 					progDialog = new AlertDialog.Builder(SpeechMenuActivity.this)
 							.setTitle(getString(R.string.dlgResDownload))
@@ -988,7 +984,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					Crashlytics.log(Log.DEBUG, logTag,"*********** Dismiss damn progress bar ***********");
+					FirebaseCrashlytics.getInstance().log("*********** Dismiss damn progress bar ***********");
 					if(progDialog.isShowing())
 						try {
 							progDialog.dismiss();
@@ -999,7 +995,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 		/*
 		private boolean download(String url, String outputPath, final int mediaIndex,	final int type) {
 			pd.setProgress(0);
-			Crashlytics.log(Log.DEBUG, logTag, "Download file from " + url);
+			FirebaseCrashlytics.getInstance().log( "Download file from " + url);
 			File tmpFile = new File(outputPath + getString(R.string.downloadTmpPostfix));
 			long startTime = System.currentTimeMillis(), respWaitStartTime;
 
@@ -1013,7 +1009,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			HttpResponse response = null;
 			int respCode = -1;
 			if (isCancelled) {
-				Crashlytics.log(Log.DEBUG, logTag,
+				FirebaseCrashlytics.getInstance().log(
 						"User canceled, download procedure skip!");
 				return false;
 			}
@@ -1051,7 +1047,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 			if (isCancelled) {
 				httpclient.getConnectionManager().shutdown();
-				Crashlytics.log(Log.DEBUG, logTag,
+				FirebaseCrashlytics.getInstance().log(
 						"User canceled, download procedure skip!");
 				return false;
 			}
@@ -1079,7 +1075,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			}
 
 			if (isCancelled) {
-				Crashlytics.log(Log.DEBUG, logTag,
+				FirebaseCrashlytics.getInstance().log(
 						"User canceled, download procedure skip!");
 				try {
 					is.close();
@@ -1098,7 +1094,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			try {
 				fos = new FileOutputStream(tmpFile);
 			} catch (FileNotFoundException e1) {
-				Crashlytics.log(Log.DEBUG, logTag,
+				FirebaseCrashlytics.getInstance().log(
 						"File Not Found Exception happen while create output temp file ["
 								+ tmpFile.getName() + "] !");
 				httpclient.getConnectionManager().shutdown();
@@ -1125,7 +1121,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 					e.printStackTrace();
 				}
 				tmpFile.delete();
-				Crashlytics.log(Log.DEBUG, logTag,
+				FirebaseCrashlytics.getInstance().log(
 						"User canceled, download procedure skip!");
 				return false;
 			}
@@ -1145,7 +1141,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 
 			try {
 				byte[] buf = new byte[bufLen];
-				Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName()
+				FirebaseCrashlytics.getInstance().log( Thread.currentThread().getName()
 						+ ": Start read stream from remote site, is="
 						+ ((is == null) ? "NULL" : "exist") + ", buf="
 						+ ((buf == null) ? "NULL" : "exist"));
@@ -1169,7 +1165,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 							e.printStackTrace();
 						}
 						tmpFile.delete();
-						Crashlytics.log(Log.DEBUG, logTag,
+						FirebaseCrashlytics.getInstance().log(
 								"User canceled, download procedure skip!");
 						return false;
 					}
@@ -1191,7 +1187,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 				}
 				tmpFile.delete();
 				e.printStackTrace();
-				Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName()
+				FirebaseCrashlytics.getInstance().log( Thread.currentThread().getName()
 						+ ": IOException happen while download media.");
 				return false;
 			}
@@ -1205,7 +1201,7 @@ public class SpeechMenuActivity extends AppCompatActivity {
 			// rename the protected file name to correct file name
 			tmpFile.renameTo(new File(outputPath));
 			httpclient.getConnectionManager().shutdown();
-			Crashlytics.log(Log.DEBUG, logTag, Thread.currentThread().getName() + ": Download finish, return true.");
+			FirebaseCrashlytics.getInstance().log( Thread.currentThread().getName() + ": Download finish, return true.");
 			return true;
 		}
 		*/

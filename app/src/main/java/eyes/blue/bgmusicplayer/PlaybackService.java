@@ -27,8 +27,8 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -126,7 +126,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         mFirebaseAnalytics=FirebaseAnalytics.getInstance(this);
         preferences = getSharedPreferences(getString(R.string.SHARED_MAINKEY), 0);
         isRepeatOne =preferences.getBoolean(getString(R.string.SHARED_IS_ONE_SONG_REPEATING),false);
-        Crashlytics.log(Log.DEBUG, logTag, "Load repeat single state: "+ isRepeatOne);
+        FirebaseCrashlytics.getInstance().log("Load repeat single state: "+ isRepeatOne);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -141,7 +141,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             String channelId = "PlaybackService";
             CharSequence channelName = "LamrimReader";
             NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT);
-            Crashlytics.log(Log.DEBUG,logTag, "Channel name: LamrimReader");
+            FirebaseCrashlytics.getInstance().log( "Channel name: LamrimReader");
             channel.setDescription("Background playback service of LamrimReader");
             channel.enableLights(true);
             channel.setLightColor(Color.BLUE);
@@ -188,7 +188,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
 
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, ":LamrimReaderBackgroundPlay");
-        Crashlytics.log(Log.DEBUG,logTag, "Get wake lock.");
+        FirebaseCrashlytics.getInstance().log( "Get wake lock.");
         wakeLock.acquire();
 
         /*
@@ -235,9 +235,9 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     * */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Crashlytics.log(Log.DEBUG,logTag, "Into onStartCommand()");
+        FirebaseCrashlytics.getInstance().log( "Into onStartCommand()");
         if (intent != null && intent.getAction() != null && intent.getAction().equals(getString(R.string.NORMAL_START_INTENT_ACTION))) {
-            Crashlytics.log(Log.DEBUG, logTag,"Event from Notification: Normal start intent, load last process point.");
+            FirebaseCrashlytics.getInstance().log("Event from Notification: Normal start intent, load last process point.");
             Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"PLAY/PAUSE_ON_Notification");
             int index=preferences.getInt("MEDIA_INDEX", 0);
             int pos=preferences.getInt("PLAY_TIME", 0);
@@ -252,15 +252,15 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         if (intent != null && intent.getAction() != null) {
             if (intent.getAction().equals(getString(R.string.NOTIFICATION_ACTION_PAUSEPLAY))) {
                 this.playPausePlayback();
-                Crashlytics.log(Log.DEBUG, logTag,"Event from Notification: Play/Pause button clicked.");
+                FirebaseCrashlytics.getInstance().log("Event from Notification: Play/Pause button clicked.");
                 Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"PLAY/PAUSE_ON_Notification");
             } else if (intent.getAction().equals(getString(R.string.NOTIFICATION_ACTION_NEXT))) {
                 this.playNextMedia(false);
-                Crashlytics.log(Log.DEBUG, logTag,"Event from Notification: NEXT button clicked.");
+                FirebaseCrashlytics.getInstance().log("Event from Notification: NEXT button clicked.");
                 Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"NEXT_ON_Notification");
             } else if (intent.getAction().equals(getString(R.string.NOTIFICATION_ACTION_PREV))) {
                 this.onPrevButtonClicked();
-                Crashlytics.log(Log.DEBUG, logTag,"Event from Notification: PREV button clicked.");
+                FirebaseCrashlytics.getInstance().log("Event from Notification: PREV button clicked.");
                 Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"PREV_ON_Notification");
             } else if (intent.getAction().equals(getString(R.string.NOTIFICATION_ACTION_QUIT))) {
                 transferPlaybackState(false);
@@ -269,9 +269,9 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
                     editor.putInt("MEDIA_INDEX", currentFilePosition);
                     editor.putInt("PLAY_TIME", mediaPlayer.getCurrentPosition());
                     editor.apply();
-                    Crashlytics.log(Log.DEBUG,logTag,"Save MediaIndex="+currentFilePosition+", PlayTimePosition="+mediaPlayer.getCurrentPosition()+" before close service.");
+                    FirebaseCrashlytics.getInstance().log("Save MediaIndex="+currentFilePosition+", PlayTimePosition="+mediaPlayer.getCurrentPosition()+" before close service.");
                 }
-                Crashlytics.log(Log.DEBUG, logTag,"Event from Notification: EXIT button clicked.");
+                FirebaseCrashlytics.getInstance().log("Event from Notification: EXIT button clicked.");
                 Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"EXIT_ON_Notification");
                 stopSelf();
             }
@@ -283,7 +283,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     public void onDestroy() {
         super.onDestroy();
         if (wakeLock.isHeld()) {
-            Crashlytics.log(Log.DEBUG,logTag, "Wake lock release.");
+            FirebaseCrashlytics.getInstance().log( "Wake lock release.");
             wakeLock.release();
         }
         notificationManager.cancelAll();
@@ -302,16 +302,17 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
 
     private int playLamrimIndex(Context c, int index, int timePos) {
         currentFilePosition=index;
-        Crashlytics.log(Log.DEBUG, logTag,"Play Lamim Index: "+index+", time: "+MainActivity.formatDuration(timePos));
-        if (mediaPlayer != null) {
-            Crashlytics.log(Log.DEBUG, logTag,"Release MediaPlayer");
+        FirebaseCrashlytics.getInstance().log("Play Lamim Index: "+index+", time: "+MainActivity.formatDuration(timePos));
+
+        try{// 此處用簡單的 if(mediaPlayer!=null){...} 會發生執行到一半mediaPlayer突然變成null, 而造成例外的狀況，故改用try{}catch。
+            FirebaseCrashlytics.getInstance().log("Release MediaPlayer");
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
-        }
+        }catch (IllegalStateException | NullPointerException e) { e.printStackTrace();}
 
         if(!requestAudioFocus()) {
-            Toast.makeText(context, "音效裝置佔用中，向系統取得播放音效失敗！", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "音效裝置佔用中，向系統取得播放音效失敗，請重試！", Toast.LENGTH_LONG).show();
             return 1;   // 要求 Audio Focus 失敗。
         }
 
@@ -354,7 +355,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         //Looper.loop();
 
         if(myUpdateInfoThread !=null) myUpdateInfoThread.setStop();
-        Crashlytics.log(Log.DEBUG,logTag, "Start Update UI Thread.");
+        FirebaseCrashlytics.getInstance().log( "Start Update UI Thread.");
         myUpdateInfoThread = new MyUpdateInfoRunnable();
         myUpdateInfoThread.start();
         return 0;
@@ -383,7 +384,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         else if (mediaPlayer != null) {
             playFromPause();
         } else {
-            Crashlytics.log(Log.DEBUG,logTag,"Play/Pause: MediaPlayer not exist create and play speech.");
+            FirebaseCrashlytics.getInstance().log("Play/Pause: MediaPlayer not exist create and play speech.");
             SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.SHARED_MAINKEY), 0);
             int index=sharedPreferences.getInt("MEDIA_INDEX", 0);
             int time=sharedPreferences.getInt("PLAY_TIME", 0);
@@ -394,7 +395,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     }
 
     private void playFromPause(){
-        Crashlytics.log(Log.DEBUG,logTag,"Play/Pause: MediaPlayer exist and not playing, play speech.");
+        FirebaseCrashlytics.getInstance().log("Play/Pause: MediaPlayer exist and not playing, play speech.");
         if(!requestAudioFocus())
            return;
 
@@ -408,7 +409,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     }
 
     private void pause(){
-        Crashlytics.log(Log.DEBUG,logTag,"Play/Pause: MediaPlayer exist and playing, pause play.");
+        FirebaseCrashlytics.getInstance().log("Play/Pause: MediaPlayer exist and playing, pause play.");
         if(mediaPlayer!=null)mediaPlayer.pause();
         if(myUpdateInfoThread !=null) myUpdateInfoThread.setStop();
         transferPlaybackState(false);
@@ -422,7 +423,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     }
 
     public void changeRepeatState(boolean newState) {
-        Crashlytics.log(Log.DEBUG, logTag,"Set repeat for "+((isRepeatOne)?"ALL.":"SINGLE."));
+        FirebaseCrashlytics.getInstance().log("Set repeat for "+((isRepeatOne)?"ALL.":"SINGLE."));
         isRepeatOne = newState;
     }
 
@@ -433,9 +434,9 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
-        Crashlytics.log(Log.DEBUG,logTag, SpeechData.getSubtitleName(currentFilePosition)+" play finish, switch to next media, isRepeatOne="+ isRepeatOne);
+        FirebaseCrashlytics.getInstance().log( SpeechData.getSubtitleName(currentFilePosition)+" play finish, switch to next media, isRepeatOne="+ isRepeatOne);
         playNextMedia(true);
-        Crashlytics.log(Log.DEBUG,logTag, "Start play "+SpeechData.getSubtitleName(currentFilePosition));
+        FirebaseCrashlytics.getInstance().log( "Start play "+SpeechData.getSubtitleName(currentFilePosition));
     }
 
     public void seekSong(int position) {
@@ -467,7 +468,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
         int index=getPrevMedia(currentFilePosition);
         if(index == -1){
             Toast.makeText(PlaybackService.this,"廣論App背景播放器：所有音檔皆已被刪除，無法繼續播放。",Toast.LENGTH_LONG).show();
-            Crashlytics.log(Log.ERROR, logTag, "No media file exist after playback onCompletion, skip play.");
+            FirebaseCrashlytics.getInstance().log("ERROR: No media file exist after playback onCompletion, skip play.");
             return;
         }
         currentFilePosition=index;
@@ -481,23 +482,23 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     public void playNextMedia(boolean isRefRepeatOne){
         if(myUpdateInfoThread !=null) myUpdateInfoThread.setStop();
         if (isRefRepeatOne && isRepeatOne) {
-            Crashlytics.log(Log.DEBUG, logTag, "playNextMedia(): Repeat play "+SpeechData.getSubtitleName(currentFilePosition));
+            FirebaseCrashlytics.getInstance().log("playNextMedia(): Repeat play "+SpeechData.getSubtitleName(currentFilePosition));
             File mediaFile = new FileSysManager(context).getLocalMediaFile(currentFilePosition);
             if (!mediaFile.exists()) {
                 Toast.makeText(PlaybackService.this,"廣論App背景播放器：音檔 "+SpeechData.getSubtitleName(currentFilePosition)+" 已被刪除，無法再次播放。",Toast.LENGTH_LONG).show();
-                Crashlytics.log(Log.ERROR, logTag, "playNextMedia(): "+SpeechData.getSubtitleName(currentFilePosition)+" file not exist can't play, skip play.");
+                FirebaseCrashlytics.getInstance().log("ERROR: playNextMedia(): "+SpeechData.getSubtitleName(currentFilePosition)+" file not exist can't play, skip play.");
                 return;
             }
         }
         else {
-            Crashlytics.log(Log.DEBUG, logTag, "playNextMedia(): Play next media of "+SpeechData.getSubtitleName(currentFilePosition));
+            FirebaseCrashlytics.getInstance().log("playNextMedia(): Play next media of "+SpeechData.getSubtitleName(currentFilePosition));
             int index=getNextMedia(currentFilePosition);
             if(index == -1){
                 Toast.makeText(PlaybackService.this,"廣論App背景播放器：所有音檔皆已被刪除，無法繼續播放下一音檔。",Toast.LENGTH_LONG).show();
-                Crashlytics.log(Log.ERROR, logTag, "playNextMedia(): No media file exist, skip play.");
+                FirebaseCrashlytics.getInstance().log("ERROR: playNextMedia(): No media file exist, skip play.");
                 return;
             }
-            Crashlytics.log(Log.DEBUG, logTag, "playNextMedia(): "+SpeechData.getSubtitleName(currentFilePosition)+" ===> "+SpeechData.getSubtitleName(index));
+            FirebaseCrashlytics.getInstance().log("playNextMedia(): "+SpeechData.getSubtitleName(currentFilePosition)+" ===> "+SpeechData.getSubtitleName(index));
             currentFilePosition=index;
         }
 
@@ -510,7 +511,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
      * 直到目前播放的(lastPlay)音檔都沒有則回傳-1，代表連lastPlay目前播放的音檔都不存在了。
      * */
     private int getPrevMedia(int lastPlay){
-        Crashlytics.log(Log.DEBUG, logTag, "Find prev exist media from: "+lastPlay);
+        FirebaseCrashlytics.getInstance().log("Find prev exist media from: "+lastPlay);
         int index=lastPlay;
         FileSysManager fsm=new FileSysManager(context);
         for(int i=0;i<SpeechData.name.length;i++){
@@ -518,7 +519,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
             if(index==-1)
                 index=SpeechData.name.length-1;
             File file=fsm.getLocalMediaFile(index);
-            Crashlytics.log(Log.DEBUG, logTag, "Check: "+SpeechData.getSubtitleName(index)+((file.exists())?" exist.":" not exist."));
+            FirebaseCrashlytics.getInstance().log("Check: "+SpeechData.getSubtitleName(index)+((file.exists())?" exist.":" not exist."));
             if(file.exists())return index;
         }
         return -1;
@@ -529,7 +530,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     * 直到目前播放的(lastPlay)音檔都沒有則回傳-1，代表連lastPlay目前播放的音檔都不存在了。
     * */
     private int getNextMedia(int lastPlay){
-        Crashlytics.log(Log.DEBUG, logTag, "Find next exist media from: "+lastPlay);
+        FirebaseCrashlytics.getInstance().log("Find next exist media from: "+lastPlay);
         int index=lastPlay;
         FileSysManager fsm=new FileSysManager(context);
         for(int i=0;i<SpeechData.name.length;i++){
@@ -538,7 +539,7 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
                 index=0;
             File file=fsm.getLocalMediaFile(index);
             if(file==null)continue;
-            Crashlytics.log(Log.DEBUG, logTag, "Check: "+SpeechData.getSubtitleName(index)+((file.exists())?" exist.":" not exist."));
+            FirebaseCrashlytics.getInstance().log("Check: "+SpeechData.getSubtitleName(index)+((file.exists())?" exist.":" not exist."));
             if(file.exists())return index;
         }
         return -1;
@@ -551,7 +552,10 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
                 listener.onSeekUpdate(SpeechData.getSubtitleName(currentFilePosition) + " - " + getResources().getStringArray(R.array.desc)[currentFilePosition], mediaPlayer.getCurrentPosition(), mediaPlayer.getDuration());
             }catch(NullPointerException npe){
                 npe.printStackTrace();
-                Crashlytics.log(Log.ERROR, logTag,"NullPointerException happen while update UI for media information.");
+                FirebaseCrashlytics.getInstance().log("ERROR: NullPointerException happen while update UI for media information.");
+            }catch(IllegalStateException ise){
+                ise.printStackTrace();
+                FirebaseCrashlytics.getInstance().log("ERROR: NullPointerException happen while update UI for media information.");
             }
         }
     }
@@ -585,15 +589,15 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
 
         if(reqFocus != AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
             Toast.makeText(PlaybackService.this,"廣論App背景播放無法取得Audio Focus，無法播放，請重新啟動背景播放。",Toast.LENGTH_LONG);
-            Crashlytics.log(Log.ERROR,logTag,"Can't get Audio Focus, skip play.");
+            FirebaseCrashlytics.getInstance().log("ERROR: Can't get Audio Focus, skip play.");
             return false;
         }
-        Crashlytics.log(Log.DEBUG,logTag,"Get Audio Focus success!");
+        FirebaseCrashlytics.getInstance().log("Get Audio Focus success!");
         return true;
     }
 
     public void quitAudioFocus(){
-        Crashlytics.log(Log.DEBUG,logTag,"Quit Audio Focus.");
+        FirebaseCrashlytics.getInstance().log("Quit Audio Focus.");
         if(audioManager != null && audioFocusChangeListener != null)audioManager.abandonAudioFocus(audioFocusChangeListener);
     }
 
@@ -601,24 +605,28 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
     class MyUpdateInfoRunnable extends Thread {
         boolean isStart=true;
         public void setStop(){
-            Crashlytics.log(Log.DEBUG,logTag, "Stop Update UI Thread.");
+            FirebaseCrashlytics.getInstance().log( "Stop Update UI Thread.");
             isStart=false;
         }
         @Override
         public void run() {
-            Crashlytics.log(Log.DEBUG,logTag, "Update UI Thread start.");
+            FirebaseCrashlytics.getInstance().log( "Update UI Thread start.");
             while(isStart) {
-                updateMediaInfoUI();
-                int time=0;
-                if(mediaPlayer!=null && mediaPlayer.isPlaying())
-                    time=mediaPlayer.getCurrentPosition();
-                else
-                    Crashlytics.log(Log.DEBUG, logTag,"MediaPlayer="+mediaPlayer+", isPlaying()="+((mediaPlayer!=null)?mediaPlayer.isPlaying():"NULL"));
-                time%=1000;
-                try { Thread.sleep(1000-time); }
-                catch (InterruptedException e) { e.printStackTrace(); }
+                try {
+                    updateMediaInfoUI();
+                    int time=0;
+                    if(mediaPlayer!=null && mediaPlayer.isPlaying())
+                        time=mediaPlayer.getCurrentPosition();
+                    else {
+                        FirebaseCrashlytics.getInstance().log("MediaPlayer=null or not playing, QUIT execute.");
+                        break;
+                    }
+                    time%=1000;
+                    Thread.sleep(1000-time);
+                }
+                catch (IllegalStateException | InterruptedException e) { e.printStackTrace(); break;}
             }
-            Crashlytics.log(Log.DEBUG,logTag,"Update UI Thread terminated.");
+            FirebaseCrashlytics.getInstance().log("Update UI Thread terminated.");
         }
     }
 
@@ -630,18 +638,18 @@ public class PlaybackService extends Service implements MediaPlayer.OnCompletion
                 case AudioManager.AUDIOFOCUS_GAIN:
                     // 實測於 Android 9,無法記錄最後的播放器狀態，當電話來時，系統先行停止MediaPlayer的播放，才呼叫onAudioFocusChange()
                     // 所以每次 lost focus 時查詢 MediaPlayer 的狀態必為暫停狀態，所以取得 Focus 後無法還原播放器的狀態。
-                    Crashlytics.log(Log.DEBUG,logTag,"Get Audio focus.");
+                    FirebaseCrashlytics.getInstance().log("Get Audio focus.");
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS:
-                    Crashlytics.log(Log.DEBUG,logTag,"Lost Audio focus forever, pause playback.");
+                    FirebaseCrashlytics.getInstance().log("Lost Audio focus forever, pause playback.");
                     pause();
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                    Crashlytics.log(Log.DEBUG,logTag,"Lost Audio focus temporarily, pause playback.");
+                    FirebaseCrashlytics.getInstance().log("Lost Audio focus temporarily, pause playback.");
                     pause();
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-                    Crashlytics.log(Log.DEBUG,logTag,"Lost Audio focus temporarily(can duck), pause playback.");
+                    FirebaseCrashlytics.getInstance().log("Lost Audio focus temporarily(can duck), pause playback.");
                     pause();
                     break;
             }

@@ -26,9 +26,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.CustomKeysAndValues;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -574,6 +574,8 @@ public class Util {
     public static String BUTTON_CLICK = "BUTTON_CLICK";
     public static String SPEND_TIME = "SPEND_TIME";
     public static String STATISTICS = "STATISTICS";
+    public static String SEARCH_LAMRIM = "SEARCH_LAMRIM";
+    public static String SEARCH_SUBTITLE = "SEARCH_LAMRIM";
 
     public static void fireSelectEvent(FirebaseAnalytics mFirebaseAnalytics, String activity, String type, String name) {
         Bundle bundle = new Bundle();
@@ -583,7 +585,21 @@ public class Util {
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, name);
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
+    public static void fireKeyValue(String key, String value) {
+        CustomKeysAndValues keysAndValues = new CustomKeysAndValues.Builder()
+                .putString(key, value)
+                .build();
 
+        FirebaseCrashlytics.getInstance().setCustomKeys(keysAndValues);
+    }
+
+    public static void fireFloat(String key, float value) {
+        CustomKeysAndValues keysAndValues = new CustomKeysAndValues.Builder()
+                .putFloat(key, value)
+                .build();
+
+        FirebaseCrashlytics.getInstance().setCustomKeys(keysAndValues);
+    }
 
     //@TargetApi(Build.VERSION_CODES.N)
     public static void fireTimming(Context context, FirebaseAnalytics mFirebaseAnalytics, String logTag, String type, String name, int value) {
@@ -601,13 +617,13 @@ public class Util {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
-/*
+
     public static void fireException(String msg, Throwable e) {
         String repMsg = msg + ", V" + Build.VERSION.RELEASE + ", " + Util.getDeviceName() + ", " + "Thread: {" + Thread.currentThread().getName() + "}";//, Exception: " + ExceptionUtils.getStackTrace(throwable)
-        FirebaseCrash.log(repMsg);
-        FirebaseCrash.report(e);
+        FirebaseCrashlytics.getInstance().log(repMsg);
+        FirebaseCrashlytics.getInstance().recordException(e);
     }
-*/
+
 
     public static void multiThreadExec(Runnable[] tasks) {
         Executer[] executer = new Executer[tasks.length];
@@ -707,15 +723,17 @@ public class Util {
     }
 
     public static RemoteSource[] getRemoteSource(Context ctx){
-        //String locale = ctx.getResources().getConfiguration().locale.getCountry();
+        return new RemoteSource[]{new VultrRemoteSource(ctx)};
+        /*
         String locale = ApiLevelAdaptor.getLocale(ctx).getCountry();
-        //Util.showInfoToast((Activity)ctx, "Locale: "+locale);
         if(locale.contains("CN")){
             Crashlytics.log(Log.DEBUG, logTag,"**** Downlaod resource from VULTR site ****");
             return new RemoteSource[]{new VultrRemoteSource(ctx)};
         }
         Crashlytics.log(Log.DEBUG, logTag,"**** Downlaod resource from Google site ****");
         return new RemoteSource[]{new GoogleRemoteSource(ctx, GoogleRemoteSource.PROJECT_URL)};
+        */
+
     }
 
 }

@@ -17,7 +17,7 @@
         android:layout_gravity="center_vertical"
         android:text="title"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:textColor="@color/darkTheoryTextColor" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -41,7 +41,7 @@
             android:singleLine="true"
             android:text="subject"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textColor="@color/darkTheoryTextColor"
             android:textSize="20sp" />
 
         <TextView

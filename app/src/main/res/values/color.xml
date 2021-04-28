@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="lamrimColorPrimary">#424242</color>
+    <color name="lamrimColorPrimaryDark">#212121</color>
+    <color name="lamrimColorAccent">#D81B60</color>
 
     <color name="darkTheoryTextColor">#EDEDED</color>
     <!-- <color name="darkTheoryBgColor">#000000</color>  -->

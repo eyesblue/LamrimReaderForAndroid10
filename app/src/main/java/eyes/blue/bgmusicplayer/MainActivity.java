@@ -25,11 +25,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.io.File;
-import java.security.CryptoPrimitive;
 import java.util.ArrayList;
 
 import eyes.blue.BaseDialogs;
@@ -118,16 +117,16 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int index=currentDirItems.get(i);
                 File file = fsm.getLocalMediaFile(index);
-                Crashlytics.log(Log.DEBUG, logTag, "File been click: "+file.getAbsolutePath());
+                FirebaseCrashlytics.getInstance().log("File been click: "+file.getAbsolutePath());
 
                 if(!file.exists()){
                     BaseDialogs.showDialog(MainActivity.this, "播放錯誤", "檔案不存在，請回到下載頁面下載音檔。",null,null,null,true);
-                    Crashlytics.log(Log.ERROR, logTag, SpeechData.getSubtitleName(index)+" file been click in ListView, but file gone.");
+                    FirebaseCrashlytics.getInstance().log("ERROR: "+SpeechData.getSubtitleName(index)+" file been click in ListView, but file gone.");
                     return;
                 }
                 if(service==null){
                     BaseDialogs.showDialog(MainActivity.this, "程式錯誤", "播放服務未連接，請回到上一頁並重新開啟此頁面嘗試是否能重連播放服務，若持續錯誤請回報作者。",null,null,null,true);
-                    Crashlytics.log(Log.ERROR, logTag, SpeechData.getSubtitleName(index)+" file been click in ListView, but service not connect.");
+                    FirebaseCrashlytics.getInstance().log("ERROR: "+SpeechData.getSubtitleName(index)+" file been click in ListView, but service not connect.");
                     return;
                 }
 
@@ -179,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.mainmenu_menuitem_repeat) {
-            Crashlytics.log(Log.DEBUG, logTag,"Event from Activity UI: REPEAT button clicked.");
+            FirebaseCrashlytics.getInstance().log("Event from Activity UI: REPEAT button clicked.");
             Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"REPEAT_IN_PLAY_BGM_ACTIVITY");
 
             isRepeatOne = !isRepeatOne;
@@ -264,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
     ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            Crashlytics.log(Log.DEBUG, logTag, "PlaybackService connected.");
+            FirebaseCrashlytics.getInstance().log("PlaybackService connected.");
             PlaybackService.LocalBinder binder = (PlaybackService.LocalBinder) iBinder;
             service = binder.getService();
             if (service != null) {
@@ -304,7 +303,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
 
     /* 針對 currentPath 的路徑將目錄內的檔案加入到 currentDirItems，最後更新 listview 顯示內容 */
     private void listDir() {
-        Crashlytics.log(Log.DEBUG, logTag, "Into listDir.");
+        FirebaseCrashlytics.getInstance().log("Into listDir.");
         final SeekBar sb=new SeekBar(MainActivity.this);
         sb.setMax(SpeechData.name.length);
         sb.setProgress(0);
@@ -328,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Crashlytics.log(Log.DEBUG,logTag,"Add "+SpeechData.getSubtitleName(prog)+"("+prog+") to media list of BgPlayer UI.");
+                                FirebaseCrashlytics.getInstance().log("Add "+SpeechData.getSubtitleName(prog)+"("+prog+") to media list of BgPlayer UI.");
                                 currentDirItems.add(prog);
                             }});
 
@@ -356,13 +355,13 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
                         adapter.setSelectedIndex(index);
 
                         if(index!=-1){
-                            Crashlytics.log(Log.DEBUG, logTag, "=======>Move ListView to index "+SpeechData.getSubtitleName(index));
+                            FirebaseCrashlytics.getInstance().log("=======>Move ListView to index "+SpeechData.getSubtitleName(index));
                             listView.setSelectionFromTop(index,0);
                         }
                     }
                 });
 
-                Crashlytics.log(Log.DEBUG, logTag, "Search speech media thread finish.");
+                FirebaseCrashlytics.getInstance().log("Search speech media thread finish.");
             }
         };
         Thread t=new Thread(r);
@@ -397,7 +396,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
 
     @Override
     public void onCurrentFilePositionChanged(final int newPosition) {
-        Crashlytics.log(Log.DEBUG,logTag,"Play index changed, Move list view to "+newPosition+"("+SpeechData.getSubtitleName(newPosition)+")");
+        FirebaseCrashlytics.getInstance().log("Play index changed, Move list view to "+newPosition+"("+SpeechData.getSubtitleName(newPosition)+")");
         currentPlayIndex=newPosition;
 
         runOnUiThread(new Runnable() {
@@ -421,14 +420,14 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
                         service.onPrevButtonClicked();
                         }
                     }).start();
-                    Crashlytics.log(Log.DEBUG, logTag,"Event from Activity UI: PREV button clicked.");
+                    FirebaseCrashlytics.getInstance().log("Event from Activity UI: PREV button clicked.");
                     Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"PREV_IN_PLAY_BGM_ACTIVITY");
                 }
                 break;
             case R.id.mainactivity_play_button:
                 if (service != null)
                     service.playPausePlayback();
-                Crashlytics.log(Log.DEBUG, logTag,"Event from Activity UI: PLAY/PAUSE button clicked.");
+                FirebaseCrashlytics.getInstance().log("Event from Activity UI: PLAY/PAUSE button clicked.");
                 Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"PLAY/PAUSE_IN_PLAY_BGM_ACTIVITY");
                 break;
             case R.id.mainactivity_next_button:
@@ -439,7 +438,7 @@ public class MainActivity extends AppCompatActivity implements PlaybackService.P
                         service.playNextMedia(false);
                         }
                     }).start();
-                    Crashlytics.log(Log.DEBUG, logTag,"Event from Activity UI: NEXT button clicked.");
+                    FirebaseCrashlytics.getInstance().log("Event from Activity UI: NEXT button clicked.");
                     Util.fireSelectEvent(mFirebaseAnalytics,logTag,Util.BUTTON_CLICK,"NEXT_IN_PLAY_BGM_ACTIVITY");
                 }
                 break;
