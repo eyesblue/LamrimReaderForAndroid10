@@ -1,0 +1,32 @@
+net/londatiga/android/QuickActionActivity.java
+ net.londatiga.android.QuickActionActivity
+ net.londatiga.android.QuickActionActivity$1
+ net.londatiga.android.QuickActionActivity$2
+net/londatiga/android/Example2Activity.java
+ net.londatiga.android.Example2Activity
+ net.londatiga.android.Example2Activity$1
+ net.londatiga.android.Example2Activity$2
+ net.londatiga.android.Example2Activity$3
+net/londatiga/android/ActionItem.java
+ net.londatiga.android.ActionItem
+net/londatiga/android/NewQAAdapter.java
+ net.londatiga.android.NewQAAdapter
+ net.londatiga.android.NewQAAdapter$ViewHolder
+net/londatiga/android/BuildConfig.java
+ net.londatiga.android.BuildConfig
+net/londatiga/android/Example1Activity.java
+ net.londatiga.android.Example1Activity
+ net.londatiga.android.Example1Activity$1
+ net.londatiga.android.Example1Activity$2
+ net.londatiga.android.Example1Activity$3
+ net.londatiga.android.Example1Activity$4
+net/londatiga/android/PopupWindows.java
+ net.londatiga.android.PopupWindows
+ net.londatiga.android.PopupWindows$1
+net/londatiga/android/QuickAction.java
+ net.londatiga.android.QuickAction
+ net.londatiga.android.QuickAction$1
+ net.londatiga.android.QuickAction$2
+ net.londatiga.android.QuickAction$2$1
+ net.londatiga.android.QuickAction$OnActionItemClickListener
+ net.londatiga.android.QuickAction$OnDismissListener

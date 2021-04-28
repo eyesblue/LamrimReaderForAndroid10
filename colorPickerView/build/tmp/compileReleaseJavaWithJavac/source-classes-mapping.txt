@@ -1,0 +1,17 @@
+afzkl/development/colorpickerview/dialog/ColorPickerDialog.java
+ afzkl.development.colorpickerview.dialog.ColorPickerDialog
+afzkl/development/colorpickerview/BuildConfig.java
+ afzkl.development.colorpickerview.BuildConfig
+afzkl/development/colorpickerview/view/ColorPanelView.java
+ afzkl.development.colorpickerview.view.ColorPanelView
+afzkl/development/colorpickerview/drawable/AlphaPatternDrawable.java
+ afzkl.development.colorpickerview.drawable.AlphaPatternDrawable
+afzkl/development/colorpickerview/view/ColorPickerView.java
+ afzkl.development.colorpickerview.view.ColorPickerView
+ afzkl.development.colorpickerview.view.ColorPickerView$1
+ afzkl.development.colorpickerview.view.ColorPickerView$BitmapCache
+ afzkl.development.colorpickerview.view.ColorPickerView$OnColorChangedListener
+afzkl/development/colorpickerview/preference/ColorPickerPreference.java
+ afzkl.development.colorpickerview.preference.ColorPickerPreference
+ afzkl.development.colorpickerview.preference.ColorPickerPreference$SavedState
+ afzkl.development.colorpickerview.preference.ColorPickerPreference$SavedState$1
